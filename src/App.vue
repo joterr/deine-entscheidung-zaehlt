@@ -1,29 +1,30 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
+    <footer>
+      <router-link to="/quellen">Quellen</router-link> |
+      <router-link to="/datenschutz">Datenschutz</router-link> |
+      <router-link to="/impressum">Impressum</router-link>
+    </footer>
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
+footer {
+  position: fixed;
+  bottom: 1vh;
+  right: 1vw;
+  color: $white;
+  @include std-text();
+  font-size: x-small;
+
   a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+      @include std-text();
+      font-size: x-small;
+      color: $white;
+      text-transform: uppercase;
+      display: inline-block;
+      padding: 0 2pt;
   }
 }
 </style>

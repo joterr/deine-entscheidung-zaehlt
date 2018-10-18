@@ -1,0 +1,82 @@
+/* karma-regular - latin */
+@font-face {
+    font-family: 'Karma';
+    font-style: normal;
+    font-weight: 400;
+    src: url('~@/assets/fonts/karma-v8-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Karma Regular'), local('Karma-Regular'),
+         url('~@/assets/fonts/karma-v8-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('~@/assets/fonts/karma-v8-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('~@/assets/fonts/karma-v8-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('~@/assets/fonts/karma-v8-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('~@/assets/fonts/karma-v8-latin-regular.svg#Karma') format('svg'); /* Legacy iOS */
+  }
+  
+/* raleway-regular - latin */
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    src: url('~@/assets/fonts/raleway-v12-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Raleway'), local('Raleway-Regular'),
+         url('~@/assets/fonts/raleway-v12-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('~@/assets/fonts/raleway-v12-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('~@/assets/fonts/raleway-v12-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('~@/assets/fonts/raleway-v12-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('~@/assets/fonts/raleway-v12-latin-regular.svg#Raleway') format('svg'); /* Legacy iOS */
+  }
+
+// ### FONTS ### 
+
+$font-family-highlight: 'Karma', serif;
+$font-family-std: 'Raleway', sans-serif;
+
+@mixin highlight-text() {
+    font-family: $font-family-highlight;
+    font-weight: 400;
+}
+
+@mixin std-text() {
+    font-family: $font-family-std;
+    font-weight: 400;
+}
+
+// ### COLORS, CONSTANTS, ... ###
+
+$white: #ffffff;
+$dark: #000000;
+
+$page-padding: 2vh 2vw;
+
+// ### HEADINGS, TXT and PAGES ###
+
+h1, h2, h3, h4, h5, h6 {
+    @include highlight-text();
+    margin: 0;
+}
+
+p { 
+    @include std-text();
+    line-height: 140%;
+}
+
+a {
+    @include std-text();
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    @include std-text();
+}
+
+.page {
+    padding: $page-padding;
+    height: 100vh;
+    width: 100vw;
+}
