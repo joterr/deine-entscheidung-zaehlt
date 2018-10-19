@@ -2,7 +2,7 @@
   <div id="app">
     <router-view/>
     <footer>
-      <router-link to="/quellen">Quellen</router-link> |
+      <router-link to="/quellennachweis">Quellennachweis</router-link> |
       <router-link to="/datenschutz">Datenschutz</router-link> |
       <router-link to="/impressum">Impressum</router-link>
     </footer>
@@ -19,7 +19,7 @@ footer {
   font-size: x-small;
 
   a {
-      @include std-text();
+    @include std-text-bold();
       font-size: x-small;
       color: $white;
       text-transform: uppercase;

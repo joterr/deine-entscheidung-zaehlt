@@ -14,9 +14,19 @@ export default new Router({
       component: Intro,
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('./views/About.vue'),
+      path: '/quellennachweis',
+      name: 'sources ',
+      component: () => import('./views/Sources.vue'),
+    },
+    {
+      path: '/datenschutz',
+      name: 'privacy',
+      component: () => import('./views/Privacy.vue'),
+    },
+    {
+      path: '/impressum',
+      name: 'imprint',
+      component: () => import('./views/Imprint.vue'),
     },
   ],
 });
