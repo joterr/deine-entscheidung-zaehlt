@@ -12,7 +12,8 @@
 <style lang="scss">
 footer {
   position: fixed;
-  bottom: 1vh;
+  z-index: 9999;
+  bottom: 1.5vh;
   right: 1vw;
   color: $white;
   @include std-text();

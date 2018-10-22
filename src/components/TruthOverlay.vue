@@ -29,7 +29,6 @@ export default class TruthOverlay extends Vue {
     bottom: 0;
     z-index: 9999;
     background-color: $cl-accent1;
-    opacity: 0.98;
     padding: 8vh 8vw;
     display: none;
 

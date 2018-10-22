@@ -4,6 +4,9 @@
       <FactSentence />
       <p class="description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. <a class="show-truth" v-on:click="openTruth">Findest Du nicht okay?</a></p>
     </div>
+    <div class="animal-wrapper">
+            <AnimalSlider />
+    </div>
     <TruthOverlay v-bind:isVisible="truthOpened"/>
   </section>
 </template>
@@ -11,11 +14,13 @@
 <script lang="ts">
 import { Component, Vue, Provide } from "vue-property-decorator";
 import FactSentence from "@/components/FactSentence.vue";
+import AnimalSlider from "@/components/AnimalSlider.vue";
 import TruthOverlay from "@/components/TruthOverlay.vue";
 
 @Component({
   components: {
     FactSentence,
+    AnimalSlider,
     TruthOverlay
   }
 })
@@ -31,11 +36,14 @@ export default class Intro extends Vue {
 
 <style scoped lang="scss">
 .intro-page {
-  background-color: $dark;
   padding-top: 6vh;
+  background-color: $dark;
 }
 
 .fact-wrapper {
+  position: relative;
+  z-index: 999;
+
   .description {
     display: block;
     width: 50%;
@@ -47,5 +55,16 @@ export default class Intro extends Vue {
     color: $cl-accent1;
     @include std-text-bold();
   }
+}
+
+.animal-wrapper {
+  position: fixed;
+  z-index: 9;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 </style>
