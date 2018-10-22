@@ -59,12 +59,10 @@ export default class Intro extends Vue {
 
 .animal-wrapper {
   position: fixed;
-  z-index: 9;
+  z-index: 99;
   width: 100vw;
-  height: 100vh;
-  top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 6vh;
 }
 </style>

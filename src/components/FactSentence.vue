@@ -1,7 +1,7 @@
 <template>
   <div class="fact-sentence">
-      <h1>Innerhalb <span>der letzten <i v-if="pastTime > 1">{{pastTime}} Sekunden</i><i v-else>Sekunde</i></span> wurde<i v-if="pastTime > 1">n</i> in <span>Deutschland</span> mehr als <span>{{makeLocaleInteger(cntHuhner)}} Hühner,&nbsp;</span><span>{{makeLocaleInteger(cntSchweine)}} Schweine,&nbsp;</span><span>{{makeLocaleInteger(cntTruthahner)}} Truthähner,&nbsp;</span><span>{{makeLocaleInteger(cntEnten)}} Ente<i v-if="cntEnten > 1">n</i>,&nbsp;</span><span>{{makeLocaleInteger(cntRinder)}} Rind<i v-if="cntRinder > 1">er</i>,&nbsp;</span><span>{{makeLocaleInteger(cntSchafe)}} Schaf<i v-if="cntSchafe > 1">e</i>,&nbsp;</span><span>{{makeLocaleInteger(cntZiegen, "eine")}} Ziege<i v-if="cntZiegen > 1">n</i>&nbsp;</span>und&nbsp;<span>{{makeLocaleInteger(cntPferde)}} Pferd<i v-if="cntPferde > 1">e</i></span>&nbsp;allein&nbsp;<span>für Essen getötet&nbsp;</span>oder sind als Folge&nbsp;<span>der Haltebedingungen gestorben</span>.</h1>
-      <h1 class="additional-info">Weitere <span>{{makeLocaleInteger(cntGulle)}} Tonnen Gülle</span> belasten die <span>Umwelt und</span>&nbsp;<span>unsere Gesundheit<span class="glued">.</span></span></h1>
+      <h1>In <span>{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> in <span>Deutschland</span> mehr als<br/><span>{{makeLocaleInteger(cntHuhner)}} Hühner,&nbsp;</span><span>{{makeLocaleInteger(cntSchweine)}} Schweine,&nbsp;</span><span>{{makeLocaleInteger(cntTruthahner)}} Truthähner,&nbsp;</span><span>{{makeLocaleInteger(cntEnten)}} Ente<i v-if="cntEnten > 1">n</i>,&nbsp;</span><span>{{makeLocaleInteger(cntRinder)}} Rind<i v-if="cntRinder > 1">er</i>,&nbsp;</span><br/><span>{{makeLocaleInteger(cntSchafe)}} Schaf<i v-if="cntSchafe > 1">e</i>,&nbsp;</span><span>{{makeLocaleInteger(cntZiegen, "eine")}} Ziege<i v-if="cntZiegen > 1">n</i>&nbsp;</span>und&nbsp;<span>{{makeLocaleInteger(cntPferde)}} Pferd<i v-if="cntPferde > 1">e</i></span>&nbsp;allein&nbsp;<span>für Essen getötet&nbsp;</span><br/>oder sind in Folge&nbsp;<span>schlechter Haltebedingungen verendet</span>.</h1>
+      <h1 class="additional-info">Zusätzliche <span>{{makeLocaleInteger(cntGulle)}} Tonnen Gülle</span> und verfütterte <span>{{makeLocaleInteger(cntAntibiotika)}} Gramm Antibiotika</span><br/>gefährden <span>unsere Gesundheit und Umwelt<span class="glued">.</span></span></h1>
   </div>
 </template>
 
@@ -29,15 +29,38 @@ export default class FactSentence extends Vue {
   @Provide()
   private cntPferde = 0;
   @Provide()
+  private cntAntibiotika = 0;
+  @Provide()
   private cntGulle = 0;
 
   private mounted() {
     this.startInterval();
   }
 
+  public getPastTimeString(time: number): string {
+    let pastTimeString = "";
+
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+
+    if (minutes > 0) {
+      pastTimeString = minutes === 1 ? "einer Minute" : minutes + " Minuten";
+    }
+    if (time > 60) {
+      pastTimeString += " und ";
+    }
+    if (seconds > 0 || time > 60) {
+      pastTimeString +=
+        (time === 1 ? "einer" : seconds) +
+        " Sekunde" +
+        (seconds === 1 ? "" : "n");
+    }
+    return pastTimeString;
+  }
+
   public makeLocaleInteger(val: number, one: string = "ein"): string {
     const intedVal: number = this.makeInt(val);
-    let returnString: string = '';
+    let returnString: string = "";
 
     switch (intedVal) {
       case 1:
@@ -49,6 +72,7 @@ export default class FactSentence extends Vue {
       case 3:
         returnString = "drei";
         break;
+      /*
       case 4:
         returnString = "vier";
         break;
@@ -67,6 +91,7 @@ export default class FactSentence extends Vue {
       case 9:
         returnString = "neun";
         break;
+      */
     }
     return returnString || intedVal.toLocaleString("de-DE");
   }
@@ -82,14 +107,15 @@ export default class FactSentence extends Vue {
   }
 
   private cntUpValues() {
-    this.cntHuhner += this.getAmountForSecond(970600000 / 2);
-    this.cntSchweine += this.getAmountForSecond(57865000);
-    this.cntRinder += this.getAmountForSecond(3501000);
+    this.cntHuhner += this.getAmountForSecond(970600000 / 2); // 16
+    this.cntSchweine += this.getAmountForSecond(57865000); /// 1
     this.cntTruthahner += this.getAmountForSecond(467000000 / 13.25);
+    this.cntRinder += this.getAmountForSecond(3501000); // 0.11
     this.cntEnten += this.getAmountForSecond(36000000 / 2.5);
     this.cntSchafe += this.getAmountForSecond(1030400);
     this.cntZiegen += this.getAmountForSecond(20400);
     this.cntPferde += this.getAmountForSecond(7100);
+    this.cntAntibiotika += this.getAmountForSecond(742000000);
     this.cntGulle += this.getAmountForSecond(200000000000 / 1000);
   }
 
@@ -105,8 +131,6 @@ export default class FactSentence extends Vue {
 
 <style scoped lang="scss">
 .fact-sentence {
-  padding-right: 25vw;
-
   h1 {
     @include highlight-text();
     color: rgba(255, 255, 255, 0.5);
