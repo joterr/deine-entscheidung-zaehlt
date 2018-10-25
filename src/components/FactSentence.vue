@@ -1,7 +1,7 @@
 <template>
   <div class="fact-sentence">
-      <h1>In <span>{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> in <span>Deutschland</span> mehr als<br/><span>{{makeLocaleInteger(cntHuhner)}} Hühner,&nbsp;</span><span>{{makeLocaleInteger(cntSchweine)}} Schweine,&nbsp;</span><span>{{makeLocaleInteger(cntTruthahner)}} Truthähner,&nbsp;</span><span>{{makeLocaleInteger(cntEnten)}} Ente<i v-if="cntEnten > 1">n</i>,&nbsp;</span><span>{{makeLocaleInteger(cntRinder)}} Rind<i v-if="cntRinder > 1">er</i>,&nbsp;</span><br/><span>{{makeLocaleInteger(cntSchafe)}} Schaf<i v-if="cntSchafe > 1">e</i>,&nbsp;</span><span>{{makeLocaleInteger(cntZiegen, "eine")}} Ziege<i v-if="cntZiegen > 1">n</i>&nbsp;</span>und&nbsp;<span>{{makeLocaleInteger(cntPferde)}} Pferd<i v-if="cntPferde > 1">e</i></span>&nbsp;allein&nbsp;<span>für Essen getötet&nbsp;</span><br/>oder sind in Folge&nbsp;<span>schlechter Haltebedingungen verendet</span>.</h1>
-      <h1 class="additional-info">Zusätzliche <span>{{makeLocaleInteger(cntGulle)}} Tonnen Gülle</span> und verfütterte <span>{{makeLocaleInteger(cntAntibiotika)}} Gramm Antibiotika</span><br/>gefährden <span>unsere Gesundheit und Umwelt<span class="glued">.</span></span></h1>
+      <h1>In <span>{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> in <span>Deutschland</span> mehr als <span>{{makeLocaleInteger(cntHuhner)}} Hühner,&nbsp;</span><span>{{makeLocaleInteger(cntSchweine)}} Schweine,&nbsp;</span><span>{{makeLocaleInteger(cntTruthahner)}} Truthähner,&nbsp;</span><span>{{makeLocaleInteger(cntEnten)}} Ente<i v-if="cntEnten > 1">n</i>,&nbsp;</span><span>{{makeLocaleInteger(cntRinder)}} Rind<i v-if="cntRinder > 1">er</i>,&nbsp;</span><span>{{makeLocaleInteger(cntSchafe)}} Schaf<i v-if="cntSchafe > 1">e</i>,&nbsp;</span><span>{{makeLocaleInteger(cntZiegen, "eine")}} Ziege<i v-if="cntZiegen > 1">n</i>&nbsp;</span>und&nbsp;<span>{{makeLocaleInteger(cntPferde)}} Pferd<i v-if="cntPferde > 1">e</i></span>&nbsp;allein&nbsp;<span>für Essen getötet&nbsp;</span>oder sind in Folge&nbsp;<span>schlechter Haltebedingungen verendet</span>.</h1>
+      <h1 class="additional-info">Zusätzliche <span>{{makeLocaleInteger(cntGulle)}} Tonnen Gülle</span> und verfütterte <span>{{makeLocaleInteger(cntAntibiotika)}} Gramm Antibiotika</span> gefährden <span>unsere Gesundheit und Umwelt<span class="glued">.</span></span></h1>
   </div>
 </template>
 
@@ -134,7 +134,7 @@ export default class FactSentence extends Vue {
   h1 {
     @include highlight-text();
     color: rgba(255, 255, 255, 0.5);
-    font-size: 2em;
+    font-size: 1.8em;
     line-height: 140%;
 
     i {
@@ -144,6 +144,7 @@ export default class FactSentence extends Vue {
     & span {
       display: inline-block;
       color: rgba(255, 255, 255, 1);
+      transition: 500ms ease font-size;
 
       .glued {
         display: inline;
@@ -153,7 +154,6 @@ export default class FactSentence extends Vue {
 
     &.additional-info {
       margin-top: 0.5em;
-      margin-bottom: 0.5em;
     }
   }
 }

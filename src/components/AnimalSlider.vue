@@ -1,211 +1,195 @@
 <template>
   <div class="animal-animation">
     <div class="row meat">
-      <div class="input">
-        <div class="scroller">
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal cow"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal cow"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal cow"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
-          <div class="animal pig"></div>
+        <div class="label">für Fleisch</div>
+        <div class="wrap">
+          <div class="scroller">
+            <div class="animal pig"></div>
+            <div class="animal pig"></div>
+            <div class="animal cow"></div>
+            <div class="animal chicken"></div>
+            <div class="animal pig"></div>
+            <div class="animal chicken"></div>
+            <div class="animal pig"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal pig"></div>
+            <div class="animal pig"></div>
+            <div class="animal pig"></div>
+            <div class="animal cow"></div>
+            <div class="animal chicken"></div>
+            <div class="animal pig"></div>
+            <div class="animal chicken"></div>
+            <div class="animal pig"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal pig"></div>
+            <div class="animal pig"></div>
+            <div class="animal pig"></div>
+            <div class="animal pig"></div>
+            <div class="animal cow"></div>
+            <div class="animal chicken"></div>
+            <div class="animal pig"></div>
+            <div class="animal chicken"></div>
+            <div class="animal pig"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal pig"></div>
+            <div class="animal pig"></div>
+            <div class="animal pig"></div>
+            <div class="animal cow"></div>
+            <div class="animal chicken"></div>
+            <div class="animal pig"></div>
+            <div class="animal chicken"></div>
+            <div class="animal pig"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal pig"></div>
+            <div class="animal pig"></div>
+          </div>
         </div>
-      </div>
-      <div class="output">
-        <div class="scroller">
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-          <div class="animal meat"></div>
-        </div>
-      </div>
     </div>
     <div class="row milk">
-      <div class="input">
-        <div class="scroller">
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
-          <div class="animal cow"></div>
+        <div class="label">für Milch</div>
+        <div class="wrap">
+          <div class="scroller">
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+            <div class="animal cow"></div>
+          </div>
         </div>
-      </div>
-      <div class="output">
-        <div class="scroller">
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-          <div class="animal milk"></div>
-        </div>
-      </div>
     </div>
     <div class="row eggs">
-      <div class="input">
-        <div class="scroller">
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
-          <div class="animal chicken"></div>
+        <div class="label">für Eier</div>
+        <div class="wrap">
+          <div class="scroller">
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+          </div>
         </div>
       </div>
-      <div class="output">
-        <div class="scroller">
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
-          <div class="animal egg"></div>
+    <div class="row ill">
+        <div class="label">durch Krankheit</div>
+        <div class="wrap">
+          <div class="scroller">
+            <div class="animal chicken"></div>
+            <div class="animal cow"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal pig"></div>
+            <div class="animal cow"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal cow"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal pig"></div>
+            <div class="animal cow"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal cow"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal pig"></div>
+            <div class="animal cow"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal cow"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+            <div class="animal pig"></div>
+            <div class="animal cow"></div>
+            <div class="animal chicken"></div>
+            <div class="animal chicken"></div>
+          </div>
         </div>
-      </div>
-    </div>
+    </div>   
   </div>
 </template>
 
@@ -219,116 +203,119 @@ export default class AnimalSlider extends Vue {}
 <style scoped lang="scss">
 .animal {
   display: inline-block;
-  height: 75px;
-  width: 75px;
+  height: 70px;
+  width: 70px;
   background-position: center center;
   background-size: 100% auto;
   background-repeat: no-repeat;
-  opacity: 0.3;
-  margin: 0 10px;
-
-  &.ill {
-    opacity: 0.15;
-  }
+  opacity: 0.15;
+  margin: 0 15px;
 
   &.pig {
     background-image: url("../assets/pig.svg");
-  }
-
-  &.meat {
-    background-image: url("../assets/meat.svg");
-    background-size: 70% auto;
+    background-size: 90% auto;
+    background-position: center bottom;
   }
 
   &.chicken {
     background-image: url("../assets/chicken.svg");
-    background-size: 120% auto;
-  }
-
-  &.egg {
-    background-image: url("../assets/egg.svg");
-    background-size: 60% auto;
+    background-size: 110% auto;
   }
 
   &.cow {
     background-image: url("../assets/cow.svg");
-  }
-
-  &.milk {
-    background-image: url("../assets/milk.svg");
-    background-size: 80% auto;
+    background-size: 110% auto;
   }
 }
 
 .animal-animation {
+  position: relative;
   width: 100wv;
 
   .row {
-    height: 75px;
-    width: 100%;
-    margin: 2vh 0;
-    display: flex;
+    position: relative;
+    height: 70px;
+    width: 80%;
+    margin: 1vh 0;
 
-    .input,
-    .output {
-      height: 75px;
-      width: 50vw;
+    .label {
+      position: absolute;
+      top: 50%;
+      left: 3vw;
+      text-align: left;
+      width: 150px;
+      @include std-text-bold();
+      transform: translateY(-50%);
+      color: $white;
+      font-size: small;
+      opacity: 0;
+      animation: delayShow75Percent 1s ease 3s forwards;
+    }
+
+    .wrap {
+      position: relative;
       overflow: hidden;
-      text-align: center;
+      height: 100%;
+      width: 100%;
     }
   }
 }
 
 .scroller {
-  width: 120vw;
-  transform: translate3d(-60vw, 0, 0);
-}
-.output .scroller {
-  transform: translateX(-120vw);
+  position: absolute;
+  right: 0;
+  width: 3000px;
+  transform: translate3d(0, 0, 0);
 }
 
 .meat {
   .scroller {
-    animation: slideshow 7s linear infinite 7s, delay 7s linear;
-  }
-  .output .scroller {
-    animation: slideshow 7s linear infinite 7s, delay 7s linear 6s;
+    animation: slideshow 8s linear infinite 8s, delay 8s linear;
   }
 }
 
 .milk {
   .scroller {
-    animation: slideshow 8s linear infinite 8s, delay 8s linear;
-  }
-  .output .scroller {
-    animation: slideshow 8s linear infinite 8s, delay 8s linear 7s;
+    animation: slideshow 16s linear infinite 16s, delay 16s linear;
   }
 }
 
 .eggs {
   .scroller {
-    animation: slideshow 10s linear infinite 10s, delay 10s linear;
-  }
-  .output .scroller {
-    animation: slideshow 10s linear infinite 10s, delay 10s linear 8s;
+    animation: slideshow 12s linear infinite 12s, delay 12s linear;
   }
 }
 
-@keyframes delay {
-  0% {
-    transform: translateX(-120vw);
-  }
-  100% {
-    transform: translateX(-60vw);
+.ill {
+  .scroller {
+    animation: slideshow 14s linear infinite 14s, delay 14s linear;
   }
 }
 
 @keyframes slideshow {
   0% {
-    transform: translateX(-60vw);
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(1500px);
+  }
+}
+
+@keyframes delay {
+  0% {
+    transform: translateX(-1500px);
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+@keyframes delayShow75Percent {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.75;
   }
 }
 </style>

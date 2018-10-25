@@ -65,7 +65,7 @@ $dark: #000000;
 $cl-accent1: #22DA79;
 $cl-accent2: #CBBD5A;
 
-$page-padding: 2vh 2vw;
+$page-padding: 3vh 3vw;
 
 // ### HEADINGS, TXT and PAGES ###
 
@@ -97,19 +97,19 @@ body {
 }
 
 .page, .static-page {
-    padding: $page-padding;
     height: 100vh;
     width: 100vw;
 }
 
 .static-page {
+    padding: $page-padding;
     padding-top: 55vh;
     background-color: $cl-accent2;
 
     .back-link {
         position: fixed;
         top: 4vh;
-        left: 2vw; 
+        left: 3vw; 
 
         a {
             @include highlight-text();
