@@ -5,6 +5,9 @@ import Intro from './views/Intro.vue';
 Vue.use(Router);
 
 export default new Router({
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -14,7 +17,7 @@ export default new Router({
       component: Intro,
     },
     {
-      path: '/quellennachweis',
+      path: '/quellen',
       name: 'sources ',
       component: () => import('./views/Sources.vue'),
     },

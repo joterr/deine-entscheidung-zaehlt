@@ -1,7 +1,7 @@
 <template>
   <div class="fact-sentence">
-      <h1>In <span>{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> in <span>Deutschland</span> mehr als <span>{{makeLocaleInteger(cntHuhner)}} Hühner,&nbsp;</span><span>{{makeLocaleInteger(cntSchweine)}} Schweine,&nbsp;</span><span>{{makeLocaleInteger(cntTruthahner)}} Truthähner,&nbsp;</span><span>{{makeLocaleInteger(cntEnten)}} Ente<i v-if="cntEnten > 1">n</i>,&nbsp;</span><span>{{makeLocaleInteger(cntRinder)}} Rind<i v-if="cntRinder > 1">er</i>,&nbsp;</span><span>{{makeLocaleInteger(cntSchafe)}} Schaf<i v-if="cntSchafe > 1">e</i>,&nbsp;</span><span>{{makeLocaleInteger(cntZiegen, "eine")}} Ziege<i v-if="cntZiegen > 1">n</i>&nbsp;</span>und&nbsp;<span>{{makeLocaleInteger(cntPferde)}} Pferd<i v-if="cntPferde > 1">e</i></span>&nbsp;allein&nbsp;<span>für Essen getötet&nbsp;</span>oder sind in Folge&nbsp;<span>schlechter Haltebedingungen verendet</span>.</h1>
-      <h1 class="additional-info">Zusätzliche <span>{{makeLocaleInteger(cntGulle)}} Tonnen Gülle</span> und verfütterte <span>{{makeLocaleInteger(cntAntibiotika)}} Gramm Antibiotika</span> gefährden <span>unsere Gesundheit und Umwelt<span class="glued">.</span></span></h1>
+      <h1>In <span>{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> in Deutschland mehr als <span>{{makeLocaleInteger(cntHuhner)}} Hühner,&nbsp;</span><span>{{makeLocaleInteger(cntSchweine)}} Schweine,&nbsp;</span><span>{{makeLocaleInteger(cntTruthahner)}} Truthähner,&nbsp;</span><span>{{makeLocaleInteger(cntEnten)}} Ente<i v-if="cntEnten > 1">n</i>,&nbsp;</span><span>{{makeLocaleInteger(cntRinder)}} Rind<i v-if="cntRinder > 1">er</i>,&nbsp;</span><span>{{makeLocaleInteger(cntSchafe)}} Schaf<i v-if="cntSchafe > 1">e</i>,&nbsp;</span><span>{{makeLocaleInteger(cntZiegen, "eine")}} Ziege<i v-if="cntZiegen > 1">n</i>&nbsp;</span>und&nbsp;<span>{{makeLocaleInteger(cntPferde)}} Pferd<i v-if="cntPferde > 1">e</i></span> allein für Essen getötet oder sind in Folge schlechter Haltebedingungen verendet.</h1>
+      <h1 class="additional-info">Zusätzliche <span>{{makeLocaleInteger(cntGulle)}} Tonnen</span>&nbsp;<span>Gülle</span> und verfütterte <span>{{makeLocaleInteger(cntAntibiotika)}} Gramm</span>&nbsp;<span>Antibiotika</span> gefährden unsere Gesundheit und Umwelt.</h1>
   </div>
 </template>
 
@@ -32,10 +32,6 @@ export default class FactSentence extends Vue {
   private cntAntibiotika = 0;
   @Provide()
   private cntGulle = 0;
-
-  private mounted() {
-    this.startInterval();
-  }
 
   public getPastTimeString(time: number): string {
     let pastTimeString = "";
@@ -96,6 +92,10 @@ export default class FactSentence extends Vue {
     return returnString || intedVal.toLocaleString("de-DE");
   }
 
+  private mounted() {
+    this.startInterval();
+  }
+
   private startInterval() {
     this.pastTime += 1;
     this.cntUpValues();
@@ -131,11 +131,45 @@ export default class FactSentence extends Vue {
 
 <style scoped lang="scss">
 .fact-sentence {
+  margin-left: -0.1em;
+
   h1 {
     @include highlight-text();
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 1.8em;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1.6em;
     line-height: 140%;
+
+    @include respond-to('large') {
+      font-size: 1.4em;
+
+      @include respond-to-portrait() {
+          font-size: 1.5em;    
+      }
+    }
+
+    @include respond-to('medium') {
+      font-size: 1.3em;
+
+      @include respond-to-portrait() {
+          font-size: 1.5em;    
+      }
+    }
+
+    @include respond-to('x-small') {
+      font-size: 0.9em;
+
+      @include respond-to-portrait() {
+          font-size: 1em;    
+      }
+    }
+
+    @include respond-to('xx-small') {
+      font-size: 0.7em;
+
+      @include respond-to-portrait() {
+          font-size: 0.8em;    
+      }
+    }
 
     i {
       font-style: normal;
@@ -143,13 +177,8 @@ export default class FactSentence extends Vue {
 
     & span {
       display: inline-block;
-      color: rgba(255, 255, 255, 1);
+      color: $white;
       transition: 500ms ease font-size;
-
-      .glued {
-        display: inline;
-        color: rgba(255, 255, 255, 0.5);
-      }
     }
 
     &.additional-info {

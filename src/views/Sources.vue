@@ -2,7 +2,7 @@
   <div class="static-page privacy">
       <span class="back-link"><router-link to="/">&laquo; Zurück zur Wahrheit</router-link></span>
       <div class="content">
-        <h1>Quellennachweis</h1>
+        <h1>Quellen</h1>
 
       </div>
   </div>

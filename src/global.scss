@@ -11,18 +11,19 @@
          url('~@/assets/fonts/raleway-v12-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
          url('~@/assets/fonts/raleway-v12-latin-600.svg#Raleway') format('svg'); /* Legacy iOS */
   }
-/* raleway-300 - latin */
+/* raleway-regular - latin */
 @font-face {
     font-family: 'Raleway';
     font-style: normal;
-    font-weight: 300;
-    src: url('~@/assets/fonts/raleway-v12-latin-300.eot'); /* IE9 Compat Modes */
-    src: local('Raleway Light'), local('Raleway-Light'),
-         url('~@/assets/fonts/raleway-v12-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('~@/assets/fonts/raleway-v12-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
-         url('~@/assets/fonts/raleway-v12-latin-300.woff') format('woff'), /* Modern Browsers */
-         url('~@/assets/fonts/raleway-v12-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
-}
+    font-weight: 400;
+    src: url('~@/assets/fonts/raleway-v12-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Raleway'), local('Raleway-Regular'),
+         url('~@/assets/fonts/raleway-v12-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('~@/assets/fonts/raleway-v12-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('~@/assets/fonts/raleway-v12-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('~@/assets/fonts/raleway-v12-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('~@/assets/fonts/raleway-v12-latin-regular.svg#Raleway') format('svg'); /* Legacy iOS */
+  }
 
 /* cutive-mono-regular - latin */
 @font-face {
@@ -38,6 +39,36 @@
          url('~@/assets/fonts/cutive-mono-v6-latin-regular.svg#CutiveMono') format('svg'); /* Legacy iOS */
   }
 
+
+// ### BREAKPOINTS
+
+$breakpoints: (
+    'xx-small'  : ( max-width: 320px ),
+    'x-small'  : ( max-width: 419px ),
+    'small'  : ( max-width: 767px ),
+    'medium'  : ( max-width: 1023px ),
+    'large'  : ( max-width: 1279px ),
+    'x-large'  : ( max-width: 1440px )
+);
+
+@mixin respond-to($name) {
+    @if map-has-key($breakpoints, $name) {
+        @media #{inspect(map-get($breakpoints, $name))} {
+        @content;
+        }
+    }
+    @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+            + "Please make sure it is defined in `$breakpoints` map.";
+    }
+}
+
+@mixin respond-to-portrait() {
+    @media (orientation: portrait) {
+        @content;
+    }
+}
+
 // ### FONTS ### 
 
 $font-family-highlight: 'Cutive Mono', serif;
@@ -50,7 +81,7 @@ $font-family-std: 'Raleway', sans-serif;
 
 @mixin std-text() {
     font-family: $font-family-std;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 @mixin std-text-bold() {
@@ -65,7 +96,10 @@ $dark: #000000;
 $cl-accent1: #22DA79;
 $cl-accent2: #CBBD5A;
 
-$page-padding: 3vh 3vw;
+
+$page-padding: 10vh 4vw;
+$page-padding-medium: 5vh 6vw;
+
 
 // ### HEADINGS, TXT and PAGES ###
 
@@ -78,6 +112,7 @@ p {
     @include std-text();
     line-height: 140%;
     font-size: medium;
+    margin: 0.5em 0;
 }
 
 a {
@@ -94,17 +129,47 @@ a {
 body {
     @include std-text();
     font-size: medium;
+    background-color: $dark;
 }
 
-.page, .static-page {
-    height: 100vh;
-    width: 100vw;
+.row {
+    display: flex;
+    padding-top: 4em;
+
+    @include respond-to('small') {
+        display: block;   
+        padding-top: 2em;
+    }
+
+    .col {
+        flex-basis: 0;
+        flex-grow: 1;
+        flex-shrink: 1;
+        padding: 0 2em;
+
+        @include respond-to('medium') {
+            padding: 0 1.5em;    
+        }
+
+        @include respond-to('small') {
+            padding: 0;
+            padding-bottom: 2em;
+        }
+
+        &:first-child {
+            padding-left: 0;
+        }
+        &:last-child {
+            padding-right: 0;
+        }
+    }
 }
 
 .static-page {
     padding: $page-padding;
-    padding-top: 55vh;
+    padding-top: 25vh;
     background-color: $cl-accent2;
+    min-height: 100vh;
 
     .back-link {
         position: fixed;
@@ -115,10 +180,65 @@ body {
             @include highlight-text();
             font-size: 2em;
             color: $white;
+
+            @include respond-to('small') {
+                font-size: 1.6em;
+            }
         }
     }
     
     .content {
         width: 50%;
+
+        @include respond-to('large') {
+            width: 75%;
+        }
+
+        @include respond-to('medium') {
+            width: 100%;
+        }
+
+        h1, h2, h3 {
+            margin-top: 1.5em;
+        }
+        
+        p {
+            color: $dark;
+        }
+    
+        ul {
+            padding-left: 1em;
+    
+            li {
+                padding-top: 0.5em;
+                padding-bottom: 0.5em;
+                list-style-type: lower-roman;
+                color: $dark;
+            }
+        }
+    
+        a {
+            color: $dark;
+            text-decoration: underline;
+        }
+
+        .fakeEmail {
+            &:before {
+                content: "frage";
+            }
+            &:after {
+                content:"deine-entscheidung-zählt.de"
+            }
+        }
+
+        .fakeEmailPrivacy {
+            &:before {
+                content: "datenschutz";
+            }
+            &:after {
+                content:"deine-entscheidung-zählt.de"
+            }
+        }
     }
+
 }
