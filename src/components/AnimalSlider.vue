@@ -1,6 +1,6 @@
 <template>
   <div class="animal-animation">
-    <div class="row meat">
+    <div class="custom-row meat">
         <div class="label">Fleisch</div>
         <div class="wrap">
           <div class="scroller">
@@ -49,7 +49,7 @@
           </div>
         </div>
     </div>
-    <div class="row milk">
+    <div class="custom-row milk">
         <div class="label">Milch</div>
         <div class="wrap">
           <div class="scroller">
@@ -96,7 +96,7 @@
           </div>
         </div>
     </div>
-    <div class="row eggs">
+    <div class="custom-row eggs">
         <div class="label">Eier</div>
         <div class="wrap">
           <div class="scroller">
@@ -143,7 +143,7 @@
           </div>
         </div>
       </div>
-    <div class="row ill">
+    <div class="custom-row ill">
         <div class="label">Krankheit</div>
         <div class="wrap">
           <div class="scroller">
@@ -242,7 +242,7 @@ export default class AnimalSlider extends Vue {}
   position: relative;
   width: 100wv;
 
-  .row {
+  .custom-row {
     position: relative;
     height: 90px;
     width: 80%;
@@ -301,6 +301,7 @@ export default class AnimalSlider extends Vue {}
     }
   }
 }
+
 
 .meat {
   .scroller {

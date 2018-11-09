@@ -19,6 +19,13 @@ footer {
   @include std-text();
   font-size: x-small;
 
+  @include respond-to('medium') {
+    right: 0;
+    left: 0;
+    width: 100vw;
+    text-align: center;
+  }
+
   a {
     @include std-text();
     font-size: x-small;

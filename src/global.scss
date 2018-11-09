@@ -167,7 +167,7 @@ body {
 
 .static-page {
     padding: $page-padding;
-    padding-top: 25vh;
+    padding-top: 15vh;
     background-color: $cl-accent2;
     min-height: 100vh;
 
@@ -182,7 +182,7 @@ body {
             color: $white;
 
             @include respond-to('small') {
-                font-size: 1.6em;
+                font-size: 1.4em;
             }
         }
     }
@@ -208,7 +208,7 @@ body {
     
         ul {
             padding-left: 1em;
-    
+
             li {
                 padding-top: 0.5em;
                 padding-bottom: 0.5em;
@@ -216,10 +216,31 @@ body {
                 color: $dark;
             }
         }
-    
+
         a {
             color: $dark;
             text-decoration: underline;
+        }
+
+        ul.sources {
+            padding-left: 0em;
+
+            li {
+                list-style-type: none;
+                
+                a {
+                    text-decoration: none;
+                    font-size: small;
+
+                    strong {
+                        @include std-text-bold();
+                    }
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
         }
 
         .fakeEmail {
