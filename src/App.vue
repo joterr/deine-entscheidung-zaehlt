@@ -2,7 +2,7 @@
   <div id="app">
     <router-view/>
     <footer>
-      <router-link to="/quellen" class="high">Quellen</router-link> |
+      <router-link to="/fakten" class="high">Weitere Fakten</router-link> |
       <router-link to="/datenschutz">Datenschutz</router-link> |
       <router-link to="/impressum">Impressum</router-link>
     </footer>

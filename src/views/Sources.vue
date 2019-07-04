@@ -2,11 +2,12 @@
   <div class="static-page privacy">
       <span class="back-link"><router-link to="/">&laquo; Zurück zur Wahrheit</router-link></span>
       <div class="content">
-        <h1>Quellen</h1>
-        <p>Das Quellenverzeichnis wird in unregelmäßigen Abständen aktualisiert und stellt nur eine Auswahl dar.</p>
+        <h1>Weitere Fakten</h1>
+        <p>Die Sammlung wird in unregelmäßigen Abständen aktualisiert und stellt nur eine Auswahl dar.</p>
 
         <h3>Umweltauswirkungen</h3>
         <ul class="sources">
+          <li><a target="_new" href="http://www.faz.net/aktuell/wirtschaft/wirtschaftspolitik/kritik-an-tierhaltung-fleisch-von-kranken-tieren-14448092.html"><strong>Fleisch von kranken Tieren</strong> (FAZ, 22. Sep 2016)</a></li>
           <li><a target="_new" href="https://www.sueddeutsche.de/wirtschaft/klimawandel-fleischkonzerne-co-emissionen-1.4058225"><strong>Klimawandel: Fleischkonzerne schaden dem Klima mehr als die Ölindustrie</strong> (Süddeutsche, 18. Jul 2018)</a></li>
           <li><a target="_new" href="http://www.spiegel.de/wirtschaft/service/nitrat-im-grundwasser-durch-ueberduengung-und-guelle-a-1027279.html"><strong>Nitrat im Grundwasser durch Überdüngung und Gülle</strong> (Spiegel Online, 01. Mai 2015)</a></li>
           <li><a target="_new" href="http://www.fr.de/wirtschaft/wasser-das-groesste-problem-heisst-massentierhaltung-a-1470284"><strong>Wasser: Das größte Problem heißt Massentierhaltung</strong> (Frankfurter Rundschau, 20. Mär 2018)</a></li>
@@ -38,6 +39,7 @@
           <li><a target="_new" href="http://www.spiegel.de/spiegel/print/d-18309047.html"><strong>Pillen für das Turbo-Schwein</strong> (Spiegel, 22. Jan 2001)</a></li>
           <li><a target="_new" href="https://www.presseportal.de/pm/110736/3461938"><strong>Massives Versagen der Überwachungsbehörde machte Tierquälerei möglich SOKO Tierschutz erstattet Strafanzeige gegen das Landratsamt Alb-Donau Kreis</strong> (SOKO Tierschutz e.V., 21. Okt 2016)</a></li>
           <li><a target="_new" href="https://utopia.de/schweine-fleisch-ferkel-animal-rights-watch-video-97815/"><strong>Verdeckte Videoaufnahmen: Hier werden kleine Ferkel einfach erschlagen</strong> (utopia, 19. Jul 2018)</a></li>
+          <li><a target="_new" href="https://www.peta.de/Fleisch-kostet-Leben"><strong>Fleisch kostet Leben</strong> (PETA, Feb 2018)</a></li>
         </ul>
 
         <h3>Gesundheitsvorteile</h3>
@@ -53,10 +55,10 @@
 
         <h3>Schlachtzahlen</h3>
         <ul class="sources">
-          <li><a target="_new" href="LINK"><strong>Artikel</strong> (Autor)</a></li>
-          <li><a target="_new" href="LINK"><strong>Artikel</strong> (Autor)</a></li>
-          <li><a target="_new" href="LINK"><strong>Artikel</strong> (Autor)</a></li>
-          <li><a target="_new" href="LINK"><strong>Artikel</strong> (Autor)</a></li>
+          <li><a target="_new" href="https://www.destatis.de/DE/PresseService/Presse/Pressemitteilungen/2018/02/PD18_038_413.html"><strong>Pressemitteilung Nr. 38: Fleischerzeugung im Jahr 2017 deutlich gesunken</strong> (DESTATIS, 07. Feb 2018)</a></li>
+          <li><a target="_new" href="http://www.gefluegelhof-franzsander.de/enten.php"><strong>Geflügelhof Frandsander, Unsere Tiere - Enten</strong> (Geflügelhof Franzsander, Zugriff: 10. Nov 2018)</a></li>
+          <li><a target="_new" href="https://albert-schweitzer-stiftung.de/aktuell/schlachtzahlen-2017"><strong>Schlachtzahlen 2017: 8 Mio. Tiere weniger</strong> (Albert Schweitzer Stiftung, 10. Feb 2018)</a></li>
+          <li><a target="_new" href="https://albert-schweitzer-stiftung.de/aktuell/schlachthaus-interview"><strong>Schlachthaus-Interview mit einer Mitarbeiterin</strong> (Albert Schweitzer Stiftung, 24. Mär 2015)</a></li>
           <li><a target="_new" href="LINK"><strong>Artikel</strong> (Autor)</a></li>
         </ul>
 

@@ -1,7 +1,28 @@
 <template>
   <div class="fact-sentence">
-      <h1>In <span>{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> in Deutschland mehr als <span>{{makeLocaleInteger(cntHuhner)}} Hühner,&nbsp;</span><span>{{makeLocaleInteger(cntSchweine)}} Schweine,&nbsp;</span><span>{{makeLocaleInteger(cntTruthahner)}} Truthähner,&nbsp;</span><span>{{makeLocaleInteger(cntEnten)}} Ente<i v-if="cntEnten > 1">n</i>,&nbsp;</span><span>{{makeLocaleInteger(cntRinder)}} Rind<i v-if="cntRinder > 1">er</i>,&nbsp;</span><span>{{makeLocaleInteger(cntSchafe)}} Schaf<i v-if="cntSchafe > 1">e</i>,&nbsp;</span><span>{{makeLocaleInteger(cntZiegen, "eine")}} Ziege<i v-if="cntZiegen > 1">n</i>&nbsp;</span>und&nbsp;<span>{{makeLocaleInteger(cntPferde)}} Pferd<i v-if="cntPferde > 1">e</i></span> allein für Essen getötet oder sind in Folge schlechter Haltebedingungen verendet.</h1>
-      <h1 class="additional-info">Zusätzliche <span>{{makeLocaleInteger(cntGulle)}} Tonnen</span>&nbsp;<span>Gülle</span> und verfütterte <span>{{makeLocaleInteger(cntAntibiotika)}} Gramm</span>&nbsp;<span>Antibiotika</span> gefährden unsere Gesundheit und Umwelt.</h1>
+    <h1 class="main-info">
+      In
+      <span>{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> in Deutschland mehr als<br/>
+      <span>{{makeLocaleInteger(cntHuhner)}} Hühner,&nbsp;</span>
+      <span>{{makeLocaleInteger(cntSchweine)}} Schweine,&nbsp;</span>
+      <span>{{makeLocaleInteger(cntTruthahner)}} Truthähner,&nbsp;</span>
+      <span>
+        {{makeLocaleInteger(cntEnten)}} Ente<i v-if="cntEnten > 1">n</i>,&nbsp;
+      </span>
+      <span>
+        {{makeLocaleInteger(cntRinder)}} Rind<i v-if="cntRinder > 1">er</i>,&nbsp;
+      </span>
+      <span>
+        {{makeLocaleInteger(cntSchafe)}} Schaf<i v-if="cntSchafe > 1">e</i>,&nbsp;
+      </span>
+      <span>
+        {{makeLocaleInteger(cntZiegen, "eine")}} Ziege<i v-if="cntZiegen > 1">n</i>
+      </span>&nbsp;und&nbsp;<span>{{makeLocaleInteger(cntPferde)}} Pferd<i v-if="cntPferde > 1">e</i>
+      </span> allein für Essen getötet oder sind in Folge schlechter Haltebedingungen verendet.
+    </h1>
+    <h1 class="additional-info">
+      Zusätzliche&nbsp;<span>{{makeLocaleInteger(cntGulle)}} Tonnen</span>&nbsp;<span>Gülle</span>,&nbsp;<span>{{makeLocaleInteger(cntAntibiotika)}} Gramm</span>&nbsp;<span>Antibiotika</span>&nbsp;und<br/><span>{{makeLocaleInteger(cntCo2)}} Tonnen</span>&nbsp;<span>CO<sub>2</sub>-Äquivalente</span> gefährden unsere Gesundheit und Umwelt.
+    </h1>
   </div>
 </template>
 
@@ -32,6 +53,8 @@ export default class FactSentence extends Vue {
   private cntAntibiotika = 0;
   @Provide()
   private cntGulle = 0;
+  @Provide()
+  private cntCo2 = 0;
 
   public getPastTimeString(time: number): string {
     let pastTimeString = "";
@@ -117,6 +140,7 @@ export default class FactSentence extends Vue {
     this.cntPferde += this.getAmountForSecond(7100);
     this.cntAntibiotika += this.getAmountForSecond(742000000);
     this.cntGulle += this.getAmountForSecond(200000000000 / 1000);
+    this.cntCo2 += this.getAmountForSecond(200000000000000 / 1000);
   }
 
   private makeInt(val: number): number {
@@ -139,35 +163,35 @@ export default class FactSentence extends Vue {
     font-size: 1.6em;
     line-height: 140%;
 
-    @include respond-to('large') {
+    @include respond-to("large") {
       font-size: 1.4em;
 
       @include respond-to-portrait() {
-          font-size: 1.5em;    
+        font-size: 1.5em;
       }
     }
 
-    @include respond-to('medium') {
+    @include respond-to("medium") {
       font-size: 1.3em;
 
       @include respond-to-portrait() {
-          font-size: 1.5em;    
+        font-size: 1.5em;
       }
     }
 
-    @include respond-to('x-small') {
+    @include respond-to("x-small") {
       font-size: 0.9em;
 
       @include respond-to-portrait() {
-          font-size: 1em;    
+        font-size: 1em;
       }
     }
 
-    @include respond-to('xx-small') {
+    @include respond-to("xx-small") {
       font-size: 0.7em;
 
       @include respond-to-portrait() {
-          font-size: 0.8em;    
+        font-size: 0.8em;
       }
     }
 
@@ -179,6 +203,10 @@ export default class FactSentence extends Vue {
       display: inline-block;
       color: $white;
       transition: 500ms ease font-size;
+    }
+
+    &.main-info {
+      margin-right: 10%;
     }
 
     &.additional-info {

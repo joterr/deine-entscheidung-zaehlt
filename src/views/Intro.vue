@@ -2,42 +2,54 @@
   <section class="intro-page intro page">
     <div class="scroll" v-bind:class="{ opened: isVisibleTruth }">
       <div class="splash">
-          <div class="fact-wrapper">
-            <FactSentence />
-            <div class="show-truth"><span v-on:click="showTruth">Findest Du nicht okay?</span></div>
-          </div>
-          <div class="animal-wrapper">
-            <AnimalSlider />
+        <div class="fact-wrapper">
+          <FactSentence />
+          <div class="show-truth">
+            <span v-on:click="showTruth">Findest Du nicht okay?</span>
           </div>
         </div>
-        <div class="truth-overlay">
-          <div class="content">
-              <div class="heading">
-                <h1>Du entscheidest</h1>
-                <h1>was auf Deinem Teller landet!</h1>
-              </div>
-              <div class="explanation">
-                  <p>950 Millionen Tiere jährlich. Für Fleisch, Milch und Eier. Durch Antibiotika in engster Stallhaltung und krankhaft überzüchtet. Dennoch sterben eine Vielzahl an Tieren bereits an Verletzungen und bakteriellen Krankheiten. Bei Schweinen sogar nahezu jedes fünfte Tier. Unprofitable Jungtiere werden meist direkt getötet - darunter über 50 Millionen vergaste und geschredderte Eintagsküken.</p>
-                  <p>UNTERSCHIEDE BEI VEGANER ERNÄHRUNG, Klar avocado schlecht für's Klimo, jedoch isst man nicht so viel wie Fleisch... At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
-              </div>
-              <div class="row additional-info">
-                <div class="col">
-                  <h2>Vegane Starthilfen</h2>
-                  <ul class="additional-info">
-                    <li><a href="https://www.vegankickstart.de/">vegankickstart.de</a> von PETAZWEI</li>
-                    <li><a href="https://www.vegankickstart.de/">vegankickstart.de</a> von PETAZWEI</li>
-                  </ul>
-                </div>
-                <div class="col">
-                  <h2>Bücher &amp; Dokus</h2>
-                  <ul class="additional-info">
-                    <li><a href="https://www.vegankickstart.de/">vegankickstart.de</a> von PETAZWEI</li>
-                    <li><a href="https://www.vegankickstart.de/">vegankickstart.de</a> von PETAZWEI</li>
-                  </ul>
-                </div>
-              </div>
+        <div class="animal-wrapper">
+          <AnimalSlider />
+        </div>
+      </div>
+      <div class="truth-overlay">
+        <div class="content">
+          <div class="heading">
+            <h1>Du entscheidest,</h1>
+            <h1>was Du isst!</h1>
+          </div>
+          <div class="explanation">
+            <p class="highlight">950 Millionen Tiere jährlich. Für Fleisch, Milch und Eier. Durch Antibiotika in engster Stallhaltung und krankhaft überzüchtet. Dennoch sterben eine Vielzahl an Tieren bereits an Verletzungen und bakteriellen Krankheiten. Bei Schweinen sogar nahezu jedes fünfte Tier. Unprofitable Jungtiere werden meist direkt getötet - darunter über 50 Millionen vergaste und geschredderte Eintagsküken.</p>
+            <p>UNTERSCHIEDE BEI VEGANER ERNÄHRUNG, Klar avocado schlecht für's Klimo, jedoch isst man nicht so viel wie Fleisch... At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+            <h2>Probier's doch mal vegan</h2>
+            <p>Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+          </div>
+          <div class="row additional-info">
+            <div class="col">
+              <h3>Vegane Starthilfen</h3>
+              <ul class="additional-info">
+                <li>
+                  <a href="https://www.vegankickstart.de/">vegankickstart.de</a> von PETAZWEI
+                </li>
+                <li>
+                  <a href="https://www.vegankickstart.de/">vegankickstart.de</a> von PETAZWEI
+                </li>
+              </ul>
+            </div>
+            <div class="col">
+              <h3>Bücher &amp; Dokus</h3>
+              <ul class="additional-info">
+                <li>
+                  <a href="https://www.vegankickstart.de/">vegankickstart.de</a> von PETAZWEI
+                </li>
+                <li>
+                  <a href="https://www.vegankickstart.de/">vegankickstart.de</a> von PETAZWEI
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
+      </div>
     </div>
   </section>
 </template>
@@ -67,7 +79,7 @@ export default class Intro extends Vue {
 .fact-wrapper {
   position: relative;
   z-index: 999;
-  width: 60%;
+  width: 65%;
   opacity: 0;
   animation: delayShow 1s ease forwards 2s;
 
@@ -128,7 +140,7 @@ export default class Intro extends Vue {
 
 .animal-wrapper {
   position: absolute;
-  bottom: 8vh;
+  bottom: 10vh;
   left: 0;
   right: 0;
   width: 100vw;
@@ -159,7 +171,7 @@ export default class Intro extends Vue {
 
   .content,
   .additional-info {
-    width: 65%;
+    width: 75%;
 
     @include respond-to("x-large") {
       width: 80%;
@@ -225,19 +237,24 @@ export default class Intro extends Vue {
       }
 
       p {
-        margin-top: 1.5em;
+        margin-top: .5em;
+        margin-bottom: 1.5em;
 
-        strong {
+        strong, &.highlight {
           @include std-text-bold();
         }
       }
     }
 
-    h2 {
+    h2, h3 {
       margin-left: -0.1em;
       line-height: 120%;
       font-size: medium;
       color: $dark;
+      margin-top: 0.5em;
+    }
+
+    h3 {
       text-transform: uppercase;
     }
 

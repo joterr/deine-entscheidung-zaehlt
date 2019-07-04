@@ -49,147 +49,6 @@
           </div>
         </div>
     </div>
-    <div class="custom-row milk">
-        <div class="label">Milch</div>
-        <div class="wrap">
-          <div class="scroller">
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-            <div class="animal cow"></div>
-          </div>
-        </div>
-    </div>
-    <div class="custom-row eggs">
-        <div class="label">Eier</div>
-        <div class="wrap">
-          <div class="scroller">
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-          </div>
-        </div>
-      </div>
-    <div class="custom-row ill">
-        <div class="label">Krankheit</div>
-        <div class="wrap">
-          <div class="scroller">
-            <div class="animal chicken"></div>
-            <div class="animal cow"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal pig"></div>
-            <div class="animal cow"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal cow"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal pig"></div>
-            <div class="animal cow"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal cow"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal pig"></div>
-            <div class="animal cow"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal cow"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-            <div class="animal pig"></div>
-            <div class="animal cow"></div>
-            <div class="animal chicken"></div>
-            <div class="animal chicken"></div>
-          </div>
-        </div>
-    </div>   
   </div>
 </template>
 
@@ -203,23 +62,13 @@ export default class AnimalSlider extends Vue {}
 <style scoped lang="scss">
 .animal {
   display: inline-block;
-  height: 90px;
-  width: 100px;
+  height: 100px;
+  width: 150px;
   background-position: center center;
   background-size: 100% auto;
   background-repeat: no-repeat;
   opacity: 0.25;
   margin: 0;
-
-  @include respond-to('large') {
-    height: 63px;
-    width: 70px;
-  }
-
-  @include respond-to('small') {
-    height: 45px;
-    width: 50px;
-  }
 
   &.pig {
     background-image: url("../assets/pig.svg");
@@ -244,21 +93,13 @@ export default class AnimalSlider extends Vue {}
 
   .custom-row {
     position: relative;
-    height: 90px;
+    height: 100px;
     width: 80%;
-
-    @include respond-to('large') {
-      height: 63px;
-    }
-
-    @include respond-to('small') {
-      height: 45px;
-    }
 
     .label {
       position: absolute;
       top: 50%;
-      left: 4vw;
+      right: 0;
       z-index: 999;
       text-align: left;
       @include std-text-bold();
@@ -267,7 +108,7 @@ export default class AnimalSlider extends Vue {}
       background-color: rgba(0, 0, 0, 0.75);
       border-radius: 1pt;
       padding: 2pt 4pt;
-      font-size: small;
+      font-size: medium;
       opacity: 0;
 
       @include respond-to('small') {
@@ -308,7 +149,7 @@ export default class AnimalSlider extends Vue {}
     animation: slideshow 8s linear infinite 8s, delay 8s linear;
   }
   .wrap::after {
-      animation: hidelastanimal 533.3334ms linear infinite 7477.67ms; 
+      animation: hidelastanimal 533.3334ms linear infinite 7477.67ms;
   }
   .label {
     animation: slideIn75Percent 1s ease 5s forwards;
@@ -321,7 +162,7 @@ export default class AnimalSlider extends Vue {}
   }
 
   .wrap::after {
-      animation: hidelastanimal 1066.667ms linear infinite 14933.334ms; 
+      animation: hidelastanimal 1066.667ms linear infinite 14933.334ms;
   }
 
   .label {
@@ -335,7 +176,7 @@ export default class AnimalSlider extends Vue {}
   }
 
   .wrap::after {
-      animation: hidelastanimal 800ms linear infinite 11200ms; 
+      animation: hidelastanimal 800ms linear infinite 11200ms;
   }
 
   .label {
@@ -349,7 +190,7 @@ export default class AnimalSlider extends Vue {}
   }
 
   .wrap::after {
-      animation: hidelastanimal 933.334ms linear infinite 13066.666ms; 
+      animation: hidelastanimal 933.334ms linear infinite 13066.666ms;
   }
 
   .label {
