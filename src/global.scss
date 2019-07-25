@@ -69,7 +69,7 @@ $breakpoints: (
     }
 }
 
-// ### FONTS ### 
+// ### FONTS ###
 
 $font-family-highlight: 'Cutive Mono', serif;
 $font-family-std: 'Raleway', sans-serif;
@@ -108,7 +108,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
-p { 
+p {
     @include std-text();
     line-height: 140%;
     font-size: medium;
@@ -134,26 +134,28 @@ body {
 
 .row {
     display: flex;
-    padding-top: 4em;
 
     @include respond-to('small') {
-        display: block;   
-        padding-top: 2em;
+        display: block;
     }
 
     .col {
         flex-basis: 0;
-        flex-grow: 1;
+        flex-grow: 2;
         flex-shrink: 1;
-        padding: 0 2em;
+        padding: 0 0.5em;
 
         @include respond-to('medium') {
-            padding: 0 1.5em;    
+            padding: 0 1.5em;
         }
 
         @include respond-to('small') {
             padding: 0;
             padding-bottom: 2em;
+        }
+
+        &.col-2 {
+          flex-grow: 3;
         }
 
         &:first-child {
@@ -174,7 +176,7 @@ body {
     .back-link {
         position: fixed;
         top: 4vh;
-        left: 3vw; 
+        left: 3vw;
 
         a {
             @include highlight-text();
@@ -186,7 +188,7 @@ body {
             }
         }
     }
-    
+
     .content {
         width: 50%;
 
@@ -201,11 +203,11 @@ body {
         h1, h2, h3 {
             margin-top: 1.5em;
         }
-        
+
         p {
             color: $dark;
         }
-    
+
         ul {
             padding-left: 1em;
 
@@ -227,7 +229,7 @@ body {
 
             li {
                 list-style-type: none;
-                
+
                 a {
                     text-decoration: none;
                     font-size: small;

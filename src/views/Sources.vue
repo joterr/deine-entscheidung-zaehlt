@@ -22,6 +22,7 @@
 
         <h3>Verstöße / Umgang / Skandale</h3>
         <ul class="sources">
+          <li><a target="_new" href="https://www.oekotest.de/essen-trinken/Video-deckt-auf-Tierquaelerei-in-einem-der-groessten-deutschen-Milchbetriebe-_10741_1.html"><strong>Video deckt auf: Tierquälerei in einem der größten deutschen Milchbetriebe</strong> (Ökotest, 09. Jul 2019)</a></li>
           <li><a target="_new" href="https://www.rbb24.de/panorama/beitrag/2018/11/oeko-schlachter-tierquaelerei-brandenburg.html"><strong>Rinder in Bio-Schlachthof offenbar nicht fachgerecht betäubt</strong> (RBB 24, 08. Nov 2018)</a></li>
           <li><a target="_new" href="https://www.stern.de/tv/schweinemast-in-merklingen---so-grauenvoll-werden-die-tiere-gehalten-7106094.html"><strong>Tierquälerei in der Schweinemast – garniert mit Gütesiegel</strong> (Stern, 19. Okt 2016)</a></li>
           <li><a target="_new" href="http://www.faz.net/aktuell/wirtschaft/koalition-erlaubt-ferkelkastration-ohne-betaeubung-weiter-15873423.html"><strong>Bauern dürfen Ferkel weiter ohne Betäubung kastrieren</strong> (FAZ, 04. Nov 2018)</a></li>

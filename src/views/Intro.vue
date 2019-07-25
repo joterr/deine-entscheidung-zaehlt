@@ -2,6 +2,9 @@
   <section class="intro-page intro page">
     <div class="scroll" v-bind:class="{ opened: isVisibleTruth }">
       <div class="splash">
+        <div class="initial-question">
+          <h1>Deine Entscheidung zählt?</h1>
+        </div>
         <div class="fact-wrapper">
           <FactSentence />
           <div class="show-truth">
@@ -9,41 +12,116 @@
           </div>
         </div>
         <div class="animal-wrapper">
-          <AnimalSlider />
+          <AnimalSprinkler />
         </div>
       </div>
       <div class="truth-overlay">
+        <div class="back-link" v-on:click="hideTruth">&laquo; zur&uuml;ck</div>
         <div class="content">
           <div class="heading">
             <h1>Du entscheidest,</h1>
             <h1>was Du isst!</h1>
           </div>
           <div class="explanation">
-            <p class="highlight">950 Millionen Tiere jährlich. Für Fleisch, Milch und Eier. Durch Antibiotika in engster Stallhaltung und krankhaft überzüchtet. Dennoch sterben eine Vielzahl an Tieren bereits an Verletzungen und bakteriellen Krankheiten. Bei Schweinen sogar nahezu jedes fünfte Tier. Unprofitable Jungtiere werden meist direkt getötet - darunter über 50 Millionen vergaste und geschredderte Eintagsküken.</p>
+            <p
+              class="highlight"
+            >950 Millionen Tiere jährlich. Für Fleisch, Milch und Eier. Durch Antibiotika in engster Stallhaltung und krankhaft überzüchtet. Dennoch sterben eine Vielzahl an Tieren bereits an Verletzungen und bakteriellen Krankheiten. Bei Schweinen sogar nahezu jedes fünfte Tier. Unprofitable Jungtiere werden meist direkt getötet - darunter über 50 Millionen vergaste und geschredderte Eintagsküken.</p>
             <p>UNTERSCHIEDE BEI VEGANER ERNÄHRUNG, Klar avocado schlecht für's Klimo, jedoch isst man nicht so viel wie Fleisch... At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
             <h2>Probier's doch mal vegan</h2>
-            <p>Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            <p>
+              Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.At vero eos et accusam et justo duo dolores et ea rebum.
+              <br />Einfachster Start mit 30 Tage Coach - z.B. der tägliche Newsletter
+              <a
+                href="https://www.vegankickstart.de/"
+                target="_blanc"
+              >Vegan Kickstart</a> von PETA ZWEI.
+            </p>
           </div>
           <div class="row additional-info">
             <div class="col">
-              <h3>Vegane Starthilfen</h3>
-              <ul class="additional-info">
+              <h3>Erste Schritte</h3>
+              <ul class="info-list-type">
                 <li>
-                  <a href="https://www.vegankickstart.de/">vegankickstart.de</a> von PETAZWEI
+                  <a
+                    href="https://www.peta.de/veganesleben"
+                    target="_blanc"
+                  >Die BESTEN Tipps zum Einstieg ins vegane Leben</a> von PETA
                 </li>
                 <li>
-                  <a href="https://www.vegankickstart.de/">vegankickstart.de</a> von PETAZWEI
+                  <a
+                    href="https://www.petazwei.de/web/einkaufsguide"
+                    target="_blanc"
+                  >Der vegane Einkaufsguide – PETA ZWEI</a> von PETA ZWEI
+                </li>
+                <li>
+                  <a href="https://www.petazwei.de/vegan-leben" target="_blanc">Vegan leben</a> von PETA ZWEI
                 </li>
               </ul>
             </div>
             <div class="col">
-              <h3>Bücher &amp; Dokus</h3>
-              <ul class="additional-info">
+              <h3>Dokumentationen</h3>
+              <ul class="info-list-type">
                 <li>
-                  <a href="https://www.vegankickstart.de/">vegankickstart.de</a> von PETAZWEI
+                  <a
+                    href="http://www.forksoverknives.com/the-film/"
+                    target="_blanc"
+                  >Forks over Knifes (2011)</a>
                 </li>
                 <li>
-                  <a href="https://www.vegankickstart.de/">vegankickstart.de</a> von PETAZWEI
+                  <a
+                    href="https://filmsfortheearth.org/de/filme/cowspiracy"
+                    target="_blanc"
+                  >Cowspiracy (2014)</a>
+                </li>
+                <li>
+                  <a href="https://www.dominionmovement.com/watch" target="_blanc">Dominion (2018)</a>
+                </li>
+                <li>
+                  <a
+                    href="https://filmsfortheearth.org/de/filme/live-and-let-live"
+                    target="_blanc"
+                  >Live and Let Live (2013)</a>
+                </li>
+                <li>
+                  <a
+                    href="https://filmsfortheearth.org/de/filme/speciesism"
+                    target="_blanc"
+                  >Speciesism (2013)</a>
+                </li>
+                <li>
+                  <a href="https://vimeo.com/26194939" target="_blanc">Making the Connection (2011)</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col col-2">
+              <h3>Bücher</h3>
+              <ul class="info-list-type">
+                <li>
+                  <a href="https://nutritionfacts.org/book/" target="_blanc">HOW NOT TO DIE</a> von Michael Greger, M.D.
+                </li>
+                <li>
+                  <a
+                    href="https://www.medimops.de/produkte-C0/?fcIsSearch=1&searchparam=China+Study"
+                    target="_blanc"
+                  >The China Study</a> von T. Colin Campbell
+                </li>
+                <li>
+                  <a
+                    href="https://www.nikorittenau.com/vegan-klischee-ade/"
+                    target="_blanc"
+                  >Vegan Klischee Adé</a> von Niko Rittenau
+                </li>
+                <li>
+                  <a
+                    href="https://www.kiwi-verlag.de/buch/tiere-essen/978-3-462-04044-9/"
+                    target="_blanc"
+                  >Tiere Essen</a> von Jonathan Safran Foer
+                </li>
+                <li>
+                  <a
+                    href="https://www.thalia.de/shop/home/artikeldetails/ID34339239.html"
+                    target="_blanc"
+                  >Warum wir Hunde lieben, Schweine essen und Kühe anziehen: Karnismus – eine Einführung</a> von Melanie Joy
                 </li>
               </ul>
             </div>
@@ -57,12 +135,12 @@
 <script lang="ts">
 import { Component, Vue, Provide } from "vue-property-decorator";
 import FactSentence from "@/components/FactSentence.vue";
-import AnimalSlider from "@/components/AnimalSlider.vue";
+import AnimalSprinkler from "@/components/AnimalSprinkler.vue";
 
 @Component({
   components: {
     FactSentence,
-    AnimalSlider
+    AnimalSprinkler
   }
 })
 export default class Intro extends Vue {
@@ -72,16 +150,35 @@ export default class Intro extends Vue {
   public showTruth() {
     this.isVisibleTruth = true;
   }
+  public hideTruth() {
+    this.isVisibleTruth = false;
+  }
 }
 </script>
 
 <style scoped lang="scss">
-.fact-wrapper {
-  position: relative;
+.initial-question {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 999;
-  width: 65%;
   opacity: 0;
-  animation: delayShow 1s ease forwards 2s;
+  animation: delayShowBlur 4s ease 1 1s;
+
+  h1 {
+    @include highlight-text();
+    color: $white;
+    font-size: 1.6em;
+    line-height: 140%;
+  }
+}
+
+.fact-wrapper {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  width: 60%;
 
   @include respond-to("x-large") {
     width: 75%;
@@ -101,10 +198,10 @@ export default class Intro extends Vue {
 
   .show-truth {
     display: block;
-    margin-top: 2.5em;
+    margin-top: 4em;
     opacity: 0;
     filter: blur(3px);
-    animation: delayShowBlur 500ms ease forwards 8s;
+    animation: delayShowBlur 500ms ease forwards 12s;
 
     @include respond-to("medium") {
       margin-top: 2em;
@@ -120,7 +217,7 @@ export default class Intro extends Vue {
       text-decoration: none;
       font-size: large;
       transition: filter 250ms linear;
-      animation: justBlur 5s linear;
+      animation: justBlur 4s linear;
       cursor: pointer;
 
       @include respond-to("medium") {
@@ -140,16 +237,13 @@ export default class Intro extends Vue {
 
 .animal-wrapper {
   position: absolute;
-  bottom: 10vh;
+  bottom: 0;
   left: 0;
   right: 0;
   width: 100vw;
+  height: 100vh;
   opacity: 0;
-  animation: delayShow 4s ease forwards;
-
-  @include respond-to("medium") {
-    bottom: 6vh;
-  }
+  animation: delayShow 2s ease forwards;
 }
 
 .truth-overlay {
@@ -158,6 +252,7 @@ export default class Intro extends Vue {
   padding: $page-padding;
   overflow: hidden;
   overflow-y: scroll;
+  position: relative;
 
   @include respond-to("medium") {
     padding: $page-padding-medium;
@@ -169,8 +264,22 @@ export default class Intro extends Vue {
     }
   }
 
-  .content,
-  .additional-info {
+  .back-link {
+    position: absolute;
+    top: 3vh;
+    font-size: small;
+    @include std-text-bold();
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    opacity: 0;
+    animation: delayShow 500ms ease forwards 6s;
+
+    &:hover {
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+
+  .content {
     width: 75%;
 
     @include respond-to("x-large") {
@@ -192,27 +301,28 @@ export default class Intro extends Vue {
     .heading {
       h1 {
         margin-left: -0.1em;
-        line-height: 125%;
+        line-height: 115%;
         color: $white;
-        font-size: 5em;
+        font-size: 6em;
         @include std-text-bold();
         opacity: 0;
 
         @include respond-to("x-large") {
-          font-size: 3.75em;
+          font-size: 4.75em;
         }
 
         @include respond-to("large") {
-          font-size: 3.5em;
+          font-size: 4em;
         }
 
         @include respond-to("medium") {
-          font-size: 3em;
+          font-size: 3.5em;
         }
       }
     }
 
-    .explanation {
+    .explanation,
+    .additional-info {
       width: 60%;
       margin-top: 3em;
 
@@ -237,16 +347,18 @@ export default class Intro extends Vue {
       }
 
       p {
-        margin-top: .5em;
+        margin-top: 0.5em;
         margin-bottom: 1.5em;
 
-        strong, &.highlight {
+        strong,
+        &.highlight {
           @include std-text-bold();
         }
       }
     }
 
-    h2, h3 {
+    h2,
+    h3 {
       margin-left: -0.1em;
       line-height: 120%;
       font-size: medium;
@@ -255,33 +367,34 @@ export default class Intro extends Vue {
     }
 
     h3 {
+      font-size: small;
       text-transform: uppercase;
     }
 
-    ul.additional-info {
+    ul.info-list-type {
       margin: 0.75em 0;
       padding: 0;
 
       li {
-        font-size: medium;
+        font-size: small;
         color: $dark;
         @include std-text();
         list-style-type: none;
-        margin: 0 0 0.5em 0;
+        margin: 0 0 0.75em 0;
         padding: 0;
-
-        a {
-          @include std-text-bold();
-          color: $white;
-          text-shadow: none;
-          font-size: medium;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
       }
     }
+  }
+}
+
+a {
+  @include std-text-bold();
+  color: $white;
+  text-shadow: none;
+  font-size: medium;
+
+  &:hover {
+    text-decoration: underline;
   }
 }
 
@@ -317,7 +430,7 @@ export default class Intro extends Vue {
       }
     }
     &.opened {
-      animation: showTruth 800ms linear forwards;
+      animation: showTruth 800ms ease forwards;
 
       .splash > * {
         animation: slideFadeUp 500ms ease forwards;

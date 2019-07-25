@@ -1,42 +1,98 @@
 <template>
   <div class="fact-sentence">
     <h1 class="main-info">
-      In
-      <span>{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> in Deutschland mehr als<br/>
-      <span>{{makeLocaleInteger(cntHuhner)}} Hühner,&nbsp;</span>
-      <span>{{makeLocaleInteger(cntSchweine)}} Schweine,&nbsp;</span>
-      <span>{{makeLocaleInteger(cntTruthahner)}} Truthähner,&nbsp;</span>
-      <span>
-        {{makeLocaleInteger(cntEnten)}} Ente<i v-if="cntEnten > 1">n</i>,&nbsp;
-      </span>
-      <span>
-        {{makeLocaleInteger(cntRinder)}} Rind<i v-if="cntRinder > 1">er</i>,&nbsp;
-      </span>
-      <span>
-        {{makeLocaleInteger(cntSchafe)}} Schaf<i v-if="cntSchafe > 1">e</i>,&nbsp;
-      </span>
-      <span>
-        {{makeLocaleInteger(cntZiegen, "eine")}} Ziege<i v-if="cntZiegen > 1">n</i>
-      </span>&nbsp;und&nbsp;<span>{{makeLocaleInteger(cntPferde)}} Pferd<i v-if="cntPferde > 1">e</i>
-      </span> allein für Essen getötet oder sind in Folge schlechter Haltebedingungen verendet.
+      In&nbsp;<span class="time">{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> allein in Deutschland mehr als<span>&nbsp;<FactType
+        v-bind:type="TYPES.HUHNER"
+        v-bind:cnt="cntHuhner"
+        v-bind:active="activeDetail"
+        v-on:show-details="showDetail"
+      ></FactType>,&nbsp;</span><span><FactType
+        v-bind:type="TYPES.FISCHE"
+        v-bind:cnt="cntFische"
+        v-bind:active="activeDetail"
+        v-on:show-details="showDetail"
+      ></FactType>,&nbsp;</span><span><FactType
+        v-bind:type="TYPES.SCHWEINE"
+        v-bind:cnt="cntSchweine"
+        v-bind:active="activeDetail"
+        v-on:show-details="showDetail"
+      ></FactType>,&nbsp;</span><span><FactType
+        v-bind:type="TYPES.TRUTHAHNER"
+        v-bind:cnt="cntTruthahner"
+        v-bind:active="activeDetail"
+        v-on:show-details="showDetail"
+      ></FactType>,&nbsp;</span><span><FactType
+        v-bind:type="TYPES.ENTEN"
+        v-bind:cnt="cntEnten"
+        v-bind:active="activeDetail"
+        v-on:show-details="showDetail"
+      ></FactType>,&nbsp;</span><span><FactType
+        v-bind:type="TYPES.RINDER"
+        v-bind:cnt="cntRinder"
+        v-bind:active="activeDetail"
+        v-on:show-details="showDetail"
+      ></FactType>,</span>&nbsp;<span><FactType
+        v-bind:type="TYPES.SCHAFE"
+        v-bind:cnt="cntSchafe"
+        v-bind:active="activeDetail"
+        v-on:show-details="showDetail"
+      ></FactType>,</span>&nbsp;<span><FactType
+        v-bind:type="TYPES.ZIEGEN"
+        v-bind:cnt="cntZiegen"
+        v-bind:active="activeDetail"
+        v-on:show-details="showDetail"
+      ></FactType>&nbsp;und&nbsp;</span><span><FactType
+        v-bind:type="TYPES.PFERDE"
+        v-bind:cnt="cntPferde"
+        v-bind:active="activeDetail"
+        v-on:show-details="showDetail"
+      ></FactType>&nbsp;</span><span>allein für Essen getötet oder sind in Folge schlechter Haltebedingungen verendet.</span>
     </h1>
     <h1 class="additional-info">
-      Zusätzliche&nbsp;<span>{{makeLocaleInteger(cntGulle)}} Tonnen</span>&nbsp;<span>Gülle</span>,&nbsp;<span>{{makeLocaleInteger(cntAntibiotika)}} Gramm</span>&nbsp;<span>Antibiotika</span>&nbsp;und<br/><span>{{makeLocaleInteger(cntCo2)}} Tonnen</span>&nbsp;<span>CO<sub>2</sub>-Äquivalente</span> gefährden unsere Gesundheit und Umwelt.
+      Zusätzliche&nbsp;<span><FactType
+        v-bind:type="TYPES.GULLE"
+        v-bind:cnt="cntGulle"
+        v-bind:active="activeDetail"
+        v-on:show-details="showDetail"
+      ></FactType>,&nbsp;</span><span><FactType
+        v-bind:type="TYPES.ANTIBIOTIKA"
+        v-bind:cnt="cntAntibiotika"
+        v-bind:active="activeDetail"
+        v-on:show-details="showDetail"
+      ></FactType>&nbsp;und</span>
+      <br /><span><FactType
+        v-bind:type="TYPES.CO2"
+        v-bind:cnt="cntCo2"
+        v-bind:active="activeDetail"
+        v-on:show-details="showDetail"
+      ></FactType></span>&nbsp;gefährden unsere Gesundheit und Umwelt.
     </h1>
+    <AdditionalDetails v-bind:activeType="activeDetail" v-on:close-details="closeDetail()" />
   </div>
 </template>
 
 <script lang="ts">
+import AdditionalDetails from "@/components/AdditionalDetails.vue";
+import FactType from "@/components/FactType.vue";
 import { Component, Provide, Vue } from "vue-property-decorator";
+import { FACT_TYPES_CONST } from "@/factTypes.constant";
 
-@Component
+@Component({
+  components: { AdditionalDetails, FactType }
+})
 export default class FactSentence extends Vue {
+  @Provide()
+  private TYPES = FACT_TYPES_CONST;
+  @Provide()
+  private activeDetail = null;
   @Provide()
   private pastTime = 0;
   @Provide()
   private cntHuhner = 0;
   @Provide()
   private cntSchweine = 0;
+  @Provide()
+  private cntFische = 0;
   @Provide()
   private cntRinder = 0;
   @Provide()
@@ -70,49 +126,18 @@ export default class FactSentence extends Vue {
     }
     if (seconds > 0 || time > 60) {
       pastTimeString +=
-        (time === 1 ? "einer" : seconds) +
+        (seconds === 1 ? "einer" : seconds) +
         " Sekunde" +
         (seconds === 1 ? "" : "n");
     }
     return pastTimeString;
   }
 
-  public makeLocaleInteger(val: number, one: string = "ein"): string {
-    const intedVal: number = this.makeInt(val);
-    let returnString: string = "";
-
-    switch (intedVal) {
-      case 1:
-        returnString = one;
-        break;
-      case 2:
-        returnString = "zwei";
-        break;
-      case 3:
-        returnString = "drei";
-        break;
-      /*
-      case 4:
-        returnString = "vier";
-        break;
-      case 5:
-        returnString = "fünf";
-        break;
-      case 6:
-        returnString = "sechs";
-        break;
-      case 7:
-        returnString = "sieben";
-        break;
-      case 8:
-        returnString = "acht";
-        break;
-      case 9:
-        returnString = "neun";
-        break;
-      */
-    }
-    return returnString || intedVal.toLocaleString("de-DE");
+  public showDetail(id: any) {
+    this.activeDetail = id;
+  }
+  public closeDetail() {
+    this.activeDetail = null;
   }
 
   private mounted() {
@@ -130,21 +155,18 @@ export default class FactSentence extends Vue {
   }
 
   private cntUpValues() {
-    this.cntHuhner += this.getAmountForSecond(970600000 / 2); // 16
-    this.cntSchweine += this.getAmountForSecond(57865000); /// 1
-    this.cntTruthahner += this.getAmountForSecond(467000000 / 13.25);
-    this.cntRinder += this.getAmountForSecond(3501000); // 0.11
-    this.cntEnten += this.getAmountForSecond(36000000 / 2.5);
-    this.cntSchafe += this.getAmountForSecond(1030400);
-    this.cntZiegen += this.getAmountForSecond(20400);
-    this.cntPferde += this.getAmountForSecond(7100);
-    this.cntAntibiotika += this.getAmountForSecond(742000000);
-    this.cntGulle += this.getAmountForSecond(200000000000 / 1000);
-    this.cntCo2 += this.getAmountForSecond(200000000000000 / 1000);
-  }
-
-  private makeInt(val: number): number {
-    return Math.ceil(val);
+    this.cntHuhner += this.getAmountForSecond(this.TYPES.HUHNER.PER_YEAR);
+    this.cntSchweine += this.getAmountForSecond(this.TYPES.SCHWEINE.PER_YEAR);
+    this.cntFische += this.getAmountForSecond(this.TYPES.FISCHE.PER_YEAR);
+    this.cntTruthahner += this.getAmountForSecond(this.TYPES.TRUTHAHNER.PER_YEAR);
+    this.cntRinder += this.getAmountForSecond(this.TYPES.RINDER.PER_YEAR);
+    this.cntEnten += this.getAmountForSecond(this.TYPES.ENTEN.PER_YEAR);
+    this.cntSchafe += this.getAmountForSecond(this.TYPES.SCHAFE.PER_YEAR);
+    this.cntZiegen += this.getAmountForSecond(this.TYPES.ZIEGEN.PER_YEAR);
+    this.cntPferde += this.getAmountForSecond(this.TYPES.PFERDE.PER_YEAR);
+    this.cntAntibiotika += this.getAmountForSecond(this.TYPES.ANTIBIOTIKA.PER_YEAR);
+    this.cntGulle += this.getAmountForSecond(this.TYPES.GULLE.PER_YEAR);
+    this.cntCo2 += this.getAmountForSecond(this.TYPES.CO2.PER_YEAR);
   }
 
   private getAmountForSecond(val: number): number {
@@ -160,30 +182,32 @@ export default class FactSentence extends Vue {
   h1 {
     @include highlight-text();
     color: rgba(255, 255, 255, 0.4);
-    font-size: 1.6em;
+    font-size: 1.5em;
     line-height: 140%;
+    opacity: 0;
+    animation: delayShowBlur 1.5s ease forwards 5s;
 
     @include respond-to("large") {
-      font-size: 1.4em;
+      font-size: 1.25em;
 
       @include respond-to-portrait() {
-        font-size: 1.5em;
+        font-size: 1.4em;
       }
     }
 
     @include respond-to("medium") {
-      font-size: 1.3em;
+      font-size: 1.2em;
 
       @include respond-to-portrait() {
-        font-size: 1.5em;
+        font-size: 1.3em;
       }
     }
 
     @include respond-to("x-small") {
-      font-size: 0.9em;
+      font-size: 0.8em;
 
       @include respond-to-portrait() {
-        font-size: 1em;
+        font-size: 0.9em;
       }
     }
 
@@ -199,7 +223,7 @@ export default class FactSentence extends Vue {
       font-style: normal;
     }
 
-    & span {
+    & span.time {
       display: inline-block;
       color: $white;
       transition: 500ms ease font-size;
@@ -210,8 +234,21 @@ export default class FactSentence extends Vue {
     }
 
     &.additional-info {
-      margin-top: 0.5em;
+      margin-top: 0.75em;
+      opacity: 0;
+      animation: delayShowBlur 1.5s ease forwards 7.5s;
     }
+  }
+}
+
+@keyframes delayShowBlur {
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
   }
 }
 </style>
