@@ -1,7 +1,7 @@
 <template>
   <div class="fact-sentence">
     <h1 class="main-info">
-      In&nbsp;<span class="time">{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> allein in Deutschland mehr als<span>&nbsp;<FactType
+      In&nbsp;<span class="time">{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> in Deutschland mehr als<span>&nbsp;<FactType
         v-bind:type="TYPES.HUHNER"
         v-bind:cnt="cntHuhner"
         v-bind:active="activeDetail"

@@ -46,8 +46,6 @@ export default class AnimalSprinkler extends Vue {
     for (let i = 0; i < 3; i++) {
       this.addAnimalByType("cow");
     }
-
-    console.log(`AnimalSprinkler # added ${this.animals.length} animals`);
   }
 
   private addAnimalByType(animalType: string) {
@@ -90,7 +88,7 @@ export default class AnimalSprinkler extends Vue {
     }
 
     &:nth-child(6n) {
-      animation-name: down-brighter;
+      animation-name: down;
       animation-duration: 2800ms;
     }
 
@@ -107,7 +105,7 @@ export default class AnimalSprinkler extends Vue {
       }
 
       &:nth-child(6n) {
-        animation-name: down-brighter;
+        animation-name: down;
         animation-duration: 3000ms;
       }
     }

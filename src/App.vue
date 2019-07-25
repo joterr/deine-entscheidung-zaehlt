@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
     <footer>
-      <router-link to="/fakten" class="high">Weitere Fakten</router-link> |
-      <router-link to="/datenschutz">Datenschutz</router-link> |
+      <router-link to="/fakten" class="high">Weitere Fakten</router-link>|
+      <router-link to="/datenschutz">Datenschutz</router-link>|
       <router-link to="/impressum">Impressum</router-link>
     </footer>
   </div>
@@ -19,7 +19,7 @@ footer {
   @include std-text();
   font-size: x-small;
 
-  @include respond-to('medium') {
+  @include respond-to("medium") {
     right: 0;
     left: 0;
     width: 100vw;
@@ -35,7 +35,7 @@ footer {
     padding: 0 2pt;
     opacity: 0.75;
 
-    @include respond-to('small') {
+    @include respond-to("small") {
       font-size: xx-small;
     }
 
