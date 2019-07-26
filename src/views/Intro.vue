@@ -1,6 +1,6 @@
 <template>
   <section class="intro-page intro page">
-    <div class="scroll" v-bind:class="{ opened: isVisibleTruth }">
+    <div class="scroll" v-bind:class="{ 'opened': isVisibleTruth, 'sentence-only': !firstView }">
       <div class="splash">
         <div class="initial-question">
           <h1>Deine Entscheidung zählt?</h1>
@@ -147,8 +147,12 @@ export default class Intro extends Vue {
   @Provide()
   private isVisibleTruth = false;
 
+  @Provide()
+  private firstView = true;
+
   public showTruth() {
     this.isVisibleTruth = true;
+    this.firstView = false;
   }
   public hideTruth() {
     this.isVisibleTruth = false;
@@ -232,6 +236,12 @@ export default class Intro extends Vue {
         filter: blur(1px);
       }
     }
+  }
+}
+
+.sentence-only {
+  .initial-question {
+    display: none;
   }
 }
 
