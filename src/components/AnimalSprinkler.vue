@@ -37,7 +37,7 @@ export default class AnimalSprinkler extends Vue {
     for (let i = 0; i < 20; i++) {
       this.addAnimalByType("chicken");
     }
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < 11; i++) {
       this.addAnimalByType("fish");
     }
     for (let i = 0; i < 10; i++) {
@@ -73,40 +73,40 @@ export default class AnimalSprinkler extends Vue {
     background-position: center center;
     background-size: 95% auto;
     background-repeat: no-repeat;
-    opacity: 0.15;
+    opacity: 0.1;
     will-change: transform, opacity;
 
     @for $p from 0 to 51 {
       &:nth-child(#{$p + 1}) {
-        animation: down 3200ms #{$p * 100}ms infinite linear;
+        animation: down 3000ms #{$p * 100}ms infinite linear;
       }
     }
 
     &:nth-child(3n) {
       animation-name: down-brighter;
-      animation-duration: 3000ms;
+      animation-duration: 2800ms;
     }
 
     &:nth-child(6n) {
       animation-name: down;
-      animation-duration: 2800ms;
+      animation-duration: 2600ms;
     }
 
     @include respond-to("small") {
       @for $p from 0 to 51 {
         &:nth-child(#{$p + 1}) {
-          animation: down 3700ms #{$p * 100}ms infinite linear;
+          animation: down 3500ms #{$p * 100}ms infinite linear;
         }
       }
 
       &:nth-child(3n) {
         animation-name: down-brighter;
-        animation-duration: 3500ms;
+        animation-duration: 3300ms;
       }
 
       &:nth-child(6n) {
         animation-name: down;
-        animation-duration: 3000ms;
+        animation-duration: 2800ms;
       }
     }
 
@@ -153,7 +153,7 @@ export default class AnimalSprinkler extends Vue {
   }
   10%,
   90% {
-    opacity: 0.15;
+    opacity: 0.1;
   }
   100% {
     opacity: 0;
@@ -167,7 +167,7 @@ export default class AnimalSprinkler extends Vue {
   }
   10%,
   90% {
-    opacity: 0.3;
+    opacity: 0.25;
   }
   100% {
     opacity: 0;

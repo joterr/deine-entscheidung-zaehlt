@@ -2,9 +2,7 @@
   <div id="app">
     <router-view />
     <footer>
-      <router-link to="/fakten" class="high">Weitere Fakten</router-link>|
-      <router-link to="/datenschutz">Datenschutz</router-link>|
-      <router-link to="/impressum">Impressum</router-link>
+      <router-link to="/fakten" class="high">Weitere Fakten</router-link>|<router-link to="/datenschutz">Datenschutz</router-link>|<router-link to="/impressum">Impressum</router-link>
     </footer>
   </div>
 </template>
@@ -32,8 +30,8 @@ footer {
     color: $white;
     text-transform: uppercase;
     display: inline-block;
-    padding: 0 2pt;
-    opacity: 0.75;
+    padding: 0 .35rem;
+    opacity: 0.65;
 
     @include respond-to("small") {
       font-size: xx-small;

@@ -31,6 +31,7 @@ export default class AdditionalDetails extends Vue {
 span.linked-detail {
   display: inline-block;
   color: $white;
+  @include highlight-text-bold();
   transition: 500ms ease font-size;
 
   &:hover,
