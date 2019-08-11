@@ -3,6 +3,7 @@
     <div class="inner">
       <div class="close">X</div>
       <div class="content">
+        <div class="left-diagon"></div>
         <h2>jedes Jahr</h2>
         <h1>{{makeLocaleInteger(activeType.PER_YEAR)}}</h1>
         <h2>
@@ -38,13 +39,11 @@ export default class AdditionalDetails extends Vue {
 <style scoped lang="scss">
 .additional-details {
   position: fixed;
-  bottom: 10vh;
-  left: 50vw;
+  top: 0;
+  right: 0;
   color: #fff;
   transform: translateX(-50%);
-  padding: 25pt;
-  width: 65vw;
-  max-width: 850px;
+  width: 25vw;
   cursor: pointer;
   transition: opacity ease 500ms;
 
@@ -69,6 +68,15 @@ export default class AdditionalDetails extends Vue {
       @include respond-to("medium") {
       font-size: large;
       }
+    }
+
+    .left-diagon {
+      float: left;
+      height: 100vh;
+      width: 150px;
+      box-sizing: border-box;
+      shape-outside: polygon(0px 0px, 0px 100vh, 200px 100vh);
+      clip-path: polygon(0px 0px, 0px 100vh, 200px 100vh);
     }
 
     h1 {
