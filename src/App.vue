@@ -11,8 +11,8 @@
 footer {
   position: fixed;
   z-index: 9999;
-  bottom: 1.5vh;
-  right: 1vw;
+  bottom: 1.25rem;
+  right: 1.25rem;
   color: rgba(255, 255, 255, 0.5);
   @include std-text();
   font-size: x-small;

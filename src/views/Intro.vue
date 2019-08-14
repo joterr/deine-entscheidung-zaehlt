@@ -3,7 +3,7 @@
     <div class="scroll" v-bind:class="{ 'opened': isVisibleTruth }">
       <div class="splash">
         <div class="fact-wrapper">
-          <FactSentence v-on:open-truth-overlay="openTruthOverlay()"/>
+          <FactSentence v-on:open-truth-overlay="openTruthOverlay()" />
         </div>
         <div class="animal-wrapper">
           <AnimalSprinkler />

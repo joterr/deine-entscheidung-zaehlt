@@ -9,8 +9,7 @@
       <div class="inner">
         <h1 class="main-info">
           In
-          <span class="time">{{getPastTimeString(pastTime)}}</span> wurde
-          <i v-if="pastTime > 1">n</i> in Deutschland mehr als
+          <span class="time">{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> in Deutschland mehr als
           <span>
             <FactType
               v-bind:type="TYPES.HUHNER"
@@ -168,7 +167,7 @@ export default class FactSentence extends Vue {
 </script>
 
 <style scoped lang="scss">
-$sentance-font-size: 1.15rem;
+$sentance-font-size: 1.125rem;
 
 .fact-wrapper {
   position: relative;

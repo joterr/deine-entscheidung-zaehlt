@@ -3,7 +3,7 @@ export const FACT_TYPES_CONST = {
     ID: "huhner",
     SINGULAR: "Huhn",
     PLURAL: "Hühner",
-    PER_YEAR: 970600000,
+    PER_YEAR: 930000000,
     INCLUDED_TYPES: "mit Küken, Legehennen und Hähnen",
     SOURCE: "Schlachtzahlen des BMI, 2018"
   },
