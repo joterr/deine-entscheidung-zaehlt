@@ -51,6 +51,10 @@ span.linked-detail {
   @include highlight-text-bold();
   transition: 500ms ease font-size;
 
+  span {
+    white-space: nowrap;
+  }
+
   &:hover,
   &.opened {
     text-decoration: underline;

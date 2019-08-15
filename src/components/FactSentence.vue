@@ -64,8 +64,8 @@
               v-bind:type="TYPES.ZIEGEN"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
-            ></FactType>&nbsp;und
-          </span>
+            ></FactType>
+          </span> und
           <span>
             <FactType
               v-bind:type="TYPES.PFERDE"
@@ -224,6 +224,8 @@ $sentance-font-size: 1.125rem;
     font-size: $sentance-font-size;
     line-height: 160%;
     animation: delayShowAndSliceIn 1.5s ease forwards 6s;
+    white-space: normal;
+    word-wrap: break-word;
 
     & > * {
       font-size: 0;

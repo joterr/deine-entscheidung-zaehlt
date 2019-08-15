@@ -31,15 +31,18 @@ export default class AnimalSprinkler extends Vue {
   private ctx!: CanvasRenderingContext2D;
   private canvasWidth!: number;
   private canvasHeight!: number;
-
+  private maxColumns!: number;
+  private maxRows!: number;
+  private recalculation: boolean = false;
+  private recalcTimeout!: number;
   private imageRef: ImageRefs = {};
 
   private possibleCoords: PossibleCoords = {};
 
   private readonly animalWidthPx: number = 34;
   private readonly animalHeightPx: number = 34;
-  private readonly animalOpacity: number = 0.07;
-  private readonly animalsPerSecond: number = 34;
+  private readonly animalOpacity: number = 0.095;
+  private readonly animalsPerSecond: number = 38;
 
   private animalOrder: string[] = [
     "chicken",
@@ -64,7 +67,7 @@ export default class AnimalSprinkler extends Vue {
     "fish",
     "fish",
     "fish",
-    "fish",
+    "fish"
   ];
 
   constructor() {
@@ -74,16 +77,29 @@ export default class AnimalSprinkler extends Vue {
   private mounted() {
     this.renderAnimalsAnimation();
     this.drawAnimals();
-    window.addEventListener("resize", this.renderAnimalsAnimation);
+    window.addEventListener("resize", this.retardedRenderAnimalsAnimation);
   }
 
   private beforeDestroy() {
-    window.removeEventListener("resize", this.renderAnimalsAnimation);
+    window.removeEventListener("resize", this.retardedRenderAnimalsAnimation);
   }
 
-  private renderAnimalsAnimation() {
+  private renderAnimalsAnimation(): void {
     this.initSprinklerCanvas();
     this.calculatePossibleAnimals();
+  }
+
+  private retardedRenderAnimalsAnimation(): void {
+    if (this.recalcTimeout) {
+      clearInterval(this.recalcTimeout);
+    }
+
+    this.recalcTimeout = setTimeout(() => {
+      /* tslint:disable-next-line:no-console */
+      console.log(`AnimalSprinkler # recalculation`);
+
+      this.renderAnimalsAnimation();
+    }, 150);
   }
 
   private initSprinklerCanvas(): void {
@@ -115,14 +131,18 @@ export default class AnimalSprinkler extends Vue {
   }
 
   private calculatePossibleAnimals(): void {
-    const columns: number = Math.floor(this.canvasWidth / this.animalWidthPx);
-    const rows: number = Math.floor(this.canvasHeight / this.animalHeightPx * 1.1);
+    this.possibleCoords = {};
 
-    const realAnimalWidth: number = this.canvasWidth / columns;
-    const realAnimalHeight: number = this.canvasHeight / rows;
+    this.maxColumns = Math.floor(this.canvasWidth / this.animalWidthPx);
+    this.maxRows = Math.floor((this.canvasHeight / this.animalHeightPx) * 1.1);
+
+    const realAnimalWidth: number = this.canvasWidth / this.maxColumns;
+    const realAnimalHeight: number = this.canvasHeight / this.maxRows;
 
     /* tslint:disable-next-line:no-console */
-    console.log(`AnimalSprinkler # columns: ${columns} /// rows: ${rows}`);
+    console.log(
+      `AnimalSprinkler # columns: ${this.maxColumns} /// rows: ${this.maxRows}`
+    );
     /* tslint:disable-next-line:no-console */
     console.log(
       `AnimalSprinkler # realAnimalWidth: ${realAnimalWidth} /// realAnimalHeight: ${realAnimalHeight}`
@@ -130,9 +150,9 @@ export default class AnimalSprinkler extends Vue {
 
     let cnt = 0;
 
-    for (let cr = 0; cr < rows; cr++) {
+    for (let cr = 0; cr < this.maxRows; cr++) {
       const animalRow: AnimalPos[] = [];
-      for (let cc = 0; cc < columns; cc++) {
+      for (let cc = 0; cc < this.maxColumns; cc++) {
         animalRow.push({
           type: this.animalOrder[cnt],
           drawed: false,
@@ -150,6 +170,8 @@ export default class AnimalSprinkler extends Vue {
       }
       this.possibleCoords[Object.keys(this.possibleCoords).length] = animalRow;
     }
+
+    this.recalculation = true;
   }
 
   private drawAnimals(): void {
@@ -164,41 +186,41 @@ export default class AnimalSprinkler extends Vue {
     );
   }
 
-  private iterateAnimals(restart: boolean = false): void {
-    const rows: number = Object.keys(this.possibleCoords).length - 1;
-    const columns: number = this.possibleCoords[0].length - 1;
-
-    let rowCount: number = rows;
+  private iterateAnimals(): void {
+    let rowCount: number = this.maxRows - 1;
     let columnCnt: number = 0;
 
-    const interval = setInterval(() => {
-      const coord: AnimalPos = this.possibleCoords[rowCount][columnCnt];
+    setInterval(() => {
+      if (rowCount === -1 || this.recalculation) {
+        this.recalculation = false;
+        this.resetCanvas();
+        rowCount = this.maxRows - 1;
+        columnCnt = 0;
+      }
 
-      this.ctx.drawImage(
-        this.imageRef[coord.type],
-        coord.pos.x,
-        coord.pos.y,
-        this.animalWidthPx,
-        this.animalHeightPx
-      );
+      if (
+        this.possibleCoords &&
+        Object.keys(this.possibleCoords).length &&
+        this.possibleCoords[rowCount] &&
+        this.possibleCoords[rowCount][columnCnt]
+      ) {
+        const coord: AnimalPos = this.possibleCoords[rowCount][columnCnt];
 
-      if (columnCnt === columns) {
+        this.ctx.drawImage(
+          this.imageRef[coord.type],
+          coord.pos.x,
+          coord.pos.y,
+          this.animalWidthPx,
+          this.animalHeightPx
+        );
+      }
+
+      if (columnCnt === this.maxColumns - 1) {
         rowCount--;
         columnCnt = 0;
       } else {
         columnCnt++;
       }
-
-      if (rowCount === 0) {
-        this.resetCanvas();
-        rowCount = rows;
-        columnCnt = 0;
-      }
-
-      /* tslint:disable-next-line:no-console */
-      /* console.log(
-        `AnimalSprinkler:iterateAnimals() # rowCount: ${rowCount} of ${rows} / columnCnt: ${columnCnt} of ${columns}`
-      ); */
     }, 1000 / this.animalsPerSecond);
   }
 
