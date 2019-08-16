@@ -13,9 +13,8 @@
         <div class="layout-wrapper">
           <div class="back-link" v-on:click="hideTruth">&laquo; zur&uuml;ck</div>
           <div class="content">
-            <div class="left-diagon"></div>
             <div class="heading">
-              <h1>Du enscheidest,</h1>
+              <h1>Du entscheidest,</h1>
               <h1>was Du isst!</h1>
             </div>
             <div class="explanation">
@@ -172,13 +171,14 @@ export default class Intro extends Vue {
 .truth-overlay {
   background-color: $cl-accent1;
   height: 100vh;
+  width: 100vw;
   padding-top: 4vh;
   overflow: hidden;
   overflow-y: scroll;
 
   .layout-wrapper {
-    width: calc(100vw / 12 * 6);
-    margin-left: calc(100vw / 12 * 6);
+    width: 45vw;
+    margin: 0 auto;
   }
 
   .back-link {
@@ -194,40 +194,28 @@ export default class Intro extends Vue {
     }
   }
 
-  .left-diagon {
-    float: left;
-    height: 100vh;
-    width: 150px;
-    box-sizing: border-box;
-    shape-outside: polygon(0px 0px, 0px 100vh, 200px 100vh);
-    clip-path: polygon(0px 0px, 0px 100vh, 200px 100vh);
-  }
-
   .content {
     margin-top: 6rem;
-    float: none;
-    clear: both;
 
     .heading {
       h1 {
         margin-left: -0.1em;
-        line-height: 120%;
+        line-height: 115%;
         color: $white;
         font-size: 6em;
         @include std-text-bold();
-        opacity: 0;
       }
     }
 
     .explanation,
     .additional-info {
-      margin-top: 4em;
-      width: 75%;
+      margin-top: 3rem;
+      width: 66%;
 
       p {
         margin-top: 0.5em;
         margin-bottom: 1.5em;
-        color: $white;
+        color: $dark;
 
         strong,
         &.highlight {
@@ -292,18 +280,6 @@ a {
       z-index: 9;
       height: 100vh;
       width: 100vw;
-    }
-
-    .truth-overlay .content {
-      .heading {
-        h1 {
-          transform: translateX(-100%);
-        }
-      }
-      .explanation,
-      .additional-info {
-        opacity: 0;
-      }
     }
 
     &.opened {

@@ -39,48 +39,30 @@ export default class AdditionalDetails extends Vue {
 <style scoped lang="scss">
 .additional-details {
   position: fixed;
-  top: 0;
-  right: 0;
-  color: #fff;
-  transform: translateX(-50%);
-  width: 25vw;
+  top: 50vh;
+  left: 50vw;
+  color: #000;
+  transform: translateX(-50%) translateY(-50%);
+  width: 40vw;
   cursor: pointer;
   transition: opacity ease 500ms;
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  @include respond-to("medium") {
-    width: 92%;
-  }
+  background-color: #fff;
+  padding: 2.5rem;
+  border-radius: 1pt;
 
   .inner {
     position: relative;
 
     .close {
       position: absolute;
-      top: -15pt;
-      right: -10pt;
+      top: -1.75rem;
+      right: -1.5rem;
       @include std-text-bold();
       font-size: x-large;
-
-      @include respond-to("medium") {
-      font-size: large;
-      }
-    }
-
-    .left-diagon {
-      float: left;
-      height: 100vh;
-      width: 150px;
-      box-sizing: border-box;
-      shape-outside: polygon(0px 0px, 0px 100vh, 200px 100vh);
-      clip-path: polygon(0px 0px, 0px 100vh, 200px 100vh);
     }
 
     h1 {
-      font-size: 8em;
+      font-size: 5.5em;
       line-height: 100%;
       padding-bottom: 0.1em;
     }
