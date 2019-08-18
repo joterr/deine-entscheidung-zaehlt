@@ -40,14 +40,14 @@
           </span>
           <span>
             <FactType
-              v-bind:type="TYPES.ENTEN"
+              v-bind:type="TYPES.RINDER"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
           <span>
             <FactType
-              v-bind:type="TYPES.RINDER"
+              v-bind:type="TYPES.ENTEN"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
             ></FactType>,
