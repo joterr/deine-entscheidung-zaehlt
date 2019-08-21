@@ -97,8 +97,8 @@
               v-bind:type="TYPES.CO2"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
-            ></FactType>
-          </span>&nbsp;gefährden unsere Gesundheit und Umwelt.
+            ></FactType>&nbsp;
+          </span>gefährden unsere Gesundheit und Umwelt.
         </h1>
         <div class="show-truth">
           <span v-on:click="$emit('open-truth-overlay')">Findest Du nicht okay?</span>
@@ -168,6 +168,7 @@ export default class FactSentence extends Vue {
 
 <style scoped lang="scss">
 $sentance-font-size: 1.125rem;
+$sentance-font-size-big: 1.25rem;
 
 .fact-wrapper {
   position: relative;
@@ -214,6 +215,10 @@ $sentance-font-size: 1.125rem;
     color: $white;
     font-size: $sentance-font-size;
     display: inline-block;
+
+    @include respond-to("small") {
+      font-size: $sentance-font-size-big;
+    }
   }
 }
 
@@ -227,6 +232,10 @@ $sentance-font-size: 1.125rem;
     white-space: normal;
     word-wrap: break-word;
 
+    @include respond-to("small") {
+      font-size: $sentance-font-size-big;
+    }
+
     & > * {
       font-size: 0;
     }
@@ -236,6 +245,10 @@ $sentance-font-size: 1.125rem;
       font-size: $sentance-font-size;
       font-style: normal;
       display: inline;
+
+      @include respond-to("small") {
+        font-size: $sentance-font-size-big;
+      }
     }
 
     & span.time {

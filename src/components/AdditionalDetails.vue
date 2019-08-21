@@ -73,6 +73,10 @@ export default class AdditionalDetails extends Vue {
   border-radius: 1pt;
   animation: animateIn 1s ease forwards;
 
+  @include respond-to("small") {
+    padding: 4.5rem 1.5rem;
+  }
+
   @include respond-to("medium") {
     width: 80vw;
   }
@@ -114,10 +118,10 @@ export default class AdditionalDetails extends Vue {
       background-color: #000;
     }
     span:before {
-      animation: animateXBeforeIn 0.5s ease forwards;
+      animation: animateXBeforeIn 0.125s ease forwards 0.75s;
     }
     span:after {
-      animation: animateXAfterIn 0.5s ease forwards;
+      animation: animateXAfterIn 0.125s ease forwards 0.75s;
     }
 
     @keyframes animateXBeforeIn {
@@ -161,14 +165,34 @@ export default class AdditionalDetails extends Vue {
     }
 
     h1 {
-      font-size: 7em;
-      padding-bottom: 0.1em;
+      font-size: 7rem;
+      padding-bottom: 0.25rem;
+
+      @include respond-to("medium") {
+        font-size: 6rem;
+      }
+
+      @include respond-to("small") {
+        font-size: 5.5rem;
+        word-break: break-word;
+        line-height: 100%;
+        padding-top: .75rem;
+        padding-bottom: .75rem;
+      }
     }
     h2 {
-      font-size: 3.5em;
+      font-size: 3.5rem;
+
+      @include respond-to("small") {
+        font-size: 2.5rem;
+      }
     }
     h3 {
       font-size: 1.75em;
+
+      @include respond-to("small") {
+        font-size: 1.5rem;
+      }
     }
 
     .timespan {

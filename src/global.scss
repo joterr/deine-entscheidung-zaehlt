@@ -182,7 +182,7 @@ a {
 
 body {
   @include std-text();
-  font-size: medium;
+  font-size: 100%;
   background-color: $dark;
 }
 
@@ -197,15 +197,15 @@ body {
     flex-basis: 0;
     flex-grow: 2;
     flex-shrink: 1;
-    padding: 0 0.5em;
+    padding: 0 0.5rem;
 
     @include respond-to('medium') {
-      padding: 0 1.5em;
+      padding: 0 1.5rem;
     }
 
     @include respond-to('small') {
       padding: 0;
-      padding-bottom: 2em;
+      padding-bottom: 2rem;
     }
 
     &.col-2 {
