@@ -176,10 +176,11 @@ export default class AdditionalDetails extends Vue {
         font-size: 5.5rem;
         word-break: break-word;
         line-height: 100%;
-        padding-top: .75rem;
-        padding-bottom: .75rem;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
       }
     }
+
     h2 {
       font-size: 3.5rem;
 
@@ -187,6 +188,7 @@ export default class AdditionalDetails extends Vue {
         font-size: 2.5rem;
       }
     }
+
     h3 {
       font-size: 1.75em;
 
