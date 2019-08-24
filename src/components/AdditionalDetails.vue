@@ -4,14 +4,16 @@
       <span></span>
     </div>
     <div class="inner">
-      <div class="content">
-        <div class="left-diagon"></div>
+      <div class="content" v-bind:class="{'over-a-million': activeType.PER_YEAR  > 1000000}">
         <h3>
           <span class="timespan">Das sind jährlich über</span>
         </h3>
 
-        <h1 class="animate">
+        <h1 class="animate big-screen">
           <ICountUp :endVal="activeType.PER_YEAR" :options="countUpOptions" />
+        </h1>
+        <h1 class="animate small-screen">
+          <ICountUp :endVal="activeType.PER_YEAR / 1000000" :options="countUpOptions" />&nbsp;Mio.
         </h1>
         <h2 class="animate">
           <span v-if="activeType.UNIT">{{activeType.UNIT}}&nbsp;</span>
@@ -19,8 +21,23 @@
           <span class="included-types-annotation" v-if="activeType.INCLUDED_TYPES">*</span>
         </h2>
         <div class="included-types" v-if="activeType.INCLUDED_TYPES">*{{activeType.INCLUDED_TYPES}}</div>
-        <div class="special-content" v-if="activeType.ID === TYPES.HUHNER.ID">SPECIAL CONTENT</div>
-        <div class="special-content" v-else-if="activeType.ID === TYPES.SCHWEINE.ID">SPECIAL CONTENT</div>
+        <div class="special-content" v-if="activeType.ID === TYPES.HUHNER.ID">
+          <h4 class="intro">davon sind</h4>
+          <h4>24% für Eier,</h4>
+          <h4>60% für Fleisch,</h4>
+          <h4>16% sterben durch Krankheit.</h4>
+        </div>
+        <div class="special-content" v-else-if="activeType.ID === TYPES.SCHWEINE.ID">
+          <h4 class="intro">davon sind</h4>
+          <h4>80% für Fleisch und</h4>
+          <h4>20% sterben durch Krankheit.</h4>
+        </div>
+        <div class="special-content" v-else-if="activeType.ID === TYPES.RINDER.ID">
+          <h4 class="intro">davon sind</h4>
+          <h4>50% für Milch,</h4>
+          <h4>60% für Fleisch,</h4>
+          <h4>16% sterben durch Krankheit.</h4>
+        </div>
         <div class="source-declaration">
           Quelle:
           <a :href="activeType.SOURCE_URL" target="_blanc">{{ activeType.SOURCE }}</a>
@@ -74,7 +91,7 @@ export default class AdditionalDetails extends Vue {
   animation: animateIn 1s ease forwards;
 
   @include respond-to("small") {
-    padding: 4.5rem 1.5rem;
+    padding: 4.5rem 1.5rem 2.25rem 1.5rem;
   }
 
   @include respond-to("medium") {
@@ -164,6 +181,19 @@ export default class AdditionalDetails extends Vue {
       animation: blurIn 1s ease forwards 0.5s;
     }
 
+    .small-screen {
+      display: none;
+    }
+
+    @include respond-to("small") {
+      .over-a-million .big-screen {
+        display: none;
+      }
+      .over-a-million .small-screen {
+        display: block;
+      }
+    }
+
     h1 {
       font-size: 7rem;
       padding-bottom: 0.25rem;
@@ -173,9 +203,8 @@ export default class AdditionalDetails extends Vue {
       }
 
       @include respond-to("small") {
-        font-size: 5.5rem;
+        font-size: 4.5rem;
         word-break: break-word;
-        line-height: 100%;
         padding-top: 0.75rem;
         padding-bottom: 0.75rem;
       }
@@ -190,10 +219,21 @@ export default class AdditionalDetails extends Vue {
     }
 
     h3 {
-      font-size: 1.75em;
+      font-size: 1.75rem;
 
       @include respond-to("small") {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+      }
+    }
+
+    h4 {
+      font-size: 1.25rem;
+      padding: 0.25rem 0;
+
+      &.intro {
+        @include std-text();
+        font-size: 1rem;
+        padding-bottom: 0.5rem;
       }
     }
 
@@ -206,12 +246,12 @@ export default class AdditionalDetails extends Vue {
     }
 
     .special-content {
-      padding-top: 35pt;
+      padding-top: 1.75rem;
     }
 
     .source-declaration {
       text-align: right;
-      padding-top: 25pt;
+      padding-top: 2.25rem;
       font-size: x-small;
 
       a {

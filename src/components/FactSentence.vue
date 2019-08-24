@@ -215,10 +215,6 @@ $sentance-font-size-big: 1.25rem;
     color: $white;
     font-size: $sentance-font-size;
     display: inline-block;
-
-    @include respond-to("small") {
-      font-size: $sentance-font-size-big;
-    }
   }
 }
 
@@ -232,10 +228,6 @@ $sentance-font-size-big: 1.25rem;
     white-space: normal;
     word-wrap: break-word;
 
-    @include respond-to("small") {
-      font-size: $sentance-font-size-big;
-    }
-
     & > * {
       font-size: 0;
     }
@@ -245,10 +237,6 @@ $sentance-font-size-big: 1.25rem;
       font-size: $sentance-font-size;
       font-style: normal;
       display: inline;
-
-      @include respond-to("small") {
-        font-size: $sentance-font-size-big;
-      }
     }
 
     & span.time {

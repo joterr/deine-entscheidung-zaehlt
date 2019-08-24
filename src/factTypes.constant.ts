@@ -88,7 +88,7 @@ export const FACT_TYPES_CONST = {
     ID: "antibiotika",
     SINGULAR: "Gramm Antibiotika",
     PLURAL: "Gramm Antibiotika",
-    PER_YEAR: 186862000000 / 1000,
+    PER_YEAR: 186862000,
     UNIT: "Gramm",
     NAME: "Antibiotika",
     SOURCE: "Zahlen des UBA, 2018",
@@ -98,10 +98,10 @@ export const FACT_TYPES_CONST = {
     ID: "co2",
     SINGULAR: "Tonne CO<sub>2</sub>-Äquivalente",
     PLURAL: "Tonnen CO<sub>2</sub>-Äquivalente",
-    PER_YEAR: 120000000000 / 1000,
+    PER_YEAR: 120000000,
     UNIT: "Tonnen",
     NAME: "CO<sub>2</sub>-Äquivalente",
-    INCLUDED_TYPES: "umgerechnet aus emittiertem Methan, Lachgas und Kohlendioxid",
+    INCLUDED_TYPES: "berechnet aus emittiertem Kohlendioxid Lachgas und Methan",
     SOURCE: "Zahlen des UBA, 2018",
     SOURCE_URL: "https://www.google.de/"
   }
