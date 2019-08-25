@@ -39,8 +39,14 @@
           <h4>16% sterben durch Krankheit.</h4>
         </div>
         <div class="source-declaration">
-          Quelle:
-          <a :href="activeType.SOURCE_URL" target="_blanc">{{ activeType.SOURCE }}</a>
+          Quellen:&nbsp;
+          <span
+            v-for="(source, index) in activeType.SOURCES"
+            v-bind:key="source.SOURCE"
+          >
+            <a :href="source.SOURCE_URL" target="_blanc">{{ source.SOURCE }}</a>
+            <span v-if="index !== activeType.SOURCES.length - 1">,&nbsp;</span>
+          </span>
         </div>
       </div>
     </div>

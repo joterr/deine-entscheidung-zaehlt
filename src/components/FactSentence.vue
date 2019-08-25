@@ -71,12 +71,19 @@
               v-bind:type="TYPES.PFERDE"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
-            ></FactType>
+            ></FactType>&nbsp;
           </span>
-          <span>&nbsp;allein für Essen getötet oder sind in Folge schlechter Haltebedingungen verendet.</span>
+          <span>allein für Essen getötet oder sind in Folge schlechter Haltebedingungen verendet.</span>
         </h1>
         <h1 class="additional-info">
-          Zusätzliche
+          Zusätzliches
+          <span>
+            <FactType
+              v-bind:type="TYPES.SOY"
+              v-bind:active="activeDetail"
+              v-on:show-details="showDetail"
+            ></FactType>,
+          </span>
           <span>
             <FactType
               v-bind:type="TYPES.GULLE"
