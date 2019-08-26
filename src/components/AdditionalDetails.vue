@@ -39,14 +39,17 @@
           <h4>16% sterben durch Krankheit.</h4>
         </div>
         <div class="source-declaration">
-          Quellen:&nbsp;
-          <span
-            v-for="(source, index) in activeType.SOURCES"
-            v-bind:key="source.SOURCE"
-          >
-            <a :href="source.SOURCE_URL" target="_blanc">{{ source.SOURCE }}</a>
-            <span v-if="index !== activeType.SOURCES.length - 1">,&nbsp;</span>
-          </span>
+          <div class="calculation">Berechnungsgrundlage &mdash; {{ activeType.CALCULATION }}</div>
+          <div class="source">
+            Quellen:&nbsp;
+            <span
+              v-for="(source, index) in activeType.SOURCES"
+              v-bind:key="source.SOURCE"
+            >
+              <a :href="source.SOURCE_URL" target="_blanc">{{ source.SOURCE }}</a>
+              <span v-if="index !== activeType.SOURCES.length - 1">,&nbsp;</span>
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -257,8 +260,19 @@ export default class AdditionalDetails extends Vue {
 
     .source-declaration {
       text-align: right;
+
       padding-top: 2.25rem;
       font-size: x-small;
+      opacity: 0.5;
+      transition: opacity ease 0.3s;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      .calculation {
+        padding-bottom: 0.5rem;
+      }
 
       a {
         text-decoration: underline;

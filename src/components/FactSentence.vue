@@ -71,15 +71,14 @@
               v-bind:type="TYPES.PFERDE"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
-            ></FactType>&nbsp;
-          </span>
-          <span>allein für Essen getötet oder sind in Folge schlechter Haltebedingungen verendet.</span>
+            ></FactType>
+          </span>&nbsp;allein für Essen getötet oder sind in Folge schlechter Haltebedingungen verendet.
         </h1>
         <h1 class="additional-info">
-          Zusätzliches
+          Zusätzliche
           <span>
             <FactType
-              v-bind:type="TYPES.SOY"
+              v-bind:type="TYPES.FOOD"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
             ></FactType>,
@@ -97,15 +96,14 @@
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
             ></FactType>&nbsp;und
-            <br />
           </span>
           <span>
             <FactType
               v-bind:type="TYPES.CO2"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
-            ></FactType>&nbsp;
-          </span>gefährden unsere Gesundheit und Umwelt.
+            ></FactType>
+          </span>&nbsp;gefährden unsere Gesundheit und Umwelt.
         </h1>
         <div class="show-truth">
           <span v-on:click="$emit('open-truth-overlay')">Findest Du nicht okay?</span>
