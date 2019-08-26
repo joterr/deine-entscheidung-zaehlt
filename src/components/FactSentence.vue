@@ -78,7 +78,7 @@
           Zusätzliche
           <span>
             <FactType
-              v-bind:type="TYPES.FOOD"
+              v-bind:type="TYPES.SOY"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
             ></FactType>,

@@ -133,15 +133,15 @@ export const FACT_TYPES_CONST = {
       }
     ]
   },
-  FOOD: {
-    ID: "food",
-    SINGULAR: "Tonne Nahrungsmittel",
-    PLURAL: "Tonnen Nahrungsmittel",
+  SOY: {
+    ID: "soy",
+    SINGULAR: "Tonne Soja-Import",
+    PLURAL: "Tonnen Soja-Import",
     PER_YEAR: 40000000,
     UNIT: "Tonnen",
-    NAME: "Nahrungsmittel",
-    INCLUDED_TYPES: "aus Achkerbohnen, Getreide, Soja (jedoch ohne Graserzeugnisse)",
-    CALCULATION: "93 Millionen Schweine pro Jahr laut Schlachtzahlen",
+    NAME: "Soja",
+    INCLUDED_TYPES: "zu 80% aus Südamerika",
+    CALCULATION: "93 Millionen Tonnen Soja pro Jahr laut Schlachtzahlen",
     SOURCES: [
       {
         SOURCE: "Zahlen des UBA, 2018",
