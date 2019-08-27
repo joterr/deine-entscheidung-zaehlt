@@ -135,13 +135,13 @@ export const FACT_TYPES_CONST = {
   },
   SOY: {
     ID: "soy",
-    SINGULAR: "Tonne Soja-Import",
-    PLURAL: "Tonnen Soja-Import",
-    PER_YEAR: 40000000,
+    SINGULAR: "Tonne Gen-Soja-Import",
+    PLURAL: "Tonnen Gen-Soja-Import",
+    PER_YEAR: 6000000,
     UNIT: "Tonnen",
-    NAME: "Soja",
+    NAME: "Gen-Soja",
     INCLUDED_TYPES: "zu 80% aus Südamerika",
-    CALCULATION: "93 Millionen Tonnen Soja pro Jahr laut Schlachtzahlen",
+    CALCULATION: "93 Millionen Tonnen Gen-Soja pro Jahr laut Schlachtzahlen",
     SOURCES: [
       {
         SOURCE: "Zahlen des UBA, 2018",

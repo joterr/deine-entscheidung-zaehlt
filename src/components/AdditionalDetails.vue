@@ -22,18 +22,18 @@
         </h2>
         <div class="included-types" v-if="activeType.INCLUDED_TYPES">*{{activeType.INCLUDED_TYPES}}</div>
         <div class="special-content" v-if="activeType.ID === TYPES.HUHNER.ID">
-          <h4 class="intro">davon sind</h4>
+          <h4 class="intro">diese sind</h4>
           <h4>24% für Eier,</h4>
           <h4>60% für Fleisch,</h4>
           <h4>16% sterben durch Krankheit.</h4>
         </div>
         <div class="special-content" v-else-if="activeType.ID === TYPES.SCHWEINE.ID">
-          <h4 class="intro">davon sind</h4>
+          <h4 class="intro">diese sind</h4>
           <h4>80% für Fleisch und</h4>
           <h4>20% sterben durch Krankheit.</h4>
         </div>
         <div class="special-content" v-else-if="activeType.ID === TYPES.RINDER.ID">
-          <h4 class="intro">davon sind</h4>
+          <h4 class="intro">diese sind</h4>
           <h4>50% für Milch,</h4>
           <h4>60% für Fleisch,</h4>
           <h4>16% sterben durch Krankheit.</h4>
@@ -142,28 +142,33 @@ export default class AdditionalDetails extends Vue {
       transition-property: transform;
       border-radius: 3px;
       background-color: #000;
+      opacity: 0;
     }
     span:before {
-      animation: animateXBeforeIn 0.125s ease forwards 0.75s;
+      animation: animateXBeforeIn 0.125s ease forwards 1.5s;
     }
     span:after {
-      animation: animateXAfterIn 0.125s ease forwards 0.75s;
+      animation: animateXAfterIn 0.125s ease forwards 1.5s;
     }
 
     @keyframes animateXBeforeIn {
       0% {
+        opacity: 0;
         transform: translate3d(0, 0, 0) rotate(0);
       }
       100% {
+        opacity: 1;
         transform: translate3d(0, 17px, 0) rotate(45deg);
       }
     }
 
     @keyframes animateXAfterIn {
       0% {
+        opacity: 0;
         transform: translate3d(0, 0, 0) rotate(0);
       }
       100% {
+        opacity: 1;
         transform: translate3d(0, 17px, 0) rotate(-45deg);
       }
     }

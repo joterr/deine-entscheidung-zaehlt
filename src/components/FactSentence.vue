@@ -65,14 +65,14 @@
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
             ></FactType>
-          </span> und
-          <span>
+          </span> und <span>
             <FactType
               v-bind:type="TYPES.PFERDE"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
             ></FactType>
-          </span>&nbsp;allein für Essen getötet oder sind in Folge schlechter Haltebedingungen verendet.
+          </span>
+          allein für Essen getötet oder sind in Folge schlechter Haltebedingungen verendet.
         </h1>
         <h1 class="additional-info">
           Zusätzliche
@@ -95,15 +95,15 @@
               v-bind:type="TYPES.ANTIBIOTIKA"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
-            ></FactType>&nbsp;und
-          </span>
-          <span>
+            ></FactType>
+          </span> und <span>
             <FactType
               v-bind:type="TYPES.CO2"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
             ></FactType>
-          </span>&nbsp;gefährden unsere Gesundheit und Umwelt.
+          </span>
+          gefährden unsere Gesundheit und Umwelt.
         </h1>
         <div class="show-truth">
           <span v-on:click="$emit('open-truth-overlay')">Findest Du nicht okay?</span>
@@ -185,6 +185,10 @@ $sentance-font-size-big: 1.25rem;
     left: 50vw;
     width: 40vw;
     transform: translate(-50%, -50%);
+
+    @include respond-to("large") {
+      width: 80vw;
+    }
 
     @include respond-to("medium") {
       width: 80vw;

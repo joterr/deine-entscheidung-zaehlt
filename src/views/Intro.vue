@@ -32,7 +32,7 @@
                 >Vegan Kickstart</a> von PETA ZWEI.
               </p>
             </div>
-            <div class="row additional-info">
+            <div class="row always additional-info">
               <div class="col">
                 <h3>Erste Schritte</h3>
                 <ul class="info-list-type">
@@ -91,7 +91,7 @@
                   </li>
                 </ul>
               </div>
-              <div class="col col-2">
+              <div class="col">
                 <h3>Bücher</h3>
                 <ul class="info-list-type">
                   <li>
@@ -172,13 +172,25 @@ export default class Intro extends Vue {
   background-color: $cl-accent1;
   height: 100vh;
   width: 100vw;
-  padding-top: 4vh;
+  padding-top: 6vh;
   overflow: hidden;
   overflow-y: scroll;
 
   .layout-wrapper {
     width: 45vw;
     margin: 0 auto;
+
+    @include respond-to("large") {
+      width: 60vw;
+    }
+
+    @include respond-to("medium") {
+      width: 75vw;
+    }
+
+    @include respond-to("small") {
+      width: 86vw;
+    }
   }
 
   .back-link {
@@ -204,6 +216,10 @@ export default class Intro extends Vue {
         color: $white;
         font-size: 6em;
         @include std-text-bold();
+
+        @include respond-to("medium") {
+          font-size: 5em;
+        }
       }
     }
 
@@ -211,6 +227,14 @@ export default class Intro extends Vue {
     .additional-info {
       margin-top: 3rem;
       width: 66%;
+
+      @include respond-to("large") {
+        width: 70%;
+      }
+
+      @include respond-to("medium") {
+        width: 80%;
+      }
 
       p {
         margin-top: 0.5em;
@@ -263,6 +287,12 @@ a {
 
   &:hover {
     text-decoration: underline;
+  }
+}
+
+p {
+  a {
+    color: $dark;
   }
 }
 

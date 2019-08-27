@@ -263,6 +263,9 @@ export default class AnimalSprinkler extends Vue {
   margin: 0.5rem;
 
   .preload-image {
+    position: absolute;
+    top: -100vh;
+    z-index: -1;
     height: 100px;
     width: 100px;
     opacity: 0;

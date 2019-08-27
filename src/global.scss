@@ -219,6 +219,14 @@ body {
       padding-right: 0;
     }
   }
+  &.always {
+    display: block;
+
+    .col {
+      padding: 0;
+      padding-bottom: 2rem;
+    }
+  }
 }
 
 .static-page {
