@@ -10,7 +10,7 @@
 <style lang="scss">
 footer {
   position: fixed;
-  z-index: 9999;
+  z-index: 999999;
   bottom: 1.25rem;
   right: 1.25rem;
   color: rgba(255, 255, 255, 0.5);

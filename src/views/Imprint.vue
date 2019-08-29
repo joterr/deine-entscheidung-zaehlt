@@ -5,8 +5,8 @@
       <h1>Impressum</h1>
       <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
       <p>Jannik Rulitschka<br />
-        Sandweg 6C<br />
-        60316 Frankfurt Am Main</p>
+        Fritz-Kohl-Str. 3A<br />
+        55122 Mainz</p>
       <h2>Kontakt</h2>
       <p>E-Mail: <span class="fakeEmail">@</span></p>
       <h3>Haftung f&uuml;r Inhalte</h3>

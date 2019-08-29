@@ -293,7 +293,7 @@ export default class AdditionalDetails extends Vue {
   @keyframes delayShowAndSliceIn {
     0% {
       transform: translateX(1000px);
-      filter: blur(4px);
+      filter: blur(3px);
     }
     100% {
       transform: translateX(0);
@@ -304,7 +304,7 @@ export default class AdditionalDetails extends Vue {
   @keyframes blurIn {
     0% {
       opacity: 0;
-      filter: blur(4px);
+      filter: blur(3px);
     }
     100% {
       opacity: 1;
