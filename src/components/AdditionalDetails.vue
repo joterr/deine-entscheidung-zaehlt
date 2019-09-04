@@ -22,20 +22,20 @@
         </h2>
         <div class="included-types" v-if="activeType.INCLUDED_TYPES">*{{activeType.INCLUDED_TYPES}}</div>
         <div class="special-content" v-if="activeType.ID === TYPES.HUHNER.ID">
-          <h4 class="intro">diese sind</h4>
+          <h4 class="intro">insgesamt</h4>
           <h4>24% für Eier,</h4>
-          <h4>60% für Fleisch,</h4>
+          <h4>60% für Fleisch &amp;</h4>
           <h4>16% sterben durch Krankheit.</h4>
         </div>
         <div class="special-content" v-else-if="activeType.ID === TYPES.SCHWEINE.ID">
-          <h4 class="intro">diese sind</h4>
-          <h4>80% für Fleisch und</h4>
+          <h4 class="intro">insgesamt</h4>
+          <h4>80% für Fleisch &amp;</h4>
           <h4>20% sterben durch Krankheit.</h4>
         </div>
         <div class="special-content" v-else-if="activeType.ID === TYPES.RINDER.ID">
-          <h4 class="intro">diese sind</h4>
+          <h4 class="intro">insgesamt</h4>
           <h4>50% für Milch,</h4>
-          <h4>60% für Fleisch,</h4>
+          <h4>60% für Fleisch &amp;</h4>
           <h4>16% sterben durch Krankheit.</h4>
         </div>
         <div class="source-declaration">
