@@ -173,7 +173,7 @@ export default class FactSentence extends Vue {
 
 <style scoped lang="scss">
 $sentance-font-size: 1.125rem;
-$sentance-font-size-big: 1.25rem;
+$sentance-font-size-small: 1rem;
 
 .fact-wrapper {
   position: relative;
@@ -223,6 +223,9 @@ $sentance-font-size-big: 1.25rem;
     @include highlight-text-bold();
     color: $white;
     font-size: $sentance-font-size;
+    @include respond-to("small") {
+      font-size: $sentance-font-size-small;
+    }
     display: inline-block;
   }
 }
@@ -232,6 +235,9 @@ $sentance-font-size-big: 1.25rem;
     @include highlight-text();
     color: rgba(255, 255, 255, 0.5);
     font-size: $sentance-font-size;
+    @include respond-to("small") {
+      font-size: $sentance-font-size-small;
+    }
     line-height: 160%;
     animation: delayShowAndSliceIn 1.5s ease forwards 6s;
     white-space: normal;
@@ -244,6 +250,9 @@ $sentance-font-size-big: 1.25rem;
     & > span,
     & > i {
       font-size: $sentance-font-size;
+      @include respond-to("small") {
+        font-size: $sentance-font-size-small;
+      }
       font-style: normal;
       display: inline;
     }

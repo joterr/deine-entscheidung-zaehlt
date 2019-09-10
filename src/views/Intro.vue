@@ -243,7 +243,7 @@ export default class Intro extends Vue {
     .additional-info {
       margin-top: 3rem;
       width: 66%;
-            transform: translateY(100vh);
+      transform: translateY(100vh);
       animation: slideUp 0.5s ease forwards 0.85s;
 
       @include respond-to("large") {
