@@ -97,7 +97,7 @@ export default class AdditionalDetails extends Vue {
   background-color: #fff;
   padding: 2.5rem;
   border-radius: 1pt;
-  animation: animateIn 1s ease forwards;
+  animation: animateIn 0.75s ease forwards;
 
   @include respond-to("small") {
     padding: 4.5rem 1.5rem 2.25rem 1.5rem;
@@ -145,10 +145,10 @@ export default class AdditionalDetails extends Vue {
       opacity: 0;
     }
     span:before {
-      animation: animateXBeforeIn 0.125s ease forwards 1.5s;
+      animation: animateXBeforeIn 0.05s ease forwards 1.125s;
     }
     span:after {
-      animation: animateXAfterIn 0.125s ease forwards 1.5s;
+      animation: animateXAfterIn 0.05s ease forwards 1.25s;
     }
 
     @keyframes animateXBeforeIn {
@@ -192,7 +192,7 @@ export default class AdditionalDetails extends Vue {
 
     & > *:not(.animate) {
       opacity: 0;
-      animation: blurIn 1s ease forwards 0.5s;
+      animation: blurIn 1s ease forwards 0.125s;
     }
 
     .small-screen {
