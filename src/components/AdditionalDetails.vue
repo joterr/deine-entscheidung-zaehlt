@@ -1,54 +1,60 @@
 <template>
-  <div class="additional-details" v-if="activeType">
-    <div class="close" v-on:click="$emit('close-details')">
-      <span></span>
-    </div>
-    <div class="inner">
-      <div class="content" v-bind:class="{'over-a-million': activeType.PER_YEAR  > 1000000}">
-        <h3>
-          <span class="timespan">Das sind jährlich über</span>
-        </h3>
+  <div class="additional-wrapper" v-if="activeType">
+    <div class="overlay" v-on:click="$emit('close-details')"></div>
+    <div class="additional-details">
+      <div class="close" v-on:click="$emit('close-details')">
+        <span></span>
+      </div>
+      <div class="inner">
+        <div class="content" v-bind:class="{'over-a-million': activeType.PER_YEAR  > 1000000}">
+          <h3>
+            <span class="timespan">Das sind jährlich über</span>
+          </h3>
 
-        <h1 class="animate big-screen">
-          <ICountUp :endVal="activeType.PER_YEAR" :options="countUpOptions" />
-        </h1>
-        <h1 class="animate small-screen">
-          <ICountUp :endVal="activeType.PER_YEAR / 1000000" :options="countUpOptions" />&nbsp;Mio.
-        </h1>
-        <h2 class="animate">
-          <span v-if="activeType.UNIT">{{activeType.UNIT}}&nbsp;</span>
-          <span v-html="activeType.UNIT ? activeType.NAME : activeType.PLURAL"></span>
-          <span class="included-types-annotation" v-if="activeType.INCLUDED_TYPES">*</span>
-        </h2>
-        <div class="included-types" v-if="activeType.INCLUDED_TYPES">*{{activeType.INCLUDED_TYPES}}</div>
-        <div class="special-content" v-if="activeType.ID === TYPES.HUHNER.ID">
-          <h4 class="intro">insgesamt</h4>
-          <h4>24% für Eier,</h4>
-          <h4>60% für Fleisch &amp;</h4>
-          <h4>16% sterben durch Krankheit.</h4>
-        </div>
-        <div class="special-content" v-else-if="activeType.ID === TYPES.SCHWEINE.ID">
-          <h4 class="intro">insgesamt</h4>
-          <h4>80% für Fleisch &amp;</h4>
-          <h4>20% sterben durch Krankheit.</h4>
-        </div>
-        <div class="special-content" v-else-if="activeType.ID === TYPES.RINDER.ID">
-          <h4 class="intro">insgesamt</h4>
-          <h4>50% für Milch,</h4>
-          <h4>60% für Fleisch &amp;</h4>
-          <h4>16% sterben durch Krankheit.</h4>
-        </div>
-        <div class="source-declaration">
-          <div class="calculation">Berechnungsgrundlage &mdash; {{ activeType.CALCULATION }}</div>
-          <div class="source">
-            Quellen:&nbsp;
-            <span
-              v-for="(source, index) in activeType.SOURCES"
-              v-bind:key="source.SOURCE"
-            >
-              <a :href="source.SOURCE_URL" target="_blanc">{{ source.SOURCE }}</a>
-              <span v-if="index !== activeType.SOURCES.length - 1">,&nbsp;</span>
-            </span>
+          <h1 class="animate big-screen">
+            <ICountUp :endVal="activeType.PER_YEAR" :options="countUpOptions" />
+          </h1>
+          <h1 class="animate small-screen">
+            <ICountUp :endVal="activeType.PER_YEAR / 1000000" :options="countUpOptions" />&nbsp;Mio.
+          </h1>
+          <h2 class="animate">
+            <span v-if="activeType.UNIT">{{activeType.UNIT}}&nbsp;</span>
+            <span v-html="activeType.UNIT ? activeType.NAME : activeType.PLURAL"></span>
+            <span class="included-types-annotation" v-if="activeType.INCLUDED_TYPES">*</span>
+          </h2>
+          <div
+            class="included-types"
+            v-if="activeType.INCLUDED_TYPES"
+          >*{{activeType.INCLUDED_TYPES}}</div>
+          <div class="special-content" v-if="activeType.ID === TYPES.HUHNER.ID">
+            <h4 class="intro">insgesamt</h4>
+            <h4>24% für Eier,</h4>
+            <h4>60% für Fleisch &amp;</h4>
+            <h4>16% sterben durch Krankheit.</h4>
+          </div>
+          <div class="special-content" v-else-if="activeType.ID === TYPES.SCHWEINE.ID">
+            <h4 class="intro">insgesamt</h4>
+            <h4>80% für Fleisch &amp;</h4>
+            <h4>20% sterben durch Krankheit.</h4>
+          </div>
+          <div class="special-content" v-else-if="activeType.ID === TYPES.RINDER.ID">
+            <h4 class="intro">insgesamt</h4>
+            <h4>50% für Milch,</h4>
+            <h4>60% für Fleisch &amp;</h4>
+            <h4>16% sterben durch Krankheit.</h4>
+          </div>
+          <div class="source-declaration">
+            <div class="calculation">Berechnungsgrundlage &mdash; {{ activeType.CALCULATION }}</div>
+            <div class="source">
+              Quellen:&nbsp;
+              <span
+                v-for="(source, index) in activeType.SOURCES"
+                v-bind:key="source.SOURCE"
+              >
+                <a :href="source.SOURCE_URL" target="_blanc">{{ source.SOURCE }}</a>
+                <span v-if="index !== activeType.SOURCES.length - 1">,&nbsp;</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -86,6 +92,16 @@ export default class AdditionalDetails extends Vue {
 </script>
 
 <style scoped lang="scss">
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  cursor: pointer;
+}
+
 .additional-details {
   position: fixed;
   top: 50vh;
@@ -97,6 +113,7 @@ export default class AdditionalDetails extends Vue {
   background-color: #fff;
   padding: 2.5rem;
   border-radius: 1pt;
+  z-index: 999;
   animation: animateIn 0.75s ease forwards;
 
   @include respond-to("small") {
