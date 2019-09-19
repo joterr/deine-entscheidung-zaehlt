@@ -200,8 +200,10 @@ $sentance-font-size: 1.125rem;
     }
 
     @include respond-to("small") {
-      top: 12vh;
-      transform: translateX(-50%);
+      &.fact-sentence {
+        top: 12vh;
+        transform: translateX(-50%);
+      }
       width: 86vw;
     }
 
