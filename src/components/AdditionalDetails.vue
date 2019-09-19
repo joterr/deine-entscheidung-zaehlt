@@ -28,29 +28,21 @@
           >*{{activeType.INCLUDED_TYPES}}</div>
           <div class="special-content" v-if="activeType.ID === TYPES.HUHNER.ID">
             <h4 class="intro">insgesamt</h4>
-            <h4>24% für Eier,</h4>
-            <h4>60% für Fleisch &amp;</h4>
-            <h4>16% sterben durch Krankheit.</h4>
+            <h4>24% für Eier, 60% für Fleisch &amp; 16% sterben durch Krankheit.</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.SCHWEINE.ID">
             <h4 class="intro">insgesamt</h4>
-            <h4>80% für Fleisch &amp;</h4>
-            <h4>20% sterben durch Krankheit.</h4>
+            <h4>80% für Fleisch &amp; 20% sterben durch Krankheit.</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.RINDER.ID">
             <h4 class="intro">insgesamt</h4>
-            <h4>50% für Milch,</h4>
-            <h4>60% für Fleisch &amp;</h4>
-            <h4>16% sterben durch Krankheit.</h4>
+            <h4>50% für Milch, 60% für Fleisch &amp; 16% sterben durch Krankheit.</h4>
           </div>
           <div class="source-declaration">
-            <div class="calculation">Berechnungsgrundlage &mdash; {{ activeType.CALCULATION }}</div>
+            <div class="calculation">Berechnung: {{ activeType.CALCULATION }}</div>
             <div class="source">
-              Quellen:&nbsp;
-              <span
-                v-for="(source, index) in activeType.SOURCES"
-                v-bind:key="source.SOURCE"
-              >
+              Quelle<span v-if="activeType.SOURCES.length > 1">n</span>:
+              <span v-for="(source, index) in activeType.SOURCES" v-bind:key="source.SOURCE">
                 <a :href="source.SOURCE_URL" target="_blanc">{{ source.SOURCE }}</a>
                 <span v-if="index !== activeType.SOURCES.length - 1">,&nbsp;</span>
               </span>
@@ -112,12 +104,13 @@ export default class AdditionalDetails extends Vue {
   transition: opacity ease 500ms;
   background-color: #fff;
   padding: 2.5rem;
+  padding-bottom: 1.25rem;
   border-radius: 1pt;
   z-index: 999;
   animation: animateIn 0.75s ease forwards;
 
   @include respond-to("small") {
-    padding: 4.5rem 1.5rem 2.25rem 1.5rem;
+    padding: 4.5rem 1.5rem 1.25rem 1.5rem;
   }
 
   @include respond-to("medium") {
@@ -234,7 +227,7 @@ export default class AdditionalDetails extends Vue {
       }
 
       @include respond-to("small") {
-        font-size: 4.5rem;
+        font-size: 5rem;
         word-break: break-word;
         padding-top: 0.75rem;
         padding-bottom: 0.75rem;
@@ -281,27 +274,38 @@ export default class AdditionalDetails extends Vue {
     }
 
     .source-declaration {
-      text-align: right;
-
-      padding-top: 2.25rem;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.75rem;
+      padding: 0.125rem;
       font-size: x-small;
-      opacity: 0.5;
-      transition: opacity ease 0.3s;
+      opacity: 0.25;
+      transition: ease 0.3s;
 
       &:hover {
         opacity: 1;
       }
 
-      .calculation {
-        padding-bottom: 0.5rem;
+      @include respond-to("medium") {
+        flex-direction: column;
+
+        .source {
+          margin-top: 0.5rem;
+        }
       }
 
       a {
         text-decoration: underline;
         color: #000;
+        transition: ease 0.3s;
+      }
 
-        &:hover {
-          text-decoration: none;
+      &:hover {
+        color: #fff;
+        background-color: #000;
+
+        a {
+          color: #fff;
         }
       }
     }

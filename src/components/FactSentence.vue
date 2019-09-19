@@ -43,31 +43,37 @@
               v-bind:type="TYPES.RINDER"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
-            ></FactType>,
+            ></FactType><span class="additional">, </span>
           </span>
-          <span>
+          <span class="additional">
             <FactType
               v-bind:type="TYPES.ENTEN"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
-          <span>
+          <span class="additional">
             <FactType
               v-bind:type="TYPES.SCHAFE"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
-          <span>
+          <span class="additional">
             <FactType
               v-bind:type="TYPES.ZIEGEN"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
             ></FactType>
-          </span> und <span>
+          </span> und <span class="additional">
             <FactType
               v-bind:type="TYPES.PFERDE"
+              v-bind:active="activeDetail"
+              v-on:show-details="showDetail"
+            ></FactType>
+          </span><span class="small-view">
+            <FactType
+              v-bind:type="TYPES.ENTEN"
               v-bind:active="activeDetail"
               v-on:show-details="showDetail"
             ></FactType>
@@ -173,7 +179,6 @@ export default class FactSentence extends Vue {
 
 <style scoped lang="scss">
 $sentance-font-size: 1.125rem;
-$sentance-font-size-small: 1rem;
 
 .fact-wrapper {
   position: relative;
@@ -203,6 +208,22 @@ $sentance-font-size-small: 1rem;
       display: inline-block;
       margin: 0 auto;
 
+      .additional {
+        @include respond-to("small") {
+          position: absolute;
+          top: -100vh;
+        }
+      }
+
+      .small-view {
+        position: absolute;
+        top: -100vh;
+        @include respond-to("small") {
+          position: relative;
+          top: auto;
+        }
+      }
+
       & > * {
         transform: translateX(1000px);
       }
@@ -223,9 +244,6 @@ $sentance-font-size-small: 1rem;
     @include highlight-text-bold();
     color: $white;
     font-size: $sentance-font-size;
-    @include respond-to("small") {
-      font-size: $sentance-font-size-small;
-    }
     display: inline-block;
   }
 }
@@ -235,9 +253,6 @@ $sentance-font-size-small: 1rem;
     @include highlight-text();
     color: rgba(255, 255, 255, 0.5);
     font-size: $sentance-font-size;
-    @include respond-to("small") {
-      font-size: $sentance-font-size-small;
-    }
     line-height: 160%;
     animation: delayShowAndSliceIn 1.5s ease forwards 6s;
     white-space: normal;
@@ -250,9 +265,6 @@ $sentance-font-size-small: 1rem;
     & > span,
     & > i {
       font-size: $sentance-font-size;
-      @include respond-to("small") {
-        font-size: $sentance-font-size-small;
-      }
       font-style: normal;
       display: inline;
     }
@@ -282,11 +294,11 @@ $sentance-font-size-small: 1rem;
       color: $cl-accent1;
       @include std-text-bold();
       text-decoration: none;
-      font-size: 1rem;
       transition: filter 250ms linear;
       cursor: pointer;
       transform: translateX(1000px);
       animation: delayShowAndSliceIn 500ms ease forwards 14s;
+      font-size: $sentance-font-size;
 
       &:hover {
         filter: blur(1px);

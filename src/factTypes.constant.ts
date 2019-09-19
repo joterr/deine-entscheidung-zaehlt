@@ -1,8 +1,9 @@
 export const FACT_TYPES_CONST = {
   HUHNER: {
     ID: "huhner",
-    SINGULAR: "Huhn",
-    PLURAL: "Hühner",
+    LABEL_1: " Huhn",
+    LABEL_10: " Hühner",
+    LABEL: " Hühner",
     PER_YEAR: 930000000,
     INCLUDED_TYPES: "mit Küken, Legehennen und Hähnen",
     CALCULATION: "93 Millionen Hühner pro Jahr laut Schlachtzahlen",
@@ -15,8 +16,9 @@ export const FACT_TYPES_CONST = {
   },
   SCHWEINE: {
     ID: "schweine",
-    SINGULAR: "Schwein",
-    PLURAL: "Schweine",
+    LABEL_1: " Schwein",
+    LABEL_10: " Schweine",
+    LABEL: " Schweine",
     PER_YEAR: 57865000,
     CALCULATION: "93 Millionen Schweine pro Jahr laut Schlachtzahlen",
     SOURCES: [
@@ -28,8 +30,9 @@ export const FACT_TYPES_CONST = {
   },
   FISCHE: {
     ID: "fische",
-    SINGULAR: "Fisch",
-    PLURAL: "Fische",
+    LABEL_1: " Fisch",
+    LABEL_10: " Fische",
+    LABEL: " Fische",
     PER_YEAR: 1100000000 / 2,
     CALCULATION: "93 Millionen Tonnen Fisch pro Jahr laut XYZ, Durchschnitt von X Gramm pro Fisch",
     INCLUDED_TYPES: "mit Lachs, Seelachs, Hering, Thunfisch und Forelle",
@@ -42,8 +45,9 @@ export const FACT_TYPES_CONST = {
   },
   TRUTHAHNER: {
     ID: "truthahner",
-    SINGULAR: "Truthahn",
-    PLURAL: "Truthähner",
+    LABEL_1: " Truthahn",
+    LABEL_10: " Truthähner",
+    LABEL: " Truthähner",
     PER_YEAR: 467000000 / 13.25,
     CALCULATION: "93 Millionen Truthähner pro Jahr laut Schlachtzahlen",
     SOURCES: [
@@ -55,8 +59,9 @@ export const FACT_TYPES_CONST = {
   },
   ENTEN: {
     ID: "enten",
-    SINGULAR: "Ente",
-    PLURAL: "Enten",
+    LABEL_1: " Ente",
+    LABEL_10: " Enten",
+    LABEL: " Enten",
     PER_YEAR: 36000000 / 2.5,
     CALCULATION: "93 Millionen Enten pro Jahr laut Schlachtzahlen",
     SOURCES: [
@@ -68,8 +73,9 @@ export const FACT_TYPES_CONST = {
   },
   RINDER: {
     ID: "rinder",
-    SINGULAR: "Rind",
-    PLURAL: "Rinder",
+    LABEL_1: " Rind",
+    LABEL_10: " Rinder",
+    LABEL: " Rinder",
     PER_YEAR: 35010000,
     CALCULATION: "93 Millionen Rinder pro Jahr laut Schlachtzahlen",
     SOURCES: [
@@ -81,8 +87,9 @@ export const FACT_TYPES_CONST = {
   },
   SCHAFE: {
     ID: "schafe",
-    SINGULAR: "Schaf",
-    PLURAL: "Schafe",
+    LABEL_1: " Schaf",
+    LABEL_10: " Schafe",
+    LABEL: " Schafe",
     PER_YEAR: 1030400,
     SOURCES: [
       {
@@ -93,8 +100,9 @@ export const FACT_TYPES_CONST = {
   },
   PFERDE: {
     ID: "pferde",
-    SINGULAR: "Pferd",
-    PLURAL: "Pferde",
+    LABEL_1: " Pferd",
+    LABEL_10: " Pferde",
+    LABEL: " Pferde",
     PER_YEAR: 7100,
     CALCULATION: "93 Millionen Pferde pro Jahr laut Schlachtzahlen",
     SOURCES: [
@@ -106,9 +114,10 @@ export const FACT_TYPES_CONST = {
   },
   ZIEGEN: {
     ID: "ziegen",
-    SINGULAR: "Ziege",
+    LABEL_1: " Ziege",
+    LABEL_10: " Ziegen",
+    LABEL: " Ziegen",
     COUNT_ONE: "eine",
-    PLURAL: "Ziegen",
     PER_YEAR: 20400,
     CALCULATION: "93 Millionen Ziegen pro Jahr laut Schlachtzahlen",
     SOURCES: [
@@ -120,8 +129,8 @@ export const FACT_TYPES_CONST = {
   },
   GULLE: {
     ID: "gulle",
-    SINGULAR: "Tonne Gülle",
-    PLURAL: "Tonnen Gülle",
+    LABEL_10: " Tonnen Gülle",
+    LABEL: "t Gülle",
     PER_YEAR: 742000000,
     UNIT: "Tonnen",
     NAME: "Gülle",
@@ -135,8 +144,10 @@ export const FACT_TYPES_CONST = {
   },
   SOY: {
     ID: "soy",
-    SINGULAR: "Tonne Gen-Soja-Import",
-    PLURAL: "Tonnen Gen-Soja-Import",
+    LABEL_1: " Tonne Gen-Soja-Import",
+    LABEL_10: " Tonnen Gen-Soja-Import",
+    LABEL: "t Gen-Soja-Import",
+    COUNT_ONE: "eine",
     PER_YEAR: 6000000,
     UNIT: "Tonnen",
     NAME: "Gen-Soja",
@@ -155,9 +166,10 @@ export const FACT_TYPES_CONST = {
   },
   ANTIBIOTIKA: {
     ID: "antibiotika",
-    SINGULAR: "Gramm Antibiotika",
-    PLURAL: "Gramm Antibiotika",
-    PER_YEAR: 186862000,
+    LABEL_1: " Milligramm Antibiotika",
+    LABEL_10: " Milligramm Antibiotika",
+    LABEL: "mg Antibiotika",
+    PER_YEAR: 733000000000,
     UNIT: "Gramm",
     NAME: "Antibiotika",
     CALCULATION: "93 Millionen Antibiotika pro Jahr laut Schlachtzahlen",
@@ -170,8 +182,9 @@ export const FACT_TYPES_CONST = {
   },
   CO2: {
     ID: "co2",
-    SINGULAR: "Tonne CO<sub>2</sub>-Äquivalente",
-    PLURAL: "Tonnen CO<sub>2</sub>-Äquivalente",
+    LABEL_1: " Tonne CO<sub>2</sub>-Äquivalente",
+    LABEL_10: " Tonnen CO<sub>2</sub>-Äquivalente",
+    LABEL: "t CO<sub>2</sub>-Äquivalente",
     PER_YEAR: 120000000,
     UNIT: "Tonnen",
     NAME: "CO<sub>2</sub>-Äquivalente",

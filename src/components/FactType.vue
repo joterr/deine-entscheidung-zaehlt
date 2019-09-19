@@ -4,7 +4,7 @@
     v-bind:class="{ opened: active && active.ID === type.ID }"
     v-on:click="$emit('show-details', type)"
   >
-    <span>{{makeLocaleInteger(counted, type.COUNT_ONE)}} <span v-html="counted <= 1 ? type.SINGULAR : type.PLURAL"></span></span>
+    <span>{{makeLocaleInteger(counted, type.COUNT_ONE)}}<span v-html="counted <= 1 ? type.LABEL_1 : counted < 10 ? type.LABEL_10 : type.LABEL"></span></span>
   </span>
 </template>
 
