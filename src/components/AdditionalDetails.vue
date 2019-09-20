@@ -19,7 +19,7 @@
           </h1>
           <h2 class="animate">
             <span v-if="activeType.UNIT">{{activeType.UNIT}}&nbsp;</span>
-            <span v-html="activeType.UNIT ? activeType.NAME : activeType.PLURAL"></span>
+            <span v-html="activeType.UNIT ? activeType.NAME : activeType.LABEL"></span>
             <span class="included-types-annotation" v-if="activeType.INCLUDED_TYPES">*</span>
           </h2>
           <div
@@ -227,7 +227,7 @@ export default class AdditionalDetails extends Vue {
       }
 
       @include respond-to("small") {
-        font-size: 5rem;
+        font-size: 4.75rem;
         word-break: break-word;
         padding-top: 0.75rem;
         padding-bottom: 0.75rem;
@@ -238,7 +238,7 @@ export default class AdditionalDetails extends Vue {
       font-size: 3.5rem;
 
       @include respond-to("small") {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
       }
     }
 

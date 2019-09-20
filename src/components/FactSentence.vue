@@ -146,10 +146,10 @@ export default class FactSentence extends Vue {
     if (minutes > 0) {
       pastTimeString = minutes === 1 ? "einer Minute" : minutes + " Minuten";
     }
-    if (time > 60) {
+    if (minutes > 0 && seconds !== 0) {
       pastTimeString += " und ";
     }
-    if (seconds > 0 || time > 60) {
+    if (seconds > 0 && seconds !== 0) {
       pastTimeString +=
         (seconds === 1 ? "einer" : seconds) +
         " Sekunde" +
@@ -288,7 +288,7 @@ $sentance-font-size: 1.125rem;
 
   .show-truth {
     display: block;
-    margin-top: 2.5em;
+    margin-top: 3.125rem;
     width: 15rem;
     transform: translateX(0) !important;
     overflow: hidden;
@@ -297,12 +297,12 @@ $sentance-font-size: 1.125rem;
       display: block;
       color: $cl-accent1;
       @include std-text-bold();
+      font-size: 1rem;
       text-decoration: none;
       transition: filter 250ms linear;
       cursor: pointer;
       transform: translateX(1000px);
       animation: delayShowAndSliceIn 500ms ease forwards 14s;
-      font-size: $sentance-font-size;
 
       &:hover {
         filter: blur(1px);

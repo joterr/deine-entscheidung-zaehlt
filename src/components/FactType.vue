@@ -4,7 +4,7 @@
     v-bind:class="{ opened: active && active.ID === type.ID }"
     v-on:click="$emit('show-details', type)"
   >
-    <span>{{makeLocaleInteger(counted, type.COUNT_ONE)}}<span v-html="counted <= 1 ? type.LABEL_1 : counted < 10 ? type.LABEL_10 : type.LABEL"></span></span>
+    <span>{{makeLocaleInteger(counted, type.COUNT_ONE)}} <span v-html="counted <= 1 ? type.LABEL_1 : counted < 10 ? type.LABEL_10 : type.LABEL"></span></span>
   </span>
 </template>
 
@@ -28,9 +28,10 @@ export default class AdditionalDetails extends Vue {
   }
 
   private mounted() {
+      const yearly: number = this.type.FACTOR ? this.type.PER_YEAR * this.type.FACTOR : this.type.PER_YEAR;
       setInterval(() => {
         this.counted += 1;
-      }, this.getMillisecondsPerCountUp(this.type.PER_YEAR));
+      }, this.getMillisecondsPerCountUp(yearly));
   }
 
   private getMillisecondsPerCountUp(val: number): number {
@@ -49,16 +50,28 @@ span.linked-detail {
   display: inline-block;
   color: $white;
   @include highlight-text-bold();
-  transition: 500ms ease font-size;
+  transition: 300ms ease;
+  position: relative;
 
   span {
     white-space: nowrap;
   }
 
-  &:hover,
-  &.opened {
-    text-decoration: underline;
+  &:hover {
     cursor: pointer;
+    color: #000;
+
+    &:after {
+      content:"";
+      position: absolute;
+      top: .125rem;
+      left: -.125rem;;
+      right: -.125rem;
+      bottom: .125rem;
+      z-index: -1;
+      border-radius: .0125rem;
+      background-color: #fff;
+    }
   }
 }
 </style>

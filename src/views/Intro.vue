@@ -10,11 +10,11 @@
     </div>
     <div class="truth-overlay" v-bind:class="{ 'opened': isVisibleTruth }">
       <div class="layout-wrapper">
-        <div class="back-link" v-on:click="hideTruth">&laquo; zur&uuml;ck</div>
+        <div class="back-link" v-on:click="hideTruth">zur&uuml;ck</div>
         <div class="content">
           <div class="heading">
-            <h1>Was Du isst</h1>
-            <h1>ist deine Entscheidung!</h1>
+            <h1>Einmal entscheiden,</h1>
+            <h1>jeden Tag viel bewirken.</h1>
           </div>
           <div class="explanation">
             <p
@@ -176,7 +176,6 @@ export default class Intro extends Vue {
   background-color: $cl-accent1;
   height: 100vh;
   width: 100vw;
-  padding-top: 6vh;
   overflow: hidden;
   overflow-y: scroll;
 
@@ -186,11 +185,11 @@ export default class Intro extends Vue {
   }
 
   .layout-wrapper {
-    width: 45vw;
+    width: 40vw;
     margin: 0 auto;
 
     @include respond-to("large") {
-      width: 60vw;
+      width: 55vw;
     }
 
     @include respond-to("medium") {
@@ -203,38 +202,60 @@ export default class Intro extends Vue {
   }
 
   .back-link {
+    position: fixed;
+    top: 2.5em;
+    left: 30vw;
+    margin-left: -6.5em;
     font-size: small;
     @include std-text-bold();
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.25);
     cursor: pointer;
     opacity: 0;
-    animation: delayShow 500ms ease forwards 2s;
+    animation: delayShow 500ms ease forwards 10s;
+    border-radius: .0125rem;
+    padding: 0.25rem;
+    transition: ease 300ms;
+
+    @include respond-to("large") {
+      left: 22.5vw;
+    }
+
+    @include respond-to("medium") {
+      left: 12.5vw;
+    }
+
+    @include respond-to("small") {
+      left: 7vw;
+    }
 
     &:hover {
-      color: rgba(255, 255, 255, 1);
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: underline;
     }
   }
 
   .content {
-    margin-top: 6rem;
+    margin-top: 12vh;
     margin-bottom: 12rem;
 
     .heading {
       transform: translateY(100vh);
       animation: slideUp 0.5s ease forwards 0.65s;
+      margin-bottom: 3.5rem;
 
       h1 {
-        margin-left: -0.1em;
-        line-height: 115%;
+        margin-left: -0.1rem;
+        line-height: 110%;
         color: $white;
-        font-size: 6.5em;
-        @include std-text-bold();
+        font-size: 6.5rem;
+        @include std-text-bold-italic();
+        width: 90%;
 
         @include respond-to("medium") {
-          font-size: 5em;
+          font-size: 4rem;
         }
         @include respond-to("small") {
-          font-size: 4em;
+          font-size: 3.5rem;
         }
       }
     }
@@ -272,6 +293,7 @@ export default class Intro extends Vue {
 
     h2,
     h3 {
+      @include std-text-bold-italic();
       margin-left: -0.1em;
       line-height: 120%;
       font-size: medium;
