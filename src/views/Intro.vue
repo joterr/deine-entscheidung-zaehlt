@@ -252,10 +252,10 @@ export default class Intro extends Vue {
         width: 90%;
 
         @include respond-to("medium") {
-          font-size: 4rem;
+          font-size: 5rem;
         }
         @include respond-to("small") {
-          font-size: 3.5rem;
+          font-size: 4rem;
         }
       }
     }
