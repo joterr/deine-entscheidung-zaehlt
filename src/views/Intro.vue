@@ -185,15 +185,15 @@ export default class Intro extends Vue {
   }
 
   .layout-wrapper {
-    width: 40vw;
+    width: 30vw;
     margin: 0 auto;
 
     @include respond-to("large") {
-      width: 55vw;
+      width: 45vw;
     }
 
     @include respond-to("medium") {
-      width: 75vw;
+      width: 45vw;
     }
 
     @include respond-to("small") {
@@ -204,28 +204,27 @@ export default class Intro extends Vue {
   .back-link {
     position: fixed;
     top: 2.5em;
-    left: 30vw;
-    margin-left: -6.5em;
+    left: 35vw;
+    margin-left: -6em;
     font-size: small;
     @include std-text-bold();
     color: rgba(255, 255, 255, 0.25);
     cursor: pointer;
     opacity: 0;
     animation: delayShow 500ms ease forwards 10s;
-    border-radius: .0125rem;
-    padding: 0.25rem;
     transition: ease 300ms;
 
     @include respond-to("large") {
-      left: 22.5vw;
+      left: 27.5vw;
     }
 
     @include respond-to("medium") {
-      left: 12.5vw;
+      left: 27.5vw;
     }
 
     @include respond-to("small") {
-      left: 7vw;
+      left: 3.25vh;
+      margin-left: 0;
     }
 
     &:hover {
@@ -237,25 +236,35 @@ export default class Intro extends Vue {
   .content {
     margin-top: 12vh;
     margin-bottom: 12rem;
+    position: relative;
 
     .heading {
       transform: translateY(100vh);
       animation: slideUp 0.5s ease forwards 0.65s;
       margin-bottom: 3.5rem;
+      width: 150%;
+
+      @include respond-to("small") {
+        width: 100%;
+      }
 
       h1 {
         margin-left: -0.1rem;
         line-height: 110%;
         color: $white;
-        font-size: 6.5rem;
+        font-size: 7rem;
         @include std-text-bold-italic();
-        width: 90%;
+
+        @include respond-to("large") {
+          font-size: 6rem;
+        }
 
         @include respond-to("medium") {
           font-size: 5rem;
         }
+
         @include respond-to("small") {
-          font-size: 4rem;
+          font-size: 3.5rem;
         }
       }
     }
@@ -263,21 +272,8 @@ export default class Intro extends Vue {
     .explanation,
     .additional-info {
       margin-top: 3rem;
-      width: 66%;
       transform: translateY(100vh);
       animation: slideUp 0.5s ease forwards 0.85s;
-
-      @include respond-to("large") {
-        width: 70%;
-      }
-
-      @include respond-to("medium") {
-        width: 80%;
-      }
-
-      @include respond-to("small") {
-        width: 85%;
-      }
 
       p {
         margin-top: 0.5em;
