@@ -244,7 +244,7 @@ $sentance-font-size: 1.125rem;
   }
 
   h1 {
-    animation: delayShowAndSliceInOut 5s ease-in-out forwards 1s;
+    animation: delayShowAndSliceInOut 3s ease-in-out forwards 1s;
     @include highlight-text-bold();
     color: $white;
     font-size: $sentance-font-size;
@@ -258,7 +258,7 @@ $sentance-font-size: 1.125rem;
     color: rgba(255, 255, 255, 0.5);
     font-size: $sentance-font-size;
     line-height: 160%;
-    animation: delayShowAndSliceIn 1.5s ease forwards 6s;
+    animation: delayShowAndSliceIn 1.25s ease forwards 3.5s;
     white-space: normal;
     word-wrap: break-word;
 
@@ -282,7 +282,7 @@ $sentance-font-size: 1.125rem;
 
     &.additional-info {
       margin-top: 1.25rem;
-      animation: delayShowAndSliceIn 1.5s ease forwards 8.5s;
+      animation: delayShowAndSliceIn 1.25s ease forwards 4.5s;
     }
   }
 
@@ -302,7 +302,7 @@ $sentance-font-size: 1.125rem;
       transition: filter 250ms linear;
       cursor: pointer;
       transform: translateX(1000px);
-      animation: delayShowAndSliceIn 500ms ease forwards 14s;
+      animation: delayShowAndSliceIn 500ms ease forwards 8s;
 
       &:hover {
         filter: blur(1px);
