@@ -100,7 +100,7 @@ export default class AdditionalDetails extends Vue {
   left: 50vw;
   color: #000;
   transform: translateX(-50%) translateY(-50%);
-  width: 40vw;
+  width: 42vw;
   transition: opacity ease 500ms;
   background-color: #fff;
   padding: 2.5rem;
@@ -109,16 +109,13 @@ export default class AdditionalDetails extends Vue {
   z-index: 999;
   animation: animateIn 0.75s ease forwards;
 
-  @include respond-to("small") {
-    padding: 4.5rem 1.5rem 1.25rem 1.5rem;
-  }
-
   @include respond-to("medium") {
     width: 80vw;
   }
 
   @include respond-to("small") {
-    width: 86vw;
+    padding: 4.5rem 1.5rem 1.25rem 1.5rem;
+    width: 90vw;
   }
 
   .close {
@@ -228,7 +225,6 @@ export default class AdditionalDetails extends Vue {
 
       @include respond-to("small") {
         font-size: 4.75rem;
-        word-break: break-word;
         padding-top: 0.75rem;
         padding-bottom: 0.75rem;
       }

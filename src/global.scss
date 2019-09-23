@@ -234,7 +234,7 @@ body {
 
     @include respond-to('small') {
       padding: 0;
-      padding-bottom: 2rem;
+      padding-bottom: 1.25rem;
     }
 
     &.col-2 {
@@ -253,7 +253,7 @@ body {
 
     .col {
       padding: 0;
-      padding-bottom: 2rem;
+      padding-bottom: 1.25rem;
     }
   }
 }

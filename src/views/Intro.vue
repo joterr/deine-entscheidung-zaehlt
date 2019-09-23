@@ -44,6 +44,12 @@
                 </li>
                 <li>
                   <a
+                    href="https://www.nicezutieren.de"
+                    target="_blanc"
+                  >#NICEZUTIEREN (30-Tage-Vegan-Guide)</a> von PETA
+                </li>
+                <li>
+                  <a
                     href="https://www.petazwei.de/web/einkaufsguide"
                     target="_blanc"
                   >Der vegane Einkaufsguide – PETA ZWEI</a> von PETA ZWEI
@@ -241,18 +247,24 @@ export default class Intro extends Vue {
     .heading {
       transform: translateY(100vh);
       animation: slideUp 0.5s ease forwards 0.65s;
-      margin-bottom: 3.5rem;
+      margin-bottom: 5rem;
       width: 150%;
+
+      @include respond-to("medium") {
+        width: 100%;
+        margin-bottom: 3.5rem;
+      }
 
       @include respond-to("small") {
         width: 100%;
+        margin-bottom: 2.5rem;
       }
 
       h1 {
         margin-left: -0.1rem;
-        line-height: 110%;
+        line-height: 115%;
         color: $white;
-        font-size: 7rem;
+        font-size: 7.25rem;
         @include std-text-bold-italic();
 
         @include respond-to("large") {
@@ -271,13 +283,13 @@ export default class Intro extends Vue {
 
     .explanation,
     .additional-info {
-      margin-top: 3rem;
+      margin-top: 3.75rem;
       transform: translateY(100vh);
       animation: slideUp 0.5s ease forwards 0.85s;
 
       p {
         margin-top: 0.5em;
-        margin-bottom: 1.5em;
+        margin-bottom: 1.25em;
         color: $dark;
 
         strong,
@@ -292,14 +304,15 @@ export default class Intro extends Vue {
       @include std-text-bold-italic();
       margin-left: -0.1em;
       line-height: 120%;
-      font-size: medium;
+      font-size: x-large;
       color: $dark;
-      margin-top: 0.5em;
+      margin-top: 1.25em;
+      margin-bottom: 0.5em;
     }
 
     h3 {
-      font-size: small;
-      text-transform: uppercase;
+      margin-top: 0.5em;
+      font-size: large;
     }
 
     ul.info-list-type {
