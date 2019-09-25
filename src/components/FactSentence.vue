@@ -178,7 +178,7 @@ export default class FactSentence extends Vue {
 </script>
 
 <style scoped lang="scss">
-$sentance-font-size: 1.125rem;
+$sentance-font-size: 1.15rem;
 
 .fact-wrapper {
   position: relative;
@@ -188,7 +188,7 @@ $sentance-font-size: 1.125rem;
     position: absolute;
     top: 50vh;
     left: 50vw;
-    width: 40vw;
+    width: 38vw;
     transform: translate(-50%, -50%);
 
     @include respond-to("large") {

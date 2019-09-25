@@ -100,7 +100,7 @@ export default class AdditionalDetails extends Vue {
   left: 50vw;
   color: #000;
   transform: translateX(-50%) translateY(-50%);
-  width: 42vw;
+  width: 40vw;
   transition: opacity ease 500ms;
   background-color: #fff;
   padding: 2.5rem;

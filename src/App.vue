@@ -16,6 +16,8 @@ footer {
   color: rgba(255, 255, 255, 0.5);
   @include std-text();
   font-size: x-small;
+  opacity: 0;
+  animation: animateIn 0.5s ease forwards 4s;
 
   @include respond-to("medium") {
     right: 0;
@@ -41,6 +43,16 @@ footer {
       @include std-text-bold();
       opacity: 1;
     }
+  }
+}
+
+
+@keyframes animateIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 </style>
