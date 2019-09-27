@@ -41,7 +41,7 @@ export default class AnimalSprinkler extends Vue {
 
   private readonly animalWidthPx: number = 34;
   private readonly animalHeightPx: number = 34;
-  private readonly animalOpacity: number = 0.1;
+  private readonly animalOpacity: number = 0.095;
   private readonly animalsPerSecond: number = 38;
 
   private animalOrder: string[] = [

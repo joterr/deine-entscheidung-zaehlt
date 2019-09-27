@@ -191,6 +191,10 @@ $sentance-font-size: 1.15rem;
     width: 38vw;
     transform: translate(-50%, -50%);
 
+    @include respond-to("x-large") {
+      width: 48vw;
+    }
+
     @include respond-to("large") {
       width: 80vw;
     }
