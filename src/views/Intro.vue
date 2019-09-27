@@ -159,19 +159,6 @@ export default class Intro extends Vue {
 </script>
 
 <style scoped lang="scss">
-.fact-wrapper {
-  filter: blur(0.125rem);
-}
-
-.intro-page:before {
-  content:"";
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
 .animal-wrapper {
   position: absolute;
   bottom: 0;
