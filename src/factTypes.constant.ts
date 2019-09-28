@@ -4,13 +4,17 @@ export const FACT_TYPES_CONST = {
     LABEL_1: "Huhn",
     LABEL_10: "Hühner",
     LABEL: "Hühner",
-    PER_YEAR: 930000000,
+    PER_YEAR: 930000000, // 45260000 im Müll
     INCLUDED_TYPES: "mit Küken, Legehennen und Hähnen",
     CALCULATION: "93 Millionen Hühner pro Jahr laut Schlachtzahlen",
     SOURCES: [
       {
         SOURCE: "Schlachtzahlen des BMI, 2018",
         SOURCE_URL: "https://www.google.de/"
+      },
+      {
+        SOURCE: "Fleischatlas Heinrich Böll Stiftung, 2018",
+        SOURCE_URL: "https://www.boell.de/sites/default/files/fleischatlas_2018_iii_web.pdf"
       }
     ]
   },
@@ -19,12 +23,16 @@ export const FACT_TYPES_CONST = {
     LABEL_1: "Schwein",
     LABEL_10: "Schweine",
     LABEL: "Schweine",
-    PER_YEAR: 57865000,
+    PER_YEAR: 57865000, // 4098950 im Müll
     CALCULATION: "93 Millionen Schweine pro Jahr laut Schlachtzahlen",
     SOURCES: [
       {
         SOURCE: "Fisch-Informationszentrums (FIZ) – Quelle: https://www.svz.de/20935212",
         SOURCE_URL: "https://www.google.de/"
+      },
+      {
+        SOURCE: "Fleischatlas Heinrich Böll Stiftung, 2018",
+        SOURCE_URL: "https://www.boell.de/sites/default/files/fleischatlas_2018_iii_web.pdf"
       }
     ]
   },
@@ -48,12 +56,16 @@ export const FACT_TYPES_CONST = {
     LABEL_1: "Truthahn",
     LABEL_10: "Truthähner",
     LABEL: "Truthähner",
-    PER_YEAR: 467000000 / 13.25,
+    PER_YEAR: 467000000 / 13.25, // 2701000 im Müll
     CALCULATION: "93 Millionen Truthähner pro Jahr laut Schlachtzahlen",
     SOURCES: [
       {
         SOURCE: "Schlachtzahlen des BMI, 2018",
         SOURCE_URL: "https://www.google.de/"
+      },
+      {
+        SOURCE: "Fleischatlas Heinrich Böll Stiftung, 2018",
+        SOURCE_URL: "https://www.boell.de/sites/default/files/fleischatlas_2018_iii_web.pdf"
       }
     ]
   },
@@ -76,12 +88,16 @@ export const FACT_TYPES_CONST = {
     LABEL_1: "Rind",
     LABEL_10: "Rinder",
     LABEL: "Rinder",
-    PER_YEAR: 35010000,
+    PER_YEAR: 35010000, // 229950 im Müll
     CALCULATION: "93 Millionen Rinder pro Jahr laut Schlachtzahlen",
     SOURCES: [
       {
         SOURCE: "Schlachtzahlen des BMI, 2018",
         SOURCE_URL: "https://www.google.de/"
+      },
+      {
+        SOURCE: "Fleischatlas Heinrich Böll Stiftung, 2018",
+        SOURCE_URL: "https://www.boell.de/sites/default/files/fleischatlas_2018_iii_web.pdf"
       }
     ]
   },

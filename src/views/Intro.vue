@@ -276,7 +276,7 @@ export default class Intro extends Vue {
         }
 
         @include respond-to("small") {
-          font-size: 3.5rem;
+          font-size: 3.75rem;
         }
       }
     }
