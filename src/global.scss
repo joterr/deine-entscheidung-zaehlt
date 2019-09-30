@@ -172,7 +172,7 @@ $cl-accent1: #22da79;
 $cl-accent2: #cbbd5a;
 
 $page-padding: 10vh 3vw;
-$page-padding-medium: 12.5vh 8vw 25vh 8vw;
+$page-padding-medium: 20vh 8vw 25vh 8vw;
 
 // ### HEADINGS, TXT and PAGES ###
 
@@ -262,18 +262,6 @@ body {
     padding: $page-padding-medium;
   }
 
-  h1 {
-    font-size: 1.75rem;
-  }
-
-  h2 {
-    font-size: 1.25rem;
-  }
-
-  h3 {
-    font-size: 1.125rem;
-  }
-
   .back-link {
     position: fixed;
     top: 4vh;
@@ -301,10 +289,21 @@ body {
       width: 100%;
     }
 
-    h1,
-    h2,
+    h1 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    h2 {
+      font-size: 1.125rem;
+      margin-top: 2rem;
+      margin-bottom: .75rem;
+    }
+  
     h3 {
-      margin-top: 1.5em;
+      font-size: 1rem;
+      margin-top: 1.125rem;
+      margin-bottom: .5rem;
     }
 
     p {
