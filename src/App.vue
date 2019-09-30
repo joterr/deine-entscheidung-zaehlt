@@ -11,7 +11,7 @@
 footer {
   position: fixed;
   z-index: 999999;
-  bottom: 1.25rem;
+  bottom: calc(1.125rem - 0.5rem);
   right: 1.25rem;
   color: rgba(255, 255, 255, 0.5);
   @include std-text();
@@ -27,12 +27,13 @@ footer {
   }
 
   a {
+    position: relative;
     @include std-text();
     font-size: x-small;
     color: $white;
     text-transform: uppercase;
     display: inline-block;
-    padding: 0 .35rem;
+    padding: 0.5rem .35rem;
     opacity: 0.65;
 
     @include respond-to("small") {
