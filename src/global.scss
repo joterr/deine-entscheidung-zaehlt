@@ -171,8 +171,8 @@ $dark: #000000;
 $cl-accent1: #22da79;
 $cl-accent2: #cbbd5a;
 
-$page-padding: 10vh 4vw;
-$page-padding-medium: 5vh 6vw;
+$page-padding: 10vh 3vw;
+$page-padding-medium: 12.5vh 8vw 25vh 8vw;
 
 // ### HEADINGS, TXT and PAGES ###
 
@@ -254,9 +254,25 @@ body {
 
 .static-page {
   padding: $page-padding;
-  padding-top: 15vh;
+  padding-top: 20vh;
   background-color: $cl-accent2;
   min-height: 100vh;
+
+  @include respond-to('small') {
+    padding: $page-padding-medium;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1.125rem;
+  }
 
   .back-link {
     position: fixed;
@@ -265,11 +281,11 @@ body {
 
     a {
       @include highlight-text();
-      font-size: 2em;
+      font-size: 3.25rem;
       color: $white;
 
       @include respond-to('small') {
-        font-size: 1.4em;
+        font-size: 2em;
       }
     }
   }
@@ -293,6 +309,7 @@ body {
 
     p {
       color: $dark;
+      font-size: small;
     }
 
     ul {

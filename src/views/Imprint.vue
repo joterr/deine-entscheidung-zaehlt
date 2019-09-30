@@ -1,5 +1,5 @@
 <template>
-  <div class="static-page privacy">
+  <div class="static-page imprint">
       <span class="back-link"><router-link to="/">&laquo; Zurück zur Wahrheit</router-link></span>
       <div class="content">
       <h1>Impressum</h1>

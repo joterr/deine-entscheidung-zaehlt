@@ -1,5 +1,5 @@
 <template>
-  <div class="static-page privacy">
+  <div class="static-page sources">
     <span class="back-link">
       <router-link to="/">&laquo; Zurück zur Wahrheit</router-link>
     </span>
