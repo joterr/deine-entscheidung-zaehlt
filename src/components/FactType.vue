@@ -1,10 +1,13 @@
 <template>
   <span
     class="linked-detail"
-    v-bind:class="{ opened: active && active.ID === type.ID }"
+    v-bind:class="{ opened: (active && active.ID === type.ID), hovered: highlight }"
     v-on:click="$emit('show-details', type)"
   >
-    <span>{{makeLocaleInteger(counted, type.COUNT_ONE)}} <span v-html="counted <= 1 ? type.LABEL_1 : counted < 10 ? type.LABEL_10 : type.LABEL"></span></span>
+    <span>
+      {{makeLocaleInteger(counted, type.COUNT_ONE)}}
+      <span v-html="counted <= 1 ? type.LABEL_1 : counted < 10 ? type.LABEL_10 : type.LABEL"></span>
+    </span>
   </span>
 </template>
 
@@ -12,7 +15,7 @@
 import { Component, Provide, Vue } from "vue-property-decorator";
 
 @Component({
-  props: ["type", "active"]
+  props: ["type", "active", "highlight"]
 })
 export default class AdditionalDetails extends Vue {
   @Provide()
@@ -23,15 +26,28 @@ export default class AdditionalDetails extends Vue {
 
   public makeLocaleInteger(val: number, one: string = "ein"): string {
     const intedVal: number = this.makeInt(val);
-    const counters: string[] = ["0", one, "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun"];
+    const counters: string[] = [
+      "0",
+      one,
+      "zwei",
+      "drei",
+      "vier",
+      "fünf",
+      "sechs",
+      "sieben",
+      "acht",
+      "neun"
+    ];
     return counters[intedVal] || intedVal.toLocaleString("de-DE");
   }
 
   private mounted() {
-      const yearly: number = this.type.FACTOR ? this.type.PER_YEAR * this.type.FACTOR : this.type.PER_YEAR;
-      setInterval(() => {
-        this.counted += 1;
-      }, this.getMillisecondsPerCountUp(yearly));
+    const yearly: number = this.type.FACTOR
+      ? this.type.PER_YEAR * this.type.FACTOR
+      : this.type.PER_YEAR;
+    setInterval(() => {
+      this.counted += 1;
+    }, this.getMillisecondsPerCountUp(yearly));
   }
 
   private getMillisecondsPerCountUp(val: number): number {
@@ -57,20 +73,67 @@ span.linked-detail {
     white-space: nowrap;
   }
 
-  &:hover {
+  &:hover,
+  &.opened {
     cursor: pointer;
     color: #000;
 
     &:after {
-      content:"";
+      content: "";
       position: absolute;
-      top: .125rem;
-      left: -.125rem;;
-      right: -.125rem;
-      bottom: .125rem;
+      top: 0.125rem;
+      left: -0.125rem;
+      right: -0.125rem;
+      bottom: 0.125rem;
       z-index: -1;
-      border-radius: .0125rem;
+      border-radius: 0.0125rem;
       background-color: #fff;
+    }
+  }
+
+  &.hovered {
+    animation: changeFontColor linear .2s 10s;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0.125rem;
+      left: -0.125rem;
+      right: -0.125rem;
+      bottom: 0.125rem;
+      z-index: -1;
+      border-radius: 0.0125rem;
+      animation: changeBackground linear .2s 10s;   
+    }
+  }
+
+  @keyframes changeFontColor {
+    0% {
+      color: $white;
+    }
+    30% {
+      color: #000;
+    }
+    60% {
+      color: #000;
+    }
+    100% {
+      color: $white;
+    }
+  }
+
+  @keyframes changeBackground {
+    0% {
+      background-color: transparent;
+    }
+    30% {
+      background-color: #fff;
+    }
+    60% {
+      background-color: #fff;
+    }
+    100% {
+      background-color: transparent;
     }
   }
 }

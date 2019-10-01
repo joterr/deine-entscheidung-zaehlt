@@ -22,11 +22,6 @@ export default new Router({
       component: () => import("./views/Sources.vue"),
     },
     {
-      path: "/datenschutz",
-      name: "privacy",
-      component: () => import("./views/Privacy.vue"),
-    },
-    {
       path: "/impressum",
       name: "imprint",
       component: () => import("./views/Imprint.vue"),

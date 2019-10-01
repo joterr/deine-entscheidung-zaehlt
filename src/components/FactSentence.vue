@@ -14,6 +14,7 @@
             <FactType
               v-bind:type="TYPES.HUHNER"
               v-bind:active="activeDetail"
+              v-bind:highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
@@ -21,6 +22,7 @@
             <FactType
               v-bind:type="TYPES.FISCHE"
               v-bind:active="activeDetail"
+              v-bind:highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
@@ -28,6 +30,7 @@
             <FactType
               v-bind:type="TYPES.SCHWEINE"
               v-bind:active="activeDetail"
+              v-bind:highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
@@ -35,6 +38,7 @@
             <FactType
               v-bind:type="TYPES.TRUTHAHNER"
               v-bind:active="activeDetail"
+              v-bind:highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
@@ -42,6 +46,7 @@
             <FactType
               v-bind:type="TYPES.RINDER"
               v-bind:active="activeDetail"
+              v-bind:highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType><span class="additional">, </span>
           </span>
@@ -49,6 +54,7 @@
             <FactType
               v-bind:type="TYPES.ENTEN"
               v-bind:active="activeDetail"
+              v-bind:highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
@@ -56,6 +62,7 @@
             <FactType
               v-bind:type="TYPES.SCHAFE"
               v-bind:active="activeDetail"
+              v-bind:highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
@@ -63,18 +70,21 @@
             <FactType
               v-bind:type="TYPES.ZIEGEN"
               v-bind:active="activeDetail"
+              v-bind:highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>
           </span> und <span class="additional">
             <FactType
               v-bind:type="TYPES.PFERDE"
               v-bind:active="activeDetail"
+              v-bind:highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>
           </span><span class="small-view">
             <FactType
               v-bind:type="TYPES.ENTEN"
               v-bind:active="activeDetail"
+              v-bind:highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>
           </span>
@@ -86,6 +96,7 @@
             <FactType
               v-bind:type="TYPES.SOY"
               v-bind:active="activeDetail"
+              v-bind:highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
@@ -93,6 +104,7 @@
             <FactType
               v-bind:type="TYPES.GULLE"
               v-bind:active="activeDetail"
+              v-bind:highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
@@ -100,12 +112,14 @@
             <FactType
               v-bind:type="TYPES.ANTIBIOTIKA"
               v-bind:active="activeDetail"
+              v-bind:highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>
           </span> und <span>
             <FactType
               v-bind:type="TYPES.CO2"
               v-bind:active="activeDetail"
+              v-bind:highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>
           </span>
@@ -136,6 +150,8 @@ export default class FactSentence extends Vue {
   private activeDetail = null;
   @Provide()
   private pastTime = 0;
+  @Provide()
+  private highlight = true;
 
   public getPastTimeString(time: number): string {
     let pastTimeString = "";
@@ -160,7 +176,9 @@ export default class FactSentence extends Vue {
 
   public showDetail(id: any) {
     this.activeDetail = id;
+    this.highlight = false;
   }
+
   public closeDetail() {
     this.activeDetail = null;
   }
