@@ -195,6 +195,12 @@ export const VIOLATIONS_HANDLING_SCANDALS = [
 
 export const HEALTH_BENEFITS = [
   {
+    desc: "Behörde stoppt Wurst-Produktion nach Todesfällen",
+    pub: "Süddeutsche Zeitung",
+    date: "02. Okt 2019",
+    link: "https://www.sueddeutsche.de/gesundheit/gesundheit-frankenberg-eder-behoerde-stoppt-wurst-produktion-nach-todesfaellen-dpa.urn-newsml-dpa-com-20090101-191002-99-129695"
+  },
+  {
     desc: "Fleisch von kranken Tieren",
     pub: "FAZ",
     date: "22. Sep 2016",
