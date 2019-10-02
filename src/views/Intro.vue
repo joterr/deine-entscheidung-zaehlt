@@ -215,7 +215,7 @@ export default class Intro extends Vue {
     margin-left: -6em;
     font-size: small;
     @include std-text-bold();
-    color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.35);
     cursor: pointer;
     opacity: 0;
     animation: delayShow 500ms ease forwards 10s;
