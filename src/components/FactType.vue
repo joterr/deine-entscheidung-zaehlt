@@ -92,7 +92,7 @@ span.linked-detail {
   }
 
   &.hovered {
-    animation: changeFontColor linear .2s 10s;
+    animation: changeFontColor linear 1.75s 16s;
 
     &:after {
       content: "";
@@ -103,7 +103,7 @@ span.linked-detail {
       bottom: 0.125rem;
       z-index: -1;
       border-radius: 0.0125rem;
-      animation: changeBackground linear .2s 10s;   
+      animation: changeBackground linear 1.75s 16s;   
     }
   }
 
@@ -111,10 +111,10 @@ span.linked-detail {
     0% {
       color: $white;
     }
-    30% {
+    15% {
       color: #000;
     }
-    60% {
+    90% {
       color: #000;
     }
     100% {
@@ -126,10 +126,10 @@ span.linked-detail {
     0% {
       background-color: transparent;
     }
-    30% {
+    15% {
       background-color: #fff;
     }
-    60% {
+    90% {
       background-color: #fff;
     }
     100% {
