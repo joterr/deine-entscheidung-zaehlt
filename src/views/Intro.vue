@@ -32,6 +32,13 @@
                 target="_blanc"
               >Vegan Kickstart</a> von PETA ZWEI.
             </p>
+            <ul class="citations">
+              <li><sup>1</sup><a target="_blanc" href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel">Bonfadelli, Heinz: Medien und Gesellschaft im Wandel (Stand: 06.10.2014). [19.04.2016].</a></li>
+              <li><sup>2</sup><a target="_blanc" href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel">Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a></li>
+              <li><sup>3</sup><a target="_blanc" href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel">Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a></li>
+              <li><sup>4</sup><a target="_blanc" href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel">Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a></li>
+              <li><sup>5</sup><a target="_blanc" href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel">Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a></li>
+            </ul>
           </div>
           <div class="row always additional-info">
             <div class="col">
@@ -54,6 +61,9 @@
                     href="https://www.petazwei.de/web/einkaufsguide"
                     target="_blanc"
                   >Der vegane Einkaufsguide – PETA ZWEI</a> von PETA ZWEI
+                </li>
+                <li>
+                  <a href="https://www.happycow.net/" target="_blanc">Auflistung veganer Restaurants</a> von HappyCow
                 </li>
                 <li>
                   <a href="https://www.petazwei.de/vegan-leben" target="_blanc">Vegan leben</a> von PETA ZWEI
@@ -344,6 +354,24 @@ a {
 
   &:hover {
     text-decoration: underline;
+  }
+}
+
+.citations {
+  display: block;
+  margin: .5rem 0;
+  padding: 0;
+
+  li {
+    padding-right: 0.25rem;
+  }
+
+  li, a {
+    display: inline;
+    @include std-text();
+    list-style-type: none;
+    font-size: x-small;
+    color: $dark;
   }
 }
 

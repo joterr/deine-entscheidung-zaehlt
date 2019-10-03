@@ -3,7 +3,7 @@
     <router-view />
     <footer>
       <nav><router-link to="/fakten" class="high">Weitere Fakten</router-link>|<router-link to="/impressum">Impressum</router-link></nav>
-      <div class="green-energy"><span>Läuft mit 100% Grünem Strom</span></div>
+      <div class="green-energy"><span>Läuft mit 100% Grünem Strom.</span></div>
     </footer>
   </div>
 </template>
