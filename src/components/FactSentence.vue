@@ -318,16 +318,15 @@ $sentance-font-size: 1.15rem;
     span {
       display: block;
       color: $cl-accent1;
-      @include std-text-bold();
+      @include std-text-bold-italic();
       font-size: 1rem;
       text-decoration: none;
-      transition: filter 250ms linear;
       cursor: pointer;
       transform: translateX(1000px);
       animation: delayShowAndSliceIn 500ms ease forwards 8s;
 
       &:hover {
-        filter: blur(1px);
+        text-decoration: underline;
       }
     }
   }

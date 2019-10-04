@@ -28,19 +28,19 @@
           >*{{activeType.INCLUDED_TYPES}}</div>
           <div class="special-content" v-if="activeType.ID === TYPES.HUHNER.ID">
             <h4 class="intro">umgerechnet</h4>
-            <h4>24% für Eier,<br/>60% für Fleisch,<br/>16% sterben durch Krankheit &amp;<br/>5% landen direkt im Müll.</h4>
+            <h4>24% für Eier, 60% für Fleisch,<br/>16% sterben durch Krankheit<br/>&amp;5% landen direkt im Müll.</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.SCHWEINE.ID">
             <h4 class="intro">umgerechnet</h4>
-            <h4>80% für Fleisch,<br/>20% sterben durch Krankheit &amp;<br/>7% landen direkt im Müll.</h4>
+            <h4>80% für Fleisch, 20% sterben durch Krankheit<br/>&amp; 7% landen direkt im Müll.</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.TRUTHAHNER.ID">
             <h4 class="intro">umgerechnet</h4>
-            <h4>50% für Milch,<br/>60% für Fleisch,<br/>16% sterben durch Krankheit &amp;<br/>7% landen direkt im Müll.</h4>
+            <h4>50% für Milch, 60% für Fleisch,<br/>16% sterben durch Krankheit<br/>&amp; 7% landen direkt im Müll.</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.RINDER.ID">
             <h4 class="intro">umgerechnet</h4>
-            <h4>50% für Milch,<br/>60% für Fleisch,<br/>16% sterben durch Krankheit &amp;<br/>1% landen direkt im Müll.</h4>
+            <h4>50% für Milch, 60% für Fleisch,<br/>16% sterben durch Krankheit<br/>&amp; 1% landen direkt im Müll.</h4>
           </div>
           <div class="source-declaration">
             <div class="calculation">Berechnung: {{ activeType.CALCULATION }}</div>
@@ -253,6 +253,7 @@ export default class AdditionalDetails extends Vue {
     h4 {
       font-size: 1.5rem;
       padding: 0.25rem 0;
+      line-height: 140%;
 
       &.intro {
         @include std-text();
@@ -262,7 +263,7 @@ export default class AdditionalDetails extends Vue {
     }
 
     .timespan {
-      font-weight: 400;
+       @include std-text-bold();
     }
 
     .included-types {

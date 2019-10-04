@@ -280,17 +280,17 @@ export default class Intro extends Vue {
 
       h1 {
         margin-left: -0.1rem;
-        line-height: 115%;
+        line-height: 110%;
         color: $white;
-        font-size: 7.25rem;
+        font-size: 7.5rem;
         @include std-text-bold-italic();
 
         @include respond-to("large") {
-          font-size: 6rem;
+          font-size: 6.25rem;
         }
 
         @include respond-to("medium") {
-          font-size: 5rem;
+          font-size: 5.25rem;
         }
 
         @include respond-to("small") {
