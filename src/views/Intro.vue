@@ -142,6 +142,7 @@
             </div>
           </div>
         </div>
+        <span class="leaf"></span>
       </div>
     </div>
   </section>
@@ -207,6 +208,7 @@ export default class Intro extends Vue {
   .layout-wrapper {
     width: 30vw;
     margin: 0 auto;
+    margin-bottom: 16rem;
 
     @include respond-to("large") {
       width: 45vw;
@@ -255,7 +257,7 @@ export default class Intro extends Vue {
 
   .content {
     margin-top: 12vh;
-    margin-bottom: 12rem;
+    margin-bottom: 4rem;
     position: relative;
 
     @include respond-to("small") {
@@ -358,6 +360,15 @@ a {
   &:hover {
     text-decoration: underline;
   }
+}
+
+span.leaf {
+  display: block;
+  background-image: url('../assets/leaf.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 50px;
+  width: 100%;
 }
 
 .citations {
