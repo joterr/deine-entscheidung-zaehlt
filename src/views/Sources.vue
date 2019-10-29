@@ -7,48 +7,22 @@
       <h1>Weitere Fakten</h1>
       <p>Die Sammlung wird in unregelmäßigen Abständen aktualisiert und stellt nur eine Auswahl dar.</p>
 
-      <h3>Umweltauswirkungen</h3>
-      <ul class="sources">
-        <li v-for="item in ENVIRONMENTAL_IMPACTS" v-bind:key="item.pub + item.date + item.desc">
-          <a target="_new" v-bind:href="item.link">
-            <strong>{{ item.desc }}</strong>
-            ({{ item.pub }}, {{ item.date }})
-          </a>
-        </li>
-      </ul>
-
-      <h3>Verstöße / Umgang / Skandale</h3>
-      <ul class="sources">
-        <li
-          v-for="item in VIOLATIONS_HANDLING_SCANDALS"
-          v-bind:key="item.pub + item.date + item.desc"
-        >
-          <a target="_new" v-bind:href="item.link">
-            <strong>{{ item.desc }}</strong>
-            ({{ item.pub }}, {{ item.date }})
-          </a>
-        </li>
-      </ul>
-
-      <h3>Gesundheitsvorteile</h3>
-      <ul class="sources">
-        <li v-for="item in HEALTH_BENEFITS" v-bind:key="item.pub + item.date + item.desc">
-          <a target="_new" v-bind:href="item.link">
-            <strong>{{ item.desc }}</strong>
-            ({{ item.pub }}, {{ item.date }})
-          </a>
-        </li>
-      </ul>
-
-      <h3>Schlachtzahlen</h3>
-      <ul class="sources">
-        <li v-for="item in SLAUGHTER_FIGURES" v-bind:key="item.pub + item.date + item.desc">
-          <a target="_new" v-bind:href="item.link">
-            <strong>{{ item.desc }}</strong>
-            ({{ item.pub }}, {{ item.date }})
-          </a>
-        </li>
-      </ul>
+      <div class="list">
+        <h3>Verstöße / Umgang / Skandale</h3>
+        <SourceList v-bind:elements="VIOLATIONS_HANDLING_SCANDALS"></SourceList>
+      </div>
+      <div class="list">
+        <h3>Umweltauswirkungen</h3>
+        <SourceList v-bind:elements="ENVIRONMENTAL_IMPACTS"></SourceList>
+      </div>
+      <div class="list">
+        <h3>Gesundheitsvorteile</h3>
+        <SourceList v-bind:elements="HEALTH_BENEFITS"></SourceList>
+      </div>
+      <div class="list">
+        <h3>Schlachtzahlen</h3>
+        <SourceList v-bind:elements="SLAUGHTER_FIGURES"></SourceList>
+      </div>
     </div>
   </div>
 </template>
@@ -56,6 +30,7 @@
 
 <script lang="ts">
 import { Component, Vue, Provide } from "vue-property-decorator";
+import SourceList from "@/components/SourceList.vue";
 import {
   ENVIRONMENTAL_IMPACTS,
   VIOLATIONS_HANDLING_SCANDALS,
@@ -63,13 +38,15 @@ import {
   SLAUGHTER_FIGURES
 } from "@/facts.constant";
 
-@Component({})
+@Component({
+  components: { SourceList }
+})
 export default class Sources extends Vue {
   @Provide()
-  private ENVIRONMENTAL_IMPACTS = ENVIRONMENTAL_IMPACTS;
+  private VIOLATIONS_HANDLING_SCANDALS = VIOLATIONS_HANDLING_SCANDALS;
 
   @Provide()
-  private VIOLATIONS_HANDLING_SCANDALS = VIOLATIONS_HANDLING_SCANDALS;
+  private ENVIRONMENTAL_IMPACTS = ENVIRONMENTAL_IMPACTS;
 
   @Provide()
   private HEALTH_BENEFITS = HEALTH_BENEFITS;
@@ -78,3 +55,8 @@ export default class Sources extends Vue {
   private SLAUGHTER_FIGURES = SLAUGHTER_FIGURES;
 }
 </script>
+<style scoped lang="scss">
+.list {
+  margin-top: 2.25rem;
+}
+</style>

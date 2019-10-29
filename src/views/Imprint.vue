@@ -5,7 +5,7 @@
     </span>
     <div class="content">
       <h1>Impressum</h1>
-      <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
+      <h2>Angaben gem&auml;&szlig; &sect;5 TMG</h2>
       <p>
         Jannik Rulitschka
         <br />Fritz-Kohl-Str. 3A
@@ -207,7 +207,7 @@
         Hierzu k&ouml;nnen Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden. Das Recht auf
         Einschr&auml;nkung der Verarbeitung besteht in folgenden F&auml;llen:
       </p>
-      <ul>
+      <ul class="small-list">
         <li>
           Wenn Sie die Richtigkeit Ihrer bei uns gespeicherten personenbezogenen Daten bestreiten, ben&ouml;tigen wir
           in der Regel Zeit, um dies zu &uuml;berpr&uuml;fen. F&uuml;r die Dauer der Pr&uuml;fung haben Sie das Recht,
@@ -249,7 +249,7 @@
         Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die
         Ihr Browser automatisch an uns &uuml;bermittelt. Dies sind:
       </p>
-      <ul>
+      <ul class="small-list">
         <li>Browsertyp und Browserversion</li>
         <li>verwendetes Betriebssystem</li>
         <li>Referrer URL</li>
@@ -263,6 +263,7 @@
         berechtigtes Interesse an der technisch fehlerfreien Darstellung und der Optimierung seiner Website &ndash;
         hierzu m&uuml;ssen die Server-Log-Files erfasst werden.
       </p>
+      <br />
       <p>
         Quelle:
         <a href="https://www.e-recht24.de">e-recht24.de</a>

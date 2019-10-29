@@ -269,7 +269,7 @@ body {
   }
 
   .content {
-    width: 50%;
+    width: 40%;
 
     @include respond-to('large') {
       width: 75%;
@@ -305,41 +305,21 @@ body {
       font-size: small;
     }
 
-    ul {
+    ul.small-list {
       padding-left: 1em;
-
+  
       li {
         padding-top: 0.5em;
         padding-bottom: 0.5em;
         list-style-type: lower-roman;
         color: $dark;
+        font-size: small;
       }
     }
 
     a {
       color: $dark;
       text-decoration: underline;
-    }
-
-    ul.sources {
-      padding-left: 0em;
-
-      li {
-        list-style-type: none;
-
-        a {
-          text-decoration: none;
-          font-size: small;
-
-          strong {
-            @include std-text-bold();
-          }
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
     }
 
     .fakeEmail {
