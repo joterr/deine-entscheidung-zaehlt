@@ -322,6 +322,18 @@ body {
       text-decoration: underline;
     }
 
+    .fakeAddress {
+      .n:before {
+        content: 'Jannik Rulitschka';
+      }
+      .s:before {
+        content: 'Fritz-Kohl-Str. 3A';
+      }
+      .c:before {
+        content: '55122 Mainz';
+      }
+    }
+
     .fakeEmail {
       &:before {
         content: 'frage';

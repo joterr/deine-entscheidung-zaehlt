@@ -177,8 +177,8 @@ export const FACT_TYPES_CONST = {
     CALCULATION: "als Dünger auf Weiden und Äckern ausgebracht (ohne Importe)",
     SOURCES: [
       {
-        SOURCE: "Fleischatlas Heinrich Böll Stiftung 2018",
-        SOURCE_URL: "https://www.boell.de/sites/default/files/fleischatlas_2018_iii_web.pdf"
+        SOURCE: "Heinrich Böll Stiftung (2019)",
+        SOURCE_URL: "https://www.boell.de/sites/default/files/2019-10/fleischatlas_2018_V.pdf"
       }
     ]
   },
