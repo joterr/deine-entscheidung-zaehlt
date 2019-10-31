@@ -1,20 +1,22 @@
+// tslint:disable:max-line-length
+
 export const FACT_TYPES_CONST = {
   HUHNER: {
     ID: "huhner",
     LABEL_1: "Huhn",
     LABEL_10: "Hühner",
     LABEL: "Hühner",
-    PER_YEAR: 930000000, // 45260000 im Müll
+    PER_YEAR: 930000000,
     INCLUDED_TYPES: "mit Küken, Legehennen und Hähnen",
-    CALCULATION: "93 Millionen Hühner pro Jahr laut Schlachtzahlen",
+    CALCULATION: "Schlachtzahlen sowie Eierproduktion",
     SOURCES: [
       {
-        SOURCE: "Schlachtzahlen des BMI, 2018",
-        SOURCE_URL: "https://www.google.de/"
+        SOURCE: "Statistisches Bundesamt (2019)",
+        SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
       },
       {
-        SOURCE: "Fleischatlas Heinrich Böll Stiftung, 2018",
-        SOURCE_URL: "https://www.boell.de/sites/default/files/fleischatlas_2018_iii_web.pdf"
+        SOURCE: "Heinrich Böll Stiftung (2019)",
+        SOURCE_URL: "https://www.boell.de/sites/default/files/2019-10/fleischatlas_2018_V.pdf"
       }
     ]
   },
@@ -23,16 +25,16 @@ export const FACT_TYPES_CONST = {
     LABEL_1: "Schwein",
     LABEL_10: "Schweine",
     LABEL: "Schweine",
-    PER_YEAR: 57865000, // 4098950 im Müll
-    CALCULATION: "93 Millionen Schweine pro Jahr laut Schlachtzahlen",
+    PER_YEAR: 56605100,
+    CALCULATION: "Schlachtzahlen",
     SOURCES: [
       {
-        SOURCE: "Fisch-Informationszentrums (FIZ) – Quelle: https://www.svz.de/20935212",
-        SOURCE_URL: "https://www.google.de/"
+        SOURCE: "Statistisches Bundesamt (2019)",
+        SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
       },
       {
-        SOURCE: "Fleischatlas Heinrich Böll Stiftung, 2018",
-        SOURCE_URL: "https://www.boell.de/sites/default/files/fleischatlas_2018_iii_web.pdf"
+        SOURCE: "Heinrich Böll Stiftung (2019)",
+        SOURCE_URL: "https://www.boell.de/sites/default/files/2019-10/fleischatlas_2018_V.pdf"
       }
     ]
   },
@@ -57,15 +59,15 @@ export const FACT_TYPES_CONST = {
     LABEL_10: "Truthähner",
     LABEL: "Truthähner",
     PER_YEAR: 467000000 / 13.25, // 2701000 im Müll
-    CALCULATION: "93 Millionen Truthähner pro Jahr laut Schlachtzahlen",
+    CALCULATION: "Schlachtzahlen",
     SOURCES: [
       {
-        SOURCE: "Schlachtzahlen des BMI, 2018",
-        SOURCE_URL: "https://www.google.de/"
+        SOURCE: "Statistisches Bundesamt (2019)",
+        SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
       },
       {
-        SOURCE: "Fleischatlas Heinrich Böll Stiftung, 2018",
-        SOURCE_URL: "https://www.boell.de/sites/default/files/fleischatlas_2018_iii_web.pdf"
+        SOURCE: "Heinrich Böll Stiftung (2019)",
+        SOURCE_URL: "https://www.boell.de/sites/default/files/2019-10/fleischatlas_2018_V.pdf"
       }
     ]
   },
@@ -75,11 +77,15 @@ export const FACT_TYPES_CONST = {
     LABEL_10: "Enten",
     LABEL: "Enten",
     PER_YEAR: 36000000 / 2.5,
-    CALCULATION: "93 Millionen Enten pro Jahr laut Schlachtzahlen",
+    CALCULATION: "Schlachtzahlen (2.5 kg pro Ente)",
     SOURCES: [
       {
-        SOURCE: "Schlachtzahlen des BMI, 2018",
-        SOURCE_URL: "https://www.google.de/"
+        SOURCE: "Statistisches Bundesamt (2019)",
+        SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
+      },
+      {
+        SOURCE: "Heinrich Böll Stiftung (2019)",
+        SOURCE_URL: "https://www.boell.de/sites/default/files/2019-10/fleischatlas_2018_V.pdf"
       }
     ]
   },
@@ -88,16 +94,16 @@ export const FACT_TYPES_CONST = {
     LABEL_1: "Rind",
     LABEL_10: "Rinder",
     LABEL: "Rinder",
-    PER_YEAR: 35010000, // 229950 im Müll
-    CALCULATION: "93 Millionen Rinder pro Jahr laut Schlachtzahlen",
+    PER_YEAR: 35010000,
+    CALCULATION: "9Schlachtzahlen",
     SOURCES: [
       {
-        SOURCE: "Schlachtzahlen des BMI, 2018",
-        SOURCE_URL: "https://www.google.de/"
+        SOURCE: "Statistisches Bundesamt (2019)",
+        SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
       },
       {
-        SOURCE: "Fleischatlas Heinrich Böll Stiftung, 2018",
-        SOURCE_URL: "https://www.boell.de/sites/default/files/fleischatlas_2018_iii_web.pdf"
+        SOURCE: "Heinrich Böll Stiftung (2019)",
+        SOURCE_URL: "https://www.boell.de/sites/default/files/2019-10/fleischatlas_2018_V.pdf"
       }
     ]
   },
@@ -107,10 +113,15 @@ export const FACT_TYPES_CONST = {
     LABEL_10: "Schafe",
     LABEL: "Schafe",
     PER_YEAR: 1030400,
+    CALCULATION: "9Schlachtzahlen",
     SOURCES: [
       {
-        SOURCE: "Schlachtzahlen des BMI, 2018",
-        SOURCE_URL: "https://www.google.de/"
+        SOURCE: "Statistisches Bundesamt (2019)",
+        SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
+      },
+      {
+        SOURCE: "Heinrich Böll Stiftung (2019)",
+        SOURCE_URL: "https://www.boell.de/sites/default/files/2019-10/fleischatlas_2018_V.pdf"
       }
     ]
   },
@@ -120,11 +131,15 @@ export const FACT_TYPES_CONST = {
     LABEL_10: "Pferde",
     LABEL: "Pferde",
     PER_YEAR: 7100,
-    CALCULATION: "93 Millionen Pferde pro Jahr laut Schlachtzahlen",
+    CALCULATION: "9Schlachtzahlen",
     SOURCES: [
       {
-        SOURCE: "Schlachtzahlen des BMI, 2018",
-        SOURCE_URL: "https://www.google.de/"
+        SOURCE: "Statistisches Bundesamt (2019)",
+        SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
+      },
+      {
+        SOURCE: "Heinrich Böll Stiftung (2019)",
+        SOURCE_URL: "https://www.boell.de/sites/default/files/2019-10/fleischatlas_2018_V.pdf"
       }
     ]
   },
@@ -135,48 +150,57 @@ export const FACT_TYPES_CONST = {
     LABEL: "Ziegen",
     COUNT_ONE: "eine",
     PER_YEAR: 20400,
-    CALCULATION: "93 Millionen Ziegen pro Jahr laut Schlachtzahlen",
+    CALCULATION: "9Schlachtzahlen",
     SOURCES: [
       {
-        SOURCE: "Schlachtzahlen des BMI, 2018",
-        SOURCE_URL: "https://www.google.de/"
+        SOURCE: "Statistisches Bundesamt (2019)",
+        SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
+      },
+      {
+        SOURCE: "Heinrich Böll Stiftung (2019)",
+        SOURCE_URL: "https://www.boell.de/sites/default/files/2019-10/fleischatlas_2018_V.pdf"
       }
     ]
   },
   GULLE: {
     ID: "gulle",
-    LABEL_10: "Tonnen Gülle",
-    LABEL: "t Gülle",
-    PER_YEAR: 742000000,
-    UNIT: "Tonnen",
+    LABEL_10: "Liter Gülle",
+    LABEL: "l Gülle",
+    PER_YEAR: 208000000,
+    FACTOR: 1000,
+    UNIT: "Tausend Liter",
     NAME: "Gülle",
-    CALCULATION: "93 Millionen Gülle pro Jahr laut Schlachtzahlen",
+    CALCULATION: "als Dünger auf Weiden und Äckern ausgebracht (ohne Importe)",
     SOURCES: [
       {
-        SOURCE: "Zahlen des UBA, 2018",
-        SOURCE_URL: "https://www.google.de/"
+        SOURCE: "Fleischatlas Heinrich Böll Stiftung 2018",
+        SOURCE_URL: "https://www.boell.de/sites/default/files/fleischatlas_2018_iii_web.pdf"
       }
     ]
   },
   SOY: {
     ID: "soy",
-    LABEL_1: "Tonne Gen-Soja-Import",
-    LABEL_10: "Tonnen Gen-Soja-Import",
-    LABEL: "t Gen-Soja-Import",
+    LABEL_1: "Kilogramm Gen-Soja-Import",
+    LABEL: "kg Gen-Soja-Import",
     COUNT_ONE: "eine",
-    PER_YEAR: 6000000,
+    PER_YEAR: 3063251,
+    FACTOR: 1000,
     UNIT: "Tonnen",
     NAME: "Gen-Soja",
-    INCLUDED_TYPES: "zu 80% aus Südamerika",
-    CALCULATION: "93 Millionen Tonnen Gen-Soja pro Jahr laut Schlachtzahlen",
+    INCLUDED_TYPES: "importiert aus den USA, Brasilien und Kanada",
+    CALCULATION: "Futtermittel-Import zu 90% Gen-Soja-Schrot (ohne pfl. Öle)",
     SOURCES: [
       {
-        SOURCE: "Zahlen des UBA, 2018",
-        SOURCE_URL: "https://www.google.de/"
+        SOURCE: "BMEL (2019)",
+        SOURCE_URL: "https://www.bmel-statistik.de/fileadmin/daten/DFT-0601010-2018.xlsx"
       },
       {
-        SOURCE: "Zahlen des BMEL, 2019",
-        SOURCE_URL: "https://www.google.de/"
+        SOURCE: "OVID (2016)",
+        SOURCE_URL: "https://www.ovid-verband.de/artikel//soja-moratorium-in-brasilien-jetzt-dauerhaft/"
+      },
+      {
+        SOURCE: "Keine Gentechnik (2019)",
+        SOURCE_URL: "https://www.keine-gentechnik.de/dossiers/soja/"
       }
     ]
   },
@@ -189,11 +213,15 @@ export const FACT_TYPES_CONST = {
     PER_YEAR: 733000000,
     UNIT: "Gramm",
     NAME: "Antibiotika",
-    CALCULATION: "93 Millionen Antibiotika pro Jahr laut Schlachtzahlen",
+    CALCULATION: "jährliche Abgabemengen an Tierärzte",
     SOURCES: [
       {
-        SOURCE: "Zahlen des UBA, 2018",
-        SOURCE_URL: "https://www.google.de/"
+        SOURCE: "BMEL (2018)",
+        SOURCE_URL: "https://www.bmel.de/SharedDocs/Downloads/Tier/Tiergesundheit/Tierarzneimittel/Lagebild%20Antibiotikaeinsatz%20bei%20Tieren%20Juli%202018.pdf?__blob=publicationFile"
+      },
+      {
+        SOURCE: "Germanwatch (2019)",
+        SOURCE_URL: "https://www.germanwatch.org/de/16760"
       }
     ]
   },

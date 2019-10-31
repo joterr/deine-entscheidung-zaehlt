@@ -32,6 +32,7 @@
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.SCHWEINE.ID">
             <h4 class="intro">umgerechnet</h4>
+            <!-- 4100000 landen im Müll -->
             <h4>80% für Fleisch, 20% sterben durch Krankheit<br/>&amp; 7% landen direkt im Müll.</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.TRUTHAHNER.ID">
@@ -42,8 +43,12 @@
             <h4 class="intro">umgerechnet</h4>
             <h4>50% für Milch, 60% für Fleisch,<br/>16% sterben durch Krankheit<br/>&amp; 1% landen direkt im Müll.</h4>
           </div>
+          <div class="special-content" v-else-if="activeType.ID === TYPES.ANTIBIOTIKA.ID">
+            <h4 class="intro">davon sind mindestens</h4>
+            <h4>18% überlebensnotwendige Reserveantibiotika</h4>
+          </div>
           <div class="source-declaration">
-            <div class="calculation">Berechnung: {{ activeType.CALCULATION }}</div>
+            <div class="calculation">Grundlage: {{ activeType.CALCULATION }}</div>
             <div class="source">
               Quelle<span v-if="activeType.SOURCES.length > 1">n</span>:
               <span v-for="(source, index) in activeType.SOURCES" v-bind:key="source.SOURCE">

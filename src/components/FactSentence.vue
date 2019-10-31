@@ -125,7 +125,7 @@
           </span>
           gefährden unsere Gesundheit und Umwelt.
         </h1>
-        <div class="show-truth">
+        <div class="show-truth" v-if="false">
           <span v-on:click="$emit('open-truth-overlay')">Findest Du nicht okay?</span>
         </div>
       </div>
