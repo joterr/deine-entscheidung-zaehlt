@@ -25,8 +25,8 @@ export const FACT_TYPES_CONST = {
     LABEL_1: "Schwein",
     LABEL_10: "Schweine",
     LABEL: "Schweine",
-    PER_YEAR: 56605100,
-    CALCULATION: "Schlachtzahlen",
+    PER_YEAR: 56605100 + 13500000,
+    CALCULATION: "Schlachtzahlen + Falltiere (TBA)",
     SOURCES: [
       {
         SOURCE: "Statistisches Bundesamt (2019)",
@@ -35,6 +35,10 @@ export const FACT_TYPES_CONST = {
       {
         SOURCE: "Heinrich Böll Stiftung (2019)",
         SOURCE_URL: "https://www.boell.de/sites/default/files/2019-10/fleischatlas_2018_V.pdf"
+      },
+      {
+        SOURCE: "Spiegel Online (2019)",
+        SOURCE_URL: "https://www.spiegel.de/wirtschaft/nottoetungen-in-der-schweinemast-qual-fuer-den-profit-a-1290250.html"
       }
     ]
   },
@@ -213,7 +217,7 @@ export const FACT_TYPES_CONST = {
     PER_YEAR: 733000000,
     UNIT: "Gramm",
     NAME: "Antibiotika",
-    CALCULATION: "jährliche Abgabemengen an Tierärzte",
+    CALCULATION: "Abgabemenge an Tierärzte in Deutschland, ohne Fischzucht",
     SOURCES: [
       {
         SOURCE: "BMEL (2018)",

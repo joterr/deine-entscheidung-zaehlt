@@ -267,5 +267,23 @@ export const SLAUGHTER_FIGURES  = [
     pub: "Albert Schweitzer Stiftung",
     date: "2015-03-24",
     link: "https://albert-schweitzer-stiftung.de/aktuell/schlachthaus-interview"
+  },
+  {
+    desc: "Pressemitteilung Nr. 043: Fleischerzeugung 2018 um 1,5 % gegenüber dem Vorjahr gesunken",
+    pub: "DESTATIS Statistisches Bundesamt",
+    date: "2019-02-07",
+    link: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
+  },
+  {
+    desc: "Fleischatlas 2018",
+    pub: "Heinrich Böll Stiftung",
+    date: "2019-09-01",
+    link: "https://www.boell.de/sites/default/files/2019-10/fleischatlas_2018_V.pdf"
+  },
+  {
+    desc: "Nottötungen in der Mast: Warum 13 Millionen Schweine im Müll landen",
+    pub: "Spiegel Online",
+    date: "2019-10-22",
+    link: "https://www.spiegel.de/wirtschaft/nottoetungen-in-der-schweinemast-qual-fuer-den-profit-a-1290250.html"
   }
 ];

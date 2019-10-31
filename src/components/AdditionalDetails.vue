@@ -28,20 +28,20 @@
           >*{{activeType.INCLUDED_TYPES}}</div>
           <div class="special-content" v-if="activeType.ID === TYPES.HUHNER.ID">
             <h4 class="intro">umgerechnet</h4>
-            <h4>24% für Eier, 60% für Fleisch,<br/>16% sterben durch Krankheit<br/>&amp; 5% landen direkt im Müll.</h4>
+            <h4>24% für Eier, 60% für Fleisch,<br/>16% durch Krankheit &amp; 5% landen im Müll.</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.SCHWEINE.ID">
             <h4 class="intro">umgerechnet</h4>
-            <!-- 4100000 landen im Müll -->
-            <h4>80% für Fleisch, 20% sterben durch Krankheit<br/>&amp; 7% landen direkt im Müll.</h4>
+            <!-- 4100000 landen im Müll, 56605100 geschlachtet, 13500000 in der TBA -->
+            <h4>74% für Fleisch, 20% durch Krankheit und<br />6% landen im Müll.</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.TRUTHAHNER.ID">
             <h4 class="intro">umgerechnet</h4>
-            <h4>50% für Milch, 60% für Fleisch,<br/>16% sterben durch Krankheit<br/>&amp; 7% landen direkt im Müll.</h4>
+            <h4>50% für Milch, 60% für Fleisch,<br/>16% durch Krankheit &amp; 7% landen im Müll.</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.RINDER.ID">
             <h4 class="intro">umgerechnet</h4>
-            <h4>50% für Milch, 60% für Fleisch,<br/>16% sterben durch Krankheit<br/>&amp; 1% landen direkt im Müll.</h4>
+            <h4>50% für Milch, 60% für Fleisch,<br/>16% durch Krankheit &amp; 1% landen im Müll.</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.ANTIBIOTIKA.ID">
             <h4 class="intro">davon sind mindestens</h4>
@@ -261,6 +261,10 @@ export default class AdditionalDetails extends Vue {
       font-size: 1.5rem;
       padding: 0.25rem 0;
       line-height: 140%;
+
+      @include respond-to("small") {
+        font-size: 1.25rem;
+      }
 
       &.intro {
         @include std-text();
