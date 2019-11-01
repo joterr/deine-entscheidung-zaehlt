@@ -6,16 +6,25 @@
         <span></span>
       </div>
       <div class="inner">
-        <div class="content" v-bind:class="{'over-a-million': activeType.PER_YEAR  > 1000000}">
+        <div
+          class="content"
+          v-bind:class="{'over-a-million': activeType.PER_YEAR  > 1000000, 'over-a-billion': activeType.PER_YEAR  > 1000000000}"
+        >
           <h3>
             <span class="timespan">Das sind jährlich über</span>
           </h3>
 
-          <h1 class="animate big-screen">
+          <h1 class="animate million big-screen">
             <ICountUp :endVal="activeType.PER_YEAR" :options="countUpOptions" />
           </h1>
-          <h1 class="animate small-screen">
+          <h1 class="animate million small-screen">
             <ICountUp :endVal="activeType.PER_YEAR / 1000000" :options="countUpOptions" />&nbsp;Mio.
+          </h1>
+          <h1 class="animate billion big-screen">
+            <ICountUp :endVal="activeType.PER_YEAR / 1000000" :options="countUpOptions" />&nbsp;Mio.
+          </h1>
+          <h1 class="animate billion small-screen">
+            <ICountUp :endVal="activeType.PER_YEAR / 1000000000" :options="countUpOptions" />&nbsp;Mrd.
           </h1>
           <h2 class="animate">
             <span v-if="activeType.UNIT">{{activeType.UNIT}}&nbsp;</span>
@@ -28,29 +37,35 @@
           >*{{activeType.INCLUDED_TYPES}}</div>
           <div class="special-content" v-if="activeType.ID === TYPES.HUHNER.ID">
             <h4 class="intro">umgerechnet</h4>
-            <h4>24% für Eier, 60% für Fleisch,<br/>16% durch Krankheit &amp; 5% landen im Müll.</h4>
+            <!-- 63470000 (Tod 11424600) aus Eierproduktion, 45000850 Müll, 622000000 Geschlachtet (43540000 Krankheit), : 54964600 Krank gesamt :: 727540000 Gesamt-->
+            <h4>72% nur für Fleisch, 15% ursprünglich für Eier, 7% sterben durch Krankheit und 6% landen im Müll.</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.SCHWEINE.ID">
             <h4 class="intro">umgerechnet</h4>
             <!-- 4100000 landen im Müll, 56605100 geschlachtet, 13500000 in der TBA -->
-            <h4>74% für Fleisch, 20% durch Krankheit und<br />6% landen im Müll.</h4>
-          </div>
-          <div class="special-content" v-else-if="activeType.ID === TYPES.TRUTHAHNER.ID">
-            <h4 class="intro">umgerechnet</h4>
-            <h4>50% für Milch, 60% für Fleisch,<br/>16% durch Krankheit &amp; 7% landen im Müll.</h4>
+            <h4>
+              74% für Fleisch, 20% sterben durch Krankheit und
+              <br />6% landen im Müll.
+            </h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.RINDER.ID">
             <h4 class="intro">umgerechnet</h4>
-            <h4>50% für Milch, 60% für Fleisch,<br/>16% durch Krankheit &amp; 1% landen im Müll.</h4>
+            <!-- 229950 Müll, 1700000 Milchvieh wg. Krankheit geschlachtet (1200000 geschlachtet) und TBA, 579111 TBA -->
+            <h4>49% für Fleisch, 30% ursprünglich für Milch, 15% sterben durch Krankheit und 6% landen im Müll.</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.ANTIBIOTIKA.ID">
             <h4 class="intro">davon sind mindestens</h4>
             <h4>18% überlebensnotwendige Reserveantibiotika</h4>
           </div>
+          <div
+            class="relative-data-hint"
+            v-if="activeType.ID === TYPES.HUHNER.ID || activeType.ID === TYPES.RINDER.ID"
+          >Die relativen Werte bilden auf Grund einer unzureichenden Datenlage nur grobe Annäherungen.</div>
           <div class="source-declaration">
             <div class="calculation">Grundlage: {{ activeType.CALCULATION }}</div>
             <div class="source">
-              Quelle<span v-if="activeType.SOURCES.length > 1">n</span>:
+              Quelle
+              <span v-if="activeType.SOURCES.length > 1">n</span>:
               <span v-for="(source, index) in activeType.SOURCES" v-bind:key="source.SOURCE">
                 <a :href="source.SOURCE_URL" target="_blanc">{{ source.SOURCE }}</a>
                 <span v-if="index !== activeType.SOURCES.length - 1">,&nbsp;</span>
@@ -117,6 +132,18 @@ export default class AdditionalDetails extends Vue {
   border-radius: 1pt;
   z-index: 999;
   animation: animateIn 0.75s ease forwards;
+
+  @include respond-to("xx-large") {
+    width: 44vw;
+  }
+
+  @include respond-to("x-large") {
+    width: 60vw;
+  }
+
+  @include respond-to("large") {
+    width: 80vw;
+  }
 
   @include respond-to("medium") {
     width: 80vw;
@@ -224,6 +251,18 @@ export default class AdditionalDetails extends Vue {
       }
     }
 
+    .over-a-billion {
+      .million {
+        display: none;
+      }
+    }
+
+    .over-a-million:not(.over-a-billion) {
+      .billion {
+        display: none;
+      }
+    }
+
     h1 {
       @include std-text-bold-italic();
       font-size: 7rem;
@@ -234,7 +273,6 @@ export default class AdditionalDetails extends Vue {
       }
 
       @include respond-to("small") {
-        font-size: 4.75rem;
         padding-top: 0.75rem;
         padding-bottom: 0.75rem;
       }
@@ -274,7 +312,7 @@ export default class AdditionalDetails extends Vue {
     }
 
     .timespan {
-       @include std-text-bold();
+      @include std-text-bold();
     }
 
     .included-types {
@@ -283,6 +321,12 @@ export default class AdditionalDetails extends Vue {
 
     .special-content {
       padding-top: 1.75rem;
+    }
+
+    .relative-data-hint {
+      padding-top: .125rem;
+      font-size: xx-small;
+      opacity: 0.4;
     }
 
     .source-declaration {
@@ -296,6 +340,10 @@ export default class AdditionalDetails extends Vue {
 
       &:hover {
         opacity: 1;
+      }
+
+      .source {
+        text-align: right;
       }
 
       @include respond-to("medium") {

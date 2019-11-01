@@ -56,7 +56,7 @@ export const VIOLATIONS_HANDLING_SCANDALS = [
     link: "https://www.bild.de/regional/muenchen/tierschutz/kueken-werden-getoetet-55327016.bild.html"
   },
   {
-    desc: "Kükenshreddern - Das Gemetzel geht weiter",
+    desc: "Kükenschreddern - Das Gemetzel geht weiter",
     pub: "Süddeutsche",
     date: "2018-03-29",
     link: "https://www.sueddeutsche.de/wirtschaft/kuekenschreddern-das-gemetzel-geht-weiter-1.3924618"
@@ -142,6 +142,12 @@ export const VIOLATIONS_HANDLING_SCANDALS = [
 ];
 
 export const ENVIRONMENTAL_IMPACTS = [
+  {
+    desc: "Bakterien und Pilze in der Trommel: Kuschelige Wäsche mit Ekelfaktor: Warum Experten vom Weichspüler abraten",
+    pub: "stern",
+    date: "2016-06-29",
+    link: "https://www.stern.de/gesundheit/weichspueler-enthaelt-schlachtabfaelle--darum-raten-experten-davon-ab-8775788.html"
+  },
   {
     desc: "Fleisch von kranken Tieren",
     pub: "FAZ",

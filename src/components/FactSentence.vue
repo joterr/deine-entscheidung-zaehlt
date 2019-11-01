@@ -12,7 +12,7 @@
           <span class="time">{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> in Deutschland mehr als
           <span>
             <FactType
-              v-bind:type="TYPES.HUHNER"
+              v-bind:type="TYPES.FISCHE"
               v-bind:active="activeDetail"
               v-bind:highlight="highlight"
               v-on:show-details="showDetail"
@@ -20,7 +20,7 @@
           </span>
           <span>
             <FactType
-              v-bind:type="TYPES.FISCHE"
+              v-bind:type="TYPES.HUHNER"
               v-bind:active="activeDetail"
               v-bind:highlight="highlight"
               v-on:show-details="showDetail"
@@ -42,14 +42,6 @@
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
-          <span>
-            <FactType
-              v-bind:type="TYPES.RINDER"
-              v-bind:active="activeDetail"
-              v-bind:highlight="highlight"
-              v-on:show-details="showDetail"
-            ></FactType><span class="additional">, </span>
-          </span>
           <span class="additional">
             <FactType
               v-bind:type="TYPES.ENTEN"
@@ -57,6 +49,14 @@
               v-bind:highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
+          </span>
+          <span>
+            <FactType
+              v-bind:type="TYPES.RINDER"
+              v-bind:active="activeDetail"
+              v-bind:highlight="highlight"
+              v-on:show-details="showDetail"
+            ></FactType><span class="additional">, </span>
           </span>
           <span class="additional">
             <FactType
@@ -209,8 +209,12 @@ $sentance-font-size: 1.15rem;
     width: 38vw;
     transform: translate(-50%, -50%);
 
+    @include respond-to("xx-large") {
+      width: 44vw;
+    }
+
     @include respond-to("x-large") {
-      width: 48vw;
+      width: 60vw;
     }
 
     @include respond-to("large") {
