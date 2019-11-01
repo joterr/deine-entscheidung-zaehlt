@@ -238,28 +238,46 @@ export default class AdditionalDetails extends Vue {
       animation: blurIn 1s ease forwards 0.125s;
     }
 
-    .small-screen {
+    .billion {
       display: none;
     }
 
-    @include respond-to("small") {
-      .over-a-million .big-screen {
+    .million.small-screen {
+      display: none;
+    }
+
+    .over-a-million {
+      .million.small-screen {
         display: none;
       }
-      .over-a-million .small-screen {
+
+      @include respond-to("small") {
+        .million.big-screen {
+          display: none;
+        }
+        .million.small-screen {
+          display: block;
+        }
+      }
+    }
+
+    .over-a-million.over-a-billion {
+      .million,
+      .billion.small-screen {
+        display: none;
+      }
+
+      .billion.big-screen {
         display: block;
       }
-    }
 
-    .over-a-billion {
-      .million {
-        display: none;
-      }
-    }
-
-    .over-a-million:not(.over-a-billion) {
-      .billion {
-        display: none;
+      @include respond-to("small") {
+        .billion.big-screen {
+          display: none;
+        }
+        .billion.small-screen {
+          display: block;
+        }
       }
     }
 
@@ -324,7 +342,7 @@ export default class AdditionalDetails extends Vue {
     }
 
     .relative-data-hint {
-      padding-top: .125rem;
+      padding-top: 0.125rem;
       font-size: xx-small;
       opacity: 0.4;
     }
