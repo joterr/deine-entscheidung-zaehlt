@@ -252,9 +252,8 @@ export const FACT_TYPES_CONST = {
     LABEL_1: "Milligramm Antibiotika",
     LABEL_10: "Milligramm Antibiotika",
     LABEL: "mg Antibiotika",
-    FACTOR: 1000,
-    PER_YEAR: 733000000,
-    UNIT: "Gramm",
+    PER_YEAR: 733000000000,
+    UNIT: "Milligramm",
     NAME: "Antibiotika",
     CALCULATION: "Abgabemenge an Tierärzte in Deutschland, ohne Fischzucht",
     SOURCES: [

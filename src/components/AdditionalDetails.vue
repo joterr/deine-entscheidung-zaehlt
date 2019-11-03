@@ -38,7 +38,7 @@
           <div class="special-content" v-if="activeType.ID === TYPES.HUHNER.ID">
             <h4 class="intro">umgerechnet</h4>
             <!-- 63470000 (Tod 11424600) aus Eierproduktion, 45000850 Müll, 622000000 Geschlachtet (43540000 Krankheit), : 54964600 Krank gesamt :: 727540000 Gesamt-->
-            <h4>72% nur für Fleisch, 15% ursprünglich für Eier, 7% sterben durch Krankheit und 6% landen im Müll.</h4>
+            <h4>72% nur für Fleisch, 9% ursprünglich für Eier, 6% werden direkt geschreddert, 7% sterben durch Krankheit und 6% landen im Müll.</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.SCHWEINE.ID">
             <h4 class="intro">umgerechnet</h4>
@@ -294,6 +294,12 @@ export default class AdditionalDetails extends Vue {
         padding-top: 0.75rem;
         padding-bottom: 0.75rem;
       }
+
+      @include respond-to("x-small") {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        font-size: 5rem;
+      }
     }
 
     h2 {
@@ -302,6 +308,10 @@ export default class AdditionalDetails extends Vue {
 
       @include respond-to("small") {
         font-size: 2.25rem;
+      }
+
+      @include respond-to("x-small") {
+        font-size: 2.125rem;
       }
     }
 
