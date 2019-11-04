@@ -38,24 +38,24 @@
           <div class="special-content" v-if="activeType.ID === TYPES.HUHNER.ID">
             <h4 class="intro">umgerechnet</h4>
             <!-- 63470000 (Tod 11424600) aus Eierproduktion, 45000850 Müll, 622000000 Geschlachtet (43540000 Krankheit), : 54964600 Krank gesamt :: 727540000 Gesamt-->
-            <h4>72% nur für Fleisch, 9% ursprünglich für Eier, 6% werden direkt geschreddert, 7% sterben durch Krankheit und 6% landen im Müll.</h4>
+            <h4>72&percnt;&nbsp;nur für Fleisch, 9&percnt;&nbsp;ursprünglich für Eier, 6&percnt;&nbsp;werden direkt geschreddert, 7&percnt;&nbsp;sterben durch Krankheit und 6&percnt;&nbsp;landen im Müll.</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.SCHWEINE.ID">
             <h4 class="intro">umgerechnet</h4>
             <!-- 4100000 landen im Müll, 56605100 geschlachtet, 13500000 in der TBA -->
             <h4>
-              74% für Fleisch, 20% sterben durch Krankheit und
-              <br />6% landen im Müll.
+              74&percnt;&nbsp;für Fleisch, 20&percnt;&nbsp;sterben durch Krankheit und
+              <br />6&percnt;&nbsp;landen im Müll.
             </h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.RINDER.ID">
             <h4 class="intro">umgerechnet</h4>
             <!-- 229950 Müll, 1700000 Milchvieh wg. Krankheit geschlachtet (1200000 geschlachtet) und TBA, 579111 TBA -->
-            <h4>49% für Fleisch, 30% ursprünglich für Milch, 15% sterben durch Krankheit und 6% landen im Müll.</h4>
+            <h4>49&percnt;&nbsp;für Fleisch, 30&percnt;&nbsp;ursprünglich für Milch, 15&percnt;&nbsp;sterben durch Krankheit und 6&percnt;&nbsp;landen im Müll.</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.ANTIBIOTIKA.ID">
             <h4 class="intro">davon sind mindestens</h4>
-            <h4>18% überlebensnotwendige Reserveantibiotika</h4>
+            <h4>18&percnt;&nbsp;überlebensnotwendige Reserveantibiotika</h4>
           </div>
           <div
             class="relative-data-hint"
@@ -296,9 +296,11 @@ export default class AdditionalDetails extends Vue {
       }
 
       @include respond-to("x-small") {
-        padding-top: 0.75rem;
-        padding-bottom: 0.75rem;
-        font-size: 5rem;
+        font-size: 4.25rem;
+      }
+
+      @include respond-to("xx-small") {
+        font-size: 3.5rem;
       }
     }
 
@@ -311,7 +313,12 @@ export default class AdditionalDetails extends Vue {
       }
 
       @include respond-to("x-small") {
-        font-size: 2.125rem;
+        font-size: 2rem;
+        word-break:break-all;
+      }
+
+      @include respond-to("xx-small") {
+        font-size: 1.75rem;
       }
     }
 
@@ -320,6 +327,10 @@ export default class AdditionalDetails extends Vue {
 
       @include respond-to("small") {
         font-size: 1.25rem;
+      }
+
+      @include respond-to("x-small") {
+        font-size: 1.125rem;
       }
     }
 
@@ -331,6 +342,11 @@ export default class AdditionalDetails extends Vue {
       @include respond-to("small") {
         font-size: 1.25rem;
       }
+
+      @include respond-to("x-small") {
+        font-size: 1.125rem;
+      }
+
 
       &.intro {
         @include std-text();
