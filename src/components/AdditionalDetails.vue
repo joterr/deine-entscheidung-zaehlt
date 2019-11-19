@@ -64,8 +64,7 @@
           <div class="source-declaration">
             <div class="calculation">Grundlage: {{ activeType.CALCULATION }}</div>
             <div class="source">
-              Quelle
-              <span v-if="activeType.SOURCES.length > 1">n</span>:
+              Quelle<span v-if="activeType.SOURCES.length > 1">n</span>:
               <span v-for="(source, index) in activeType.SOURCES" v-bind:key="source.SOURCE">
                 <a :href="source.SOURCE_URL" target="_blanc">{{ source.SOURCE }}</a>
                 <span v-if="index !== activeType.SOURCES.length - 1">,&nbsp;</span>
