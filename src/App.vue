@@ -18,7 +18,7 @@ footer {
   width: 100vw;
   padding: 0 1.25rem;
   opacity: 0;
-  animation: animateIn 0.5s ease forwards 4s;
+  animation: animateIn 0.5s ease forwards 1s;
   display: flex;
   align-content: center;
   justify-content: space-between;
