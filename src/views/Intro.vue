@@ -1,6 +1,9 @@
 <template>
   <section class="intro-page">
     <div class="splash">
+      <div class="veganuary-inro">
+        <a href="https://de.veganuary.com" target="_blanc">Vegan ins neue Jahr? Probier's aus - mit dem Veganuary. Dabei?</a>
+      </div>
       <div class="fact-wrapper">
         <FactSentence v-on:open-truth-overlay="openTruthOverlay()" />
       </div>
@@ -33,11 +36,41 @@
               >Vegan Kickstart</a> von PETA ZWEI.
             </p>
             <ul class="citations">
-              <li><sup>1</sup><a target="_blanc" href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel">Bonfadelli, Heinz: Medien und Gesellschaft im Wandel (Stand: 06.10.2014). [19.04.2016].</a></li>
-              <li><sup>2</sup><a target="_blanc" href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel">Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a></li>
-              <li><sup>3</sup><a target="_blanc" href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel">Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a></li>
-              <li><sup>4</sup><a target="_blanc" href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel">Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a></li>
-              <li><sup>5</sup><a target="_blanc" href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel">Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a></li>
+              <li>
+                <sup>1</sup>
+                <a
+                  target="_blanc"
+                  href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel"
+                >Bonfadelli, Heinz: Medien und Gesellschaft im Wandel (Stand: 06.10.2014). [19.04.2016].</a>
+              </li>
+              <li>
+                <sup>2</sup>
+                <a
+                  target="_blanc"
+                  href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel"
+                >Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a>
+              </li>
+              <li>
+                <sup>3</sup>
+                <a
+                  target="_blanc"
+                  href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel"
+                >Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a>
+              </li>
+              <li>
+                <sup>4</sup>
+                <a
+                  target="_blanc"
+                  href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel"
+                >Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a>
+              </li>
+              <li>
+                <sup>5</sup>
+                <a
+                  target="_blanc"
+                  href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel"
+                >Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a>
+              </li>
             </ul>
           </div>
           <div class="row always additional-info">
@@ -174,6 +207,31 @@ export default class Intro extends Vue {
 </script>
 
 <style scoped lang="scss">
+.veganuary-inro {
+  position: fixed;
+  bottom: 6vh;
+  left: 50%;
+  z-index: 99999;
+  border-radius: 1pt;
+  border-color: $cl-accent1;
+  transform: translateX(-50%);
+  cursor: pointer;
+
+  opacity: 0;
+  animation: delayShowBlurSpecial 6s ease forwards;
+
+  a {
+    display: block;
+    @include std-text-bold-italic();
+    width: 250px;
+    color: $cl-accent1;
+    padding: 0.675rem;
+    font-size: small;
+    line-height: 1.6;
+    text-decoration: underline;
+  }
+}
+
 .animal-wrapper {
   position: absolute;
   bottom: 0;
@@ -364,7 +422,7 @@ a {
 
 span.leaf {
   display: block;
-  background-image: url('../assets/leaf.png');
+  background-image: url("../assets/leaf.png");
   background-repeat: no-repeat;
   background-position: center center;
   height: 50px;
@@ -373,14 +431,15 @@ span.leaf {
 
 .citations {
   display: block;
-  margin: .5rem 0;
+  margin: 0.5rem 0;
   padding: 0;
 
   li {
     padding-right: 0.25rem;
   }
 
-  li, a {
+  li,
+  a {
     display: inline;
     @include std-text();
     list-style-type: none;
@@ -419,6 +478,21 @@ p {
     filter: blur(0);
   }
   100% {
+    filter: blur(0);
+  }
+}
+
+@keyframes delayShowBlurSpecial {
+  0% {
+    opacity: 0;
+    filter: blur(5px);
+  }
+  50% {
+    opacity: 0;
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
     filter: blur(0);
   }
 }
