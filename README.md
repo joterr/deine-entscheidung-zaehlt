@@ -1,4 +1,6 @@
-# DeineEntscheidungZaehlt
+# Deine Entscheidung Zählt
+
+Information page on the effects of livestock farming in Germany. www.deine-entscheidung-zaehlt.de
 
 ## Project setup
 ```

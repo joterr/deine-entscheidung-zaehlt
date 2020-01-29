@@ -1,9 +1,6 @@
 <template>
   <section class="intro-page">
     <div class="splash">
-      <div class="veganuary-inro">
-        <a href="https://de.veganuary.com" target="_blanc">Vegan ins neue Jahr? Probier's aus - mit dem Veganuary. Dabei?</a>
-      </div>
       <div class="fact-wrapper">
         <FactSentence v-on:open-truth-overlay="openTruthOverlay()" />
       </div>
@@ -207,31 +204,6 @@ export default class Intro extends Vue {
 </script>
 
 <style scoped lang="scss">
-.veganuary-inro {
-  position: fixed;
-  bottom: 6vh;
-  left: 50%;
-  z-index: 99999;
-  border-radius: 1pt;
-  border-color: $cl-accent1;
-  transform: translateX(-50%);
-  cursor: pointer;
-
-  opacity: 0;
-  animation: delayShowBlurSpecial 6s ease forwards;
-
-  a {
-    display: block;
-    @include std-text-bold-italic();
-    width: 250px;
-    color: $cl-accent1;
-    padding: 0.675rem;
-    font-size: small;
-    line-height: 1.6;
-    text-decoration: underline;
-  }
-}
-
 .animal-wrapper {
   position: absolute;
   bottom: 0;
