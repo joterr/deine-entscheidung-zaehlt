@@ -1,7 +1,7 @@
 <template>
   <ul>
-    <li v-for="item in sortedElements" v-bind:key="item.pub + item.date + item.desc">
-      <a target="_new" v-bind:href="item.link">
+    <li v-for="item in sortedElements" :key="item.pub + item.date + item.desc">
+      <a target="_new" :href="item.link">
         <strong>{{ item.desc }}</strong>
         ({{ item.pub }}, {{ parseDate(item.date) }})
       </a>

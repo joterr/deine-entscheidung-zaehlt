@@ -2,13 +2,14 @@
   <div class="additional-wrapper" v-if="activeType">
     <div class="overlay" v-on:click="$emit('close-details')"></div>
     <div class="additional-details">
-      <div class="close" v-on:click="$emit('close-details')">
-        <span></span>
+      <div class="close" v-on:click="$emit('close-details')">schließen</div>
+      <div class="select-mode">
+        <ModeSelector v-on:selected-mode="selectedMode($event)" />
       </div>
       <div class="inner">
         <div
           class="content"
-          v-bind:class="{'over-a-million': activeType.PER_YEAR  > 1000000, 'over-a-billion': activeType.PER_YEAR  > 1000000000}"
+          :class="{'over-a-million': activeType.PER_YEAR  > 1000000, 'over-a-billion': activeType.PER_YEAR  > 1000000000}"
         >
           <h3>
             <span class="timespan">Das sind jährlich über</span>
@@ -65,7 +66,7 @@
             <div class="calculation">Grundlage: {{ activeType.CALCULATION }}</div>
             <div class="source">
               Quelle<span v-if="activeType.SOURCES.length > 1">n</span>:
-              <span v-for="(source, index) in activeType.SOURCES" v-bind:key="source.SOURCE">
+              <span v-for="(source, index) in activeType.SOURCES" :key="source.SOURCE">
                 <a :href="source.SOURCE_URL" target="_blanc">{{ source.SOURCE }}</a>
                 <span v-if="index !== activeType.SOURCES.length - 1">,&nbsp;</span>
               </span>
@@ -81,10 +82,12 @@
 import { Component, Provide, Vue } from "vue-property-decorator";
 import { FACT_TYPES_CONST } from "@/factTypes.constant";
 import ICountUp from "vue-countup-v2";
+import ModeSelector from "@/components/ModeSelector.vue";
 
 @Component({
   props: ["activeType"],
   components: {
+    ModeSelector,
     ICountUp
   }
 })
@@ -100,8 +103,8 @@ export default class AdditionalDetails extends Vue {
     decimal: ","
   };
 
-  public makeLocaleInteger(val: number): string {
-    return Math.ceil(val).toLocaleString("de-DE");
+  public selectedMode(mode: string): void {
+    console.log("selectedMode", mode);
   }
 }
 </script>
@@ -156,69 +159,24 @@ export default class AdditionalDetails extends Vue {
   .close {
     position: absolute;
     top: 1.25rem;
-    right: 1.25rem;
+    right: -2.125rem;
+    transform: rotate(90deg);
     @include std-text-bold();
-    font-size: x-large;
-    height: 39px;
-    width: 39px;
+    font-size: x-small;
+    color: #fff;
+    cursor: pointer;
+  }
 
-    &:after {
-      content: "";
-      position: absolute;
-      top: -2rem;
-      left: -2rem;
-      right: -2rem;
-      bottom: -2rem;
-      cursor: pointer;
-      z-index: 9999;
-    }
-
-    span:before,
-    span:after {
-      content: "";
-      position: absolute;
-      width: 39px;
-      height: 3px;
-      transition-timing-function: ease;
-      transition-duration: 0.15s;
-      transition-property: transform;
-      border-radius: 3px;
-      background-color: #000;
-      opacity: 0;
-    }
-    span:before {
-      animation: animateXBeforeIn 0.05s ease forwards 1.125s;
-    }
-    span:after {
-      animation: animateXAfterIn 0.05s ease forwards 1.25s;
-    }
-
-    @keyframes animateXBeforeIn {
-      0% {
-        opacity: 0;
-        transform: translate3d(0, 0, 0) rotate(0);
-      }
-      100% {
-        opacity: 1;
-        transform: translate3d(0, 17px, 0) rotate(45deg);
-      }
-    }
-
-    @keyframes animateXAfterIn {
-      0% {
-        opacity: 0;
-        transform: translate3d(0, 0, 0) rotate(0);
-      }
-      100% {
-        opacity: 1;
-        transform: translate3d(0, 17px, 0) rotate(-45deg);
-      }
-    }
+  .select-mode {
+    position: absolute;
+    z-index: 9999;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 180px;
   }
 
   .inner {
     position: relative;
-    overflow: hidden;
 
     .animate {
       transform: translateX(100%);
@@ -313,7 +271,7 @@ export default class AdditionalDetails extends Vue {
 
       @include respond-to("x-small") {
         font-size: 2rem;
-        word-break:break-all;
+        word-break: break-all;
       }
 
       @include respond-to("xx-small") {
@@ -345,7 +303,6 @@ export default class AdditionalDetails extends Vue {
       @include respond-to("x-small") {
         font-size: 1.125rem;
       }
-
 
       &.intro {
         @include std-text();

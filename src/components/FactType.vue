@@ -1,7 +1,7 @@
 <template>
   <span
     class="linked-detail"
-    v-bind:class="{ opened: (active && active.ID === type.ID), hovered: highlight }"
+    :class="{ opened: (active && active.ID === type.ID), hovered: highlight }"
     v-on:click="$emit('show-details', type)"
   >
     <span>

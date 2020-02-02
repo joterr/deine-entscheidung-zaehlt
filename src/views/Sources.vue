@@ -9,19 +9,19 @@
 
       <div class="list">
         <h3>Verstöße / Umgang / Skandale</h3>
-        <SourceList v-bind:elements="VIOLATIONS_HANDLING_SCANDALS"></SourceList>
+        <SourceList :elements="VIOLATIONS_HANDLING_SCANDALS"></SourceList>
       </div>
       <div class="list">
         <h3>Umweltauswirkungen</h3>
-        <SourceList v-bind:elements="ENVIRONMENTAL_IMPACTS"></SourceList>
+        <SourceList :elements="ENVIRONMENTAL_IMPACTS"></SourceList>
       </div>
       <div class="list">
         <h3>Gesundheitsvorteile</h3>
-        <SourceList v-bind:elements="HEALTH_BENEFITS"></SourceList>
+        <SourceList :elements="HEALTH_BENEFITS"></SourceList>
       </div>
       <div class="list">
         <h3>Schlachtzahlen</h3>
-        <SourceList v-bind:elements="SLAUGHTER_FIGURES"></SourceList>
+        <SourceList :elements="SLAUGHTER_FIGURES"></SourceList>
       </div>
     </div>
   </div>

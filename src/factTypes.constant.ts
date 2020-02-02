@@ -1,5 +1,24 @@
 // tslint:disable:max-line-length
 
+export const MODES = [
+  {
+    id: "DE",
+    niceName: "Deutschland"
+  },
+  {
+    id: "OMNI",
+    niceName: "konventionell"
+  },
+  {
+    id: "VEGGIE",
+    niceName: "vegetarisch"
+  },
+  {
+    id: "VEGAN",
+    niceName: "vegan"
+  }
+];
+
 export const FACT_TYPES_CONST = {
   HUHNER: {
     ID: "huhner",

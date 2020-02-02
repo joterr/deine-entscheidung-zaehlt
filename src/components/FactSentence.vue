@@ -12,79 +12,79 @@
           <span class="time">{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> in Deutschland mehr als
           <span>
             <FactType
-              v-bind:type="TYPES.FISCHE"
-              v-bind:active="activeDetail"
-              v-bind:highlight="highlight"
+              :type="TYPES.FISCHE"
+              :active="activeDetail"
+              :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
           <span>
             <FactType
-              v-bind:type="TYPES.HUHNER"
-              v-bind:active="activeDetail"
-              v-bind:highlight="highlight"
+              :type="TYPES.HUHNER"
+              :active="activeDetail"
+              :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
           <span>
             <FactType
-              v-bind:type="TYPES.SCHWEINE"
-              v-bind:active="activeDetail"
-              v-bind:highlight="highlight"
+              :type="TYPES.SCHWEINE"
+              :active="activeDetail"
+              :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
           <span>
             <FactType
-              v-bind:type="TYPES.TRUTHAHNER"
-              v-bind:active="activeDetail"
-              v-bind:highlight="highlight"
+              :type="TYPES.TRUTHAHNER"
+              :active="activeDetail"
+              :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
           <span class="additional">
             <FactType
-              v-bind:type="TYPES.ENTEN"
-              v-bind:active="activeDetail"
-              v-bind:highlight="highlight"
+              :type="TYPES.ENTEN"
+              :active="activeDetail"
+              :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
           <span>
             <FactType
-              v-bind:type="TYPES.RINDER"
-              v-bind:active="activeDetail"
-              v-bind:highlight="highlight"
+              :type="TYPES.RINDER"
+              :active="activeDetail"
+              :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType><span class="additional">, </span>
           </span>
           <span class="additional">
             <FactType
-              v-bind:type="TYPES.SCHAFE"
-              v-bind:active="activeDetail"
-              v-bind:highlight="highlight"
+              :type="TYPES.SCHAFE"
+              :active="activeDetail"
+              :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
           <span class="additional">
             <FactType
-              v-bind:type="TYPES.ZIEGEN"
-              v-bind:active="activeDetail"
-              v-bind:highlight="highlight"
+              :type="TYPES.ZIEGEN"
+              :active="activeDetail"
+              :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>
           </span> und <span class="additional">
             <FactType
-              v-bind:type="TYPES.PFERDE"
-              v-bind:active="activeDetail"
-              v-bind:highlight="highlight"
+              :type="TYPES.PFERDE"
+              :active="activeDetail"
+              :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>
           </span><span class="small-view">
             <FactType
-              v-bind:type="TYPES.ENTEN"
-              v-bind:active="activeDetail"
-              v-bind:highlight="highlight"
+              :type="TYPES.ENTEN"
+              :active="activeDetail"
+              :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>
           </span>
@@ -94,32 +94,32 @@
           Zusätzliche
           <span>
             <FactType
-              v-bind:type="TYPES.SOY"
-              v-bind:active="activeDetail"
-              v-bind:highlight="highlight"
+              :type="TYPES.SOY"
+              :active="activeDetail"
+              :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
           <span>
             <FactType
-              v-bind:type="TYPES.GULLE"
-              v-bind:active="activeDetail"
-              v-bind:highlight="highlight"
+              :type="TYPES.GULLE"
+              :active="activeDetail"
+              :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>,
           </span>
           <span>
             <FactType
-              v-bind:type="TYPES.ANTIBIOTIKA"
-              v-bind:active="activeDetail"
-              v-bind:highlight="highlight"
+              :type="TYPES.ANTIBIOTIKA"
+              :active="activeDetail"
+              :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>
           </span> und <span>
             <FactType
-              v-bind:type="TYPES.CO2"
-              v-bind:active="activeDetail"
-              v-bind:highlight="highlight"
+              :type="TYPES.CO2"
+              :active="activeDetail"
+              :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>
           </span>
@@ -128,9 +128,13 @@
         <div class="show-truth" v-if="false">
           <span v-on:click="$emit('open-truth-overlay')">Findest Du nicht okay?</span>
         </div>
+        <div class="what-do-you-eat">
+          <span>Und Du?</span>
+          <span>Ich esse konventionell / vegetarisch / vegan.</span>
+        </div>
       </div>
     </div>
-    <AdditionalDetails v-bind:activeType="activeDetail" v-on:close-details="closeDetail()" />
+    <AdditionalDetails :activeType="activeDetail" v-on:close-details="closeDetail()" />
   </div>
 </template>
 
@@ -339,6 +343,26 @@ $sentance-font-size-small: 1rem;
       &:hover {
         text-decoration: underline;
       }
+    }
+  }
+
+  .what-do-you-eat {
+    display: none;
+
+    margin-top: 3.125rem;
+    transform: translateX(0) !important;
+
+    span {
+      display: inline-block;
+      margin-top: .625rem;
+      margin-right: 1rem;
+      padding: .625rem;
+      background-color: $cl-accent1;
+      opacity: 0.85;
+      color: #000;
+      @include std-text-bold-italic();
+      font-size: 1rem;
+      border-radius: .25rem;
     }
   }
 }

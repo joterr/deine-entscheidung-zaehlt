@@ -5,10 +5,10 @@
         <FactSentence v-on:open-truth-overlay="openTruthOverlay()" />
       </div>
       <div class="animal-wrapper">
-        <AnimalSprinkler />
+        <!-- <AnimalSprinkler /> -->
       </div>
     </div>
-    <div class="truth-overlay" v-bind:class="{ 'opened': isVisibleTruth }">
+    <div class="truth-overlay" :class="{ 'opened': isVisibleTruth }">
       <div class="layout-wrapper">
         <div class="back-link" v-on:click="hideTruth">zur&uuml;ck</div>
         <div class="content">
