@@ -104,6 +104,7 @@ export default class AdditionalDetails extends Vue {
   };
 
   public selectedMode(mode: string): void {
+    /* tslint:disable-next-line:no-console */
     console.log("selectedMode", mode);
   }
 }
