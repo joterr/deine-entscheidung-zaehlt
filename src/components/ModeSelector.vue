@@ -1,15 +1,15 @@
 <template>
-  <div class="mode-selector" :class="{'isExpanded': isExpanded}">
+  <div class="mode-selector" :class="{'is-expanded': isExpanded, 'inline': inline}">
     <ul :class="getActiveIndexClass()">
-      <li v-for="mode in MODES" :key="mode.id" :class="{'active': mode.id === selectedMode}">
+      <li v-for="(mode, index) in MODES" :key="mode.id" :class="{'active': index === selectedMode}">
         <input
           type="radio"
           v-model="selectedMode"
-          :value="mode.id"
+          :value="index"
           :id="mode.id"
-          v-on:click="handleSelfClicked(mode.id === selectedMode, $event)"
+          v-on:click="handleSelfClicked(mode.id, $event)"
         />
-        <label :for="mode.id">{{ mode.niceName }}</label>
+        <label :for="mode.id">{{ inline ? mode.niceName : mode.niceNameInline }}</label>
       </li>
     </ul>
   </div>
@@ -17,21 +17,24 @@
 
 <script lang="ts">
 import { Component, Provide, Vue } from "vue-property-decorator";
-import { MODES } from "@/factTypes.constant";
+import { MODES, ModeEnum } from "@/factTypes.constant";
 
 @Component({
-  props: ["activeMode"]
+  props: ["activeMode", "inline"]
 })
 export default class ModeSelector extends Vue {
   @Provide()
-  private MODES = MODES;
+  private activeMode!: ModeEnum;
+
+  @Provide()
+  private MODES: { [key: string]: any } = MODES;
 
   @Provide()
   private isExpanded: boolean = false;
 
-  private mode: string = MODES[0].id;
+  private mode: ModeEnum = this.activeMode || ModeEnum.DE;
 
-  public set selectedMode(mode: string) {
+  public set selectedMode(mode: ModeEnum) {
     if (this.mode === mode) {
       this.isExpanded = true;
     }
@@ -40,19 +43,20 @@ export default class ModeSelector extends Vue {
     this.$emit("selected-mode", mode);
   }
 
-  public get selectedMode(): string {
+  public get selectedMode(): ModeEnum {
     return this.mode;
   }
 
-  public handleSelfClicked(already: boolean, event: Event): void {
-    this.isExpanded = !(this.isExpanded && already);
+  public handleSelfClicked(key: string, event: Event): void {
+    this.isExpanded = !(this.isExpanded && key === ModeEnum[this.selectedMode]);
+    this.$forceUpdate();
     if (!this.isExpanded) {
       event.stopPropagation();
     }
   }
 
   public getActiveIndexClass(): string {
-    return `active-${this.MODES.findIndex((m: any) => m.id === this.mode)}`;
+    return `active-${this.mode}`;
   }
 }
 </script>
@@ -138,7 +142,25 @@ $element-height-complete: $element-height + $element-border-width * 2;
     }
   }
 
-  &.isExpanded {
+  &.inline {
+    display: inline-block;
+
+    ul {
+      border: none;
+
+      li.active {
+        background: none;
+
+        label {
+          background: none;
+          color: #1ec46c;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  &.is-expanded {
     overflow: visible;
     height: auto;
     box-shadow: none;

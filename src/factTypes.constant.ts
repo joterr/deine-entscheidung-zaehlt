@@ -1,21 +1,32 @@
 // tslint:disable:max-line-length
 
+export enum ModeEnum {
+  "DE",
+  "OMNI",
+  "VEGGIE",
+  "VEGAN"
+}
+
 export const MODES = [
   {
     id: "DE",
-    niceName: "Deutschland"
+    niceName: "Deutschland",
+    niceNameInline: "Deutschland"
   },
   {
     id: "OMNI",
-    niceName: "konventionell"
+    niceName: "konventionell",
+    niceNameInline: "konventionelle"
   },
   {
     id: "VEGGIE",
-    niceName: "vegetarisch"
+    niceName: "vegetarisch",
+    niceNameInline: "vegetarische"
   },
   {
     id: "VEGAN",
-    niceName: "vegan"
+    niceName: "vegan",
+    niceNameInline: "vegane"
   }
 ];
 

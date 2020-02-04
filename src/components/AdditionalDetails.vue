@@ -80,7 +80,7 @@
 
 <script lang="ts">
 import { Component, Provide, Vue } from "vue-property-decorator";
-import { FACT_TYPES_CONST } from "@/factTypes.constant";
+import { FACT_TYPES_CONST, ModeEnum } from "@/factTypes.constant";
 import ICountUp from "vue-countup-v2";
 import ModeSelector from "@/components/ModeSelector.vue";
 
@@ -96,6 +96,9 @@ export default class AdditionalDetails extends Vue {
   private TYPES = FACT_TYPES_CONST;
 
   @Provide()
+  private activeMode!: ModeEnum;
+
+  @Provide()
   private countUpOptions: any = {
     useEasing: true,
     useGrouping: true,
@@ -103,9 +106,9 @@ export default class AdditionalDetails extends Vue {
     decimal: ","
   };
 
-  public selectedMode(mode: string): void {
-    /* tslint:disable-next-line:no-console */
-    console.log("selectedMode", mode);
+  public selectedMode(mode: ModeEnum): void {
+    this.activeMode = mode;
+    this.$emit("selected-mode", mode);
   }
 }
 </script>

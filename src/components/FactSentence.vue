@@ -6,10 +6,16 @@
       </div>
     </div>
     <div class="sentance-wrapper fact-sentence">
-      <div class="inner">
+      <div class="inner" v-if="activeMode === ModeDE">
         <h1 class="main-info">
           In
-          <span class="time">{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> in Deutschland mehr als
+          <span class="time">{{getPastTimeString(pastTime)}}</span> wurde
+          <i v-if="pastTime > 1">n</i> in
+          <ModeSelector
+            :inline="true"
+            :activeMode="activeMode"
+            v-on:selected-mode="selectedMode($event)"
+          />mehr als
           <span>
             <FactType
               :type="TYPES.FISCHE"
@@ -56,7 +62,8 @@
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            ></FactType><span class="additional">, </span>
+            ></FactType>
+            <span class="additional">,</span>
           </span>
           <span class="additional">
             <FactType
@@ -73,14 +80,16 @@
               :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>
-          </span> und <span class="additional">
+          </span> und
+          <span class="additional">
             <FactType
               :type="TYPES.PFERDE"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>
-          </span><span class="small-view">
+          </span>
+          <span class="small-view">
             <FactType
               :type="TYPES.ENTEN"
               :active="activeDetail"
@@ -115,7 +124,8 @@
               :highlight="highlight"
               v-on:show-details="showDetail"
             ></FactType>
-          </span> und <span>
+          </span> und
+          <span>
             <FactType
               :type="TYPES.CO2"
               :active="activeDetail"
@@ -125,31 +135,53 @@
           </span>
           gefährden unsere Gesundheit und Umwelt.
         </h1>
-        <div class="show-truth" v-if="false">
-          <span v-on:click="$emit('open-truth-overlay')">Findest Du nicht okay?</span>
-        </div>
-        <div class="what-do-you-eat">
-          <span>Und Du?</span>
-          <span>Ich esse konventionell / vegetarisch / vegan.</span>
-        </div>
+      </div>
+      <div class="inner" v-else>
+        <h1>
+          Eine
+          <ModeSelector
+            :inline="true"
+            :activeMode="activeMode"
+            v-on:selected-mode="selectedMode($event)"
+          /> Ernährungsweise führt zu...
+        </h1>
+      </div>
+      <div class="show-truth" v-if="false">
+        <span v-on:click="$emit('open-truth-overlay')">Findest Du nicht okay?</span>
+      </div>
+      <div class="what-do-you-eat">
+        <span>Und Du?</span>
+        <span>Ich esse konventionell / vegetarisch / vegan.</span>
       </div>
     </div>
-    <AdditionalDetails :activeType="activeDetail" v-on:close-details="closeDetail()" />
+    <AdditionalDetails
+      :activeType="activeDetail"
+      :activeMode="activeMode"
+      v-on:selected-mode="selectedMode($event)"
+      v-on:close-details="closeDetail()"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import AdditionalDetails from "@/components/AdditionalDetails.vue";
 import FactType from "@/components/FactType.vue";
+import ModeSelector from "@/components/ModeSelector.vue";
 import { Component, Provide, Vue } from "vue-property-decorator";
-import { FACT_TYPES_CONST } from "@/factTypes.constant";
+import { FACT_TYPES_CONST, MODES, ModeEnum } from "@/factTypes.constant";
 
 @Component({
-  components: { AdditionalDetails, FactType }
+  components: { AdditionalDetails, FactType, ModeSelector }
 })
 export default class FactSentence extends Vue {
   @Provide()
   private TYPES = FACT_TYPES_CONST;
+  @Provide()
+  private MODES = MODES;
+  @Provide()
+  private ModeDE: ModeEnum = ModeEnum.DE;
+  @Provide()
+  private activeMode: ModeEnum = ModeEnum.DE;
   @Provide()
   private activeDetail = null;
   @Provide()
@@ -185,6 +217,10 @@ export default class FactSentence extends Vue {
 
   public closeDetail() {
     this.activeDetail = null;
+  }
+
+  public selectedMode(mode: ModeEnum) {
+    this.activeMode = mode;
   }
 
   private mounted() {
@@ -257,7 +293,7 @@ $sentance-font-size-small: 1rem;
       }
 
       & > * {
-        transform: translateX(1000px);
+      //  transform: translateX(1000px);
       }
     }
   }
@@ -272,7 +308,7 @@ $sentance-font-size-small: 1rem;
   }
 
   h1 {
-    animation: delayShowAndSliceInOut 3s ease-in-out forwards 1s;
+  //  animation: delayShowAndSliceInOut 3s ease-in-out forwards 1s;
     @include highlight-text-bold();
     color: $white;
     font-size: $sentance-font-size;
@@ -292,7 +328,7 @@ $sentance-font-size-small: 1rem;
       font-size: $sentance-font-size-small;
     }
     line-height: 160%;
-    animation: delayShowAndSliceIn 1.25s ease forwards 3.5s;
+  //  animation: delayShowAndSliceIn 1.25s ease forwards 3.5s;
     white-space: normal;
     word-wrap: break-word;
 
@@ -319,7 +355,7 @@ $sentance-font-size-small: 1rem;
 
     &.additional-info {
       margin-top: 1.25rem;
-      animation: delayShowAndSliceIn 1.25s ease forwards 4.5s;
+    //  animation: delayShowAndSliceIn 1.25s ease forwards 4.5s;
     }
   }
 
@@ -337,8 +373,8 @@ $sentance-font-size-small: 1rem;
       font-size: 1rem;
       text-decoration: none;
       cursor: pointer;
-      transform: translateX(1000px);
-      animation: delayShowAndSliceIn 500ms ease forwards 8s;
+    //  transform: translateX(1000px);
+    //  animation: delayShowAndSliceIn 500ms ease forwards 8s;
 
       &:hover {
         text-decoration: underline;
@@ -354,15 +390,15 @@ $sentance-font-size-small: 1rem;
 
     span {
       display: inline-block;
-      margin-top: .625rem;
+      margin-top: 0.625rem;
       margin-right: 1rem;
-      padding: .625rem;
+      padding: 0.625rem;
       background-color: $cl-accent1;
       opacity: 0.85;
       color: #000;
       @include std-text-bold-italic();
       font-size: 1rem;
-      border-radius: .25rem;
+      border-radius: 0.25rem;
     }
   }
 }

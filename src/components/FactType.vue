@@ -17,7 +17,7 @@ import { Component, Provide, Vue } from "vue-property-decorator";
 @Component({
   props: ["type", "active", "highlight"]
 })
-export default class AdditionalDetails extends Vue {
+export default class FactType extends Vue {
   @Provide()
   private type: any;
 
