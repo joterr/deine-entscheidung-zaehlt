@@ -248,7 +248,7 @@
       <h2>3. Datenerfassung auf unserer Website</h2>
       <h3>Server-Log-Dateien</h3>
       <p>
-        Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die
+        Der Propr der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die
         Ihr Browser automatisch an uns &uuml;bermittelt. Dies sind:
       </p>
       <ul class="small-list">

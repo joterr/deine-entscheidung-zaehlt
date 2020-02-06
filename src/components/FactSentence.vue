@@ -1,101 +1,114 @@
 <template>
   <div class="fact-wrapper">
-    <div class="sentance-wrapper initial-question">
+    <div class="sentance-wrapper initial-question" v-if="false">
       <div class="inner">
         <h1>Deine Entscheidung zählt?</h1>
       </div>
     </div>
     <div class="sentance-wrapper fact-sentence">
-      <div class="inner" v-if="activeMode === ModeDE">
+      <div class="inner">
         <h1 class="main-info">
-          In
-          <span class="time">{{getPastTimeString(pastTime)}}</span> wurde
-          <i v-if="pastTime > 1">n</i> in
-          <ModeSelector
-            :inline="true"
-            :activeMode="activeMode"
-            v-on:selected-mode="selectedMode($event)"
-          />mehr als
+          <span v-if="activeMode === ModeDE">In <span class="highlight">{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> in </span>
+          <span v-if="activeMode !== ModeDE">Für eine </span>
+          <span class="mode-selector-dd">
+            <ModeSelector
+              v-if="!activeDetail"
+              :inline="true"
+              :activeMode="activeMode"
+              v-on:selected-mode="selectedMode($event)"
+            />
+          </span>
+          <span v-if="activeMode === ModeDE">&nbsp;mehr als </span><span v-if="activeMode !== ModeDE"><span class="highlight">&nbsp;Ernährung</span> werden jährlich </span>
           <span>
             <FactType
               :type="TYPES.FISCHE"
+              :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            ></FactType>,
+            />,
           </span>
           <span>
             <FactType
               :type="TYPES.HUHNER"
+              :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            ></FactType>,
+            />,
           </span>
           <span>
             <FactType
               :type="TYPES.SCHWEINE"
+              :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            ></FactType>,
+            />,
           </span>
           <span>
             <FactType
               :type="TYPES.TRUTHAHNER"
+              :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            ></FactType>,
+            />,
           </span>
           <span class="additional">
             <FactType
               :type="TYPES.ENTEN"
+              :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            ></FactType>,
+            />,
           </span>
           <span>
             <FactType
               :type="TYPES.RINDER"
+              :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            ></FactType>
+            />
             <span class="additional">,</span>
           </span>
           <span class="additional">
             <FactType
               :type="TYPES.SCHAFE"
+              :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            ></FactType>,
+            />,
           </span>
           <span class="additional">
             <FactType
               :type="TYPES.ZIEGEN"
+              :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            ></FactType>
+            />
           </span> und
           <span class="additional">
             <FactType
               :type="TYPES.PFERDE"
+              :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            ></FactType>
+            />
           </span>
           <span class="small-view">
             <FactType
               :type="TYPES.ENTEN"
+              :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            ></FactType>
+            />
           </span>
           allein für Essen getötet oder sind in Folge schlechter Haltebedingungen verendet.
         </h1>
@@ -104,46 +117,40 @@
           <span>
             <FactType
               :type="TYPES.SOY"
+              :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            ></FactType>,
+            />,
           </span>
           <span>
             <FactType
               :type="TYPES.GULLE"
+              :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            ></FactType>,
+            />,
           </span>
           <span>
             <FactType
               :type="TYPES.ANTIBIOTIKA"
+              :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            ></FactType>
+            />
           </span> und
           <span>
             <FactType
               :type="TYPES.CO2"
+              :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            ></FactType>
+            />
           </span>
           gefährden unsere Gesundheit und Umwelt.
-        </h1>
-      </div>
-      <div class="inner" v-else>
-        <h1>
-          Eine
-          <ModeSelector
-            :inline="true"
-            :activeMode="activeMode"
-            v-on:selected-mode="selectedMode($event)"
-          /> Ernährungsweise führt zu...
         </h1>
       </div>
       <div class="show-truth" v-if="false">
@@ -167,8 +174,8 @@
 import AdditionalDetails from "@/components/AdditionalDetails.vue";
 import FactType from "@/components/FactType.vue";
 import ModeSelector from "@/components/ModeSelector.vue";
-import { Component, Provide, Vue } from "vue-property-decorator";
-import { FACT_TYPES_CONST, MODES, ModeEnum } from "@/factTypes.constant";
+import { Component, Vue, Provide } from "vue-property-decorator";
+import { FACT_TYPES_CONST, ModeEnum } from "@/factTypes.constant";
 
 @Component({
   components: { AdditionalDetails, FactType, ModeSelector }
@@ -176,8 +183,6 @@ import { FACT_TYPES_CONST, MODES, ModeEnum } from "@/factTypes.constant";
 export default class FactSentence extends Vue {
   @Provide()
   private TYPES = FACT_TYPES_CONST;
-  @Provide()
-  private MODES = MODES;
   @Provide()
   private ModeDE: ModeEnum = ModeEnum.DE;
   @Provide()
@@ -239,6 +244,10 @@ export default class FactSentence extends Vue {
 $sentance-font-size: 1.15rem;
 $sentance-font-size-small: 1rem;
 
+i {
+  @include highlight-text();
+}
+
 .fact-wrapper {
   position: relative;
   z-index: 999;
@@ -272,7 +281,6 @@ $sentance-font-size-small: 1rem;
     }
 
     .inner {
-      overflow: hidden;
       display: inline-block;
       margin: 0 auto;
 
@@ -293,7 +301,7 @@ $sentance-font-size-small: 1rem;
       }
 
       & > * {
-      //  transform: translateX(1000px);
+        //  transform: translateX(1000px);
       }
     }
   }
@@ -308,14 +316,14 @@ $sentance-font-size-small: 1rem;
   }
 
   h1 {
-  //  animation: delayShowAndSliceInOut 3s ease-in-out forwards 1s;
+    //  animation: delayShowAndSliceInOut 3s ease-in-out forwards 1s;
+    display: inline-block;
     @include highlight-text-bold();
     color: $white;
     font-size: $sentance-font-size;
     @include respond-to("xx-small") {
       font-size: $sentance-font-size-small;
     }
-    display: inline-block;
   }
 }
 
@@ -328,7 +336,7 @@ $sentance-font-size-small: 1rem;
       font-size: $sentance-font-size-small;
     }
     line-height: 160%;
-  //  animation: delayShowAndSliceIn 1.25s ease forwards 3.5s;
+    //  animation: delayShowAndSliceIn 1.25s ease forwards 3.5s;
     white-space: normal;
     word-wrap: break-word;
 
@@ -346,7 +354,18 @@ $sentance-font-size-small: 1rem;
       display: inline;
     }
 
-    & span.time {
+    span.mode-selector-dd {
+      display: inline-block;
+      position: relative;
+      top: 0.6rem;
+      z-index: 9999;
+      height: calc(#{$sentance-font-size} * 1.6);
+      @include respond-to("xx-small") {
+        height: calc(#{$sentance-font-size-small} * 1.6);
+      }
+    }
+
+    & span.highlight {
       display: inline-block;
       @include highlight-text-bold();
       color: $white;
@@ -355,7 +374,7 @@ $sentance-font-size-small: 1rem;
 
     &.additional-info {
       margin-top: 1.25rem;
-    //  animation: delayShowAndSliceIn 1.25s ease forwards 4.5s;
+      //  animation: delayShowAndSliceIn 1.25s ease forwards 4.5s;
     }
   }
 
@@ -373,8 +392,8 @@ $sentance-font-size-small: 1rem;
       font-size: 1rem;
       text-decoration: none;
       cursor: pointer;
-    //  transform: translateX(1000px);
-    //  animation: delayShowAndSliceIn 500ms ease forwards 8s;
+      //  transform: translateX(1000px);
+      //  animation: delayShowAndSliceIn 500ms ease forwards 8s;
 
       &:hover {
         text-decoration: underline;

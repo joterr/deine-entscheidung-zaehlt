@@ -4,28 +4,28 @@
     <div class="additional-details">
       <div class="close" v-on:click="$emit('close-details')">schließen</div>
       <div class="select-mode">
-        <ModeSelector v-on:selected-mode="selectedMode($event)" />
+        <ModeSelector :activeMode="mode" v-on:selected-mode="selectedMode($event)" />
       </div>
       <div class="inner">
         <div
           class="content"
-          :class="{'over-a-million': activeType.PER_YEAR  > 1000000, 'over-a-billion': activeType.PER_YEAR  > 1000000000}"
+          :class="{'over-a-million': activeType[mode].PER_YEAR  > 1000000, 'over-a-billion': activeType[mode].PER_YEAR  > 1000000000}"
         >
           <h3>
             <span class="timespan">Das sind jährlich über</span>
           </h3>
 
           <h1 class="animate million big-screen">
-            <ICountUp :endVal="activeType.PER_YEAR" :options="countUpOptions" />
+            <ICountUp :endVal="activeType[mode].PER_YEAR" :options="countUpOptions" />
           </h1>
           <h1 class="animate million small-screen">
-            <ICountUp :endVal="activeType.PER_YEAR / 1000000" :options="countUpOptions" />&nbsp;Mio.
+            <ICountUp :endVal="activeType[mode].PER_YEAR / 1000000" :options="countUpOptions" />&nbsp;Mio.
           </h1>
           <h1 class="animate billion big-screen">
-            <ICountUp :endVal="activeType.PER_YEAR / 1000000" :options="countUpOptions" />&nbsp;Mio.
+            <ICountUp :endVal="activeType[mode].PER_YEAR / 1000000" :options="countUpOptions" />&nbsp;Mio.
           </h1>
           <h1 class="animate billion small-screen">
-            <ICountUp :endVal="activeType.PER_YEAR / 1000000000" :options="countUpOptions" />&nbsp;Mrd.
+            <ICountUp :endVal="activeType[mode].PER_YEAR / 1000000000" :options="countUpOptions" />&nbsp;Mrd.
           </h1>
           <h2 class="animate">
             <span v-if="activeType.UNIT">{{activeType.UNIT}}&nbsp;</span>
@@ -63,12 +63,12 @@
             v-if="activeType.ID === TYPES.HUHNER.ID || activeType.ID === TYPES.RINDER.ID"
           >Die relativen Werte bilden auf Grund einer unzureichenden Datenlage nur grobe Annäherungen.</div>
           <div class="source-declaration">
-            <div class="calculation">Grundlage: {{ activeType.CALCULATION }}</div>
+            <div class="calculation" v-if="activeType[mode].CALCULATION">Grundlage: {{ activeType[mode].CALCULATION }}</div>
             <div class="source">
-              Quelle<span v-if="activeType.SOURCES.length > 1">n</span>:
-              <span v-for="(source, index) in activeType.SOURCES" :key="source.SOURCE">
+              Quelle<span v-if="activeType[mode].SOURCES.length > 1">n</span>:
+              <span v-for="(source, index) in activeType[mode].SOURCES" :key="source.SOURCE">
                 <a :href="source.SOURCE_URL" target="_blanc">{{ source.SOURCE }}</a>
-                <span v-if="index !== activeType.SOURCES.length - 1">,&nbsp;</span>
+                <span v-if="index !== activeType[mode].SOURCES.length - 1">,&nbsp;</span>
               </span>
             </div>
           </div>
@@ -85,7 +85,7 @@ import ICountUp from "vue-countup-v2";
 import ModeSelector from "@/components/ModeSelector.vue";
 
 @Component({
-  props: ["activeType"],
+  props: ["activeType", "activeMode"],
   components: {
     ModeSelector,
     ICountUp
@@ -96,7 +96,7 @@ export default class AdditionalDetails extends Vue {
   private TYPES = FACT_TYPES_CONST;
 
   @Provide()
-  private activeMode!: ModeEnum;
+  private mode: ModeEnum = ModeEnum.DE;
 
   @Provide()
   private countUpOptions: any = {
@@ -107,8 +107,8 @@ export default class AdditionalDetails extends Vue {
   };
 
   public selectedMode(mode: ModeEnum): void {
-    this.activeMode = mode;
-    this.$emit("selected-mode", mode);
+    this.mode = ModeEnum[mode];
+    this.$emit("selected-mode", this.mode);
   }
 }
 </script>
@@ -176,7 +176,6 @@ export default class AdditionalDetails extends Vue {
     z-index: 9999;
     top: 1.25rem;
     right: 1.25rem;
-    width: 180px;
   }
 
   .inner {

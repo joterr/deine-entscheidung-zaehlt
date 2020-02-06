@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Provide, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 interface AnimalPos {
   type: string;

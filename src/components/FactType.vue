@@ -4,25 +4,53 @@
     :class="{ opened: (active && active.ID === type.ID), hovered: highlight }"
     v-on:click="$emit('show-details', type)"
   >
-    <span>
+    <span v-if="mode === 'DE'">
       {{makeLocaleInteger(counted, type.COUNT_ONE)}}
-      <span v-html="counted <= 1 ? type.LABEL_1 : counted < 10 ? type.LABEL_10 : type.LABEL"></span>
+      <span
+        v-html="counted <= 1 ? type.LABEL_1 : counted < 10 ? type.LABEL_10 : type.LABEL"
+      ></span>
+    </span>
+    <span v-else>
+      <ICountUp
+        v-if="calcYearlyByMode() > 0"
+        :endVal="calcYearlyByMode()"
+        :options="countUpOptions"
+      />
+      <span v-else>keine</span>
+      {{' '}}
+      <span v-html="type.LABEL"></span>
     </span>
   </span>
 </template>
 
 <script lang="ts">
-import { Component, Provide, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop, Provide } from "vue-property-decorator";
+import { ModeEnum } from "../factTypes.constant";
+import ICountUp from "vue-countup-v2";
 
 @Component({
-  props: ["type", "active", "highlight"]
+  components: {
+    ICountUp
+  },
+  props: ["type", "mode", "active", "highlight"]
 })
 export default class FactType extends Vue {
-  @Provide()
+  @Prop()
   private type: any;
 
-  @Provide()
+  @Prop()
+  private mode!: ModeEnum;
+
+  @Prop()
   private counted: number = 1;
+
+  @Provide()
+  private countUpOptions: any = {
+    useEasing: true,
+    useGrouping: true,
+    separator: ".",
+    decimal: ","
+  };
 
   public makeLocaleInteger(val: number, one: string = "ein"): string {
     const intedVal: number = this.makeInt(val);
@@ -42,12 +70,17 @@ export default class FactType extends Vue {
   }
 
   private mounted() {
-    const yearly: number = this.type.FACTOR
-      ? this.type.PER_YEAR * this.type.FACTOR
-      : this.type.PER_YEAR;
+    const yearly: number = this.calcYearlyByMode();
+
     setInterval(() => {
       this.counted += 1;
     }, this.getMillisecondsPerCountUp(yearly));
+  }
+
+  private calcYearlyByMode(): number {
+    return this.type[this.mode].FACTOR
+      ? this.type[this.mode].PER_YEAR * this.type[this.mode].FACTOR
+      : this.type[this.mode].PER_YEAR;
   }
 
   private getMillisecondsPerCountUp(val: number): number {
@@ -103,7 +136,7 @@ span.linked-detail {
       bottom: 0.125rem;
       z-index: -1;
       border-radius: 0.0125rem;
-      animation: changeBackground linear 1.75s 16s;   
+      animation: changeBackground linear 1.75s 16s;
     }
   }
 

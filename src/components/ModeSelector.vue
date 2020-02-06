@@ -1,33 +1,41 @@
 <template>
   <div class="mode-selector" :class="{'is-expanded': isExpanded, 'inline': inline}">
-    <ul :class="getActiveIndexClass()">
-      <li v-for="(mode, index) in MODES" :key="mode.id" :class="{'active': index === selectedMode}">
+    <span class="width-maker">{{ getSelectedModeName() }}</span>
+    <ul :class="getSelectedModeClass(mode.id)">
+      <li
+        v-for="mode in SELECTABLE_MODES"
+        :key="mode.id"
+        :class="{'active': mode.id === selectedMode}"
+      >
         <input
           type="radio"
           v-model="selectedMode"
-          :value="index"
+          :value="mode.id"
           :id="mode.id"
           v-on:click="handleSelfClicked(mode.id, $event)"
         />
-        <label :for="mode.id">{{ inline ? mode.niceName : mode.niceNameInline }}</label>
+        <label :for="mode.id">{{ inline ? mode.niceNameInline : mode.niceName }}</label>
       </li>
     </ul>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Provide, Vue } from "vue-property-decorator";
-import { MODES, ModeEnum } from "@/factTypes.constant";
+import { Component, Prop, Provide, Vue } from "vue-property-decorator";
+import { MODES, ModeEnum, Mode } from "@/factTypes.constant";
 
 @Component({
   props: ["activeMode", "inline"]
 })
 export default class ModeSelector extends Vue {
-  @Provide()
+  @Prop()
   private activeMode!: ModeEnum;
 
+  @Prop()
+  private inline!: boolean;
+
   @Provide()
-  private MODES: { [key: string]: any } = MODES;
+  private SELECTABLE_MODES: Mode[] = MODES;
 
   @Provide()
   private isExpanded: boolean = false;
@@ -55,8 +63,17 @@ export default class ModeSelector extends Vue {
     }
   }
 
-  public getActiveIndexClass(): string {
-    return `active-${this.mode}`;
+  public getSelectedModeClass(): string {
+    return `active-${this.SELECTABLE_MODES.findIndex(
+      (m: any) => m.id === this.mode
+    )}`;
+  }
+
+  public getSelectedModeName(): string {
+    const mode: Mode | undefined = this.SELECTABLE_MODES.find(
+      (m: any) => m.id === this.mode
+    );
+    return mode ? (this.inline ? mode.niceNameInline : mode.niceName) : "";
   }
 }
 </script>
@@ -70,13 +87,27 @@ $element-border-width: 0.125rem;
 $element-height: $element-height-base + $element-padding-vertical;
 $element-height-complete: $element-height + $element-border-width * 2;
 
+$element-padding-vertical-inline: 0.125rem;
+$element-height-base-inline: 1.15rem * 1.65;
+$element-height-inline: $element-height-base-inline +
+  $element-padding-vertical-inline;
+
 .mode-selector {
   position: relative;
   z-index: 999;
-  width: 180px;
   height: calc(#{$element-height-complete});
   overflow: hidden;
   border-radius: $element-border-radius;
+
+  .width-maker {
+    opacity: 0;
+    display: inline-block;
+    @include std-text-bold-italic();
+    padding-left: $element-padding-horizontal;
+    padding-right: calc(#{$element-padding-horizontal} * 2 + 0.4rem + 0.75rem);
+    font-size: small;
+    text-transform: uppercase;
+  }
 
   ul {
     margin: 0;
@@ -115,6 +146,7 @@ $element-height-complete: $element-height + $element-border-width * 2;
         padding: $element-padding-vertical $element-padding-horizontal;
         padding-top: 0;
         padding-right: 1.5rem;
+        opacity: 0;
       }
 
       &.active {
@@ -137,24 +169,7 @@ $element-height-complete: $element-height + $element-border-width * 2;
           background-color: #1ec46c;
           color: #fff;
           @include std-text-bold-italic();
-        }
-      }
-    }
-  }
-
-  &.inline {
-    display: inline-block;
-
-    ul {
-      border: none;
-
-      li.active {
-        background: none;
-
-        label {
-          background: none;
-          color: #1ec46c;
-          padding: 0;
+          opacity: 1;
         }
       }
     }
@@ -164,6 +179,7 @@ $element-height-complete: $element-height + $element-border-width * 2;
     overflow: visible;
     height: auto;
     box-shadow: none;
+    width: 170px;
 
     ul {
       border: $element-border-width solid #eee;
@@ -171,10 +187,78 @@ $element-height-complete: $element-height + $element-border-width * 2;
       li {
         background-color: #eee;
 
+        label {
+          opacity: 1;
+        }
+
         &.active label:after {
           right: 0.5rem;
           transform: translateY(-50%) rotate(-45deg);
         }
+      }
+    }
+  }
+
+  &.inline {
+    height: calc(#{$element-height-base-inline});
+    width: 100%;
+
+    @for $i from 1 through 3 {
+      &.active-#{$i} {
+        top: calc((#{$element-height-inline}) * -1 * #{$i});
+      }
+    }
+
+    .width-maker {
+      @include highlight-text-bold();
+      font-size: 1.15rem;
+      text-transform: none;
+    }
+
+    ul {
+      box-shadow: none;
+      border: none;
+
+      li.active label {
+        @include highlight-text-bold();
+      }
+
+      label {
+        height: calc(#{$element-height-inline});
+        line-height: 1.6rem;
+        font-size: 1.15rem;
+        text-transform: none;
+        padding: $element-padding-vertical-inline $element-padding-horizontal;
+      }
+    }
+  }
+
+  &.inline:not(.is-expanded) {
+    ul {
+      border: none;
+
+      li.active {
+        background-color: #fff;
+
+        label {
+          background: none;
+          color: #000;
+          @include highlight-text-bold();
+
+          &:after {
+            border-color: #000 transparent transparent #000;
+          }
+        }
+      }
+    }
+  }
+
+  &.inline.is-expanded {
+    width: 175px;
+
+    li:not(.active) {
+      label {
+        font-size: 1rem;
       }
     }
   }
