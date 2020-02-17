@@ -127,6 +127,13 @@ $breakpoints: (
 $font-family-highlight: 'Inconsolata', serif;
 $font-family-std: 'Muli', sans-serif;
 
+
+$font-size: 1.15rem;
+$font-size-highlight: 1.5rem;
+
+$font-size-small: 1rem;
+$font-size-small-highlight: 1.25rem;
+
 @mixin highlight-text() {
   font-family: $font-family-highlight;
   font-weight: 400;
@@ -161,7 +168,7 @@ $font-family-std: 'Muli', sans-serif;
 
 $white: #ffffff;
 $dark: #000000;
-$cl-accent1: #22da79;
+$cl-accent1: #1ec46c; // ;
 $cl-accent2: #cbbd5a;
 
 $page-padding: 10vh 3vw;

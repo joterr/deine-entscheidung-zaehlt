@@ -1,38 +1,28 @@
 <template>
-  <span
-    class="linked-detail"
-    :class="{ opened: (active && active.ID === type.ID), hovered: highlight }"
-    v-on:click="$emit('show-details', type)"
-  >
-    <span v-if="mode === 'DE'">
-      {{makeLocaleInteger(counted, type.COUNT_ONE)}}
-      <span
-        v-html="counted <= 1 ? type.LABEL_1 : counted < 10 ? type.LABEL_10 : type.LABEL"
-      ></span>
-    </span>
+  <span class="linked-detail" v-on:click="$emit('show-details', type)">
+    <span v-if="calced === 0">{{ !type.UNIT ? 'kein' : '0'}}</span>
+    <span v-else-if="calced < 10">{{ makeLocaleInteger(calced, type.COUNT_ONE) }}</span>
     <span v-else>
-      <ICountUp
-        v-if="calcYearlyByMode() > 0"
-        :endVal="calcYearlyByMode()"
-        :options="countUpOptions"
-      />
-      <span v-else>keine</span>
-      {{' '}}
-      <span v-html="type.LABEL"></span>
+      <ICountUp :endVal="calced" :options="countUpOptions" />
+      <!-- {{calc()}} <ICountUp :endVal="calc()" :options="countUpOptions" /> -->
     </span>
+    {{ ' ' }}
+    <span
+      v-html="calced <= 1 ? type.LABEL_1 : calced < 10 ? type.LABEL_10 : type.LABEL"
+    ></span>
   </span>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Provide } from "vue-property-decorator";
-import { ModeEnum } from "../factTypes.constant";
+import { Component, Vue, Prop, Provide, Watch } from "vue-property-decorator";
+import { ModeEnum, AVERAGE_LIFE_SPAN } from "../factTypes.constant";
 import ICountUp from "vue-countup-v2";
 
 @Component({
   components: {
     ICountUp
   },
-  props: ["type", "mode", "active", "highlight"]
+  props: ["counter", "type", "mode", "active", "highlight"]
 })
 export default class FactType extends Vue {
   @Prop()
@@ -42,7 +32,10 @@ export default class FactType extends Vue {
   private mode!: ModeEnum;
 
   @Prop()
-  private counted: number = 1;
+  private counter!: number;
+
+  @Provide()
+  private calced: number = 0;
 
   @Provide()
   private countUpOptions: any = {
@@ -69,23 +62,41 @@ export default class FactType extends Vue {
     return counters[intedVal] || intedVal.toLocaleString("de-DE");
   }
 
-  private mounted() {
-    const yearly: number = this.calcYearlyByMode();
+  private mounted(): void {
+    this.calc();
+  }
 
-    setInterval(() => {
-      this.counted += 1;
-    }, this.getMillisecondsPerCountUp(yearly));
+  @Watch("mode")
+  private onModeChanged(): void {
+    this.calc();
+  }
+
+  @Watch("counter")
+  private onPropertyChanged(): void {
+    this.calc();
+  }
+
+  private calc(): void {
+    if (this.mode === "DE") {
+      this.calced = this.makeInt(this.counter * this.getCountUpPerMilliseconds());
+    } else {
+      this.calced = this.makeInt(
+        this.counter < AVERAGE_LIFE_SPAN
+          ? this.counter * this.getCountUpPerMilliseconds()
+          : this.calcYearlyByMode() * AVERAGE_LIFE_SPAN
+      );
+    }
   }
 
   private calcYearlyByMode(): number {
     return this.type[this.mode].FACTOR
-      ? this.type[this.mode].PER_YEAR * this.type[this.mode].FACTOR
+      ? this.type[this.mode].PER_YEAR / this.type[this.mode].FACTOR
       : this.type[this.mode].PER_YEAR;
   }
 
-  private getMillisecondsPerCountUp(val: number): number {
-    const animalsPerSecond: number = val / 365 / 24 / 60 / 60;
-    return 1000 / animalsPerSecond;
+  private getCountUpPerMilliseconds(): number {
+    const yearly: number = this.calcYearlyByMode();
+    return this.mode === "DE" ? yearly / 365 / 24 / 60 / 60 : yearly;
   }
 
   private makeInt(val: number): number {
@@ -101,13 +112,16 @@ span.linked-detail {
   @include highlight-text-bold();
   transition: 300ms ease;
   position: relative;
+  font-size: $font-size-highlight;
+  @include respond-to("xx-small") {
+    font-size: $font-size-small-highlight;
+  }
 
   span {
     white-space: nowrap;
   }
 
-  &:hover,
-  &.opened {
+  &:hover {
     cursor: pointer;
     color: #000;
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="mode-selector" :class="{'is-expanded': isExpanded, 'inline': inline}">
+  <div class="mode-selector" :class="{'is-expanded': isExpanded}">
     <span class="width-maker">{{ getSelectedModeName() }}</span>
     <ul :class="getSelectedModeClass(mode.id)">
       <li
@@ -14,7 +14,7 @@
           :id="mode.id"
           v-on:click="handleSelfClicked(mode.id, $event)"
         />
-        <label :for="mode.id">{{ inline ? mode.niceNameInline : mode.niceName }}</label>
+        <label :for="mode.id">{{ mode.niceName }}</label>
       </li>
     </ul>
   </div>
@@ -25,14 +25,11 @@ import { Component, Prop, Provide, Vue } from "vue-property-decorator";
 import { MODES, ModeEnum, Mode } from "@/factTypes.constant";
 
 @Component({
-  props: ["activeMode", "inline"]
+  props: ["activeMode"]
 })
 export default class ModeSelector extends Vue {
   @Prop()
   private activeMode!: ModeEnum;
-
-  @Prop()
-  private inline!: boolean;
 
   @Provide()
   private SELECTABLE_MODES: Mode[] = MODES;
@@ -73,7 +70,7 @@ export default class ModeSelector extends Vue {
     const mode: Mode | undefined = this.SELECTABLE_MODES.find(
       (m: any) => m.id === this.mode
     );
-    return mode ? (this.inline ? mode.niceNameInline : mode.niceName) : "";
+    return mode ? mode.niceName : "";
   }
 }
 </script>
@@ -87,10 +84,7 @@ $element-border-width: 0.125rem;
 $element-height: $element-height-base + $element-padding-vertical;
 $element-height-complete: $element-height + $element-border-width * 2;
 
-$element-padding-vertical-inline: 0.125rem;
-$element-height-base-inline: 1.15rem * 1.65;
-$element-height-inline: $element-height-base-inline +
-  $element-padding-vertical-inline;
+$font-size: medium;
 
 .mode-selector {
   position: relative;
@@ -105,7 +99,7 @@ $element-height-inline: $element-height-base-inline +
     @include std-text-bold-italic();
     padding-left: $element-padding-horizontal;
     padding-right: calc(#{$element-padding-horizontal} * 2 + 0.4rem + 0.75rem);
-    font-size: small;
+    font-size: $font-size;
     text-transform: uppercase;
   }
 
@@ -119,10 +113,9 @@ $element-height-inline: $element-height-base-inline +
     width: 100%;
     border-radius: $element-border-radius;
     overflow: hidden;
-    border: $element-border-width solid #7ae8ae;
-    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.2);
+    border: $element-border-width solid transparent;
 
-    @for $i from 1 through 3 {
+    @for $i from 0 through 3 {
       &.active-#{$i} {
         top: calc((#{$element-height}) * -1 * #{$i});
       }
@@ -130,7 +123,7 @@ $element-height-inline: $element-height-base-inline +
 
     li {
       list-style-type: none;
-      background-color: #7ae8ae;
+      background-color: transparent;
 
       label {
         position: relative;
@@ -139,10 +132,10 @@ $element-height-inline: $element-height-base-inline +
         display: block;
         height: $element-height;
         line-height: $element-height;
-        color: #aaa;
+        color: rgb(185, 185, 185);
         @include std-text();
         text-transform: uppercase;
-        font-size: small;
+        font-size: $font-size;
         padding: $element-padding-vertical $element-padding-horizontal;
         padding-top: 0;
         padding-right: 1.5rem;
@@ -166,7 +159,7 @@ $element-height-inline: $element-height-base-inline +
 
         label {
           border-radius: $element-border-radius;
-          background-color: #1ec46c;
+          background-color: $cl-accent1;
           color: #fff;
           @include std-text-bold-italic();
           opacity: 1;
@@ -178,14 +171,14 @@ $element-height-inline: $element-height-base-inline +
   &.is-expanded {
     overflow: visible;
     height: auto;
+    width: 200px;
     box-shadow: none;
-    width: 170px;
 
     ul {
-      border: $element-border-width solid #eee;
+      border: $element-border-width solid rgba(255, 255, 255, 0.4);
 
       li {
-        background-color: #eee;
+        background-color: rgba(255, 255, 255, 0.4);
 
         label {
           opacity: 1;
@@ -195,70 +188,6 @@ $element-height-inline: $element-height-base-inline +
           right: 0.5rem;
           transform: translateY(-50%) rotate(-45deg);
         }
-      }
-    }
-  }
-
-  &.inline {
-    height: calc(#{$element-height-base-inline});
-    width: 100%;
-
-    @for $i from 1 through 3 {
-      &.active-#{$i} {
-        top: calc((#{$element-height-inline}) * -1 * #{$i});
-      }
-    }
-
-    .width-maker {
-      @include highlight-text-bold();
-      font-size: 1.15rem;
-      text-transform: none;
-    }
-
-    ul {
-      box-shadow: none;
-      border: none;
-
-      li.active label {
-        @include highlight-text-bold();
-      }
-
-      label {
-        height: calc(#{$element-height-inline});
-        line-height: 1.6rem;
-        font-size: 1.15rem;
-        text-transform: none;
-        padding: $element-padding-vertical-inline $element-padding-horizontal;
-      }
-    }
-  }
-
-  &.inline:not(.is-expanded) {
-    ul {
-      border: none;
-
-      li.active {
-        background-color: #fff;
-
-        label {
-          background: none;
-          color: #000;
-          @include highlight-text-bold();
-
-          &:after {
-            border-color: #000 transparent transparent #000;
-          }
-        }
-      }
-    }
-  }
-
-  &.inline.is-expanded {
-    width: 175px;
-
-    li:not(.active) {
-      label {
-        font-size: 1rem;
       }
     }
   }

@@ -41,7 +41,7 @@ export default class AnimalSprinkler extends Vue {
 
   private readonly animalWidthPx: number = 34;
   private readonly animalHeightPx: number = 34;
-  private readonly animalOpacity: number = 0.095;
+  private readonly animalOpacity: number = 0.1;
   private readonly animalsPerSecond: number = 38;
 
   private animalOrder: string[] = [
@@ -191,11 +191,13 @@ export default class AnimalSprinkler extends Vue {
     let columnCnt: number = 0;
 
     setInterval(() => {
-      if (rowCount === -1 || this.recalculation) {
+      if (this.recalculation) {
         this.recalculation = false;
         this.resetCanvas();
         rowCount = this.maxRows - 1;
         columnCnt = 0;
+      } else if (rowCount === -1) {
+        return;
       }
 
       if (

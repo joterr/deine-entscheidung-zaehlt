@@ -5,23 +5,26 @@
         <h1>Deine Entscheidung zählt?</h1>
       </div>
     </div>
-    <div class="sentance-wrapper fact-sentence">
+    <div class="sentance-wrapper fact-sentence" :class="{'hide': activeDetail !== null}">
       <div class="inner">
         <h1 class="main-info">
-          <span v-if="activeMode === ModeDE">In <span class="highlight">{{getPastTimeString(pastTime)}}</span> wurde<i v-if="pastTime > 1">n</i> in </span>
-          <span v-if="activeMode !== ModeDE">Für eine </span>
-          <span class="mode-selector-dd">
-            <ModeSelector
-              v-if="!activeDetail"
-              :inline="true"
-              :activeMode="activeMode"
-              v-on:selected-mode="selectedMode($event)"
-            />
+          <span v-if="activeMode === ModeDE">
+            In
+            <span class="highlight">{{getPastTimeString(pastSeconds)}}</span> wurde<i v-if="pastSeconds > 1">n</i> mehr als
           </span>
-          <span v-if="activeMode === ModeDE">&nbsp;mehr als </span><span v-if="activeMode !== ModeDE"><span class="highlight">&nbsp;Ernährung</span> werden jährlich </span>
+          <span v-if="activeMode !== ModeDE">
+            In
+            <span
+              class="highlight"
+            >{{ averageLifeSpan > pastSeconds ? pastSeconds : averageLifeSpan }} Jahren</span>
+            werden für eine
+            <span class="highlight">{{ getSelectedModeName() }}</span>
+            durchschnittlich
+          </span>
           <span>
             <FactType
-              :type="TYPES.FISCHE"
+              :counter="pastSeconds"
+              :type="types.FISCHE"
               :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
@@ -30,7 +33,8 @@
           </span>
           <span>
             <FactType
-              :type="TYPES.HUHNER"
+              :counter="pastSeconds"
+              :type="types.HUHNER"
               :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
@@ -39,7 +43,8 @@
           </span>
           <span>
             <FactType
-              :type="TYPES.SCHWEINE"
+              :counter="pastSeconds"
+              :type="types.SCHWEINE"
               :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
@@ -48,7 +53,8 @@
           </span>
           <span>
             <FactType
-              :type="TYPES.TRUTHAHNER"
+              :counter="pastSeconds"
+              :type="types.TRUTHAHNER"
               :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
@@ -57,53 +63,18 @@
           </span>
           <span class="additional">
             <FactType
-              :type="TYPES.ENTEN"
+              :counter="pastSeconds"
+              :type="types.ENTEN"
               :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            />,
+            />&nbsp;und
           </span>
           <span>
             <FactType
-              :type="TYPES.RINDER"
-              :mode="activeMode"
-              :active="activeDetail"
-              :highlight="highlight"
-              v-on:show-details="showDetail"
-            />
-            <span class="additional">,</span>
-          </span>
-          <span class="additional">
-            <FactType
-              :type="TYPES.SCHAFE"
-              :mode="activeMode"
-              :active="activeDetail"
-              :highlight="highlight"
-              v-on:show-details="showDetail"
-            />,
-          </span>
-          <span class="additional">
-            <FactType
-              :type="TYPES.ZIEGEN"
-              :mode="activeMode"
-              :active="activeDetail"
-              :highlight="highlight"
-              v-on:show-details="showDetail"
-            />
-          </span> und
-          <span class="additional">
-            <FactType
-              :type="TYPES.PFERDE"
-              :mode="activeMode"
-              :active="activeDetail"
-              :highlight="highlight"
-              v-on:show-details="showDetail"
-            />
-          </span>
-          <span class="small-view">
-            <FactType
-              :type="TYPES.ENTEN"
+              :counter="pastSeconds"
+              :type="types.RINDER"
               :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
@@ -116,7 +87,8 @@
           Zusätzliche
           <span>
             <FactType
-              :type="TYPES.SOY"
+              :counter="pastSeconds"
+              :type="types.SOY"
               :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
@@ -125,7 +97,8 @@
           </span>
           <span>
             <FactType
-              :type="TYPES.GULLE"
+              :counter="pastSeconds"
+              :type="types.GULLE"
               :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
@@ -134,23 +107,25 @@
           </span>
           <span>
             <FactType
-              :type="TYPES.ANTIBIOTIKA"
+              :counter="pastSeconds"
+              :type="types.ANTIBIOTIKA"
               :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
-            />
-          </span> und
+            />&nbsp;und
+          </span>
           <span>
             <FactType
-              :type="TYPES.CO2"
+              :counter="pastSeconds"
+              :type="types.CO2"
               :mode="activeMode"
               :active="activeDetail"
               :highlight="highlight"
               v-on:show-details="showDetail"
             />
           </span>
-          gefährden unsere Gesundheit und Umwelt.
+          belasten unsere Gesundheit und Umwelt.
         </h1>
       </div>
       <div class="show-truth" v-if="false">
@@ -163,10 +138,12 @@
     </div>
     <AdditionalDetails
       :activeType="activeDetail"
-      :activeMode="activeMode"
-      v-on:selected-mode="selectedMode($event)"
+      :mode="activeMode"
       v-on:close-details="closeDetail()"
     />
+    <div class="mode-selector-dd">
+      <ModeSelector :activeMode="activeMode" v-on:selected-mode="selectedMode($event)" />
+    </div>
   </div>
 </template>
 
@@ -175,14 +152,22 @@ import AdditionalDetails from "@/components/AdditionalDetails.vue";
 import FactType from "@/components/FactType.vue";
 import ModeSelector from "@/components/ModeSelector.vue";
 import { Component, Vue, Provide } from "vue-property-decorator";
-import { FACT_TYPES_CONST, ModeEnum } from "@/factTypes.constant";
+import {
+  FACT_TYPES_CONST,
+  ModeEnum,
+  Mode,
+  MODES,
+  AVERAGE_LIFE_SPAN
+} from "@/factTypes.constant";
 
 @Component({
   components: { AdditionalDetails, FactType, ModeSelector }
 })
 export default class FactSentence extends Vue {
   @Provide()
-  private TYPES = FACT_TYPES_CONST;
+  private types = FACT_TYPES_CONST;
+  @Provide()
+  private averageLifeSpan: number = AVERAGE_LIFE_SPAN;
   @Provide()
   private ModeDE: ModeEnum = ModeEnum.DE;
   @Provide()
@@ -190,9 +175,11 @@ export default class FactSentence extends Vue {
   @Provide()
   private activeDetail = null;
   @Provide()
-  private pastTime = 0;
+  private pastSeconds: number = 1;
   @Provide()
   private highlight = true;
+
+  private SELECTABLE_MODES: Mode[] = MODES;
 
   public getPastTimeString(time: number): string {
     let pastTimeString = "";
@@ -228,22 +215,26 @@ export default class FactSentence extends Vue {
     this.activeMode = mode;
   }
 
+  public getSelectedModeName(): string {
+    const mode: Mode | undefined = this.SELECTABLE_MODES.find(
+      (m: any) => m.id === this.activeMode
+    );
+    return mode ? mode.niceNameFull : "MODE_NOT_FOUND";
+  }
+
   private mounted() {
     this.startInterval();
   }
 
   private startInterval() {
     setInterval(() => {
-      this.pastTime += 1;
+      this.pastSeconds++;
     }, 1000);
   }
 }
 </script>
 
 <style scoped lang="scss">
-$sentance-font-size: 1.15rem;
-$sentance-font-size-small: 1rem;
-
 i {
   @include highlight-text();
 }
@@ -253,11 +244,16 @@ i {
   z-index: 999;
 
   .sentance-wrapper {
-    position: absolute;
+    position: fixed;
     top: 50vh;
-    left: 50vw;
-    width: 38vw;
-    transform: translate(-50%, -50%);
+    left: 51vw;
+    width: 20vw;
+    transform: translateY(-50%);
+    text-align: left;
+
+    &.hide {
+      opacity: 0;
+    }
 
     @include respond-to("xx-large") {
       width: 44vw;
@@ -320,20 +316,28 @@ i {
     display: inline-block;
     @include highlight-text-bold();
     color: $white;
-    font-size: $sentance-font-size;
+    font-size: $font-size;
     @include respond-to("xx-small") {
-      font-size: $sentance-font-size-small;
+      font-size: $font-size-small;
     }
   }
+}
+
+div.mode-selector-dd {
+  position: fixed;
+  top: 50vh;
+  right: 2vw;
+  transform: translateY(calc(-2.2625rem / 2));
+  z-index: 99999;
 }
 
 .fact-sentence {
   h1 {
     @include highlight-text();
     color: rgba(255, 255, 255, 0.5);
-    font-size: $sentance-font-size;
+    font-size: $font-size;
     @include respond-to("xx-small") {
-      font-size: $sentance-font-size-small;
+      font-size: $font-size-small;
     }
     line-height: 160%;
     //  animation: delayShowAndSliceIn 1.25s ease forwards 3.5s;
@@ -346,34 +350,27 @@ i {
 
     & > span,
     & > i {
-      font-size: $sentance-font-size;
+      font-size: $font-size;
       @include respond-to("xx-small") {
-        font-size: $sentance-font-size-small;
+        font-size: $font-size-small;
       }
       font-style: normal;
-      display: inline;
-    }
-
-    span.mode-selector-dd {
-      display: inline-block;
-      position: relative;
-      top: 0.6rem;
-      z-index: 9999;
-      height: calc(#{$sentance-font-size} * 1.6);
-      @include respond-to("xx-small") {
-        height: calc(#{$sentance-font-size-small} * 1.6);
-      }
+      display: block;
     }
 
     & span.highlight {
-      display: inline-block;
+      display: block;
+      font-size: $font-size-highlight;
+      @include respond-to("xx-small") {
+        font-size: $font-size-small-highlight;
+      }
       @include highlight-text-bold();
       color: $white;
       transition: 500ms ease font-size;
     }
 
     &.additional-info {
-      margin-top: 1.25rem;
+      padding-top: 1.5rem;
       //  animation: delayShowAndSliceIn 1.25s ease forwards 4.5s;
     }
   }

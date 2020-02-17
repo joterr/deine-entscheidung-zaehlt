@@ -1,4 +1,5 @@
 // tslint:disable:max-line-length
+export const AVERAGE_LIFE_SPAN: number = 85;
 
 export enum ModeEnum {
   "DE" = "DE",
@@ -10,29 +11,29 @@ export enum ModeEnum {
 export class Mode {
   public id!: string;
   public niceName!: string;
-  public niceNameInline!: string;
+  public niceNameFull!: string;
 }
 
 export const MODES = [
   {
     id: "DE",
     niceName: "Deutschland",
-    niceNameInline: "Deutschland"
+    niceNameFull: "Deutschland"
   },
   {
     id: "OMNI",
     niceName: "konventionell",
-    niceNameInline: "konventionelle"
+    niceNameFull: "konventionelle Ernährung"
   },
   {
     id: "VEGGIE",
     niceName: "vegetarisch",
-    niceNameInline: "vegetarische"
+    niceNameFull: "vegetarische Ernährung"
   },
   {
     id: "VEGAN",
     niceName: "vegan",
-    niceNameInline: "vegane"
+    niceNameFull: "vegane Ernährung"
   }
 ];
 
@@ -43,8 +44,9 @@ export const FACT_TYPES_CONST = {
     LABEL_10: "Hühner",
     LABEL: "Hühner",
     INCLUDED_TYPES: "mit Küken, Legehennen und Hähnen",
+    PROBLEM: "blabla",
     DE: {
-      PER_YEAR: (622000000 * 1.07) + 18000000 + 44000000, // 18 Mio Legehennen von Import
+      PER_YEAR: (5000000 * 1.07) + 18000000 + 44000000, // 18 Mio Legehennen von Import
       CALCULATION: "Schlachtzahlen sowie Eierproduktion",
       SOURCES: [
         {
@@ -70,7 +72,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     OMNI: {
-      PER_YEAR: 622,
+      PER_YEAR: 200,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -79,7 +81,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     VEGGIE: {
-      PER_YEAR: 322,
+      PER_YEAR: 100,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -102,6 +104,7 @@ export const FACT_TYPES_CONST = {
     LABEL_1: "Schwein",
     LABEL_10: "Schweine",
     LABEL: "Schweine",
+    PROBLEM: "blabla",
     DE: {
       PER_YEAR: 56605100 + 13500000,
       CALCULATION: "Schlachtzahlen + Falltiere (TBA)",
@@ -121,7 +124,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     OMNI: {
-      PER_YEAR: 622,
+      PER_YEAR: 5,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -130,7 +133,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     VEGGIE: {
-      PER_YEAR: 622,
+      PER_YEAR: 0,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -154,8 +157,9 @@ export const FACT_TYPES_CONST = {
     LABEL_10: "Fische",
     LABEL: "Fische",
     INCLUDED_TYPES: "mit Seefisch, Süßwasserfisch sowie Krebs- und Weichtiere",
+    PROBLEM: "blabla",
     DE: {
-      PER_YEAR: 1130000 * 1000 * 1.1,
+      PER_YEAR: 1243000000,
       CALCULATION: "Gesamtfanganzahl anhand anteiligem Fischgewicht und Beifang (1100 Fische pro 1 Tonne)",
       SOURCES: [
         {
@@ -173,7 +177,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     OMNI: {
-      PER_YEAR: 622,
+      PER_YEAR: 50,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -182,7 +186,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     VEGGIE: {
-      PER_YEAR: 622,
+      PER_YEAR: 0,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -205,6 +209,7 @@ export const FACT_TYPES_CONST = {
     LABEL_1: "Truthahn",
     LABEL_10: "Truthähner",
     LABEL: "Truthähner",
+    PROBLEM: "blabla",
     DE: {
       PER_YEAR: 39869812, // (467500000 / 13.25) * 1.13,
       CALCULATION: "Schlachtzahlen (berechnet mit 13.25 kg pro Tier) zzgl. 13% tödl. krank",
@@ -228,7 +233,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     OMNI: {
-      PER_YEAR: 622,
+      PER_YEAR: 50,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -237,7 +242,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     VEGGIE: {
-      PER_YEAR: 622,
+      PER_YEAR: 0,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -260,6 +265,7 @@ export const FACT_TYPES_CONST = {
     LABEL_1: "Ente",
     LABEL_10: "Enten",
     LABEL: "Enten",
+    PROBLEM: "blabla",
     DE: {
       PER_YEAR: 36800000 / 4,
       CALCULATION: "Schlachtzahlen berechnet mit 4 kg pro Tier",
@@ -279,7 +285,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     OMNI: {
-      PER_YEAR: 622,
+      PER_YEAR: 15,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -288,7 +294,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     VEGGIE: {
-      PER_YEAR: 622,
+      PER_YEAR: 0,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -311,6 +317,7 @@ export const FACT_TYPES_CONST = {
     LABEL_1: "Rind",
     LABEL_10: "Rinder",
     LABEL: "Rinder",
+    PROBLEM: "blabla",
     DE: {
       PER_YEAR: 3413200 + 579111,
       CALCULATION: "Schlachtzahlen und Tierkörperbeseitigung",
@@ -334,7 +341,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     OMNI: {
-      PER_YEAR: 622,
+      PER_YEAR: 5,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -343,149 +350,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     VEGGIE: {
-      PER_YEAR: 622,
-      SOURCES: [
-        {
-          SOURCE: "Fake-News (2020)",
-          SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
-        }
-      ]
-    },
-    VEGAN: {
-      PER_YEAR: 0,
-      SOURCES: [
-        {
-          SOURCE: "Fake-News (2020)",
-          SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
-        }
-      ]
-    }
-  },
-  SCHAFE: {
-    ID: "schafe",
-    LABEL_1: "Schaf",
-    LABEL_10: "Schafe",
-    LABEL: "Schafe",
-    DE: {
-      PER_YEAR: 1147000,
-      CALCULATION: "Schlachtzahlen",
-      SOURCES: [
-        {
-          SOURCE: "Statistisches Bundesamt (2019)",
-          SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
-        },
-        {
-          SOURCE: "Heinrich Böll Stiftung (2019)",
-          SOURCE_URL: "https://www.boell.de/sites/default/files/2019-10/fleischatlas_2018_V.pdf"
-        }
-      ]
-    },
-    OMNI: {
-      PER_YEAR: 622,
-      SOURCES: [
-        {
-          SOURCE: "Fake-News (2020)",
-          SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
-        }
-      ]
-    },
-    VEGGIE: {
-      PER_YEAR: 622,
-      SOURCES: [
-        {
-          SOURCE: "Fake-News (2020)",
-          SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
-        }
-      ]
-    },
-    VEGAN: {
-      PER_YEAR: 0,
-      SOURCES: [
-        {
-          SOURCE: "Fake-News (2020)",
-          SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
-        }
-      ]
-    }
-  },
-  PFERDE: {
-    ID: "pferde",
-    LABEL_1: "Pferd",
-    LABEL_10: "Pferde",
-    LABEL: "Pferde",
-    DE: {
-      PER_YEAR: 6400,
-      CALCULATION: "Schlachtzahlen",
-      SOURCES: [
-        {
-          SOURCE: "Statistisches Bundesamt (2019)",
-          SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
-        },
-        {
-          SOURCE: "Heinrich Böll Stiftung (2019)",
-          SOURCE_URL: "https://www.boell.de/sites/default/files/2019-10/fleischatlas_2018_V.pdf"
-        }
-      ]
-    },
-    OMNI: {
-      PER_YEAR: 622,
-      SOURCES: [
-        {
-          SOURCE: "Fake-News (2020)",
-          SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
-        }
-      ]
-    },
-    VEGGIE: {
-      PER_YEAR: 622,
-      SOURCES: [
-        {
-          SOURCE: "Fake-News (2020)",
-          SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
-        }
-      ]
-    },
-    VEGAN: {
-      PER_YEAR: 0,
-      SOURCES: [
-        {
-          SOURCE: "Fake-News (2020)",
-          SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
-        }
-      ]
-    }
-  },
-  ZIEGEN: {
-    ID: "ziegen",
-    LABEL_1: "Ziege",
-    LABEL_10: "Ziegen",
-    LABEL: "Ziegen",
-    COUNT_ONE: "eine",
-    DE: {
-      PER_YEAR: 216000,
-      CALCULATION: "Schlachtzahlen",
-      SOURCES: [
-        {
-          SOURCE: "Statistisches Bundesamt (2019)",
-          SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
-        },
-        {
-          SOURCE: "Heinrich Böll Stiftung (2019)",
-          SOURCE_URL: "https://www.boell.de/sites/default/files/2019-10/fleischatlas_2018_V.pdf"
-        }
-      ]
-    },
-    OMNI: {
-      PER_YEAR: 622,
-      SOURCES: [
-        {
-          SOURCE: "Fake-News (2020)",
-          SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
-        }
-      ]
-    },
-    VEGGIE: {
-      PER_YEAR: 622,
+      PER_YEAR: 5,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -509,8 +374,9 @@ export const FACT_TYPES_CONST = {
     LABEL: "l Gülle",
     UNIT: "Liter",
     NAME: "Gülle",
+    PROBLEM: "blabla",
     DE: {
-      PER_YEAR: 208000000000,
+      PER_YEAR: 2080000000,
       CALCULATION: "als Dünger auf Weiden und Äckern ausgebracht (ohne Importe)",
       SOURCES: [
         {
@@ -520,7 +386,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     OMNI: {
-      PER_YEAR: 622,
+      PER_YEAR: 5000,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -529,7 +395,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     VEGGIE: {
-      PER_YEAR: 622,
+      PER_YEAR: 3000,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -555,6 +421,7 @@ export const FACT_TYPES_CONST = {
     NAME: "Gen-Soja",
     UNIT: "Tonnen",
     INCLUDED_TYPES: "importiert aus den USA, Brasilien und Kanada",
+    PROBLEM: "blabla",
     DE: {
       PER_YEAR: 3063251,
       CALCULATION: "Futtermittel-Import zu 90% Gen-Soja-Schrot (ohne pfl. Öle)",
@@ -575,7 +442,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     OMNI: {
-      PER_YEAR: 622,
+      PER_YEAR: 50,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -584,7 +451,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     VEGGIE: {
-      PER_YEAR: 222,
+      PER_YEAR: 10,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -593,7 +460,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     VEGAN: {
-      PER_YEAR: 0,
+      PER_YEAR: 1,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -604,11 +471,11 @@ export const FACT_TYPES_CONST = {
   },
   ANTIBIOTIKA: {
     ID: "antibiotika",
-    LABEL_1: "Milligramm Antibiotika",
-    LABEL_10: "Milligramm Antibiotika",
+    LABEL_1: "Kilogramm Antibiotika",
     LABEL: "mg Antibiotika",
-    UNIT: "Milligramm",
+    UNIT: "Kilogramm",
     NAME: "Antibiotika",
+    PROBLEM: "Starker Einsatz von Antibiotika fördert sog. Antibiotikaresistenzen, welche selbst durch Reserveantibiotika nicht geheilt werden können.",
     DE: {
       PER_YEAR: 733000000000,
       CALCULATION: "Abgabemenge an Tierärzte in Deutschland, ohne Fischzucht",
@@ -625,7 +492,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     OMNI: {
-      PER_YEAR: 622,
+      PER_YEAR: 5,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -634,7 +501,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     VEGGIE: {
-      PER_YEAR: 222,
+      PER_YEAR: 3,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -660,6 +527,7 @@ export const FACT_TYPES_CONST = {
     NAME: "CO<sub>2</sub>-Äquivalente",
     UNIT: "Tonnen",
     INCLUDED_TYPES: "berechnet aus emittiertem Kohlendioxid, Lachgas und Methan",
+    PROBLEM: "Kohlendioxid-Äquivalente blabla",
     DE: {
       PER_YEAR: 20800000 * 5,
       CALCULATION: "Nutztierbestand um 20% (20.8 Mio. Tonnen CO2-Äqu.) verringern",
@@ -675,7 +543,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     OMNI: {
-      PER_YEAR: 622,
+      PER_YEAR: 5,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -684,7 +552,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     VEGGIE: {
-      PER_YEAR: 222,
+      PER_YEAR: 4,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -693,7 +561,7 @@ export const FACT_TYPES_CONST = {
       ]
     },
     VEGAN: {
-      PER_YEAR: 123,
+      PER_YEAR: 1,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",

@@ -5,7 +5,7 @@
         <FactSentence v-on:open-truth-overlay="openTruthOverlay()" />
       </div>
       <div class="animal-wrapper">
-        <!-- <AnimalSprinkler /> -->
+        <AnimalSprinkler />
       </div>
     </div>
     <div class="truth-overlay" :class="{ 'opened': isVisibleTruth }">

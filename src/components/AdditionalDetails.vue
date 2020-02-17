@@ -3,9 +3,6 @@
     <div class="overlay" v-on:click="$emit('close-details')"></div>
     <div class="additional-details">
       <div class="close" v-on:click="$emit('close-details')">schließen</div>
-      <div class="select-mode">
-        <ModeSelector :activeMode="mode" v-on:selected-mode="selectedMode($event)" />
-      </div>
       <div class="inner">
         <div
           class="content"
@@ -62,8 +59,15 @@
             class="relative-data-hint"
             v-if="activeType.ID === TYPES.HUHNER.ID || activeType.ID === TYPES.RINDER.ID"
           >Die relativen Werte bilden auf Grund einer unzureichenden Datenlage nur grobe Annäherungen.</div>
+          <div
+            class="problem-declaration"
+            v-if="activeType.PROBLEM"
+          ><span>Was ist das Problem?</span> {{ activeType.PROBLEM }}</div>
           <div class="source-declaration">
-            <div class="calculation" v-if="activeType[mode].CALCULATION">Grundlage: {{ activeType[mode].CALCULATION }}</div>
+            <div
+              class="calculation"
+              v-if="activeType[mode].CALCULATION"
+            >Grundlage: {{ activeType[mode].CALCULATION }}</div>
             <div class="source">
               Quelle<span v-if="activeType[mode].SOURCES.length > 1">n</span>:
               <span v-for="(source, index) in activeType[mode].SOURCES" :key="source.SOURCE">
@@ -85,7 +89,7 @@ import ICountUp from "vue-countup-v2";
 import ModeSelector from "@/components/ModeSelector.vue";
 
 @Component({
-  props: ["activeType", "activeMode"],
+  props: ["activeType", "mode"],
   components: {
     ModeSelector,
     ICountUp
@@ -96,20 +100,12 @@ export default class AdditionalDetails extends Vue {
   private TYPES = FACT_TYPES_CONST;
 
   @Provide()
-  private mode: ModeEnum = ModeEnum.DE;
-
-  @Provide()
   private countUpOptions: any = {
     useEasing: true,
     useGrouping: true,
     separator: ".",
     decimal: ","
   };
-
-  public selectedMode(mode: ModeEnum): void {
-    this.mode = ModeEnum[mode];
-    this.$emit("selected-mode", this.mode);
-  }
 }
 </script>
 
@@ -122,17 +118,19 @@ export default class AdditionalDetails extends Vue {
   bottom: 0;
   z-index: 99;
   cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .additional-details {
   position: fixed;
   top: 50vh;
   left: 50vw;
-  color: #000;
+  color: #fff;
   transform: translateX(-50%) translateY(-50%);
-  width: 40vw;
+  width: 44vw;
   transition: opacity ease 500ms;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.065);
+  box-sizing: content-box;
   padding: 2.5rem;
   padding-bottom: 1.25rem;
   border-radius: 1pt;
@@ -169,13 +167,6 @@ export default class AdditionalDetails extends Vue {
     font-size: x-small;
     color: #fff;
     cursor: pointer;
-  }
-
-  .select-mode {
-    position: absolute;
-    z-index: 9999;
-    top: 1.25rem;
-    right: 1.25rem;
   }
 
   .inner {
@@ -243,8 +234,7 @@ export default class AdditionalDetails extends Vue {
 
     h1 {
       @include std-text-bold-italic();
-      font-size: 7rem;
-      padding-bottom: 0.25rem;
+      font-size: 8rem;
 
       @include respond-to("medium") {
         font-size: 6rem;
@@ -296,7 +286,6 @@ export default class AdditionalDetails extends Vue {
 
     h4 {
       font-size: 1.5rem;
-      padding: 0.25rem 0;
       line-height: 140%;
 
       @include respond-to("small") {
@@ -323,13 +312,24 @@ export default class AdditionalDetails extends Vue {
     }
 
     .special-content {
-      padding-top: 1.75rem;
+      padding-top: 1.15rem;
     }
 
     .relative-data-hint {
       padding-top: 0.125rem;
       font-size: xx-small;
       opacity: 0.4;
+    }
+
+    .problem-declaration {
+      padding-top: 0.75rem;
+      padding-bottom: 0.25rem;
+      font-size: small;
+      opacity: 0.6;
+
+      span {
+        @include std-text-bold();
+      }
     }
 
     .source-declaration {
@@ -359,13 +359,14 @@ export default class AdditionalDetails extends Vue {
 
       a {
         text-decoration: underline;
-        color: #000;
+        color: #fff;
         transition: ease 0.3s;
       }
 
       &:hover {
         color: #fff;
-        background-color: #000;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 0.01rem;
 
         a {
           color: #fff;
