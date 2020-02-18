@@ -1,6 +1,6 @@
 <template>
   <div class="fact-wrapper">
-    <div class="sentance-wrapper initial-question" v-if="false">
+    <div class="sentance-wrapper initial-question">
       <div class="inner">
         <h1>Deine Entscheidung zählt?</h1>
       </div>
@@ -246,9 +246,10 @@ i {
   .sentance-wrapper {
     position: fixed;
     top: 50vh;
-    left: 51vw;
+    left: 50vw;
     width: 20vw;
-    transform: translateY(-50%);
+    margin-left: 20vw;
+    transform: translate(-50%, -50%);
     text-align: left;
 
     &.hide {
@@ -256,24 +257,27 @@ i {
     }
 
     @include respond-to("xx-large") {
-      width: 44vw;
+      width: 22vw;
     }
 
     @include respond-to("x-large") {
-      width: 60vw;
+      width: 26vw;
+      margin-left: 14vw;
     }
 
     @include respond-to("large") {
-      width: 80vw;
+      width: 30vw;
+      margin-left: 12vw;
     }
 
     @include respond-to("medium") {
-      width: 80vw;
+      width: 40vw;
+      margin-left: 8vw;
     }
 
     @include respond-to("small") {
-      margin-top: -4vh;
       width: 86vw;
+      margin-left: 6vw;
     }
 
     .inner {
@@ -287,17 +291,8 @@ i {
         }
       }
 
-      .small-view {
-        position: absolute;
-        top: -100vh;
-        @include respond-to("small") {
-          position: relative;
-          top: auto;
-        }
-      }
-
       & > * {
-        //  transform: translateX(1000px);
+        transform: translateX(2000px);
       }
     }
   }
@@ -312,7 +307,7 @@ i {
   }
 
   h1 {
-    //  animation: delayShowAndSliceInOut 3s ease-in-out forwards 1s;
+    animation: delayShowAndSliceInOut 3s ease-in-out forwards 1s;
     display: inline-block;
     @include highlight-text-bold();
     color: $white;
@@ -329,6 +324,8 @@ div.mode-selector-dd {
   right: 2vw;
   transform: translateY(calc(-2.2625rem / 2));
   z-index: 99999;
+  transform: translateX(2000px);
+  animation: delayShowAndSliceIn 1.25s ease forwards 6s;
 }
 
 .fact-sentence {
@@ -340,7 +337,7 @@ div.mode-selector-dd {
       font-size: $font-size-small;
     }
     line-height: 160%;
-    //  animation: delayShowAndSliceIn 1.25s ease forwards 3.5s;
+    animation: delayShowAndSliceIn 1.25s ease forwards 3.5s;
     white-space: normal;
     word-wrap: break-word;
 
@@ -371,7 +368,7 @@ div.mode-selector-dd {
 
     &.additional-info {
       padding-top: 1.5rem;
-      //  animation: delayShowAndSliceIn 1.25s ease forwards 4.5s;
+      animation: delayShowAndSliceIn 1.25s ease forwards 4.5s;
     }
   }
 
@@ -389,7 +386,7 @@ div.mode-selector-dd {
       font-size: 1rem;
       text-decoration: none;
       cursor: pointer;
-      //  transform: translateX(1000px);
+      //  transform: translateX(2000px);
       //  animation: delayShowAndSliceIn 500ms ease forwards 8s;
 
       &:hover {
@@ -421,7 +418,7 @@ div.mode-selector-dd {
 
 @keyframes delayShowAndSliceInOut {
   0% {
-    transform: translateX(1000px);
+    transform: translateX(2000px);
     filter: blur(4px);
   }
   25% {
@@ -433,14 +430,14 @@ div.mode-selector-dd {
     filter: blur(0);
   }
   100% {
-    transform: translateX(-1000px);
+    transform: translateX(-2000px);
     filter: blur(4px);
   }
 }
 
 @keyframes delayShowAndSliceIn {
   0% {
-    transform: translateX(1000px);
+    transform: translateX(2000px);
     filter: blur(4px);
   }
   100% {

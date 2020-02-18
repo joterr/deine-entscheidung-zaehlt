@@ -1,15 +1,12 @@
 <template>
   <span class="linked-detail" v-on:click="$emit('show-details', type)">
-    <span v-if="calced === 0">{{ !type.UNIT ? 'kein' : '0'}}</span>
+    <span v-if="calced === 0">{{ !type.UNIT ? 'keine' : '0'}}</span>
     <span v-else-if="calced < 10">{{ makeLocaleInteger(calced, type.COUNT_ONE) }}</span>
     <span v-else>
-      <ICountUp :endVal="calced" :options="countUpOptions" />
-      <!-- {{calc()}} <ICountUp :endVal="calc()" :options="countUpOptions" /> -->
+      <ICountUp :endVal="calced" :options="countUpOptions" :delay="1000" />
     </span>
     {{ ' ' }}
-    <span
-      v-html="calced <= 1 ? type.LABEL_1 : calced < 10 ? type.LABEL_10 : type.LABEL"
-    ></span>
+    <span v-html="type.LABEL"></span>
   </span>
 </template>
 
@@ -39,7 +36,7 @@ export default class FactType extends Vue {
 
   @Provide()
   private countUpOptions: any = {
-    useEasing: true,
+    useEasing: false,
     useGrouping: true,
     separator: ".",
     decimal: ","
@@ -78,7 +75,9 @@ export default class FactType extends Vue {
 
   private calc(): void {
     if (this.mode === "DE") {
-      this.calced = this.makeInt(this.counter * this.getCountUpPerMilliseconds());
+      this.calced = this.makeInt(
+        this.counter * this.getCountUpPerMilliseconds()
+      );
     } else {
       this.calced = this.makeInt(
         this.counter < AVERAGE_LIFE_SPAN
@@ -90,7 +89,7 @@ export default class FactType extends Vue {
 
   private calcYearlyByMode(): number {
     return this.type[this.mode].FACTOR
-      ? this.type[this.mode].PER_YEAR / this.type[this.mode].FACTOR
+      ? this.type[this.mode].PER_YEAR * this.type[this.mode].FACTOR
       : this.type[this.mode].PER_YEAR;
   }
 

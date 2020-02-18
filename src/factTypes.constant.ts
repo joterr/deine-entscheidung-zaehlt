@@ -477,9 +477,9 @@ export const FACT_TYPES_CONST = {
     NAME: "Antibiotika",
     PROBLEM: "Starker Einsatz von Antibiotika fördert sog. Antibiotikaresistenzen, welche selbst durch Reserveantibiotika nicht geheilt werden können.",
     DE: {
-      PER_YEAR: 733000000000,
+      PER_YEAR: 733000,
       CALCULATION: "Abgabemenge an Tierärzte in Deutschland, ohne Fischzucht",
-      FACTOR: 1000,
+      FACTOR: 1000000,
       SOURCES: [
         {
           SOURCE: "BMEL (2018)",
