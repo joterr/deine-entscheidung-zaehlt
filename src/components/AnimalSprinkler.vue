@@ -9,7 +9,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Provide, Watch } from "vue-property-decorator";
+import { ModeEnum, FACT_TYPES_CONST, Types, Type } from "../factTypes.constant";
 
 interface AnimalPos {
   type: string;
@@ -25,8 +26,15 @@ interface ImageRefs {
   [type: string]: HTMLImageElement;
 }
 
-@Component
+@Component({
+  props: ["activeMode"]
+})
 export default class AnimalSprinkler extends Vue {
+  @Provide()
+  private activeMode!: ModeEnum;
+
+  private types: Types = FACT_TYPES_CONST;
+
   private sprinklerCanvas!: HTMLCanvasElement;
   private ctx!: CanvasRenderingContext2D;
   private canvasWidth!: number;
@@ -35,6 +43,7 @@ export default class AnimalSprinkler extends Vue {
   private maxRows!: number;
   private recalculation: boolean = false;
   private recalcTimeout!: number;
+  private intervalHolder!: number;
   private imageRef: ImageRefs = {};
 
   private possibleCoords: PossibleCoords = {};
@@ -42,7 +51,7 @@ export default class AnimalSprinkler extends Vue {
   private readonly animalWidthPx: number = 34;
   private readonly animalHeightPx: number = 34;
   private readonly animalOpacity: number = 0.1;
-  private readonly animalsPerSecond: number = 38;
+  private animalsPerSecond: number = 38;
 
   private animalOrder: string[] = [
     "chicken",
@@ -72,6 +81,36 @@ export default class AnimalSprinkler extends Vue {
 
   constructor() {
     super();
+  }
+
+  @Watch("activeMode")
+  private onActiveModeChanged(): void {
+    this.animalsPerSecond = 0;
+
+    Object.keys(this.types).forEach((key: string) => {
+      const type: Type = this.types[key];
+      if (type.IS_ANIMAL) {
+        this.animalsPerSecond += type[this.activeMode].PER_YEAR;
+      }
+    });
+
+    if (this.activeMode === ModeEnum.DE) {
+      this.animalsPerSecond = this.animalsPerSecond / 365 / 24 / 60 / 60;
+    }
+
+    clearInterval(this.intervalHolder);
+
+    if (this.animalsPerSecond > 0) {
+      this.iterateAnimals();
+      this.retardedRenderAnimalsAnimation();
+    } else {
+      this.initSprinklerCanvas();
+    }
+
+    /* tslint:disable-next-line:no-console */
+    console.log(
+      `AnimalSprinkler # onActiveModeChanged: ${this.activeMode}, new animalsPerSecond: ${this.animalsPerSecond}`
+    );
   }
 
   private mounted() {
@@ -190,7 +229,7 @@ export default class AnimalSprinkler extends Vue {
     let rowCount: number = this.maxRows - 1;
     let columnCnt: number = 0;
 
-    setInterval(() => {
+    this.intervalHolder = setInterval(() => {
       if (this.recalculation) {
         this.recalculation = false;
         this.resetCanvas();

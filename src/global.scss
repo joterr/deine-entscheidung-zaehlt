@@ -131,8 +131,8 @@ $font-family-std: 'Muli', sans-serif;
 $font-size: 1.15rem;
 $font-size-highlight: 1.5rem;
 
-$font-size-small: 1rem;
-$font-size-small-highlight: 1.25rem;
+$font-size-small: 0.9rem;
+$font-size-small-highlight: 1.15rem;
 
 @mixin highlight-text() {
   font-family: $font-family-highlight;

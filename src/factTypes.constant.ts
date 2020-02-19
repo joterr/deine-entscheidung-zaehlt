@@ -8,11 +8,45 @@ export enum ModeEnum {
   "VEGAN" = "VEGAN"
 }
 
-export class Mode {
-  public id!: string;
-  public niceName!: string;
-  public niceNameFull!: string;
+export interface Mode {
+  id: string;
+  niceName: string;
+  niceNameFull: string;
 }
+
+export interface Types {
+  [key: string]: Type;
+}
+
+export interface Type {
+  ID: string;
+  LABEL_1?: string;
+  LABEL_10?: string;
+  LABEL?: string;
+  COUNT_ONE?: string;
+  INCLUDED_TYPES?: string;
+  NAME?: string;
+  UNIT?: string;
+  PROBLEM: string;
+  IS_ANIMAL?: boolean;
+  DE: ModeValue;
+  OMNI: ModeValue;
+  VEGGIE: ModeValue;
+  VEGAN: ModeValue;
+}
+
+export interface ModeValue {
+  PER_YEAR: number;
+  CALCULATION?: string;
+  FACTOR?: number;
+  SOURCES: ModeValueSource[];
+}
+export interface ModeValueSource {
+  SOURCE: string;
+  SOURCE_URL: string;
+}
+
+
 
 export const MODES = [
   {
@@ -37,14 +71,15 @@ export const MODES = [
   }
 ];
 
-export const FACT_TYPES_CONST = {
+export const FACT_TYPES_CONST: Types  = {
   HUHNER: {
     ID: "huhner",
     LABEL_1: "Huhn",
     LABEL_10: "Hühner",
     LABEL: "Hühner",
     INCLUDED_TYPES: "mit Küken, Legehennen und Hähnen",
-    PROBLEM: "blabla",
+    PROBLEM: "",
+    IS_ANIMAL: true,
     DE: {
       PER_YEAR: (5000000 * 1.07) + 18000000 + 44000000, // 18 Mio Legehennen von Import
       CALCULATION: "Schlachtzahlen sowie Eierproduktion",
@@ -104,7 +139,8 @@ export const FACT_TYPES_CONST = {
     LABEL_1: "Schwein",
     LABEL_10: "Schweine",
     LABEL: "Schweine",
-    PROBLEM: "blabla",
+    PROBLEM: "",
+    IS_ANIMAL: true,
     DE: {
       PER_YEAR: 56605100 + 13500000,
       CALCULATION: "Schlachtzahlen + Falltiere (TBA)",
@@ -157,7 +193,8 @@ export const FACT_TYPES_CONST = {
     LABEL_10: "Fische",
     LABEL: "Fische",
     INCLUDED_TYPES: "mit Seefisch, Süßwasserfisch sowie Krebs- und Weichtiere",
-    PROBLEM: "blabla",
+    PROBLEM: "",
+    IS_ANIMAL: true,
     DE: {
       PER_YEAR: 1243000000,
       CALCULATION: "Gesamtfanganzahl anhand anteiligem Fischgewicht und Beifang (1100 Fische pro 1 Tonne)",
@@ -209,7 +246,8 @@ export const FACT_TYPES_CONST = {
     LABEL_1: "Truthahn",
     LABEL_10: "Truthähner",
     LABEL: "Truthähner",
-    PROBLEM: "blabla",
+    PROBLEM: "",
+    IS_ANIMAL: true,
     DE: {
       PER_YEAR: 39869812, // (467500000 / 13.25) * 1.13,
       CALCULATION: "Schlachtzahlen (berechnet mit 13.25 kg pro Tier) zzgl. 13% tödl. krank",
@@ -265,7 +303,8 @@ export const FACT_TYPES_CONST = {
     LABEL_1: "Ente",
     LABEL_10: "Enten",
     LABEL: "Enten",
-    PROBLEM: "blabla",
+    PROBLEM: "",
+    IS_ANIMAL: true,
     DE: {
       PER_YEAR: 36800000 / 4,
       CALCULATION: "Schlachtzahlen berechnet mit 4 kg pro Tier",
@@ -317,7 +356,8 @@ export const FACT_TYPES_CONST = {
     LABEL_1: "Rind",
     LABEL_10: "Rinder",
     LABEL: "Rinder",
-    PROBLEM: "blabla",
+    PROBLEM: "",
+    IS_ANIMAL: true,
     DE: {
       PER_YEAR: 3413200 + 579111,
       CALCULATION: "Schlachtzahlen und Tierkörperbeseitigung",
@@ -374,7 +414,7 @@ export const FACT_TYPES_CONST = {
     LABEL: "l Gülle",
     UNIT: "Liter",
     NAME: "Gülle",
-    PROBLEM: "blabla",
+    PROBLEM: "",
     DE: {
       PER_YEAR: 2080000000,
       CALCULATION: "als Dünger auf Weiden und Äckern ausgebracht (ohne Importe)",
@@ -421,7 +461,7 @@ export const FACT_TYPES_CONST = {
     NAME: "Gen-Soja",
     UNIT: "Tonnen",
     INCLUDED_TYPES: "importiert aus den USA, Brasilien und Kanada",
-    PROBLEM: "blabla",
+    PROBLEM: "",
     DE: {
       PER_YEAR: 3063251,
       CALCULATION: "Futtermittel-Import zu 90% Gen-Soja-Schrot (ohne pfl. Öle)",
@@ -527,7 +567,7 @@ export const FACT_TYPES_CONST = {
     NAME: "CO<sub>2</sub>-Äquivalente",
     UNIT: "Tonnen",
     INCLUDED_TYPES: "berechnet aus emittiertem Kohlendioxid, Lachgas und Methan",
-    PROBLEM: "Kohlendioxid-Äquivalente blabla",
+    PROBLEM: "",
     DE: {
       PER_YEAR: 20800000 * 5,
       CALCULATION: "Nutztierbestand um 20% (20.8 Mio. Tonnen CO2-Äqu.) verringern",

@@ -132,7 +132,7 @@ $font-size: medium;
         display: block;
         height: $element-height;
         line-height: $element-height;
-        color: rgb(185, 185, 185);
+        color: rgb(195, 195, 195);
         @include std-text();
         text-transform: uppercase;
         font-size: $font-size;

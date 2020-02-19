@@ -21,7 +21,7 @@
             <span class="highlight">{{ getSelectedModeName() }}</span>
             durchschnittlich
           </span>
-          <span>
+          <span class="highlight-1">
             <FactType
               :counter="pastSeconds"
               :type="types.FISCHE"
@@ -31,7 +31,7 @@
               v-on:show-details="showDetail"
             />,
           </span>
-          <span>
+          <span class="highlight-2">
             <FactType
               :counter="pastSeconds"
               :type="types.HUHNER"
@@ -41,7 +41,7 @@
               v-on:show-details="showDetail"
             />,
           </span>
-          <span>
+          <span class="highlight-3">
             <FactType
               :counter="pastSeconds"
               :type="types.SCHWEINE"
@@ -51,7 +51,7 @@
               v-on:show-details="showDetail"
             />,
           </span>
-          <span>
+          <span class="highlight-4">
             <FactType
               :counter="pastSeconds"
               :type="types.TRUTHAHNER"
@@ -61,7 +61,7 @@
               v-on:show-details="showDetail"
             />,
           </span>
-          <span class="additional">
+          <span class="additional highlight-5">
             <FactType
               :counter="pastSeconds"
               :type="types.ENTEN"
@@ -71,7 +71,7 @@
               v-on:show-details="showDetail"
             />&nbsp;und
           </span>
-          <span>
+          <span class="highlight-6">
             <FactType
               :counter="pastSeconds"
               :type="types.RINDER"
@@ -85,7 +85,7 @@
         </h1>
         <h1 class="additional-info">
           Zusätzliche
-          <span>
+          <span class="highlight-7">
             <FactType
               :counter="pastSeconds"
               :type="types.SOY"
@@ -95,7 +95,7 @@
               v-on:show-details="showDetail"
             />,
           </span>
-          <span>
+          <span class="highlight-8">
             <FactType
               :counter="pastSeconds"
               :type="types.GULLE"
@@ -105,7 +105,7 @@
               v-on:show-details="showDetail"
             />,
           </span>
-          <span>
+          <span class="highlight-9">
             <FactType
               :counter="pastSeconds"
               :type="types.ANTIBIOTIKA"
@@ -115,7 +115,7 @@
               v-on:show-details="showDetail"
             />&nbsp;und
           </span>
-          <span>
+          <span class="highlight-10">
             <FactType
               :counter="pastSeconds"
               :type="types.CO2"
@@ -141,37 +141,35 @@
       :mode="activeMode"
       v-on:close-details="closeDetail()"
     />
-    <div class="mode-selector-dd">
-      <ModeSelector :activeMode="activeMode" v-on:selected-mode="selectedMode($event)" />
-    </div>
   </div>
 </template>
 
 <script lang="ts">
 import AdditionalDetails from "@/components/AdditionalDetails.vue";
 import FactType from "@/components/FactType.vue";
-import ModeSelector from "@/components/ModeSelector.vue";
 import { Component, Vue, Provide } from "vue-property-decorator";
 import {
   FACT_TYPES_CONST,
   ModeEnum,
   Mode,
   MODES,
-  AVERAGE_LIFE_SPAN
+  AVERAGE_LIFE_SPAN,
+  Types
 } from "@/factTypes.constant";
 
 @Component({
-  components: { AdditionalDetails, FactType, ModeSelector }
+  components: { AdditionalDetails, FactType },
+  props: ["activeMode"]
 })
 export default class FactSentence extends Vue {
   @Provide()
-  private types = FACT_TYPES_CONST;
+  private types: Types = FACT_TYPES_CONST;
   @Provide()
   private averageLifeSpan: number = AVERAGE_LIFE_SPAN;
   @Provide()
   private ModeDE: ModeEnum = ModeEnum.DE;
   @Provide()
-  private activeMode: ModeEnum = ModeEnum.DE;
+  private activeMode!: ModeEnum;
   @Provide()
   private activeDetail = null;
   @Provide()
@@ -209,10 +207,6 @@ export default class FactSentence extends Vue {
 
   public closeDetail() {
     this.activeDetail = null;
-  }
-
-  public selectedMode(mode: ModeEnum) {
-    this.activeMode = mode;
   }
 
   public getSelectedModeName(): string {
@@ -276,8 +270,21 @@ i {
     }
 
     @include respond-to("small") {
+      width: 80vw;
+      margin-left: 0;
+      left: 10vw;
+      transform: translate(0, -50%);
+    }
+
+    @include respond-to("x-small") {
+      width: 80vw;
+      left: 8vw;
+      transform: translate(0, -50%);
+    }
+
+    @include respond-to("xx-small") {
       width: 86vw;
-      margin-left: 6vw;
+      left: 8vw;
     }
 
     .inner {
@@ -292,7 +299,7 @@ i {
       }
 
       & > * {
-        transform: translateX(2000px);
+        transform: translateY(2000px);
       }
     }
   }
@@ -312,20 +319,10 @@ i {
     @include highlight-text-bold();
     color: $white;
     font-size: $font-size;
-    @include respond-to("xx-small") {
+    @include respond-to("x-small") {
       font-size: $font-size-small;
     }
   }
-}
-
-div.mode-selector-dd {
-  position: fixed;
-  top: 50vh;
-  right: 2vw;
-  transform: translateY(calc(-2.2625rem / 2));
-  z-index: 99999;
-  transform: translateX(2000px);
-  animation: delayShowAndSliceIn 1.25s ease forwards 6s;
 }
 
 .fact-sentence {
@@ -333,7 +330,7 @@ div.mode-selector-dd {
     @include highlight-text();
     color: rgba(255, 255, 255, 0.5);
     font-size: $font-size;
-    @include respond-to("xx-small") {
+    @include respond-to("x-small") {
       font-size: $font-size-small;
     }
     line-height: 160%;
@@ -348,7 +345,7 @@ div.mode-selector-dd {
     & > span,
     & > i {
       font-size: $font-size;
-      @include respond-to("xx-small") {
+      @include respond-to("x-small") {
         font-size: $font-size-small;
       }
       font-style: normal;
@@ -358,7 +355,7 @@ div.mode-selector-dd {
     & span.highlight {
       display: block;
       font-size: $font-size-highlight;
-      @include respond-to("xx-small") {
+      @include respond-to("x-small") {
         font-size: $font-size-small-highlight;
       }
       @include highlight-text-bold();
@@ -370,13 +367,61 @@ div.mode-selector-dd {
       padding-top: 1.5rem;
       animation: delayShowAndSliceIn 1.25s ease forwards 4.5s;
     }
+
+    @for $i from 1 through 10 {
+      span.highlight-#{$i} span.linked-detail {
+        animation: changeFontColor linear .45s calc(10s + #{$i} * 0.45s);
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: 0.125rem;
+          left: -0.125rem;
+          right: -0.125rem;
+          bottom: 0.125rem;
+          z-index: -1;
+          border-radius: 0.0125rem;
+          animation: changeBackground linear .45s calc(10s + #{$i} * 0.45s);
+        }
+      }
+    }
+
+    @keyframes changeFontColor {
+      0% {
+        color: $white;
+      }
+      15% {
+        color: #000;
+      }
+      90% {
+        color: #000;
+      }
+      100% {
+        color: $white;
+      }
+    }
+
+    @keyframes changeBackground {
+      0% {
+        background-color: transparent;
+      }
+      15% {
+        background-color: #fff;
+      }
+      90% {
+        background-color: #fff;
+      }
+      100% {
+        background-color: transparent;
+      }
+    }
   }
 
   .show-truth {
     display: block;
     margin-top: 3.125rem;
     width: 15rem;
-    transform: translateX(0) !important;
+    transform: translateY(0) !important;
     overflow: hidden;
 
     span {
@@ -386,8 +431,8 @@ div.mode-selector-dd {
       font-size: 1rem;
       text-decoration: none;
       cursor: pointer;
-      //  transform: translateX(2000px);
-      //  animation: delayShowAndSliceIn 500ms ease forwards 8s;
+      transform: translateY(2000px);
+      animation: delayShowAndSliceIn 500ms ease forwards 8s;
 
       &:hover {
         text-decoration: underline;
@@ -399,7 +444,7 @@ div.mode-selector-dd {
     display: none;
 
     margin-top: 3.125rem;
-    transform: translateX(0) !important;
+    transform: translateY(0) !important;
 
     span {
       display: inline-block;
@@ -418,30 +463,30 @@ div.mode-selector-dd {
 
 @keyframes delayShowAndSliceInOut {
   0% {
-    transform: translateX(2000px);
+    transform: translateY(2000px);
     filter: blur(4px);
   }
   25% {
-    transform: translateX(0);
+    transform: translateY(0);
     filter: blur(0);
   }
   75% {
-    transform: translateX(0);
+    transform: translateY(0);
     filter: blur(0);
   }
   100% {
-    transform: translateX(-2000px);
+    transform: translateY(-2000px);
     filter: blur(4px);
   }
 }
 
 @keyframes delayShowAndSliceIn {
   0% {
-    transform: translateX(2000px);
+    transform: translateY(2000px);
     filter: blur(4px);
   }
   100% {
-    transform: translateX(0);
+    transform: translateY(0);
     filter: blur(0);
   }
 }

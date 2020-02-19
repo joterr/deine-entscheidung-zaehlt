@@ -84,7 +84,7 @@
 
 <script lang="ts">
 import { Component, Provide, Vue } from "vue-property-decorator";
-import { FACT_TYPES_CONST, ModeEnum } from "@/factTypes.constant";
+import { FACT_TYPES_CONST, ModeEnum, Types } from "@/factTypes.constant";
 import ICountUp from "vue-countup-v2";
 import ModeSelector from "@/components/ModeSelector.vue";
 
@@ -97,7 +97,7 @@ import ModeSelector from "@/components/ModeSelector.vue";
 })
 export default class AdditionalDetails extends Vue {
   @Provide()
-  private TYPES = FACT_TYPES_CONST;
+  private TYPES: Types = FACT_TYPES_CONST;
 
   @Provide()
   private countUpOptions: any = {
@@ -167,6 +167,11 @@ export default class AdditionalDetails extends Vue {
     font-size: x-small;
     color: #fff;
     cursor: pointer;
+
+    @include respond-to("small") {
+      top: 1.75rem;
+      right: -0.5rem;
+    }
   }
 
   .inner {
@@ -364,12 +369,12 @@ export default class AdditionalDetails extends Vue {
       }
 
       &:hover {
-        color: #fff;
-        background-color: rgba(255, 255, 255, 0.5);
+        color: #000;
+        background-color: rgba(255, 255, 255, 0.85);
         border-radius: 0.01rem;
 
         a {
-          color: #fff;
+          color: #000;
         }
       }
     }

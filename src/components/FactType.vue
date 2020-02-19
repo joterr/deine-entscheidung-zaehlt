@@ -12,7 +12,12 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Provide, Watch } from "vue-property-decorator";
-import { ModeEnum, AVERAGE_LIFE_SPAN } from "../factTypes.constant";
+import {
+  ModeEnum,
+  AVERAGE_LIFE_SPAN,
+  Type,
+  ModeValue
+} from "../factTypes.constant";
 import ICountUp from "vue-countup-v2";
 
 @Component({
@@ -23,7 +28,7 @@ import ICountUp from "vue-countup-v2";
 })
 export default class FactType extends Vue {
   @Prop()
-  private type: any;
+  private type!: Type;
 
   @Prop()
   private mode!: ModeEnum;
@@ -69,7 +74,7 @@ export default class FactType extends Vue {
   }
 
   @Watch("counter")
-  private onPropertyChanged(): void {
+  private onCounterChanged(): void {
     this.calc();
   }
 
@@ -88,9 +93,10 @@ export default class FactType extends Vue {
   }
 
   private calcYearlyByMode(): number {
-    return this.type[this.mode].FACTOR
-      ? this.type[this.mode].PER_YEAR * this.type[this.mode].FACTOR
-      : this.type[this.mode].PER_YEAR;
+    const modeValue: ModeValue = this.type[this.mode];
+    return modeValue.FACTOR
+      ? modeValue.PER_YEAR * modeValue.FACTOR
+      : modeValue.PER_YEAR;
   }
 
   private getCountUpPerMilliseconds(): number {
@@ -112,7 +118,7 @@ span.linked-detail {
   transition: 300ms ease;
   position: relative;
   font-size: $font-size-highlight;
-  @include respond-to("xx-small") {
+  @include respond-to("x-small") {
     font-size: $font-size-small-highlight;
   }
 
@@ -134,52 +140,6 @@ span.linked-detail {
       z-index: -1;
       border-radius: 0.0125rem;
       background-color: #fff;
-    }
-  }
-
-  &.hovered {
-    animation: changeFontColor linear 1.75s 16s;
-
-    &:after {
-      content: "";
-      position: absolute;
-      top: 0.125rem;
-      left: -0.125rem;
-      right: -0.125rem;
-      bottom: 0.125rem;
-      z-index: -1;
-      border-radius: 0.0125rem;
-      animation: changeBackground linear 1.75s 16s;
-    }
-  }
-
-  @keyframes changeFontColor {
-    0% {
-      color: $white;
-    }
-    15% {
-      color: #000;
-    }
-    90% {
-      color: #000;
-    }
-    100% {
-      color: $white;
-    }
-  }
-
-  @keyframes changeBackground {
-    0% {
-      background-color: transparent;
-    }
-    15% {
-      background-color: #fff;
-    }
-    90% {
-      background-color: #fff;
-    }
-    100% {
-      background-color: transparent;
     }
   }
 }

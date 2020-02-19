@@ -1,11 +1,14 @@
 <template>
   <section class="intro-page">
     <div class="splash">
+      <div class="mode-selector-dd" v-if="false">
+        <ModeSelector :activeMode="mode" v-on:selected-mode="selectedMode($event)" />
+      </div>
       <div class="fact-wrapper">
-        <FactSentence v-on:open-truth-overlay="openTruthOverlay()" />
+        <FactSentence :activeMode="mode" v-on:open-truth-overlay="openTruthOverlay()" />
       </div>
       <div class="animal-wrapper">
-        <AnimalSprinkler />
+        <AnimalSprinkler :activeMode="mode" />
       </div>
     </div>
     <div class="truth-overlay" :class="{ 'opened': isVisibleTruth }">
@@ -182,16 +185,22 @@
 import { Component, Vue, Provide } from "vue-property-decorator";
 import FactSentence from "@/components/FactSentence.vue";
 import AnimalSprinkler from "@/components/AnimalSprinkler.vue";
+import ModeSelector from "@/components/ModeSelector.vue";
+import { ModeEnum } from "../factTypes.constant";
 
 @Component({
   components: {
     FactSentence,
-    AnimalSprinkler
+    AnimalSprinkler,
+    ModeSelector
   }
 })
 export default class Intro extends Vue {
   @Provide()
   private isVisibleTruth = false;
+
+  @Provide()
+  private mode: ModeEnum = ModeEnum.DE;
 
   public openTruthOverlay() {
     this.isVisibleTruth = true;
@@ -199,6 +208,10 @@ export default class Intro extends Vue {
 
   public hideTruth() {
     this.isVisibleTruth = false;
+  }
+
+  public selectedMode(mode: ModeEnum) {
+    this.mode = mode;
   }
 }
 </script>
@@ -399,6 +412,31 @@ span.leaf {
   background-position: center center;
   height: 50px;
   width: 100%;
+}
+
+div.mode-selector-dd {
+  position: fixed;
+  top: 50vh;
+  right: 2vw;
+  transform: translateY(calc(-2.2625rem / 2));
+  z-index: 99999;
+  transform: translateX(2000px);
+  animation: delayShowAndSliceIn 1.25s ease forwards 6s;
+
+  @include respond-to("xx-small") {
+
+  }
+}
+
+@keyframes delayShowAndSliceIn {
+  0% {
+    transform: translateX(2000px);
+    filter: blur(4px);
+  }
+  100% {
+    transform: translateX(0);
+    filter: blur(0);
+  }
 }
 
 .citations {
