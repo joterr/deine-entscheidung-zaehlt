@@ -1,7 +1,7 @@
 <template>
   <section class="intro-page">
     <div class="splash">
-      <div class="mode-selector-dd" v-if="false">
+      <div class="mode-selector-dd" v-if="isDev">
         <ModeSelector :activeMode="mode" v-on:selected-mode="selectedMode($event)" />
       </div>
       <div class="fact-wrapper">
@@ -196,6 +196,9 @@ import { ModeEnum } from "../factTypes.constant";
   }
 })
 export default class Intro extends Vue {
+  @Provide()
+  private isDev = process.env.NODE_ENV === "development";
+
   @Provide()
   private isVisibleTruth = false;
 

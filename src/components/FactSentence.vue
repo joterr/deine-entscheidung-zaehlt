@@ -175,9 +175,11 @@ export default class FactSentence extends Vue {
   @Provide()
   private pastSeconds: number = 1;
   @Provide()
-  private highlight = true;
+  private highlight: boolean = true;
 
   private SELECTABLE_MODES: Mode[] = MODES;
+
+  private readonly maxPastSeconds: number = 24 * 60 * 60;
 
   public getPastTimeString(time: number): string {
     let pastTimeString = "";
@@ -222,7 +224,9 @@ export default class FactSentence extends Vue {
 
   private startInterval() {
     setInterval(() => {
-      this.pastSeconds++;
+      if (this.pastSeconds < this.maxPastSeconds) {
+        this.pastSeconds++;
+      }
     }, 1000);
   }
 }
@@ -236,6 +240,10 @@ i {
 .fact-wrapper {
   position: relative;
   z-index: 999;
+
+  &.past-time-over {
+    background-color: #fff;
+  }
 
   .sentance-wrapper {
     position: fixed;
@@ -370,7 +378,7 @@ i {
 
     @for $i from 1 through 10 {
       span.highlight-#{$i} span.linked-detail {
-        animation: changeFontColor linear .45s calc(10s + #{$i} * 0.45s);
+        animation: changeFontColor linear 0.6s calc(12s + #{$i} * 0.2s);
 
         &:after {
           content: "";
@@ -381,7 +389,7 @@ i {
           bottom: 0.125rem;
           z-index: -1;
           border-radius: 0.0125rem;
-          animation: changeBackground linear .45s calc(10s + #{$i} * 0.45s);
+          animation: changeBackground linear 0.6s calc(12s + #{$i} * 0.2s);
         }
       }
     }

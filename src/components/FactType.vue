@@ -1,10 +1,7 @@
 <template>
   <span class="linked-detail" v-on:click="$emit('show-details', type)">
     <span v-if="calced === 0">{{ !type.UNIT ? 'keine' : '0'}}</span>
-    <span v-else-if="calced < 10">{{ makeLocaleInteger(calced, type.COUNT_ONE) }}</span>
-    <span v-else>
-      <ICountUp :endVal="calced" :options="countUpOptions" :delay="1000" />
-    </span>
+    <span v-else>{{ makeLocaleInteger(calced, type.COUNT_ONE) }}</span>
     {{ ' ' }}
     <span v-html="type.LABEL"></span>
   </span>
@@ -42,10 +39,12 @@ export default class FactType extends Vue {
   @Provide()
   private countUpOptions: any = {
     useEasing: false,
-    useGrouping: true,
+    useGrouping: false,
     separator: ".",
     decimal: ","
   };
+
+  private microCounter!: number;
 
   public makeLocaleInteger(val: number, one: string = "ein"): string {
     const intedVal: number = this.makeInt(val);
@@ -79,16 +78,33 @@ export default class FactType extends Vue {
   }
 
   private calc(): void {
-    if (this.mode === "DE") {
-      this.calced = this.makeInt(
-        this.counter * this.getCountUpPerMilliseconds()
-      );
+    let calcedNew: number;
+    if (this.mode === ModeEnum.DE) {
+      calcedNew = this.makeInt(this.counter * this.getCountUpPerSecond());
     } else {
-      this.calced = this.makeInt(
+      calcedNew = this.makeInt(
         this.counter < AVERAGE_LIFE_SPAN
-          ? this.counter * this.getCountUpPerMilliseconds()
+          ? this.counter * this.getCountUpPerSecond()
           : this.calcYearlyByMode() * AVERAGE_LIFE_SPAN
       );
+    }
+
+    clearInterval(this.microCounter);
+
+    const diff: number = calcedNew - this.calced;
+    const absDiff: number = Math.abs(diff);
+    const timer: number = absDiff > 1000 ? 1 : 1000 / absDiff;
+    const steps: number = absDiff / 1000 < 1 ? 1 : absDiff / 1000;
+
+    if (absDiff !== 0) {
+      this.microCounter = setInterval(() => {
+        if (Math.abs(calcedNew - this.calced) <= steps) {
+          clearInterval(this.microCounter);
+          this.calced = calcedNew;
+        } else {
+          this.calced += diff > 0 ? steps : -1 * steps;
+        }
+      }, timer);
     }
   }
 
@@ -99,9 +115,9 @@ export default class FactType extends Vue {
       : modeValue.PER_YEAR;
   }
 
-  private getCountUpPerMilliseconds(): number {
+  private getCountUpPerSecond(): number {
     const yearly: number = this.calcYearlyByMode();
-    return this.mode === "DE" ? yearly / 365 / 24 / 60 / 60 : yearly;
+    return this.mode === ModeEnum.DE ? yearly / 365 / 24 / 60 / 60 : yearly;
   }
 
   private makeInt(val: number): number {
