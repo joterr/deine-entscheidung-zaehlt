@@ -21,12 +21,10 @@ export interface Types {
 export interface Type {
   ID: string;
   LABEL_1?: string;
-  LABEL_10?: string;
   LABEL?: string;
   COUNT_ONE?: string;
   INCLUDED_TYPES?: string;
   NAME?: string;
-  UNIT?: string;
   PROBLEM: string;
   IS_ANIMAL?: boolean;
   DE: ModeValue;
@@ -37,6 +35,7 @@ export interface Type {
 
 export interface ModeValue {
   PER_YEAR: number;
+  UNIT?: string;
   CALCULATION?: string;
   FACTOR?: number;
   SOURCES: ModeValueSource[];
@@ -75,7 +74,6 @@ export const FACT_TYPES_CONST: Types  = {
   HUHNER: {
     ID: "huhner",
     LABEL_1: "Huhn",
-    LABEL_10: "Hühner",
     LABEL: "Hühner",
     INCLUDED_TYPES: "mit Küken, Legehennen und Hähnen",
     PROBLEM: "",
@@ -107,7 +105,7 @@ export const FACT_TYPES_CONST: Types  = {
       ]
     },
     OMNI: {
-      PER_YEAR: 200,
+      PER_YEAR: 20,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -116,7 +114,7 @@ export const FACT_TYPES_CONST: Types  = {
       ]
     },
     VEGGIE: {
-      PER_YEAR: 100,
+      PER_YEAR: 10,
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -137,7 +135,6 @@ export const FACT_TYPES_CONST: Types  = {
   SCHWEINE: {
     ID: "schweine",
     LABEL_1: "Schwein",
-    LABEL_10: "Schweine",
     LABEL: "Schweine",
     PROBLEM: "",
     IS_ANIMAL: true,
@@ -190,7 +187,6 @@ export const FACT_TYPES_CONST: Types  = {
   FISCHE: {
     ID: "fische",
     LABEL_1: "Fisch",
-    LABEL_10: "Fische",
     LABEL: "Fische",
     INCLUDED_TYPES: "mit Seefisch, Süßwasserfisch sowie Krebs- und Weichtiere",
     PROBLEM: "",
@@ -244,7 +240,6 @@ export const FACT_TYPES_CONST: Types  = {
   TRUTHAHNER: {
     ID: "truthahner",
     LABEL_1: "Truthahn",
-    LABEL_10: "Truthähner",
     LABEL: "Truthähner",
     PROBLEM: "",
     IS_ANIMAL: true,
@@ -301,7 +296,6 @@ export const FACT_TYPES_CONST: Types  = {
   ENTEN: {
     ID: "enten",
     LABEL_1: "Ente",
-    LABEL_10: "Enten",
     LABEL: "Enten",
     PROBLEM: "",
     IS_ANIMAL: true,
@@ -354,7 +348,6 @@ export const FACT_TYPES_CONST: Types  = {
   RINDER: {
     ID: "rinder",
     LABEL_1: "Rind",
-    LABEL_10: "Rinder",
     LABEL: "Rinder",
     PROBLEM: "",
     IS_ANIMAL: true,
@@ -410,13 +403,12 @@ export const FACT_TYPES_CONST: Types  = {
   },
   GULLE: {
     ID: "gulle",
-    LABEL_10: "Liter Gülle",
     LABEL: "l Gülle",
-    UNIT: "Liter",
     NAME: "Gülle",
     PROBLEM: "",
     DE: {
       PER_YEAR: 2080000000,
+      UNIT: "Liter",
       CALCULATION: "als Dünger auf Weiden und Äckern ausgebracht (ohne Importe)",
       SOURCES: [
         {
@@ -427,6 +419,7 @@ export const FACT_TYPES_CONST: Types  = {
     },
     OMNI: {
       PER_YEAR: 5000,
+      UNIT: "Liter",
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -436,6 +429,7 @@ export const FACT_TYPES_CONST: Types  = {
     },
     VEGGIE: {
       PER_YEAR: 3000,
+      UNIT: "Liter",
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -445,6 +439,7 @@ export const FACT_TYPES_CONST: Types  = {
     },
     VEGAN: {
       PER_YEAR: 0,
+      UNIT: "Liter",
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -459,11 +454,11 @@ export const FACT_TYPES_CONST: Types  = {
     LABEL: "kg Gen-Soja-Import",
     COUNT_ONE: "eine",
     NAME: "Gen-Soja",
-    UNIT: "Tonnen",
     INCLUDED_TYPES: "importiert aus den USA, Brasilien und Kanada",
     PROBLEM: "",
     DE: {
       PER_YEAR: 3063251,
+      UNIT: "Tonnen",
       CALCULATION: "Futtermittel-Import zu 90% Gen-Soja-Schrot (ohne pfl. Öle)",
       FACTOR: 1000,
       SOURCES: [
@@ -483,6 +478,7 @@ export const FACT_TYPES_CONST: Types  = {
     },
     OMNI: {
       PER_YEAR: 50,
+      UNIT: "Tonnen",
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -492,6 +488,7 @@ export const FACT_TYPES_CONST: Types  = {
     },
     VEGGIE: {
       PER_YEAR: 10,
+      UNIT: "Tonnen",
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -500,7 +497,8 @@ export const FACT_TYPES_CONST: Types  = {
       ]
     },
     VEGAN: {
-      PER_YEAR: 1,
+      PER_YEAR: 0,
+      UNIT: "Tonnen",
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -513,11 +511,11 @@ export const FACT_TYPES_CONST: Types  = {
     ID: "antibiotika",
     LABEL_1: "Kilogramm Antibiotika",
     LABEL: "mg Antibiotika",
-    UNIT: "Kilogramm",
     NAME: "Antibiotika",
     PROBLEM: "Starker Einsatz von Antibiotika fördert sog. Antibiotikaresistenzen, welche selbst durch Reserveantibiotika nicht geheilt werden können.",
     DE: {
       PER_YEAR: 733000,
+      UNIT: "Kilogramm",
       CALCULATION: "Abgabemenge an Tierärzte in Deutschland, ohne Fischzucht",
       FACTOR: 1000000,
       SOURCES: [
@@ -533,6 +531,7 @@ export const FACT_TYPES_CONST: Types  = {
     },
     OMNI: {
       PER_YEAR: 5,
+      UNIT: "Kilogramm",
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -542,6 +541,7 @@ export const FACT_TYPES_CONST: Types  = {
     },
     VEGGIE: {
       PER_YEAR: 3,
+      UNIT: "Kilogramm",
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -551,6 +551,7 @@ export const FACT_TYPES_CONST: Types  = {
     },
     VEGAN: {
       PER_YEAR: 0,
+      UNIT: "Kilogramm",
       SOURCES: [
         {
           SOURCE: "Fake-News (2020)",
@@ -562,14 +563,13 @@ export const FACT_TYPES_CONST: Types  = {
   CO2: {
     ID: "co2",
     LABEL_1: "Tonne CO<sub>2</sub>-Äquivalente",
-    LABEL_10: "Tonnen CO<sub>2</sub>-Äquivalente",
     LABEL: "t CO<sub>2</sub>-Äquivalente",
     NAME: "CO<sub>2</sub>-Äquivalente",
-    UNIT: "Tonnen",
     INCLUDED_TYPES: "berechnet aus emittiertem Kohlendioxid, Lachgas und Methan",
     PROBLEM: "",
     DE: {
       PER_YEAR: 20800000 * 5,
+      UNIT: "Tonnen",
       CALCULATION: "Nutztierbestand um 20% (20.8 Mio. Tonnen CO2-Äqu.) verringern",
       SOURCES: [
         {
@@ -583,29 +583,35 @@ export const FACT_TYPES_CONST: Types  = {
       ]
     },
     OMNI: {
-      PER_YEAR: 5,
+      PER_YEAR: 1700,
+      FACTOR: 0.001,
+      UNIT: "Kilogramm",
       SOURCES: [
         {
-          SOURCE: "Fake-News (2020)",
-          SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
+          SOURCE: "Deutschlandfunk (2019)",
+          SOURCE_URL: "https://www.deutschlandfunk.de/klima-serie-der-eigene-beitrag-veganes-leben-als-co2.697.de.html?dram:article_id=456541"
         }
       ]
     },
     VEGGIE: {
-      PER_YEAR: 4,
+      PER_YEAR: 1100,
+      FACTOR: 0.001,
+      UNIT: "Kilogramm",
       SOURCES: [
         {
-          SOURCE: "Fake-News (2020)",
-          SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
+          SOURCE: "Deutschlandfunk (2019)",
+          SOURCE_URL: "https://www.deutschlandfunk.de/klima-serie-der-eigene-beitrag-veganes-leben-als-co2.697.de.html?dram:article_id=456541"
         }
       ]
     },
     VEGAN: {
-      PER_YEAR: 1,
+      PER_YEAR: 640,
+      FACTOR: 0.001,
+      UNIT: "Kilogramm",
       SOURCES: [
         {
-          SOURCE: "Fake-News (2020)",
-          SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
+          SOURCE: "Deutschlandfunk (2019)",
+          SOURCE_URL: "https://www.deutschlandfunk.de/klima-serie-der-eigene-beitrag-veganes-leben-als-co2.697.de.html?dram:article_id=456541"
         }
       ]
     }

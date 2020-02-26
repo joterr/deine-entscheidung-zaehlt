@@ -69,7 +69,7 @@ export default class FactType extends Vue {
 
   @Watch("mode")
   private onModeChanged(): void {
-    this.calc();
+    this.calc(true);
   }
 
   @Watch("counter")
@@ -77,7 +77,7 @@ export default class FactType extends Vue {
     this.calc();
   }
 
-  private calc(): void {
+  private calc(modeChanged: boolean = false): void {
     let calcedNew: number;
     if (this.mode === ModeEnum.DE) {
       calcedNew = this.makeInt(this.counter * this.getCountUpPerSecond());
@@ -87,6 +87,10 @@ export default class FactType extends Vue {
           ? this.counter * this.getCountUpPerSecond()
           : this.calcYearlyByMode() * AVERAGE_LIFE_SPAN
       );
+    }
+
+    if (modeChanged) {
+      this.calced = calcedNew > this.calced ? calcedNew * 0.99 : calcedNew * 1.01;
     }
 
     clearInterval(this.microCounter);
@@ -106,6 +110,7 @@ export default class FactType extends Vue {
         }
       }, timer);
     }
+
   }
 
   private calcYearlyByMode(): number {

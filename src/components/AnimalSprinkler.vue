@@ -121,6 +121,9 @@ export default class AnimalSprinkler extends Vue {
 
   private beforeDestroy() {
     window.removeEventListener("resize", this.retardedRenderAnimalsAnimation);
+    if (this.recalcTimeout) {
+      clearInterval(this.recalcTimeout);
+    }
   }
 
   private renderAnimalsAnimation(): void {

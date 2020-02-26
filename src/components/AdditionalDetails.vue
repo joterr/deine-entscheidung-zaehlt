@@ -25,8 +25,8 @@
             <ICountUp :endVal="activeType[mode].PER_YEAR / 1000000000" :options="countUpOptions" />&nbsp;Mrd.
           </h1>
           <h2 class="animate">
-            <span v-if="activeType.UNIT">{{activeType.UNIT}}&nbsp;</span>
-            <span v-html="activeType.UNIT ? activeType.NAME : activeType.LABEL"></span>
+            <span v-if="activeType[mode].UNIT">{{activeType[mode].UNIT}}&nbsp;</span>
+            <span v-html="activeType[mode].UNIT ? activeType.NAME : activeType.LABEL"></span>
             <span class="included-types-annotation" v-if="activeType.INCLUDED_TYPES">*</span>
           </h2>
           <div
