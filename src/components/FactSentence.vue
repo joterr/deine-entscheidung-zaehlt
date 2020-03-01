@@ -240,13 +240,15 @@ i {
 .fact-wrapper {
   position: relative;
   z-index: 999;
+  width: 100vw;
+  height: 100vh;
 
   &.past-time-over {
     background-color: #fff;
   }
 
   .sentance-wrapper {
-    position: fixed;
+    position: absolute;
     top: 50vh;
     left: 50vw;
     width: 20vw;
@@ -287,6 +289,7 @@ i {
     @include respond-to("x-small") {
       width: 80vw;
       left: 8vw;
+      top: 45vh;
       transform: translate(0, -50%);
     }
 
@@ -327,8 +330,11 @@ i {
     @include highlight-text-bold();
     color: $white;
     font-size: $font-size;
+    @include respond-to("small") {
+      font-size: $font-size-medium-highlight;
+    }
     @include respond-to("x-small") {
-      font-size: $font-size-small;
+      font-size: $font-size-small-highlight;
     }
   }
 }
@@ -338,6 +344,9 @@ i {
     @include highlight-text();
     color: rgba(255, 255, 255, 0.5);
     font-size: $font-size;
+    @include respond-to("small") {
+      font-size: $font-size-medium;
+    }
     @include respond-to("x-small") {
       font-size: $font-size-small;
     }
@@ -353,6 +362,9 @@ i {
     & > span,
     & > i {
       font-size: $font-size;
+      @include respond-to("small") {
+        font-size: $font-size-medium;
+      }
       @include respond-to("x-small") {
         font-size: $font-size-small;
       }
@@ -363,6 +375,9 @@ i {
     & span.highlight {
       display: block;
       font-size: $font-size-highlight;
+      @include respond-to("small") {
+        font-size: $font-size-medium-highlight;
+      }
       @include respond-to("x-small") {
         font-size: $font-size-small-highlight;
       }

@@ -139,6 +139,10 @@ span.linked-detail {
   transition: 300ms ease;
   position: relative;
   font-size: $font-size-highlight;
+
+  @include respond-to("small") {
+    font-size: $font-size-medium-highlight;
+  }
   @include respond-to("x-small") {
     font-size: $font-size-small-highlight;
   }

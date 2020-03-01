@@ -34,8 +34,7 @@ export default class ModeSelector extends Vue {
   @Provide()
   private SELECTABLE_MODES: Mode[] = MODES;
 
-  @Provide()
-  private isExpanded: boolean = false;
+  private expandState: boolean = false;
 
   private mode: ModeEnum = this.activeMode || ModeEnum.DE;
 
@@ -52,8 +51,18 @@ export default class ModeSelector extends Vue {
     return this.mode;
   }
 
+  public set isExpanded(state: boolean) {
+      this.expandState = state;
+      this.emitIsExpanded(state);
+  }
+
+  public get isExpanded(): boolean {
+    return this.expandState;
+  }
+
   public handleSelfClicked(key: string, event: Event): void {
     this.isExpanded = !(this.isExpanded && key === ModeEnum[this.selectedMode]);
+
     this.$forceUpdate();
     if (!this.isExpanded) {
       event.stopPropagation();
@@ -72,6 +81,10 @@ export default class ModeSelector extends Vue {
     );
     return mode ? mode.niceName : "";
   }
+
+  private emitIsExpanded(state: boolean): void {
+      this.$emit("is-expanded", state);
+  }
 }
 </script>
 
@@ -85,6 +98,7 @@ $element-height: $element-height-base + $element-padding-vertical;
 $element-height-complete: $element-height + $element-border-width * 2;
 
 $font-size: medium;
+$font-size-small: small;
 
 .mode-selector {
   position: relative;
@@ -100,6 +114,9 @@ $font-size: medium;
     padding-left: $element-padding-horizontal;
     padding-right: calc(#{$element-padding-horizontal} * 2 + 0.4rem + 0.75rem);
     font-size: $font-size;
+    @include respond-to("small") {
+      font-size: $font-size-small;
+    }
     text-transform: uppercase;
   }
 
@@ -136,6 +153,9 @@ $font-size: medium;
         @include std-text();
         text-transform: uppercase;
         font-size: $font-size;
+        @include respond-to("small") {
+            font-size: $font-size-small;
+        }
         padding: $element-padding-vertical $element-padding-horizontal;
         padding-top: 0;
         padding-right: 1.5rem;
