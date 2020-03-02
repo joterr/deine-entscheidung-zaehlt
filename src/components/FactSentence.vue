@@ -388,7 +388,7 @@ i {
 
     &.additional-info {
       padding-top: 1.5rem;
-      animation: delayShowAndSliceIn 1.25s ease forwards 4.5s;
+      animation: delayShowAndSliceIn 1.25s ease forwards 4s;
     }
 
     @for $i from 1 through 10 {
