@@ -1,6 +1,6 @@
 {
   "name": "deine-entscheidung-zaehlt",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --port 5555",
