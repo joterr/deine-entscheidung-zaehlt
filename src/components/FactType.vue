@@ -1,6 +1,6 @@
 <template>
   <span class="linked-detail" :class="{'zero': calced === 0}" v-on:click="showAdditionalDetails()">
-    <span v-if="calced === 0">{{ !type.UNIT ? 'keine' : '0'}}</span>
+    <span v-if="calced === 0">{{ type.IS_ANIMAL ? 'keine' : '0'}}</span>
     <span v-else>{{ makeLocaleInteger(calced, type.COUNT_ONE) }}</span>
     {{ ' ' }}
     <span v-html="type.LABEL"></span>
