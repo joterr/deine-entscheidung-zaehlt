@@ -432,10 +432,9 @@ div.mode-selector-dd {
   position: fixed;
   top: 50vh;
   right: 2vw;
-  transform: translateY(calc(-2.2625rem / 2), 2000px);
+  transform: translate(2000px, calc(-2.2625rem / 2));
   z-index: 99999;
-  transform: translateX();
-  animation: delayShowAndSliceIn 1.25s ease forwards 6s;
+  animation: delayShowAndSliceIn 1.25s ease forwards 5.5s;
 
   @include respond-to("small") {
     position: absolute;
@@ -443,7 +442,7 @@ div.mode-selector-dd {
     right: auto;
     left: 50vw;
     transform: translate(-50%, 2000px);
-    animation: delayShowAndSliceInSmall 1.25s ease forwards 6s;
+    animation: delayShowAndSliceInSmall 1.25s ease forwards 5.5s;
   }
 }
 
@@ -466,11 +465,11 @@ div.mode-selector-dd {
 
 @keyframes delayShowAndSliceIn {
   0% {
-    transform: translate + (2000px);
+  transform: translate(2000px, calc(-2.2625rem / 2));
     filter: blur(4px);
   }
   100% {
-    transform: translateX(0);
+  transform: translate(0, calc(-2.2625rem / 2));
     filter: blur(0);
   }
 }
