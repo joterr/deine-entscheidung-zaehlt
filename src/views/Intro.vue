@@ -1,14 +1,18 @@
 <template>
-  <section class="intro-page">
+  <section class="intro-page" :class="{'selector-expanded': state}">
+    <div class="animal-wrapper">
+      <AnimalSprinkler v-if="!isDev" :activeMode="mode" />
+    </div>
     <div class="splash">
-      <div class="mode-selector-dd" v-if="isDev">
-        <ModeSelector :activeMode="mode" v-on:selected-mode="selectedMode($event)" />
-      </div>
       <div class="fact-wrapper">
         <FactSentence :activeMode="mode" v-on:open-truth-overlay="openTruthOverlay()" />
       </div>
-      <div class="animal-wrapper">
-        <AnimalSprinkler :activeMode="mode" />
+      <div class="mode-selector-dd">
+        <ModeSelector
+          :activeMode="mode"
+          v-on:is-expanded="modeSelectorIsExpanded($event)"
+          v-on:selected-mode="selectedMode($event)"
+        />
       </div>
     </div>
     <div class="truth-overlay" :class="{ 'opened': isVisibleTruth }">
@@ -205,6 +209,9 @@ export default class Intro extends Vue {
   @Provide()
   private mode: ModeEnum = ModeEnum.DE;
 
+  @Provide()
+  private state = false;
+
   public openTruthOverlay() {
     this.isVisibleTruth = true;
   }
@@ -215,6 +222,10 @@ export default class Intro extends Vue {
 
   public selectedMode(mode: ModeEnum) {
     this.mode = mode;
+  }
+
+  public modeSelectorIsExpanded(state: boolean) {
+    this.state = state;
   }
 }
 </script>
@@ -421,23 +432,56 @@ div.mode-selector-dd {
   position: fixed;
   top: 50vh;
   right: 2vw;
-  transform: translateY(calc(-2.2625rem / 2));
+  transform: translateY(calc(-2.2625rem / 2), 2000px);
   z-index: 99999;
-  transform: translateX(2000px);
+  transform: translateX();
   animation: delayShowAndSliceIn 1.25s ease forwards 6s;
 
-  @include respond-to("xx-small") {
+  @include respond-to("small") {
+    position: absolute;
+    top: 91vh;
+    right: auto;
+    left: 50vw;
+    transform: translate(-50%, 2000px);
+    animation: delayShowAndSliceInSmall 1.25s ease forwards 6s;
+  }
+}
 
+@include respond-to("small") {
+  .fact-wrapper {
+    transition: opacity 600ms ease;
+  }
+  .mode-selector-dd {
+    transition: top 600ms ease;
+  }
+  .selector-expanded {
+    .fact-wrapper {
+      opacity: 0.35;
+    }
+    .mode-selector-dd {
+      top: 50vh;
+    }
   }
 }
 
 @keyframes delayShowAndSliceIn {
   0% {
-    transform: translateX(2000px);
+    transform: translate + (2000px);
     filter: blur(4px);
   }
   100% {
     transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes delayShowAndSliceInSmall {
+  0% {
+    transform: translate(-50%, 2000px);
+    filter: blur(4px);
+  }
+  100% {
+    transform: translate(-50%, -50%);
     filter: blur(0);
   }
 }

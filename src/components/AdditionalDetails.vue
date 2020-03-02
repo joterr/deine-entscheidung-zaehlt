@@ -1,17 +1,19 @@
 <template>
   <div class="additional-wrapper" v-if="activeType">
-    <div class="overlay" v-on:click="$emit('close-details')"></div>
+    <div class="overlay" v-on:click="close()"></div>
     <div class="additional-details">
-      <div class="close" v-on:click="$emit('close-details')">schließen</div>
+      <div class="close" v-on:click="close()">schließen</div>
       <div class="inner">
         <div
           class="content"
-          :class="{'over-a-million': activeType[mode].PER_YEAR  > 1000000, 'over-a-billion': activeType[mode].PER_YEAR  > 1000000000}"
+          :class="{
+              'over-a-million': activeType[mode].PER_YEAR  > 1000000,
+              'over-a-billion': activeType[mode].PER_YEAR  > 1000000000
+            }"
         >
           <h3>
             <span class="timespan">Das sind jährlich über</span>
           </h3>
-
           <h1 class="animate million big-screen">
             <ICountUp :endVal="activeType[mode].PER_YEAR" :options="countUpOptions" />
           </h1>
@@ -59,10 +61,10 @@
             class="relative-data-hint"
             v-if="activeType.ID === TYPES.HUHNER.ID || activeType.ID === TYPES.RINDER.ID"
           >Die relativen Werte bilden auf Grund einer unzureichenden Datenlage nur grobe Annäherungen.</div>
-          <div
-            class="problem-declaration"
-            v-if="activeType.PROBLEM"
-          ><span>Was ist das Problem?</span> {{ activeType.PROBLEM }}</div>
+          <div class="problem-declaration" v-if="activeType.PROBLEM">
+            <span>Was ist das Problem?</span>
+            {{ activeType.PROBLEM }}
+          </div>
           <div class="source-declaration">
             <div
               class="calculation"
@@ -83,8 +85,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Provide, Vue } from "vue-property-decorator";
-import { FACT_TYPES_CONST, ModeEnum, Types } from "@/factTypes.constant";
+import { Component, Provide, Vue, Watch } from "vue-property-decorator";
+import { FACT_TYPES_CONST, ModeEnum, Types, Type, Mode } from "@/factTypes.constant";
 import ICountUp from "vue-countup-v2";
 import ModeSelector from "@/components/ModeSelector.vue";
 
@@ -100,12 +102,29 @@ export default class AdditionalDetails extends Vue {
   private TYPES: Types = FACT_TYPES_CONST;
 
   @Provide()
+  private activeType!: Type;
+
+  @Provide()
+  private mode!: ModeEnum;
+
+  @Provide()
   private countUpOptions: any = {
     useEasing: true,
     useGrouping: true,
     separator: ".",
     decimal: ","
   };
+
+  public close(): void {
+      this.$emit("close-details");
+  }
+
+  @Watch("mode")
+  private onModeChanged(value: Mode): void {
+    if (this.activeType && this.activeType[this.mode].PER_YEAR === 0) {
+        this.close();
+    }
+  }
 }
 </script>
 
@@ -333,6 +352,7 @@ export default class AdditionalDetails extends Vue {
       opacity: 0.6;
 
       span {
+        display: block;
         @include std-text-bold();
       }
     }
@@ -352,6 +372,10 @@ export default class AdditionalDetails extends Vue {
 
       .source {
         text-align: right;
+
+        span {
+          white-space: nowrap;
+        }
       }
 
       @include respond-to("medium") {

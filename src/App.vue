@@ -25,9 +25,14 @@ footer {
   flex-direction: row-reverse;
 
   @include respond-to("small") {
-    bottom: .25rem;
+    position: relative;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
     flex-direction: column;
     text-align: center;
+    padding-bottom: 1rem;
   }
 
   .green-energy {
