@@ -115,15 +115,15 @@ export default class AdditionalDetails extends Vue {
     decimal: ","
   };
 
+  public close(): void {
+      this.$emit("close-details");
+  }
+
   @Watch("mode")
   private onModeChanged(value: Mode): void {
     if (this.activeType && this.activeType[this.mode].PER_YEAR === 0) {
         this.close();
     }
-  }
-
-  public close(): void {
-      this.$emit("close-details");
   }
 }
 </script>
