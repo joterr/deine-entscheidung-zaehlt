@@ -26,7 +26,7 @@ export interface Type {
     COUNT_ONE?: string;
     INCLUDED_TYPES?: string;
     NAME?: string;
-    PROBLEM: string;
+    PROBLEM?: string;
     IS_ANIMAL?: boolean;
     DE: ModeValue;
     OMNI: ModeValue;
@@ -75,7 +75,6 @@ export const FACT_TYPES_CONST: Types = {
         LABEL_1: "Huhn",
         LABEL: "Hühner",
         INCLUDED_TYPES: "mit Küken, Legehennen und Hähnen",
-        PROBLEM: "",
         IS_ANIMAL: true,
         DE: {
             PER_YEAR: (5000000 * 1.64 * 1.07) + (18000000 * 1.07) + 44000000, // 18 Mio Legehennen von Import
@@ -154,7 +153,6 @@ export const FACT_TYPES_CONST: Types = {
         ID: "schweine",
         LABEL_1: "Schwein",
         LABEL: "Schweine",
-        PROBLEM: "",
         IS_ANIMAL: true,
         DE: {
             PER_YEAR: 56605100 + 13500000,
@@ -201,7 +199,6 @@ export const FACT_TYPES_CONST: Types = {
         LABEL_1: "Fisch",
         LABEL: "Fische",
         INCLUDED_TYPES: "mit Seefisch, Süßwasserfisch sowie Krebs- und Weichtiere",
-        PROBLEM: "",
         IS_ANIMAL: true,
         DE: {
             PER_YEAR: 1243000000,
@@ -251,7 +248,6 @@ export const FACT_TYPES_CONST: Types = {
         ID: "truthahner",
         LABEL_1: "Truthahn",
         LABEL: "Truthähner",
-        PROBLEM: "",
         IS_ANIMAL: true,
         DE: {
             PER_YEAR: 39869812, // (467500000 / 13.25) * 1.13,
@@ -305,7 +301,6 @@ export const FACT_TYPES_CONST: Types = {
         ID: "enten",
         LABEL_1: "Ente",
         LABEL: "Enten",
-        PROBLEM: "",
         IS_ANIMAL: true,
         DE: {
             PER_YEAR: 36800000 / 4,
@@ -329,35 +324,32 @@ export const FACT_TYPES_CONST: Types = {
             PER_YEAR: 0.178190837,
             SOURCES: [
                 {
-                    SOURCE: "Fake-News (2020)",
+                    SOURCE: "DESTATIS (2019)",
                     SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
+                },
+                {
+                    SOURCE: "DESTATIS (2019)",
+                    SOURCE_URL: "https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Landwirtschaft-Forstwirtschaft-Fischerei/Tiere-Tierische-Erzeugung/Tabellen/gefluegelfleisch.html"
+                },
+                {
+                    SOURCE: "BVDF (2019)",
+                    SOURCE_URL: "https://www.bvdf.de/aktuell/geschaeftsbericht-2018-19"
                 }
             ]
         },
         VEGGIE: {
             PER_YEAR: 0,
-            SOURCES: [
-                {
-                    SOURCE: "Fake-News (2020)",
-                    SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
-                }
-            ]
+            SOURCES: []
         },
         VEGAN: {
             PER_YEAR: 0,
-            SOURCES: [
-                {
-                    SOURCE: "Fake-News (2020)",
-                    SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
-                }
-            ]
+            SOURCES: []
         }
     },
     RINDER: {
         ID: "rinder",
         LABEL_1: "Rind",
         LABEL: "Rinder",
-        PROBLEM: "",
         IS_ANIMAL: true,
         DE: {
             PER_YEAR: 3413200 + 579111,
@@ -448,7 +440,7 @@ export const FACT_TYPES_CONST: Types = {
         ID: "gulle",
         LABEL: "l Gülle",
         NAME: "Gülle",
-        PROBLEM: "",
+        PROBLEM: "Zu viel Düngung durch Gülle führt zu Stickstoffüberschüssen, welche das Grundwasser mit Nitrat und die Umgebungsluft mit Ammoniak belasten",
         DE: {
             PER_YEAR: 2080000000,
             UNIT: "Liter",
@@ -461,7 +453,7 @@ export const FACT_TYPES_CONST: Types = {
             ]
         },
         OMNI: {
-            PER_YEAR: 5000,
+            PER_YEAR: 9.818461727 * 1000, // Umrechnung von Kubikmeter in Litern
             UNIT: "Liter",
             SOURCES: [
                 {
@@ -471,7 +463,7 @@ export const FACT_TYPES_CONST: Types = {
             ]
         },
         VEGGIE: {
-            PER_YEAR: 3000,
+            PER_YEAR: 7.039600935 * 1000, // Umrechnung von Kubikmeter in Litern
             UNIT: "Liter",
             SOURCES: [
                 {
@@ -482,7 +474,6 @@ export const FACT_TYPES_CONST: Types = {
         },
         VEGAN: {
             PER_YEAR: 0,
-            UNIT: "Liter",
             SOURCES: []
         }
     },
@@ -493,7 +484,7 @@ export const FACT_TYPES_CONST: Types = {
         COUNT_ONE: "eine",
         NAME: "Gen-Soja",
         INCLUDED_TYPES: "importiert aus den USA, Brasilien und Kanada",
-        PROBLEM: "",
+        PROBLEM: "Der Import führt neben der bedenklichen Genmanipulation zu Abholzung von Regenwäldern sowie Monokulturen.",
         DE: {
             PER_YEAR: 3063251,
             UNIT: "Tonnen",
@@ -515,28 +506,37 @@ export const FACT_TYPES_CONST: Types = {
             ]
         },
         OMNI: {
-            PER_YEAR: 50,
-            UNIT: "Tonnen",
+            PER_YEAR: 128.398954,
+            UNIT: "Kilogramm",
+            CALCULATION: "Annäherung anhand Tierbestand und Futtermittel-Import zu 90% Gen-Soja-Schrot (ohne pfl. Öle)",
             SOURCES: [
                 {
-                    SOURCE: "Fake-News (2020)",
-                    SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
+                    SOURCE: "BMEL (2018)",
+                    SOURCE_URL: "https://www.bmel-statistik.de/fileadmin/daten/DFT-0601010-2018.xlsx"
+                },
+                {
+                    SOURCE: "Statista (2018)",
+                    SOURCE_URL: "https://de.statista.com/statistik/daten/studie/659045/umfrage/nutztierbestand-in-deutschland/"
                 }
             ]
         },
         VEGGIE: {
-            PER_YEAR: 10,
-            UNIT: "Tonnen",
+            PER_YEAR: 21.809637,
+            UNIT: "Kilogramm",
+            CALCULATION: "Annäherung anhand Tierbestand und Futtermittel-Import zu 90% Gen-Soja-Schrot (ohne pfl. Öle)",
             SOURCES: [
                 {
-                    SOURCE: "Fake-News (2020)",
-                    SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
+                    SOURCE: "BMEL (2018)",
+                    SOURCE_URL: "https://www.bmel-statistik.de/fileadmin/daten/DFT-0601010-2018.xlsx"
+                },
+                {
+                    SOURCE: "Statista (2018)",
+                    SOURCE_URL: "https://de.statista.com/statistik/daten/studie/659045/umfrage/nutztierbestand-in-deutschland/"
                 }
             ]
         },
         VEGAN: {
             PER_YEAR: 0,
-            UNIT: "Tonnen",
             SOURCES: []
         }
     },
@@ -563,28 +563,41 @@ export const FACT_TYPES_CONST: Types = {
             ]
         },
         OMNI: {
-            PER_YEAR: 5,
-            UNIT: "Kilogramm",
+            PER_YEAR: 53688.788,
+            UNIT: "Milligramm",
+            CALCULATION: "gemeldete Antibiotika-Einsätze (Mast) durch Landwirte in DE, Hochrechnung bei Nutztiere für Milch- und Eierproduktion",
             SOURCES: [
                 {
-                    SOURCE: "Fake-News (2020)",
-                    SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
+                    SOURCE: "Tagesschau (2019)",
+                    SOURCE_URL: "https://www.tagesschau.de/investigativ/ndr/antibiotika-landwirtschaft-101.html"
+                },
+                {
+                    SOURCE: "Milchindustrie (2019)",
+                    SOURCE_URL: "https://milchindustrie.de/wp-content/uploads/2018/11/Milchkuhbestände-_Haltungen_DE-2000-2019_Homepage.pdf"
+                },
+                {
+                    SOURCE: "LGL Bayern (2014)",
+                    SOURCE_URL: "https://www.lgl.bayern.de/aus_fort_weiterbildung/veranstaltungen/kongresse_veranstaltungen/doc/2014_lare_symp_wallmann.pdf"
                 }
             ]
         },
         VEGGIE: {
-            PER_YEAR: 3,
-            UNIT: "Kilogramm",
+            PER_YEAR: 7676.19,
+            UNIT: "Milligramm",
+            CALCULATION: "Hochrechnung bei Nutztiere für Milch- und Eierproduktion",
             SOURCES: [
                 {
-                    SOURCE: "Fake-News (2020)",
-                    SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
+                    SOURCE: "Milchindustrie (2019)",
+                    SOURCE_URL: "https://milchindustrie.de/wp-content/uploads/2018/11/Milchkuhbestände-_Haltungen_DE-2000-2019_Homepage.pdf"
+                },
+                {
+                    SOURCE: "LGL Bayern (2014)",
+                    SOURCE_URL: "https://www.lgl.bayern.de/aus_fort_weiterbildung/veranstaltungen/kongresse_veranstaltungen/doc/2014_lare_symp_wallmann.pdf"
                 }
             ]
         },
         VEGAN: {
             PER_YEAR: 0,
-            UNIT: "Kilogramm",
             SOURCES: []
         }
     },
@@ -594,7 +607,7 @@ export const FACT_TYPES_CONST: Types = {
         LABEL: "t CO<sub>2</sub>-Äquivalente",
         NAME: "CO<sub>2</sub>-Äquivalente",
         INCLUDED_TYPES: "berechnet aus emittiertem Kohlendioxid, Lachgas und Methan",
-        PROBLEM: "",
+        PROBLEM: "Kohlendioxid ist ein Treibhausgas und führt bei zunehmender Konzentration in der Atmosphäre zu einer Erwärmung des Erdklimas.",
         DE: {
             PER_YEAR: 20800000 * 5,
             UNIT: "Tonnen",

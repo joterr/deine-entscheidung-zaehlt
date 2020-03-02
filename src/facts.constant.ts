@@ -2,10 +2,22 @@
 
 export const VIOLATIONS_HANDLING_SCANDALS = [
   {
+    desc: "Viel Milch, viel Tierleid: Deutschlands kranke Kühe",
+    pub: "BR online",
+    date: "2019-07-02",
+    link: "https://www.br.de/nachrichten/deutschland-welt/viel-milch-viel-tierleid-deutschlands-kranke-kuehe,RPo00FU"
+  },
+  {
+    desc: "Studienauswertung: Mindestens jedes vierte Tierprodukt stammt von einem kranken Nutztier",
+    pub: "foodwatch",
+    date: "2016-09-22",
+    link: "https://www.foodwatch.org/de/pressemitteilungen/2016/studienauswertung-mindestens-jedes-vierte-tierprodukt-stammt-von-einem-kranken-nutztier/"
+  },
+  {
     desc: "„Sie haben mich angeschaut, als ob ich der größte Verräter wäre“",
     pub: "vegan ist zukunft",
     date: "2019-10-25",
-    link: "https://vegan-ist-zukunft.de/sie-haben-mich-angeschaut-als-ob-ich-der-groesste-verraeter-waere/?fbclid=IwAR2wl4LCek61cBycz1lgpo57Mu89KWWsNPeiSWGgG2MlE7sW8cQrYXL2mIA"
+    link: "https://vegan-ist-zukunft.de/sie-haben-mich-angeschaut-als-ob-ich-der-groesste-verraeter-waere/"
   },
   {
     desc: "Bad Grönenbach: Ein angezeigter Betrieb schafft Milchkühe ab",

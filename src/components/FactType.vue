@@ -1,5 +1,5 @@
 <template>
-  <span class="linked-detail" v-on:click="$emit('show-details', type)">
+  <span class="linked-detail" :class="{'zero': calced === 0}" v-on:click="showAdditionalDetails()">
     <span v-if="calced === 0">{{ !type.UNIT ? 'keine' : '0'}}</span>
     <span v-else>{{ makeLocaleInteger(calced, type.COUNT_ONE) }}</span>
     {{ ' ' }}
@@ -46,6 +46,12 @@ export default class FactType extends Vue {
 
   private microCounter!: number;
 
+  public showAdditionalDetails(): void {
+    if (this.calced !== 0) {
+      this.$emit("show-details", this.type);
+    }
+  }
+
   public makeLocaleInteger(val: number, one: string = "ein"): string {
     const intedVal: number = this.makeInt(val);
     const counters: string[] = [
@@ -90,7 +96,8 @@ export default class FactType extends Vue {
     }
 
     if (modeChanged) {
-      this.calced = calcedNew > this.calced ? calcedNew * 0.99 : calcedNew * 1.01;
+      this.calced =
+        calcedNew > this.calced ? calcedNew * 0.99 : calcedNew * 1.01;
     }
 
     clearInterval(this.microCounter);
@@ -110,7 +117,6 @@ export default class FactType extends Vue {
         }
       }, timer);
     }
-
   }
 
   private calcYearlyByMode(): number {
@@ -147,11 +153,15 @@ span.linked-detail {
     font-size: $font-size-small-highlight;
   }
 
+  &.zero {
+    opacity: 0.5;
+  }
+
   span {
     white-space: nowrap;
   }
 
-  &:hover {
+  &:not(.zero):hover {
     cursor: pointer;
     color: #000;
 
