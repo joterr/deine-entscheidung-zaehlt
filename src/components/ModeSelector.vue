@@ -1,5 +1,7 @@
 <template>
-  <div class="mode-selector" :class="{'is-expanded': isExpanded}">
+  <div class="mode-selector" :class="{'is-expanded': isExpanded, 'animate': selectedMode === veganMode}">
+    <div class="left-frills frills"></div>
+    <div class="right-frills frills"></div>
     <span class="width-maker">{{ getSelectedModeName() }}</span>
     <ul :class="getSelectedModeClass(mode.id)">
       <li
@@ -34,6 +36,9 @@ export default class ModeSelector extends Vue {
   @Provide()
   private SELECTABLE_MODES: Mode[] = MODES;
 
+@Provide()
+  private veganMode: ModeEnum =  ModeEnum.VEGAN;
+
   private expandState: boolean = false;
 
   private mode: ModeEnum = this.activeMode || ModeEnum.DE;
@@ -52,8 +57,8 @@ export default class ModeSelector extends Vue {
   }
 
   public set isExpanded(state: boolean) {
-      this.expandState = state;
-      this.emitIsExpanded(state);
+    this.expandState = state;
+    this.emitIsExpanded(state);
   }
 
   public get isExpanded(): boolean {
@@ -83,7 +88,7 @@ export default class ModeSelector extends Vue {
   }
 
   private emitIsExpanded(state: boolean): void {
-      this.$emit("is-expanded", state);
+    this.$emit("is-expanded", state);
   }
 }
 </script>
@@ -100,11 +105,23 @@ $element-height-complete: $element-height + $element-border-width * 2;
 $font-size: medium;
 $font-size-small: small;
 
+$frill-vert-space: 1.2rem;
+$frill-horizontal-offset: 1.8rem;
+$frill-distance: .9rem;
+$frill-stagger: .45rem;
+
+$frill-rotation: 40deg;
+$frill-height: .3rem;
+$frill-width: 1.5rem;
+
+$speed: 0.38s;
+$timing-function: ease-out;
+$delay: 0.152s;
+
 .mode-selector {
   position: relative;
   z-index: 999;
   height: calc(#{$element-height-complete});
-  overflow: hidden;
   border-radius: $element-border-radius;
 
   .width-maker {
@@ -154,7 +171,7 @@ $font-size-small: small;
         text-transform: uppercase;
         font-size: $font-size;
         @include respond-to("small") {
-            font-size: $font-size-small;
+          font-size: $font-size-small;
         }
         padding: $element-padding-vertical $element-padding-horizontal;
         padding-top: 0;
@@ -218,6 +235,131 @@ $font-size-small: small;
     display: inline-block;
     position: absolute;
     opacity: 0;
+  }
+}
+
+.frills,
+.frills:after,
+.frills:before {
+  position: absolute;
+  background: $cl-accent1;
+  border-radius: ($frill-height/2);
+  height: $frill-height;
+}
+
+.frills:after,
+.frills:before {
+  content: "";
+  display: block;
+}
+.frills:before {
+  bottom: $frill-vert-space;
+}
+.frills:after {
+  top: $frill-vert-space;
+}
+.left-frills {
+  left: calc(-1 * #{$frill-horizontal-offset});
+  top: ($element-height-complete/2)- ($frill-height/2);
+  .animate & {
+    animation: move-left $speed $timing-function $delay,
+      width-to-zero $speed $timing-function $delay;
+  }
+
+  &:before,
+  &:after {
+    left: $frill-stagger;
+  }
+  &:before {
+    .animate & {
+      animation: width-to-zero $speed $timing-function $delay,
+        move-up $speed $timing-function $delay;
+    }
+  }
+  &:after {
+    .animate & {
+      animation: width-to-zero $speed $timing-function $delay,
+        move-down $speed $timing-function $delay;
+    }
+  }
+}
+.right-frills {
+  right: calc(-1 * #{$frill-horizontal-offset});
+  top: ($element-height-complete/2)- ($frill-height/2);
+  .animate & {
+    animation: move-right $speed $timing-function $delay,
+      width-to-zero $speed $timing-function $delay;
+  }
+  &:before,
+  &:after {
+    right: $frill-stagger;
+  }
+  &:before {
+    .animate & {
+      animation: width-to-zero $speed $timing-function $delay,
+        move-up $speed $timing-function $delay;
+    }
+  }
+  &:after {
+    .animate & {
+      animation: width-to-zero $speed $timing-function $delay,
+        move-down $speed $timing-function $delay;
+    }
+  }
+}
+
+.left-frills:before,
+.right-frills:after {
+  transform: rotate($frill-rotation);
+}
+
+.left-frills:after,
+.right-frills:before {
+  transform: rotate(-$frill-rotation);
+}
+
+@keyframes move-left {
+  0% {
+    transform: none;
+  }
+  65% {
+    transform: translateX(-1 * $frill-distance);
+  }
+  100% {
+    transform: translateX(-1 * $frill-distance);
+  }
+}
+@keyframes move-right {
+  0% {
+    transform: none;
+  }
+  65% {
+    transform: translateX($frill-distance);
+  }
+  100% {
+    transform: translateX($frill-distance);
+  }
+}
+@keyframes width-to-zero {
+  0% {
+    width: $frill-width;
+  }
+  100% {
+    width: $frill-height;
+  }
+}
+@keyframes move-up {
+  0% {
+  }
+  100% {
+    bottom: $frill-vert-space * 1.55;
+  }
+}
+@keyframes move-down {
+  0% {
+  }
+  100% {
+    top: $frill-vert-space * 1.55;
   }
 }
 </style>
