@@ -283,13 +283,13 @@ i {
       width: 80vw;
       margin-left: 0;
       left: 10vw;
+      top: 44vh;
       transform: translate(0, -50%);
     }
 
     @include respond-to("x-small") {
       width: 80vw;
       left: 8vw;
-      top: 45vh;
       transform: translate(0, -50%);
     }
 
