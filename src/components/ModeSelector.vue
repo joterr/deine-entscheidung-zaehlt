@@ -116,7 +116,7 @@ $frill-width: 1.5rem;
 
 $speed: 0.38s;
 $timing-function: ease-out;
-$delay: 0.152s;
+$delay: 0.38s;
 
 .mode-selector {
   position: relative;

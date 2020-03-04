@@ -438,7 +438,7 @@ div.mode-selector-dd {
 
   @include respond-to("small") {
     position: absolute;
-    top: 91vh;
+    top: 89vh;
     right: auto;
     left: 50vw;
     transform: translate(-50%, 2000px);
@@ -448,10 +448,10 @@ div.mode-selector-dd {
 
 @include respond-to("small") {
   .fact-wrapper {
-    transition: opacity 600ms ease;
+    transition: opacity 300ms ease-out;
   }
   .mode-selector-dd {
-    transition: top 600ms ease;
+    transition: top 300ms ease-out;
   }
   .selector-expanded {
     .fact-wrapper {
