@@ -10,16 +10,14 @@
         <h1 class="main-info">
           <span v-if="activeMode === ModeDE">
             In
-            <span class="highlight">{{getPastTimeString(pastSeconds)}}</span> wurde
-            <i v-if="pastSeconds > 1">n</i> mehr als
+            <span class="highlight">{{getPastTimeString(pastSeconds)}}</span> wurde<i v-if="pastSeconds > 1">n</i> mehr als
           </span>
           <span v-if="activeMode !== ModeDE">
             In
             <span
               class="highlight"
             >{{ averageLifeSpan > pastSeconds ? pastSeconds : averageLifeSpan }} Jahren</span>
-            werden für eine
-            <span class="highlight">{{ getSelectedModeName() }}</span>
+            werden für eine<span class="highlight">{{ getSelectedModeName() }}</span>
             durchschnittlich
           </span>
           <span class="highlight-1">
@@ -333,13 +331,13 @@ i {
         color: $cl-accent1;
         @include std-text-bold-italic();
         font-size: 4rem;
-
-        text-shadow: 0 0 0.25rem $dark;
         @include respond-to("small") {
           font-size: 3.5rem;
         }
         line-height: 115%;
         text-decoration: underline;
+        text-shadow: 0 0 0.25rem $dark;
+        opacity: 0.9;
 
         &.question {
           margin-top: 1.5rem;

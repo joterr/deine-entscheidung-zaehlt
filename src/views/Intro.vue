@@ -20,35 +20,26 @@
         <div class="back-link" v-on:click="hideTruth()">zur&uuml;ck</div>
         <div class="content">
           <div class="heading">
-            <h1>Vegan?</h1>
-            <h1>Du entscheidest!</h1>
+            <h1>
+              Vegan
+              <br />essen?
+            </h1>
+            <h1 class="sub">
+              lecker,<br />möglich<br />&amp; gesund.
+            </h1>
           </div>
           <div class="explanation">
             <p
               class="highlight"
-            >950 Millionen Tiere jährlich. Für Fleisch, Milch und Eier. Durch Antibiotika in engster Stallhaltung und krankhaft überzüchtet.</p>
-            <p>Lorem ipsum dolor sit amet. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            >691 Millionen Tiere sterben in Deutschland jährlich. Für Fleisch, Milch und Eier.</p>
+            <p>Auch die Deutsche Gesellschaft für Ernährung (DGE) fand heraus, dass "[...] durch eine gezielte Lebensmittelauswahl und gute Planung ist es möglich, eine vegane Kost zusammenzustellen, bei der kein Nährstoffmangel auftritt".</p>
             <ul class="citations">
               <li>
                 <sup>1</sup>
                 <a
                   target="_blanc"
-                  href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel"
-                >Bonfadelli, Heinz: Medien und Gesellschaft im Wandel (Stand: 06.10.2014). [19.04.2016].</a>
-              </li>
-              <li>
-                <sup>2</sup>
-                <a
-                  target="_blanc"
-                  href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel"
-                >Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a>
-              </li>
-              <li>
-                <sup>3</sup>
-                <a
-                  target="_blanc"
-                  href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel"
-                >Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a>
+                  href="https://www.ernaehrungs-umschau.de/fileadmin/Ernaehrungs-Umschau/pdfs/pdf_2016/04_16/EU04_2016_M220-M230_korr.pdf"
+                >Richter et al. (2016): Vegane Ernährung: Position der Deutschen Gesellschaft für Ernährung e. V. (DGE). Ernährungs Umschau, 92-102.</a>
               </li>
             </ul>
           </div>
@@ -288,54 +279,56 @@ export default class Intro extends Vue {
   }
 
   .content {
-    margin-top: 12vh;
+    margin-top: 14vh;
     margin-bottom: 4rem;
     position: relative;
 
     @include respond-to("small") {
-      margin-top: 16vh;
+      margin-top: 22vh;
     }
 
     .heading {
       transform: translateY(100vh);
       animation: slideUp 0.5s ease forwards 0.65s;
-      margin-bottom: 5rem;
+      margin-bottom: 3.125rem;
       width: 150%;
-
-      @include respond-to("medium") {
-        width: 100%;
-        margin-bottom: 3.5rem;
-      }
-
-      @include respond-to("small") {
-        width: 100%;
-        margin-bottom: 2.5rem;
-      }
 
       h1 {
         margin-left: -0.1rem;
-        line-height: 110%;
         color: $white;
-        font-size: 7.5rem;
+        font-size: 10rem;
+        text-transform: uppercase;
+        text-decoration: underline;
         @include std-text-bold-italic();
 
-        @include respond-to("large") {
-          font-size: 6.25rem;
+        &.sub {
+          @include std-text-bold();
+          margin-top: 6.25rem;
+          line-height: 100%;
+          font-size: 3.25rem;
+          text-transform: none;
+          text-decoration: none;
         }
 
         @include respond-to("medium") {
-          font-size: 5.25rem;
+          font-size: 14vw;
+          &.sub {
+            font-size: 5.25vw;
+          }
         }
 
         @include respond-to("small") {
-          font-size: 3.75rem;
+          font-size: 23vw;
+          &.sub {
+            font-size: 10vw;
+          }
         }
       }
     }
 
     .explanation,
     .additional-info {
-      margin-top: 3.75rem;
+      margin-top: 3.125rem;
       transform: translateY(100vh);
       animation: slideUp 0.5s ease forwards 0.85s;
 
@@ -346,6 +339,7 @@ export default class Intro extends Vue {
 
         strong,
         &.highlight {
+          font-size: large;
           @include std-text-bold();
         }
       }
