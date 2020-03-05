@@ -25,21 +25,63 @@
               <br />essen?
             </h1>
             <h1 class="sub">
-              lecker,<br />möglich<br />&amp; gesund.
+              lecker,
+              <br />möglich
+              <br />&amp; gesund.
             </h1>
           </div>
           <div class="explanation">
-            <p
-              class="highlight"
-            >691 Millionen Tiere sterben in Deutschland jährlich. Für Fleisch, Milch und Eier.</p>
-            <p>Auch die Deutsche Gesellschaft für Ernährung (DGE) fand heraus, dass "[...] durch eine gezielte Lebensmittelauswahl und gute Planung ist es möglich, eine vegane Kost zusammenzustellen, bei der kein Nährstoffmangel auftritt".</p>
+            <p class="highlight">
+              691 Millionen Tiere sterben in Deutschland jährlich
+              <sup>1</sup>. Für Fleisch, Eier und Milch. Unabhängig, ob mit artgerechter Haltung oder Bio-Siegel. Dabei muss es nicht bleiben!
+            </p>
+            <p>
+              Einmal entscheiden &mdash; jeden Tag viel bewirken: eine durchdachte vegane Ernährung ist nicht nur ökologischer und gesünder
+              <sup>2</sup> als eine typische mischköstliche Ernährung, sondern vermeidet konsequent unnötiges Tierleid. Auch die Deutsche Gesellschaft für Ernährung (DGE) bestätigt, dass &bdquo;[...] durch eine gezielte Lebensmittelauswahl und gute Planung [es möglich ist], eine vegane Kost zusammenzustellen, bei der kein Nährstoffmangel auftritt.&ldquo;
+              <sup>3</sup>
+              <br />Schwer ist dies jedoch nicht. Wenige Informationen &ndash; siehe
+              <i>Erste Schritte</i> und
+              <i>Bücher</i> &ndash; genügen, um eine gut kombinierte Zusammenstellung aus den fünf wichtigsten Lebensmittelgruppen <i>(Vollkorn-)getreide</i>, <i>Hülsenfrüchte</i>, <i>Gemüse</i>, <i>Obst</i> und <i>Nüsse/Samen</i>
+              <sup>4</sup> zu garantieren.
+            </p>
+            <p>
+              Um gleich zu Beginn mit allen wichtigen Informationen versorgt zu sein, bieten sich Apps wie z.B. der
+              <a
+                href="https://www.veganstart.de"
+                target="_blanc"
+              >30 Tage Vegan Coach</a> von PETA an.
+            </p>
+            <p>
+                Go vegan! ;)
+            </p>
             <ul class="citations">
               <li>
                 <sup>1</sup>
                 <a
                   target="_blanc"
+                  href="https://www.boell.de/sites/default/files/fleischatlas2014_vi.pdf?dimension1=division_oen"
+                >Chemnitz, Benning. (2015): Fleischatlas 2014: Daten und Fakten über Tiere als Nahrungsmittel.</a>
+              </li>
+              <li>
+                <sup>2</sup>
+                <a
+                  target="_blanc"
+                  href="https://proveg.com/de/5-pros/gesundheit/vegan-gesund-ernaehren/"
+                >Vegan gesund ernähren: Vorteile einer pflanzlichen Kost. ProVeg. [Stand: 05. März 2020, 20:16 CEST]</a>
+              </li>
+              <li>
+                <sup>3</sup>
+                <a
+                  target="_blanc"
                   href="https://www.ernaehrungs-umschau.de/fileadmin/Ernaehrungs-Umschau/pdfs/pdf_2016/04_16/EU04_2016_M220-M230_korr.pdf"
-                >Richter et al. (2016): Vegane Ernährung: Position der Deutschen Gesellschaft für Ernährung e. V. (DGE). Ernährungs Umschau, 92-102.</a>
+                >Richter et al. (2016): Vegane Ernährung: Position der Deutschen Gesellschaft für Ernährung e. V. (DGE). Ernährungs Umschau, 92-102. [Stand: 05. März 2020, 20:16 CEST]</a>
+              </li>
+              <li>
+                <sup>4</sup>
+                <a
+                  target="_blanc"
+                  href="https://www.ernaehrungs-umschau.de/fileadmin/Ernaehrungs-Umschau/pdfs/pdf_2016/04_16/EU04_2016_M220-M230_korr.pdf"
+                >Rittenau (2019): Vegan-Klischee ade!: Wissenschaftliche Antworten auf kritische Fragen zu veganer Ernährung. 5. Aufl. Mainz: Ventil Verlag.</a>
               </li>
             </ul>
           </div>
@@ -54,10 +96,7 @@
                   >Die BESTEN Tipps zum Einstieg ins vegane Leben</a> von PETA
                 </li>
                 <li>
-                  <a
-                    href="https://www.nicezutieren.de"
-                    target="_blanc"
-                  >#NICEZUTIEREN (30-Tage-Vegan-Guide)</a> von PETA
+                  <a href="https://www.veganstart.de" target="_blanc">30 Tage Vegan Coach per App</a> von PETA
                 </li>
                 <li>
                   <a
@@ -115,6 +154,12 @@
               <h3>Bücher</h3>
               <ul class="info-list-type">
                 <li>
+                  <a
+                    href="https://www.nikorittenau.com/vegan-klischee-ade/"
+                    target="_blanc"
+                  >Vegan Klischee Adé</a> von Niko Rittenau (ausführlichst über die aktuelle ernährungsphysiologische Studienlage)
+                </li>
+                <li>
                   <a href="https://nutritionfacts.org/book/" target="_blanc">HOW NOT TO DIE</a> von Michael Greger, M.D.
                 </li>
                 <li>
@@ -122,12 +167,6 @@
                     href="https://www.medimops.de/produkte-C0/?fcIsSearch=1&searchparam=China+Study"
                     target="_blanc"
                   >The China Study</a> von T. Colin Campbell
-                </li>
-                <li>
-                  <a
-                    href="https://www.nikorittenau.com/vegan-klischee-ade/"
-                    target="_blanc"
-                  >Vegan Klischee Adé</a> von Niko Rittenau
                 </li>
                 <li>
                   <a
@@ -284,7 +323,7 @@ export default class Intro extends Vue {
     position: relative;
 
     @include respond-to("small") {
-      margin-top: 22vh;
+      margin-top: 2vh;
     }
 
     .heading {
@@ -308,6 +347,10 @@ export default class Intro extends Vue {
           font-size: 3.25rem;
           text-transform: none;
           text-decoration: none;
+
+          @include respond-to("medium") {
+            margin-top: 4.375rem;
+          }
         }
 
         @include respond-to("medium") {
@@ -320,7 +363,7 @@ export default class Intro extends Vue {
         @include respond-to("small") {
           font-size: 23vw;
           &.sub {
-            font-size: 10vw;
+            font-size: 12vw;
           }
         }
       }
@@ -341,6 +384,14 @@ export default class Intro extends Vue {
         &.highlight {
           font-size: large;
           @include std-text-bold();
+        }
+
+        i {
+          @include std-text-bold();
+        }
+
+        a {
+          text-decoration: underline;
         }
       }
     }
@@ -407,7 +458,7 @@ div.mode-selector-dd {
 
   @include respond-to("small") {
     position: absolute;
-    top: 86vh;
+    top: 89vh;
     right: auto;
     left: 50vw;
     transform: translate(-50%, 2000px);
