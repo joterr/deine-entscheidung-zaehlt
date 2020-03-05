@@ -1,11 +1,11 @@
 <template>
-  <div class="fact-wrapper">
+  <div class="fact-wrapper" :class="{'hide': activeDetail !== null}">
     <div class="sentance-wrapper initial-question">
       <div class="inner">
         <h1>Deine Entscheidung zählt?</h1>
       </div>
     </div>
-    <div class="sentance-wrapper fact-sentence" :class="{'hide': activeDetail !== null}">
+    <div class="sentance-wrapper fact-sentence" v-on:click="$emit('open-truth-overlay')">
       <div class="inner">
         <h1 class="main-info">
           <span v-if="activeMode === ModeDE">
@@ -17,8 +17,7 @@
             <span
               class="highlight"
             >{{ averageLifeSpan > pastSeconds ? pastSeconds : averageLifeSpan }} Jahren</span>
-            werden für eine
-            <span class="highlight">{{ getSelectedModeName() }}</span>
+            werden für eine<span class="highlight">{{ getSelectedModeName() }}</span>
             durchschnittlich
           </span>
           <span class="highlight-1">
@@ -128,13 +127,13 @@
           belasten unsere Gesundheit und Umwelt.
         </h1>
       </div>
-      <div class="show-truth" v-if="false">
-        <span v-on:click="$emit('open-truth-overlay')">Findest Du nicht okay?</span>
-      </div>
-      <div class="what-do-you-eat">
-        <span>Und Du?</span>
-        <span>Ich esse konventionell / vegetarisch / vegan.</span>
-      </div>
+    </div>
+    <div class="sentance-wrapper show-truth" v-on:click="openTruthOverlay()">
+      <span>
+        Ohne Fleisch,
+        <br />Eier oder Milch.
+      </span>
+      <span class="question">Ist das möglich?</span>
     </div>
     <AdditionalDetails
       :activeType="activeDetail"
@@ -239,26 +238,32 @@ i {
 
 .fact-wrapper {
   position: relative;
-  z-index: 999;
   width: 100vw;
   height: 100vh;
 
-  &.past-time-over {
-    background-color: #fff;
+  &.hide > .sentance-wrapper {
+    opacity: 0;
+
+    &.show-truth {
+      opacity: 1;
+
+      & > span {
+        opacity: 1;
+        animation: delayHideBlur 600ms ease forwards;
+      }
+    }
   }
 
   .sentance-wrapper {
     position: absolute;
     top: 50vh;
     left: 50vw;
+    z-index: 999;
     width: 20vw;
     margin-left: 20vw;
     transform: translate(-50%, -50%);
     text-align: left;
-
-    &.hide {
-      opacity: 0;
-    }
+    cursor: pointer;
 
     @include respond-to("xx-large") {
       width: 22vw;
@@ -311,6 +316,32 @@ i {
 
       & > * {
         transform: translateY(2000px);
+      }
+    }
+
+    &.show-truth {
+      text-align: right;
+      cursor: pointer;
+      z-index: 9;
+      opacity: 0;
+      animation: delayShowBlur 500ms ease forwards 16s;
+
+      span {
+        display: block;
+        color: $cl-accent1;
+        @include std-text-bold-italic();
+        font-size: 4rem;
+        @include respond-to("small") {
+          font-size: 3.5rem;
+        }
+        line-height: 115%;
+        text-decoration: underline;
+        text-shadow: 0 0 0.25rem $dark;
+        opacity: 0.9;
+
+        &.question {
+          margin-top: 1.5rem;
+        }
       }
     }
   }
@@ -437,49 +468,6 @@ i {
       100% {
         background-color: transparent;
       }
-    }
-  }
-
-  .show-truth {
-    display: block;
-    margin-top: 3.125rem;
-    width: 15rem;
-    transform: translateY(0) !important;
-    overflow: hidden;
-
-    span {
-      display: block;
-      color: $cl-accent1;
-      @include std-text-bold-italic();
-      font-size: 1rem;
-      text-decoration: none;
-      cursor: pointer;
-      transform: translateY(2000px);
-      animation: delayShowAndSliceIn 500ms ease forwards 8s;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
-  .what-do-you-eat {
-    display: none;
-
-    margin-top: 3.125rem;
-    transform: translateY(0) !important;
-
-    span {
-      display: inline-block;
-      margin-top: 0.625rem;
-      margin-right: 1rem;
-      padding: 0.625rem;
-      background-color: $cl-accent1;
-      opacity: 0.85;
-      color: #000;
-      @include std-text-bold-italic();
-      font-size: 1rem;
-      border-radius: 0.25rem;
     }
   }
 }

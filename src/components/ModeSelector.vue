@@ -1,5 +1,13 @@
 <template>
-  <div class="mode-selector" :class="{'is-expanded': isExpanded, 'animate': selectedMode === veganMode}">
+  <div
+    class="mode-selector"
+    :class="{'is-expanded': isExpanded, 'animate': selectedMode === veganMode}"
+  >
+    <div
+      class="tooltip"
+      v-if="!hasFirstChange"
+      v-on:click="isExpanded = true"
+    >Wie hoch ist Dein Anteil?</div>
     <div class="left-frills frills"></div>
     <div class="right-frills frills"></div>
     <span class="width-maker">{{ getSelectedModeName() }}</span>
@@ -36,8 +44,11 @@ export default class ModeSelector extends Vue {
   @Provide()
   private SELECTABLE_MODES: Mode[] = MODES;
 
-@Provide()
-  private veganMode: ModeEnum =  ModeEnum.VEGAN;
+  @Provide()
+  private veganMode: ModeEnum = ModeEnum.VEGAN;
+
+  @Provide()
+  private hasFirstChange: boolean = false;
 
   private expandState: boolean = false;
 
@@ -57,6 +68,7 @@ export default class ModeSelector extends Vue {
   }
 
   public set isExpanded(state: boolean) {
+    this.hasFirstChange = true;
     this.expandState = state;
     this.emitIsExpanded(state);
   }
@@ -107,11 +119,11 @@ $font-size-small: small;
 
 $frill-vert-space: 1.2rem;
 $frill-horizontal-offset: 1.8rem;
-$frill-distance: .9rem;
-$frill-stagger: .45rem;
+$frill-distance: 0.9rem;
+$frill-stagger: 0.45rem;
 
 $frill-rotation: 40deg;
-$frill-height: .3rem;
+$frill-height: 0.3rem;
 $frill-width: 1.5rem;
 
 $speed: 0.38s;
@@ -119,10 +131,43 @@ $timing-function: ease-out;
 $delay: 0.38s;
 
 .mode-selector {
-  position: relative;
+  position: static;
   z-index: 999;
   height: calc(#{$element-height-complete});
   border-radius: $element-border-radius;
+  overflow: hidden;
+
+  &.animate {
+    animation: addOverflowHidden calc(#{$speed} + #{$delay}) linear forwards;
+  }
+
+  .tooltip {
+    position: absolute;
+    top: -1.8rem;
+    left: -5.5rem;
+    z-index: 99;
+    cursor: pointer;
+    @include std-text-bold();
+    color: $dark;
+    background-color: $white;
+    font-size: small;
+    padding: 0.125rem;
+    opacity: 0;
+    animation: delayShowBlurAndHide 6s ease forwards 7s;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      width: 0.1rem;
+      height: 1.8rem;
+      transform: rotate(-30deg);
+      background-color: $white;
+      opacity: 0;
+      animation: delayShowBlurAndHide 6.1s ease forwards 7.2s;
+    }
+  }
 
   .width-maker {
     opacity: 0;
@@ -139,8 +184,9 @@ $delay: 0.38s;
 
   ul {
     margin: 0;
+    margin-top: -1rem;
     padding: 0;
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
@@ -175,7 +221,7 @@ $delay: 0.38s;
         }
         padding: $element-padding-vertical $element-padding-horizontal;
         padding-top: 0;
-        padding-right: 1.5rem;
+        padding-right: 1.6rem;
         opacity: 0;
       }
 
@@ -184,13 +230,13 @@ $delay: 0.38s;
           content: "";
           position: absolute;
           right: 0.75rem;
-          top: calc(#{$element-height} / 2);
+          top: calc(#{$element-height-complete} / 2);
           z-index: 9999;
-          width: 0.4rem;
-          height: 0.4rem;
-          border: 0.15rem solid;
+          width: 0.45rem;
+          height: 0.45rem;
+          border: 0.16rem solid;
           border-color: #fff transparent transparent #fff;
-          transform: translateY(-75%) rotate(-135deg);
+          transform: translateY(-100%) rotate(-135deg);
           cursor: pointer;
         }
 
@@ -206,6 +252,7 @@ $delay: 0.38s;
   }
 
   &.is-expanded {
+    animation: none;
     overflow: visible;
     height: auto;
     width: 200px;
@@ -223,7 +270,7 @@ $delay: 0.38s;
 
         &.active label:after {
           right: 0.5rem;
-          transform: translateY(-50%) rotate(-45deg);
+          transform: translateY(-70%) rotate(-45deg);
         }
       }
     }
@@ -316,6 +363,18 @@ $delay: 0.38s;
 .left-frills:after,
 .right-frills:before {
   transform: rotate(-$frill-rotation);
+}
+
+@keyframes addOverflowHidden {
+  0% {
+    overflow: visible;
+  }
+  99% {
+    overflow: visible;
+  }
+  100% {
+    overflow: hidden;
+  }
 }
 
 @keyframes move-left {

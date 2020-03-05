@@ -135,7 +135,7 @@ export default class AdditionalDetails extends Vue {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 99;
+  z-index: 9999;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.5);
 }
@@ -153,7 +153,7 @@ export default class AdditionalDetails extends Vue {
   padding: 2.5rem;
   padding-bottom: 1.25rem;
   border-radius: 1pt;
-  z-index: 999;
+  z-index: 99999;
   animation: animateIn 0.75s ease forwards;
 
   @include respond-to("xx-large") {

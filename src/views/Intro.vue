@@ -17,63 +17,71 @@
     </div>
     <div class="truth-overlay" :class="{ 'opened': isVisibleTruth }">
       <div class="layout-wrapper">
-        <div class="back-link" v-on:click="hideTruth">zur&uuml;ck</div>
+        <div class="back-link" v-on:click="hideTruth()">zur&uuml;ck</div>
         <div class="content">
           <div class="heading">
-            <h1>Einmal entscheiden,</h1>
-            <h1>jeden Tag viel bewirken.</h1>
+            <h1>
+              Vegan
+              <br />essen?
+            </h1>
+            <h1 class="sub">
+              lecker,
+              <br />möglich
+              <br />&amp; gesund.
+            </h1>
           </div>
           <div class="explanation">
-            <p
-              class="highlight"
-            >950 Millionen Tiere jährlich. Für Fleisch, Milch und Eier. Durch Antibiotika in engster Stallhaltung und krankhaft überzüchtet. Dennoch sterben eine Vielzahl an Tieren bereits an Verletzungen und bakteriellen Krankheiten. Bei Schweinen sogar nahezu jedes fünfte Tier. Unprofitable Jungtiere werden meist direkt getötet - darunter über 50 Millionen vergaste und geschredderte Eintagsküken.</p>
-            <p>Klar avocado schlecht für's Klimo, jedoch isst man nicht so viel wie Fleisch... At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-            <p>Klar avocado schlecht für's Klimo, jedoch isst man nicht so viel wie Fleisch... At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-            <h2>Probier's doch mal vegan</h2>
+            <p class="highlight">
+              691 Millionen Tiere sterben in Deutschland jährlich
+              <sup>1</sup>. Für Fleisch, Eier und Milch. Unabhängig, ob mit artgerechter Haltung oder Bio-Siegel. Dabei muss es nicht bleiben!
+            </p>
             <p>
-              Lorem ipsum dolor sit amet. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-              <br />Nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.At vero eos et accusam et justo duo dolores et ea rebum.
-              <br />Einfachster Start mit 30 Tage Coach - z.B. der tägliche Newsletter
+              Einmal entscheiden &mdash; jeden Tag viel bewirken: eine durchdachte vegane Ernährung ist nicht nur ökologischer und gesünder
+              <sup>2</sup> als eine typische mischköstliche Ernährung, sondern vermeidet konsequent unnötiges Tierleid. Auch die Deutsche Gesellschaft für Ernährung (DGE) bestätigt, dass &bdquo;[...] durch eine gezielte Lebensmittelauswahl und gute Planung [es möglich ist], eine vegane Kost zusammenzustellen, bei der kein Nährstoffmangel auftritt.&ldquo;
+              <sup>3</sup>
+              <br />Schwer ist dies jedoch nicht. Wenige Informationen &ndash; siehe
+              <i>Erste Schritte</i> und
+              <i>Bücher</i> &ndash; genügen, um eine gut kombinierte Zusammenstellung aus den fünf wichtigsten Lebensmittelgruppen <i>(Vollkorn-)getreide</i>, <i>Hülsenfrüchte</i>, <i>Gemüse</i>, <i>Obst</i> und <i>Nüsse/Samen</i>
+              <sup>4</sup> zu garantieren.
+            </p>
+            <p>
+              Um gleich zu Beginn mit allen wichtigen Informationen versorgt zu sein, bieten sich Apps wie z.B. der
               <a
-                href="https://www.vegankickstart.de/"
+                href="https://www.veganstart.de"
                 target="_blanc"
-              >Vegan Kickstart</a> von PETA ZWEI.
+              >30 Tage Vegan Coach</a> von PETA an.
+            </p>
+            <p>
+                Go vegan! ;)
             </p>
             <ul class="citations">
               <li>
                 <sup>1</sup>
                 <a
                   target="_blanc"
-                  href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel"
-                >Bonfadelli, Heinz: Medien und Gesellschaft im Wandel (Stand: 06.10.2014). [19.04.2016].</a>
+                  href="https://www.boell.de/sites/default/files/fleischatlas2014_vi.pdf?dimension1=division_oen"
+                >Chemnitz, Benning. (2015): Fleischatlas 2014: Daten und Fakten über Tiere als Nahrungsmittel.</a>
               </li>
               <li>
                 <sup>2</sup>
                 <a
                   target="_blanc"
-                  href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel"
-                >Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a>
+                  href="https://proveg.com/de/5-pros/gesundheit/vegan-gesund-ernaehren/"
+                >Vegan gesund ernähren: Vorteile einer pflanzlichen Kost. ProVeg. [Stand: 05. März 2020, 20:16 CEST]</a>
               </li>
               <li>
                 <sup>3</sup>
                 <a
                   target="_blanc"
-                  href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel"
-                >Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a>
+                  href="https://www.ernaehrungs-umschau.de/fileadmin/Ernaehrungs-Umschau/pdfs/pdf_2016/04_16/EU04_2016_M220-M230_korr.pdf"
+                >Richter et al. (2016): Vegane Ernährung: Position der Deutschen Gesellschaft für Ernährung e. V. (DGE). Ernährungs Umschau, 92-102. [Stand: 05. März 2020, 20:16 CEST]</a>
               </li>
               <li>
                 <sup>4</sup>
                 <a
                   target="_blanc"
-                  href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel"
-                >Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a>
-              </li>
-              <li>
-                <sup>5</sup>
-                <a
-                  target="_blanc"
-                  href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel"
-                >Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a>
+                  href="https://www.ernaehrungs-umschau.de/fileadmin/Ernaehrungs-Umschau/pdfs/pdf_2016/04_16/EU04_2016_M220-M230_korr.pdf"
+                >Rittenau (2019): Vegan-Klischee ade!: Wissenschaftliche Antworten auf kritische Fragen zu veganer Ernährung. 5. Aufl. Mainz: Ventil Verlag.</a>
               </li>
             </ul>
           </div>
@@ -88,10 +96,7 @@
                   >Die BESTEN Tipps zum Einstieg ins vegane Leben</a> von PETA
                 </li>
                 <li>
-                  <a
-                    href="https://www.nicezutieren.de"
-                    target="_blanc"
-                  >#NICEZUTIEREN (30-Tage-Vegan-Guide)</a> von PETA
+                  <a href="https://www.veganstart.de" target="_blanc">30 Tage Vegan Coach per App</a> von PETA
                 </li>
                 <li>
                   <a
@@ -149,6 +154,12 @@
               <h3>Bücher</h3>
               <ul class="info-list-type">
                 <li>
+                  <a
+                    href="https://www.nikorittenau.com/vegan-klischee-ade/"
+                    target="_blanc"
+                  >Vegan Klischee Adé</a> von Niko Rittenau (ausführlichst über die aktuelle ernährungsphysiologische Studienlage)
+                </li>
+                <li>
                   <a href="https://nutritionfacts.org/book/" target="_blanc">HOW NOT TO DIE</a> von Michael Greger, M.D.
                 </li>
                 <li>
@@ -156,12 +167,6 @@
                     href="https://www.medimops.de/produkte-C0/?fcIsSearch=1&searchparam=China+Study"
                     target="_blanc"
                   >The China Study</a> von T. Colin Campbell
-                </li>
-                <li>
-                  <a
-                    href="https://www.nikorittenau.com/vegan-klischee-ade/"
-                    target="_blanc"
-                  >Vegan Klischee Adé</a> von Niko Rittenau
                 </li>
                 <li>
                   <a
@@ -212,7 +217,7 @@ export default class Intro extends Vue {
   @Provide()
   private state = false;
 
-  public openTruthOverlay() {
+  public openTruthOverlay(event: MouseEvent) {
     this.isVisibleTruth = true;
   }
 
@@ -290,7 +295,7 @@ export default class Intro extends Vue {
     color: rgba(255, 255, 255, 0.35);
     cursor: pointer;
     opacity: 0;
-    animation: delayShow 500ms ease forwards 10s;
+    animation: delayShow 500ms ease forwards 4s;
     transition: ease 300ms;
 
     @include respond-to("large") {
@@ -313,54 +318,60 @@ export default class Intro extends Vue {
   }
 
   .content {
-    margin-top: 12vh;
+    margin-top: 14vh;
     margin-bottom: 4rem;
     position: relative;
 
     @include respond-to("small") {
-      margin-top: 16vh;
+      margin-top: 2vh;
     }
 
     .heading {
       transform: translateY(100vh);
       animation: slideUp 0.5s ease forwards 0.65s;
-      margin-bottom: 5rem;
+      margin-bottom: 3.125rem;
       width: 150%;
-
-      @include respond-to("medium") {
-        width: 100%;
-        margin-bottom: 3.5rem;
-      }
-
-      @include respond-to("small") {
-        width: 100%;
-        margin-bottom: 2.5rem;
-      }
 
       h1 {
         margin-left: -0.1rem;
-        line-height: 110%;
         color: $white;
-        font-size: 7.5rem;
+        font-size: 10rem;
+        text-transform: uppercase;
+        text-decoration: underline;
         @include std-text-bold-italic();
 
-        @include respond-to("large") {
-          font-size: 6.25rem;
+        &.sub {
+          @include std-text-bold();
+          margin-top: 6.25rem;
+          line-height: 100%;
+          font-size: 3.25rem;
+          text-transform: none;
+          text-decoration: none;
+
+          @include respond-to("medium") {
+            margin-top: 4.375rem;
+          }
         }
 
         @include respond-to("medium") {
-          font-size: 5.25rem;
+          font-size: 14vw;
+          &.sub {
+            font-size: 5.25vw;
+          }
         }
 
         @include respond-to("small") {
-          font-size: 3.75rem;
+          font-size: 23vw;
+          &.sub {
+            font-size: 12vw;
+          }
         }
       }
     }
 
     .explanation,
     .additional-info {
-      margin-top: 3.75rem;
+      margin-top: 3.125rem;
       transform: translateY(100vh);
       animation: slideUp 0.5s ease forwards 0.85s;
 
@@ -371,7 +382,16 @@ export default class Intro extends Vue {
 
         strong,
         &.highlight {
+          font-size: large;
           @include std-text-bold();
+        }
+
+        i {
+          @include std-text-bold();
+        }
+
+        a {
+          text-decoration: underline;
         }
       }
     }
@@ -465,11 +485,11 @@ div.mode-selector-dd {
 
 @keyframes delayShowAndSliceIn {
   0% {
-  transform: translate(2000px, calc(-2.2625rem / 2));
+    transform: translate(2000px, calc(-2.2625rem / 2));
     filter: blur(4px);
   }
   100% {
-  transform: translate(0, calc(-2.2625rem / 2));
+    transform: translate(0, calc(-2.2625rem / 2));
     filter: blur(0);
   }
 }
@@ -534,32 +554,6 @@ p {
     filter: blur(0);
   }
   100% {
-    filter: blur(0);
-  }
-}
-
-@keyframes delayShowBlurSpecial {
-  0% {
-    opacity: 0;
-    filter: blur(5px);
-  }
-  50% {
-    opacity: 0;
-    filter: blur(5px);
-  }
-  100% {
-    opacity: 1;
-    filter: blur(0);
-  }
-}
-
-@keyframes delayShowBlur {
-  0% {
-    opacity: 0;
-    filter: blur(3px);
-  }
-  100% {
-    opacity: 1;
     filter: blur(0);
   }
 }
