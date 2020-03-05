@@ -4,6 +4,9 @@
 
 Information page on the effects of livestock farming in Germany. www.deine-entscheidung-zaehlt.de
 
+## Author
+Jannik Rulitschka, hallo@jannikrulitschka.de
+
 ## Project setup
 ```
 npm install
