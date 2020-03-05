@@ -1,5 +1,5 @@
 <template>
-  <span class="linked-detail" :class="{'zero': calced === 0}" v-on:click="showAdditionalDetails()">
+  <span class="linked-detail" :class="{'zero': calced === 0}" v-on:click="showAdditionalDetails($event)">
     <span v-if="calced === 0">{{ type.IS_ANIMAL ? 'keine' : '0'}}</span>
     <span v-else>{{ makeLocaleInteger(calced, type.COUNT_ONE) }}</span>
     {{ ' ' }}
@@ -46,10 +46,11 @@ export default class FactType extends Vue {
 
   private microCounter!: number;
 
-  public showAdditionalDetails(): void {
+  public showAdditionalDetails(event: MouseEvent): void {
     if (this.calced !== 0) {
       this.$emit("show-details", this.type);
     }
+    event.stopImmediatePropagation();
   }
 
   public makeLocaleInteger(val: number, one: string = "ein"): string {

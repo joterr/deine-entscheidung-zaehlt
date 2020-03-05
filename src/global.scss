@@ -366,3 +366,44 @@ body {
     }
   }
 }
+
+@keyframes delayShowBlur {
+    0% {
+        opacity: 0;
+        filter: blur(3px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes delayHideBlur {
+    0% {
+        opacity: 1;
+        filter: blur(0);
+    }
+    100% {
+        opacity: 0;
+        filter: blur(3px);
+    }
+}
+
+@keyframes delayShowBlurAndHide {
+    0% {
+        opacity: 0;
+        filter: blur(3px);
+    }
+    10% {
+        opacity: 1;
+        filter: blur(0);
+    }
+    95% {
+        opacity: 1;
+        filter: blur(0);
+    }
+    100% {
+        opacity: 0;
+        filter: blur(3px);
+    }
+}

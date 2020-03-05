@@ -17,28 +17,17 @@
     </div>
     <div class="truth-overlay" :class="{ 'opened': isVisibleTruth }">
       <div class="layout-wrapper">
-        <div class="back-link" v-on:click="hideTruth">zur&uuml;ck</div>
+        <div class="back-link" v-on:click="hideTruth()">zur&uuml;ck</div>
         <div class="content">
           <div class="heading">
-            <h1>Einmal entscheiden,</h1>
-            <h1>jeden Tag viel bewirken.</h1>
+            <h1>Vegan?</h1>
+            <h1>Du entscheidest!</h1>
           </div>
           <div class="explanation">
             <p
               class="highlight"
-            >950 Millionen Tiere jährlich. Für Fleisch, Milch und Eier. Durch Antibiotika in engster Stallhaltung und krankhaft überzüchtet. Dennoch sterben eine Vielzahl an Tieren bereits an Verletzungen und bakteriellen Krankheiten. Bei Schweinen sogar nahezu jedes fünfte Tier. Unprofitable Jungtiere werden meist direkt getötet - darunter über 50 Millionen vergaste und geschredderte Eintagsküken.</p>
-            <p>Klar avocado schlecht für's Klimo, jedoch isst man nicht so viel wie Fleisch... At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-            <p>Klar avocado schlecht für's Klimo, jedoch isst man nicht so viel wie Fleisch... At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-            <h2>Probier's doch mal vegan</h2>
-            <p>
-              Lorem ipsum dolor sit amet. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-              <br />Nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.At vero eos et accusam et justo duo dolores et ea rebum.
-              <br />Einfachster Start mit 30 Tage Coach - z.B. der tägliche Newsletter
-              <a
-                href="https://www.vegankickstart.de/"
-                target="_blanc"
-              >Vegan Kickstart</a> von PETA ZWEI.
-            </p>
+            >950 Millionen Tiere jährlich. Für Fleisch, Milch und Eier. Durch Antibiotika in engster Stallhaltung und krankhaft überzüchtet.</p>
+            <p>Lorem ipsum dolor sit amet. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
             <ul class="citations">
               <li>
                 <sup>1</sup>
@@ -56,20 +45,6 @@
               </li>
               <li>
                 <sup>3</sup>
-                <a
-                  target="_blanc"
-                  href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel"
-                >Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a>
-              </li>
-              <li>
-                <sup>4</sup>
-                <a
-                  target="_blanc"
-                  href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel"
-                >Mustermann, Max: Vegan-Klischee Adee (Stand: 06.10.2014). [19.04.2016].</a>
-              </li>
-              <li>
-                <sup>5</sup>
                 <a
                   target="_blanc"
                   href="http://www.bpb.de/gesellschaft/medien/medienpolitik/172610/medien-und-gesellschaftim-wandel"
@@ -212,7 +187,7 @@ export default class Intro extends Vue {
   @Provide()
   private state = false;
 
-  public openTruthOverlay() {
+  public openTruthOverlay(event: MouseEvent) {
     this.isVisibleTruth = true;
   }
 
@@ -290,7 +265,7 @@ export default class Intro extends Vue {
     color: rgba(255, 255, 255, 0.35);
     cursor: pointer;
     opacity: 0;
-    animation: delayShow 500ms ease forwards 10s;
+    animation: delayShow 500ms ease forwards 4s;
     transition: ease 300ms;
 
     @include respond-to("large") {
@@ -438,7 +413,7 @@ div.mode-selector-dd {
 
   @include respond-to("small") {
     position: absolute;
-    top: 89vh;
+    top: 86vh;
     right: auto;
     left: 50vw;
     transform: translate(-50%, 2000px);
@@ -465,11 +440,11 @@ div.mode-selector-dd {
 
 @keyframes delayShowAndSliceIn {
   0% {
-  transform: translate(2000px, calc(-2.2625rem / 2));
+    transform: translate(2000px, calc(-2.2625rem / 2));
     filter: blur(4px);
   }
   100% {
-  transform: translate(0, calc(-2.2625rem / 2));
+    transform: translate(0, calc(-2.2625rem / 2));
     filter: blur(0);
   }
 }
@@ -534,32 +509,6 @@ p {
     filter: blur(0);
   }
   100% {
-    filter: blur(0);
-  }
-}
-
-@keyframes delayShowBlurSpecial {
-  0% {
-    opacity: 0;
-    filter: blur(5px);
-  }
-  50% {
-    opacity: 0;
-    filter: blur(5px);
-  }
-  100% {
-    opacity: 1;
-    filter: blur(0);
-  }
-}
-
-@keyframes delayShowBlur {
-  0% {
-    opacity: 0;
-    filter: blur(3px);
-  }
-  100% {
-    opacity: 1;
     filter: blur(0);
   }
 }
