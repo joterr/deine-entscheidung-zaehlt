@@ -323,7 +323,7 @@ export default class Intro extends Vue {
     position: relative;
 
     @include respond-to("small") {
-      margin-top: 2vh;
+      margin-top: 22vh;
     }
 
     .heading {
