@@ -7,6 +7,9 @@ Information page on the effects of livestock farming in Germany. www.deine-entsc
 ## Author
 Jannik Rulitschka, hallo@jannikrulitschka.de
 
+## Licence
+This project is licensed under GNU General Public License v3.0 (GNU GPLv3).
+
 ## Project setup
 ```
 npm install
