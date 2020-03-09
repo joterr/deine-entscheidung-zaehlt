@@ -20,15 +20,21 @@
         <div class="back-link" v-on:click="hideTruth()">zur&uuml;ck</div>
         <div class="content">
           <div class="heading">
-            <h1>
-              Vegan
-              <br />essen?
-            </h1>
-            <h1 class="sub">
+            <div class="shadowed">
+              <h1>
+                Vegan
+                <br />essen?
+              </h1>
+              <h1 class="layer">
+                Vegan
+                <br />essen?
+              </h1>
+            </div>
+            <h2>
               lecker,
               <br />möglich
               <br />&amp; gesund.
-            </h1>
+            </h2>
           </div>
           <div class="explanation">
             <p class="highlight">
@@ -41,7 +47,12 @@
               <sup>3</sup>
               <br />Schwer ist dies jedoch nicht. Wenige Informationen &ndash; siehe
               <i>Erste Schritte</i> und
-              <i>Bücher</i> &ndash; genügen, um eine gut kombinierte Zusammenstellung aus den fünf wichtigsten Lebensmittelgruppen <i>(Vollkorn-)getreide</i>, <i>Hülsenfrüchte</i>, <i>Gemüse</i>, <i>Obst</i> und <i>Nüsse/Samen</i>
+              <i>Bücher</i> &ndash; genügen, um eine gut kombinierte Zusammenstellung aus den fünf wichtigsten Lebensmittelgruppen
+              <i>(Vollkorn-)getreide</i>,
+              <i>Hülsenfrüchte</i>,
+              <i>Gemüse</i>,
+              <i>Obst</i> und
+              <i>Nüsse/Samen</i>
               <sup>4</sup> zu garantieren.
             </p>
             <p>
@@ -51,9 +62,7 @@
                 target="_blanc"
               >30 Tage Vegan Coach</a> von PETA an.
             </p>
-            <p>
-                Go vegan! ;)
-            </p>
+            <p>Go vegan! ;)</p>
             <ul class="citations">
               <li>
                 <sup>1</sup>
@@ -332,39 +341,57 @@ export default class Intro extends Vue {
       margin-bottom: 3.125rem;
       width: 150%;
 
-      h1 {
-        margin-left: -0.1rem;
-        color: $white;
-        font-size: 10rem;
-        text-transform: uppercase;
-        text-decoration: underline;
-        @include std-text-bold-italic();
+      .shadowed {
+        position: relative;
 
-        &.sub {
-          @include std-text-bold();
-          margin-top: 6.25rem;
-          line-height: 100%;
-          font-size: 3.25rem;
-          text-transform: none;
-          text-decoration: none;
+        h1 {
+          position: relative;
+          margin-left: -0.1rem;
+          color: #fff;
+          font-size: 10rem;
+          text-transform: uppercase;
+          text-decoration: underline;
+          @include std-text-bold-italic();
+          z-index: 4;
 
           @include respond-to("medium") {
-            margin-top: 4.375rem;
+            font-size: 14vw;
+          }
+
+          @include respond-to("small") {
+            font-size: 23vw;
+          }
+
+          &.layer {
+            position: absolute;
+              top: -0.3rem;
+              left: 0.6rem;
+              color: #158966;
+              z-index: 3;
           }
         }
+      }
+
+      h2 {
+        color: $white;
+        margin-left: -0.1rem;
+        @include std-text-bold();
+        margin-top: 6.25rem;
+        line-height: 100%;
+        font-size: 3.25rem;
+        text-transform: none;
+        text-decoration: none;
 
         @include respond-to("medium") {
-          font-size: 14vw;
-          &.sub {
-            font-size: 5.25vw;
-          }
+          font-size: 5.25vw;
         }
 
         @include respond-to("small") {
-          font-size: 23vw;
-          &.sub {
-            font-size: 12vw;
-          }
+          font-size: 12vw;
+        }
+
+        @include respond-to("medium") {
+          margin-top: 4.375rem;
         }
       }
     }

@@ -15,7 +15,7 @@
             <span class="timespan">Das sind jährlich über</span>
           </h3>
           <h1 class="animate million big-screen">
-            <ICountUp :endVal="activeType[mode].PER_YEAR" :options="countUpOptions" />
+            <ICountUp :endVal="activeType[mode].PER_YEAR < 1 ? 1 : activeType[mode].PER_YEAR" :options="countUpOptions" />
           </h1>
           <h1 class="animate million small-screen">
             <ICountUp :endVal="activeType[mode].PER_YEAR / 1000000" :options="countUpOptions" />&nbsp;Mio.
@@ -35,10 +35,14 @@
             class="included-types"
             v-if="activeType.INCLUDED_TYPES"
           >*{{activeType.INCLUDED_TYPES}}</div>
-          <div class="special-content" v-if="activeType.ID === TYPES.HUHNER.ID">
+          <div class="special-content" v-if="activeType.ID === TYPES.HUHNER.ID && mode !== veggieMode">
             <h4 class="intro">umgerechnet</h4>
-            <!-- 63470000 (Tod 11424600) aus Eierproduktion, 45000850 Müll, 622000000 Geschlachtet (43540000 Krankheit), : 54964600 Krank gesamt :: 727540000 Gesamt-->
+            <!-- 63470000 (Tod 11424600) aus Eierproduktion, 45000850 Geschreddert, 622000000 Geschlachtet (43540000 Krankheit), : 54964600 Krank gesamt :: 727540000 Gesamt-->
             <h4>72&percnt;&nbsp;nur für Fleisch, 9&percnt;&nbsp;ursprünglich für Eier, 6&percnt;&nbsp;werden direkt geschreddert, 7&percnt;&nbsp;sterben durch Krankheit und 6&percnt;&nbsp;landen im Müll.</h4>
+          </div>
+          <div class="special-content" v-if="activeType.ID === TYPES.HUHNER.ID && mode === veggieMode">
+            <h4 class="intro">umgerechnet</h4>
+            <h4>50&percnt;&nbsp;werden direkt geschreddert, 32&percnt;&nbsp;ursprünglich für Eier<br />und 18&percnt;&nbsp;sterben durch Krankheit.</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.SCHWEINE.ID">
             <h4 class="intro">umgerechnet</h4>
@@ -48,10 +52,13 @@
               <br />6&percnt;&nbsp;landen im Müll.
             </h4>
           </div>
-          <div class="special-content" v-else-if="activeType.ID === TYPES.RINDER.ID">
+          <div class="special-content" v-else-if="activeType.ID === TYPES.RINDER.ID && mode !== veggieMode">
             <h4 class="intro">umgerechnet</h4>
             <!-- 229950 Müll, 1700000 Milchvieh wg. Krankheit geschlachtet (1200000 geschlachtet) und TBA, 579111 TBA -->
             <h4>49&percnt;&nbsp;für Fleisch, 30&percnt;&nbsp;ursprünglich für Milch, 15&percnt;&nbsp;sterben durch Krankheit und 6&percnt;&nbsp;landen im Müll.</h4>
+          </div>
+          <div class="special-content" v-else-if="activeType.ID === TYPES.RINDER.ID && mode === veggieMode">
+            <h4>jährlich wird nahezu jede zweite Kuh wegen u.a. Verletzungen, Krankheit oder geringer Milchleistung aussortiert</h4>
           </div>
           <div class="special-content" v-else-if="activeType.ID === TYPES.ANTIBIOTIKA.ID">
             <h4 class="intro">davon sind mindestens</h4>
@@ -106,6 +113,9 @@ export default class AdditionalDetails extends Vue {
 
   @Provide()
   private mode!: ModeEnum;
+
+  @Provide()
+  private veggieMode: ModeEnum = ModeEnum.VEGGIE;
 
   @Provide()
   private countUpOptions: any = {
