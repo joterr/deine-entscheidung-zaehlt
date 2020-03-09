@@ -103,6 +103,10 @@ export const FACT_TYPES_CONST: Types = {
                 {
                     SOURCE: "DESTATIS (2018)",
                     SOURCE_URL: "https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Landwirtschaft-Forstwirtschaft-Fischerei/Tiere-Tierische-Erzeugung/Tabellen/gefluegelfleisch.html"
+                },
+                {
+                    SOURCE: "Bianca Baumgart (2005)",
+                    SOURCE_URL: "https://edoc.ub.uni-muenchen.de/3746/1/Baumgart_Bianca.pdf"
                 }
             ]
         },
@@ -128,6 +132,10 @@ export const FACT_TYPES_CONST: Types = {
                 {
                     SOURCE: "BVDF (2019)",
                     SOURCE_URL: "https://www.bvdf.de/aktuell/geschaeftsbericht-2018-19"
+                },
+                {
+                    SOURCE: "Bianca Baumgart (2005)",
+                    SOURCE_URL: "https://edoc.ub.uni-muenchen.de/3746/1/Baumgart_Bianca.pdf"
                 }
             ]
         },
@@ -142,6 +150,10 @@ export const FACT_TYPES_CONST: Types = {
                     SOURCE: "Hühner Haltung (2019)",
                     SOURCE_URL: "https://www.huehner-haltung.de/haltung/produktive-huhn/#Was_kommt_nach_dem_Ei_ Legeleistung"
                 },
+                {
+                    SOURCE: "Bianca Baumgart (2005)",
+                    SOURCE_URL: "https://edoc.ub.uni-muenchen.de/3746/1/Baumgart_Bianca.pdf"
+                }
             ]
         },
         VEGAN: {
