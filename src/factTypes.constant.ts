@@ -37,6 +37,7 @@ export interface Type {
 export interface ModeValue {
     PER_YEAR: number;
     UNIT?: string;
+    INCLUDED_TYPES?: string;
     CALCULATION?: string;
     FACTOR?: number;
     SOURCES: ModeValueSource[];
@@ -618,11 +619,11 @@ export const FACT_TYPES_CONST: Types = {
         LABEL_1: "Tonne CO<sub>2</sub>-Äquivalente",
         LABEL: "t CO<sub>2</sub>-Äquivalente",
         NAME: "CO<sub>2</sub>-Äquivalente",
-        INCLUDED_TYPES: "berechnet aus emittiertem Kohlendioxid, Lachgas und Methan",
         PROBLEM: "Kohlendioxid ist ein Treibhausgas und führt bei zunehmender Konzentration in der Atmosphäre zu einer Erwärmung des Erdklimas.",
         DE: {
             PER_YEAR: 20800000 * 5,
             UNIT: "Tonnen",
+            INCLUDED_TYPES: "berechnet aus emittiertem Kohlendioxid, Lachgas und Methan",
             CALCULATION: "Nutztierbestand um 20% (20.8 Mio. Tonnen CO2-Äqu.) verringern",
             SOURCES: [
                 {
@@ -636,35 +637,38 @@ export const FACT_TYPES_CONST: Types = {
             ]
         },
         OMNI: {
-            PER_YEAR: 1700,
+            PER_YEAR: 2484,
             FACTOR: 0.001,
             UNIT: "Kilogramm",
+            INCLUDED_TYPES: "berechnet aus emittiertem Kohlendioxid, Lachgas und Methan inklusive Kohlenstoffsenke und Savannenverbrennung",
             SOURCES: [
                 {
-                    SOURCE: "Deutschlandfunk (2019)",
-                    SOURCE_URL: "https://www.deutschlandfunk.de/klima-serie-der-eigene-beitrag-veganes-leben-als-co2.697.de.html?dram:article_id=456541"
+                    SOURCE: "Joseph Poore (2018)",
+                    SOURCE_URL: "https://ora.ox.ac.uk/objects/uuid:a63fb28c-98f8-4313-add6-e9eca99320a5"
                 }
             ]
         },
         VEGGIE: {
-            PER_YEAR: 1100,
+            PER_YEAR: 770,
             FACTOR: 0.001,
             UNIT: "Kilogramm",
+            INCLUDED_TYPES: "berechnet aus emittiertem Kohlendioxid, Lachgas und Methan inklusive Kohlenstoffsenke und Savannenverbrennung",
             SOURCES: [
                 {
-                    SOURCE: "Deutschlandfunk (2019)",
-                    SOURCE_URL: "https://www.deutschlandfunk.de/klima-serie-der-eigene-beitrag-veganes-leben-als-co2.697.de.html?dram:article_id=456541"
+                    SOURCE: "Joseph Poore (2018)",
+                    SOURCE_URL: "https://ora.ox.ac.uk/objects/uuid:a63fb28c-98f8-4313-add6-e9eca99320a5"
                 }
             ]
         },
         VEGAN: {
-            PER_YEAR: 640,
+            PER_YEAR: 415,
             FACTOR: 0.001,
             UNIT: "Kilogramm",
+            INCLUDED_TYPES: "berechnet aus emittiertem Kohlendioxid, Lachgas und Methan inklusive Kohlenstoffsenke und Savannenverbrennung",
             SOURCES: [
                 {
-                    SOURCE: "Deutschlandfunk (2019)",
-                    SOURCE_URL: "https://www.deutschlandfunk.de/klima-serie-der-eigene-beitrag-veganes-leben-als-co2.697.de.html?dram:article_id=456541"
+                    SOURCE: "Joseph Poore (2018)",
+                    SOURCE_URL: "https://ora.ox.ac.uk/objects/uuid:a63fb28c-98f8-4313-add6-e9eca99320a5"
                 }
             ]
         }

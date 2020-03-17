@@ -33,8 +33,8 @@
           </h2>
           <div
             class="included-types"
-            v-if="activeType.INCLUDED_TYPES"
-          >*{{activeType.INCLUDED_TYPES}}</div>
+            v-if="activeType[mode].INCLUDED_TYPES || activeType.INCLUDED_TYPES"
+          >*{{activeType[mode].INCLUDED_TYPES || activeType.INCLUDED_TYPES}}</div>
           <div class="special-content" v-if="activeType.ID === TYPES.HUHNER.ID && mode !== veggieMode">
             <h4 class="intro">umgerechnet</h4>
             <!-- 63470000 (Tod 11424600) aus Eierproduktion, 45000850 Geschreddert, 622000000 Geschlachtet (43540000 Krankheit), : 54964600 Krank gesamt :: 727540000 Gesamt-->
