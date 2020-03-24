@@ -4,6 +4,8 @@
 
 Information page on the effects of livestock farming in Germany. www.deine-entscheidung-zaehlt.de
 
+![Screenshot Deine Entscheidung zählt?](screenshot.png)
+
 ## Author
 Jannik Rulitschka, hallo@jannikrulitschka.de
 
