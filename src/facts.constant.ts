@@ -230,6 +230,18 @@ export const ENVIRONMENTAL_IMPACTS = [
 
 export const HEALTH_BENEFITS = [
   {
+    desc: "Wie Fleischkonsum Epidemien begünstigt",
+    pub: "Haller Kreisblatt",
+    date: "2020-03-29",
+    link: "https://www.haller-kreisblatt.de/aus_der_region/22736730_Wie-Fleischkonsum-Epidemien-beguenstigt.html"
+  },
+  {
+    desc: "Coronavirus: Was Forscher über den Ursprung der Pandemie wissen",
+    pub: "Spiegel Wissenschaft",
+    date: "2020-03-28",
+    link: "https://www.spiegel.de/wissenschaft/medizin/coronavirus-warum-viren-in-tieren-so-gefaehrlich-sind-a-bcfe8de8-3e04-49e8-9955-6f00e382d309"
+  },
+  {
     desc: "Behörde stoppt Wurst-Produktion nach Todesfällen",
     pub: "Süddeutsche Zeitung",
     date: "2019-10-02",
