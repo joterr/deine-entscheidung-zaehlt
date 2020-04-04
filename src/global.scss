@@ -318,6 +318,10 @@ body {
       font-size: small;
     }
 
+    strong {
+        @include std-text-bold();
+    }
+
     ul.small-list {
       padding-left: 1em;
   
