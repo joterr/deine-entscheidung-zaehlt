@@ -8,8 +8,10 @@
       <h2>Angaben gem&auml;&szlig; &sect;5 TMG</h2>
       <p>
         <span class="fakeAddress">
-          <span class="n"></span><br/>
-          <span class="s"></span><br/>
+          <span class="n"></span>
+          <br />
+          <span class="s"></span>
+          <br />
           <span class="c"></span>
         </span>
       </p>
@@ -17,6 +19,10 @@
       <p>
         E-Mail:
         <span class="fakeEmail">@</span>
+      </p>
+      <p>
+        Diese Projekt ist unter <strong>GNU General Public License v3.0</strong> lizenziert und auf
+        <a href="https://github.com/joterr/deine-entscheidung-zaehlt" target="_blanc">GitHub</a> öffentlich verfügbar.
       </p>
       <h3>Haftung f&uuml;r Inhalte</h3>
       <p>
