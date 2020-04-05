@@ -21,8 +21,12 @@
         <span class="fakeEmail">@</span>
       </p>
       <p>
-        Diese Projekt ist unter <strong>GNU General Public License v3.0</strong> lizenziert und auf
-        <a href="https://github.com/joterr/deine-entscheidung-zaehlt" target="_blanc">GitHub</a> öffentlich verfügbar.
+        Dieses Projekt ist unter
+        <strong>GNU General Public License v3.0</strong> lizenziert und auf
+        <a
+          href="https://github.com/joterr/deine-entscheidung-zaehlt"
+          target="_blanc"
+        >GitHub</a> öffentlich verfügbar.
       </p>
       <h3>Haftung f&uuml;r Inhalte</h3>
       <p>
