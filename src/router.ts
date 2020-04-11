@@ -26,5 +26,9 @@ export default new Router({
       name: "imprint",
       component: () => import("./views/Imprint.vue"),
     },
+    {
+        path: "*",
+        redirect: "/"
+    }
   ],
 });
