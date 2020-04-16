@@ -2,8 +2,16 @@
   <div id="app">
     <router-view />
     <footer>
-      <nav><router-link to="/fakten" class="high">Weitere Fakten</router-link>|<router-link to="/impressum">Impressum</router-link></nav>
-      <div class="green-energy"><span>Läuft mit 100% Grünem Strom.</span></div>
+      <nav>
+        <router-link to="/fakten" class="high">Weitere Fakten</router-link>|
+        <router-link to="/impressum">Impressum</router-link>
+      </nav>
+      <div class="donate-a-coffee">
+        <a
+          href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QG2AL8PDN3N2S&source=url"
+          target="_blanc"
+        >Kaffee spendieren? ♥</a>
+      </div>
     </footer>
   </div>
 </template>
@@ -35,19 +43,18 @@ footer {
     padding-bottom: 1rem;
   }
 
-  .green-energy {
-    span {
+  .donate-a-coffee {
+    a {
+      font-size: x-small;
+      color: #fff;
+      padding: 0.125rem 0.25rem;
+      @include std-text-bold();
+      text-transform: none;
+      margin-right: 0.5rem;
       vertical-align: text-bottom;
-      font-size: xx-small;
-      color: rgba(255, 255, 255, 0.4);
-      @include std-text();
-
-      @include respond-to("small") {
-        vertical-align: top;
-      }
 
       &:hover {
-        color: $cl-accent1;
+        text-decoration: underline;
       }
     }
   }
@@ -62,12 +69,12 @@ footer {
 
     a {
       position: relative;
-      @include std-text();
+      @include std-text-bold();
       font-size: x-small;
       color: $white;
       text-transform: uppercase;
       display: inline-block;
-      padding: 0.5rem .35rem;
+      padding: 0.5rem 0.35rem;
       opacity: 0.6;
 
       @include respond-to("small") {
