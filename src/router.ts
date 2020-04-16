@@ -27,6 +27,11 @@ export default new Router({
       component: () => import("./views/Imprint.vue"),
     },
     {
+      path: "/danke",
+      name: "thanks",
+      component: () => import("./views/Thanks.vue"),
+    },
+    {
         path: "*",
         redirect: "/"
     }
