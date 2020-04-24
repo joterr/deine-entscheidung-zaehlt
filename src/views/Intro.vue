@@ -122,74 +122,86 @@
               </ul>
             </div>
             <div class="col">
-              <h3>Dokumentationen</h3>
-              <ul class="info-list-type">
-                <li>
-                  <a
-                    href="http://www.forksoverknives.com/the-film/"
-                    target="_blanc"
-                  >Forks over Knifes (2011)</a> über Gesundheit
-                </li>
-                <li>
-                  <a
-                    href="https://filmsfortheearth.org/de/filme/cowspiracy"
-                    target="_blanc"
-                  >Cowspiracy (2014)</a> über Umweltauswirkungen
-                </li>
-                <li>
-                  <a href="https://www.dominionmovement.com/watch" target="_blanc">Dominion (2018)</a> über moderne Viehzucht
-                </li>
-                <li>
-                  <a href="https://gamechangersmovie.com" target="_blanc">The Game Changers (2019)</a> über Hochleistungssport und vegan
-                </li>
-                <li>
-                  <a
-                    href="https://filmsfortheearth.org/de/filme/live-and-let-live"
-                    target="_blanc"
-                  >Live and Let Live (2013)</a> allgemein über vegan
-                </li>
-                <li>
-                  <a
-                    href="https://filmsfortheearth.org/de/filme/speciesism"
-                    target="_blanc"
-                  >Speciesism (2013)</a> über Nutztiere vs. Haustiere
-                </li>
-                <li>
-                  <a href="https://vimeo.com/26194939" target="_blanc">Making the Connection (2011)</a> allgemein über vegan
-                </li>
-              </ul>
-            </div>
-            <div class="col">
               <h3>Bücher</h3>
               <ul class="info-list-type">
-                <li>
+                <li class="has-affiliate">
                   <a
-                    href="https://www.nikorittenau.com/vegan-klischee-ade/"
+                    href="https://www.awin1.com/cread.php?awinmid=11364&awinaffid=709629&clickref=DEZ&ued=https%3A%2F%2Fwww.medimops.de%2Fniko-rittenau-vegan-klischee-ade-das-kochbuch-kompaktes-wissen-leckere-rezepte-abwechslungsreiche-ernaehrung-mit-dem-baukastensystem-gebundene-ausgabe-M03831038856.html"
                     target="_blanc"
                   >Vegan Klischee Adé</a> von Niko Rittenau (ausführlichst über die aktuelle ernährungsphysiologische Studienlage)
                 </li>
-                <li>
-                  <a href="https://nutritionfacts.org/book/" target="_blanc">HOW NOT TO DIE</a> von Michael Greger, M.D.
-                </li>
-                <li>
+                <li class="has-affiliate">
                   <a
-                    href="https://www.medimops.de/produkte-C0/?fcIsSearch=1&searchparam=China+Study"
+                    href="https://www.awin1.com/cread.php?awinmid=11364&awinaffid=709629&clickref=DEZ&ued=https%3A%2F%2Fwww.medimops.de%2Fmichael-greger-how-not-to-die-entdecken-sie-nahrungsmittel-die-ihr-leben-verlaengern-und-bewiesenermassen-krankheiten-vorbeugen-und-heilen-gebundene-ausgabe-M0394656612X.html"
                     target="_blanc"
-                  >The China Study</a> von T. Colin Campbell
+                  >HOW NOT TO DIE</a> von Michael Greger, M.D.
                 </li>
-                <li>
+                <li class="has-affiliate">
                   <a
-                    href="https://www.kiwi-verlag.de/buch/tiere-essen/978-3-462-04044-9/"
+                    href="https://www.awin1.com/cread.php?awinmid=11364&awinaffid=709629&clickref=DEZ&ued=https%3A%2F%2Fwww.medimops.de%2Fharari-yuval-noah-eine-kurze-geschichte-der-menschheit-broschiert-M03570552691.html"
                     target="_blanc"
-                  >Tiere Essen</a> von Jonathan Safran Foer
+                  >Eine kurze Geschichte der Menschheit</a> von Yuval Noah Harari
                 </li>
-                <li>
+                <li class="has-affiliate">
                   <a
-                    href="https://www.thalia.de/shop/home/artikeldetails/ID34339239.html"
+                    href="https://www.awin1.com/cread.php?awinmid=11364&awinaffid=709629&clickref=DEZ&ued=https%3A%2F%2Fwww.medimops.de%2Fmelanie-joy-warum-wir-hunde-lieben-schweine-essen-und-kuehe-anziehen-karnismus-eine-einfuehrung-broschiert-M03981462173.html"
                     target="_blanc"
                   >Warum wir Hunde lieben, Schweine essen und Kühe anziehen: Karnismus – eine Einführung</a> von Melanie Joy
                 </li>
+                <li class="has-affiliate">
+                  <a
+                    href="https://www.awin1.com/cread.php?awinmid=11364&awinaffid=709629&clickref=DEZ&ued=https%3A%2F%2Fwww.medimops.de%2Fcampbell-t-colin-the-china-study-revised-and-expanded-edition-the-most-comprehensive-study-of-nutrition-ever-conducted-and-the-startling-implications-for-diet-weight-loss-and-long-term-health-taschenbuch-M01941631568.html"
+                    target="_blanc"
+                  >The China Study</a> von T. Colin Campbell
+                </li>
+                <li class="has-affiliate">
+                  <a
+                    href="https://www.awin1.com/cread.php?awinmid=11364&awinaffid=709629&clickref=DEZ&ued=https%3A%2F%2Fwww.medimops.de%2Ffoer-jonathan-safran-tiere-essen-taschenbuch-M03596188792.html"
+                    target="_blanc"
+                  >Tiere Essen</a> von Jonathan Safran Foer
+                </li>
               </ul>
+              <div class="col">
+                <h3>Dokumentationen</h3>
+                <ul class="info-list-type">
+                  <li>
+                    <a
+                      href="http://www.forksoverknives.com/the-film/"
+                      target="_blanc"
+                    >Forks over Knifes (2011)</a> über Gesundheit
+                  </li>
+                  <li>
+                    <a
+                      href="https://filmsfortheearth.org/de/filme/cowspiracy"
+                      target="_blanc"
+                    >Cowspiracy (2014)</a> über Umweltauswirkungen
+                  </li>
+                  <li>
+                    <a href="https://www.dominionmovement.com/watch" target="_blanc">Dominion (2018)</a> über moderne Viehzucht
+                  </li>
+                  <li>
+                    <a href="https://gamechangersmovie.com" target="_blanc">The Game Changers (2019)</a> über Hochleistungssport und vegan
+                  </li>
+                  <li>
+                    <a
+                      href="https://filmsfortheearth.org/de/filme/live-and-let-live"
+                      target="_blanc"
+                    >Live and Let Live (2013)</a> allgemein über vegan
+                  </li>
+                  <li>
+                    <a
+                      href="https://filmsfortheearth.org/de/filme/speciesism"
+                      target="_blanc"
+                    >Speciesism (2013)</a> über Nutztiere vs. Haustiere
+                  </li>
+                  <li>
+                    <a
+                      href="https://vimeo.com/26194939"
+                      target="_blanc"
+                    >Making the Connection (2011)</a> allgemein über vegan
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -364,10 +376,10 @@ export default class Intro extends Vue {
 
           &.layer {
             position: absolute;
-              top: -0.3rem;
-              left: 0.6rem;
-              color: #158966;
-              z-index: 3;
+            top: -0.3rem;
+            left: 0.6rem;
+            color: #158966;
+            z-index: 3;
           }
         }
       }
@@ -450,6 +462,15 @@ export default class Intro extends Vue {
         list-style-type: none;
         margin: 0 0 0.75em 0;
         padding: 0;
+
+        &.has-affiliate:after {
+          content: "Werbung";
+          opacity: 0.5;
+          color: #fff;
+          text-transform: uppercase;
+          font-size: xx-small;
+          vertical-align: baseline;
+        }
       }
     }
   }
