@@ -161,47 +161,44 @@
                   >Tiere Essen</a> von Jonathan Safran Foer
                 </li>
               </ul>
-              <div class="col">
-                <h3>Dokumentationen</h3>
-                <ul class="info-list-type">
-                  <li>
-                    <a
-                      href="http://www.forksoverknives.com/the-film/"
-                      target="_blanc"
-                    >Forks over Knifes (2011)</a> über Gesundheit
-                  </li>
-                  <li>
-                    <a
-                      href="https://filmsfortheearth.org/de/filme/cowspiracy"
-                      target="_blanc"
-                    >Cowspiracy (2014)</a> über Umweltauswirkungen
-                  </li>
-                  <li>
-                    <a href="https://www.dominionmovement.com/watch" target="_blanc">Dominion (2018)</a> über moderne Viehzucht
-                  </li>
-                  <li>
-                    <a href="https://gamechangersmovie.com" target="_blanc">The Game Changers (2019)</a> über Hochleistungssport und vegan
-                  </li>
-                  <li>
-                    <a
-                      href="https://filmsfortheearth.org/de/filme/live-and-let-live"
-                      target="_blanc"
-                    >Live and Let Live (2013)</a> allgemein über vegan
-                  </li>
-                  <li>
-                    <a
-                      href="https://filmsfortheearth.org/de/filme/speciesism"
-                      target="_blanc"
-                    >Speciesism (2013)</a> über Nutztiere vs. Haustiere
-                  </li>
-                  <li>
-                    <a
-                      href="https://vimeo.com/26194939"
-                      target="_blanc"
-                    >Making the Connection (2011)</a> allgemein über vegan
-                  </li>
-                </ul>
-              </div>
+            </div>
+            <div class="col">
+              <h3>Dokumentationen</h3>
+              <ul class="info-list-type">
+                <li>
+                  <a
+                    href="http://www.forksoverknives.com/the-film/"
+                    target="_blanc"
+                  >Forks over Knifes (2011)</a> über Gesundheit
+                </li>
+                <li>
+                  <a
+                    href="https://filmsfortheearth.org/de/filme/cowspiracy"
+                    target="_blanc"
+                  >Cowspiracy (2014)</a> über Umweltauswirkungen
+                </li>
+                <li>
+                  <a href="https://www.dominionmovement.com/watch" target="_blanc">Dominion (2018)</a> über moderne Viehzucht
+                </li>
+                <li>
+                  <a href="https://gamechangersmovie.com" target="_blanc">The Game Changers (2019)</a> über Hochleistungssport und vegan
+                </li>
+                <li>
+                  <a
+                    href="https://filmsfortheearth.org/de/filme/live-and-let-live"
+                    target="_blanc"
+                  >Live and Let Live (2013)</a> allgemein über vegan
+                </li>
+                <li>
+                  <a
+                    href="https://filmsfortheearth.org/de/filme/speciesism"
+                    target="_blanc"
+                  >Speciesism (2013)</a> über Nutztiere vs. Haustiere
+                </li>
+                <li>
+                  <a href="https://vimeo.com/26194939" target="_blanc">Making the Connection (2011)</a> allgemein über vegan
+                </li>
+              </ul>
             </div>
           </div>
         </div>
