@@ -78,12 +78,12 @@ export const FACT_TYPES_CONST: Types = {
         INCLUDED_TYPES: "mit Küken, Legehennen und Hähnen",
         IS_ANIMAL: true,
         DE: {
-            PER_YEAR: (500000000 * 1.64 * 1.07) + (18000000 * 1.07) + 44000000, // 18 Mio Legehennen von Import
+            PER_YEAR: (622492000 * 1.07) + (18000000 * 1.07) + 44000000, // 18 Mio Legehennen von Import-Eiern
             CALCULATION: "Schlachtzahlen sowie Eierproduktion",
             SOURCES: [
                 {
-                    SOURCE: "Statistisches Bundesamt (2019)",
-                    SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2019/02/PD19_043_413.html"
+                    SOURCE: "DESTATIS (2020)",
+                    SOURCE_URL: "https://www.destatis.de/DE/Presse/Pressemitteilungen/2020/02/PD20_036_413.html"
                 },
                 {
                     SOURCE: "Heinrich Böll Stiftung (2019)",
@@ -94,16 +94,8 @@ export const FACT_TYPES_CONST: Types = {
                     SOURCE_URL: "https://www.welt.de/politik/deutschland/article195189667/Kuekenschreddern-bleibt-in-Deutschland-vorerst-erlaubt.html"
                 },
                 {
-                    SOURCE: "Albert Schweitzer Stiftung I (2019)",
+                    SOURCE: "Albert Schweitzer Stiftung (2019)",
                     SOURCE_URL: "https://albert-schweitzer-stiftung.de/massentierhaltung/masthuehner"
-                },
-                {
-                    SOURCE: "Albert Schweitzer Stiftung II (2019)",
-                    SOURCE_URL: "https://albert-schweitzer-stiftung.de/aktuell/schlachtzahlen-2018"
-                },
-                {
-                    SOURCE: "DESTATIS (2018)",
-                    SOURCE_URL: "https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Landwirtschaft-Forstwirtschaft-Fischerei/Tiere-Tierische-Erzeugung/Tabellen/gefluegelfleisch.html"
                 },
                 {
                     SOURCE: "Bianca Baumgart (2005)",
