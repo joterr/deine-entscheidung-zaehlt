@@ -78,7 +78,7 @@ export const FACT_TYPES_CONST: Types = {
         INCLUDED_TYPES: "mit Küken, Legehennen und Hähnen",
         IS_ANIMAL: true,
         DE: {
-            PER_YEAR: (5000000 * 1.64 * 1.07) + (18000000 * 1.07) + 44000000, // 18 Mio Legehennen von Import
+            PER_YEAR: (5000000000 * 1.64 * 1.07) + (18000000 * 1.07) + 44000000, // 18 Mio Legehennen von Import
             CALCULATION: "Schlachtzahlen sowie Eierproduktion",
             SOURCES: [
                 {
