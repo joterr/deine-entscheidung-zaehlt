@@ -1,7 +1,7 @@
 <template>
   <div class="static-page sources">
     <span class="back-link">
-      <router-link to="/">&laquo; Zurück zur Wahrheit</router-link>
+      <router-link to="/">&laquo; Zurück zu den Fakten</router-link>
     </span>
     <div class="content">
       <h1>Weitere Fakten</h1>
