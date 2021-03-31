@@ -252,7 +252,7 @@ export const FACT_TYPES_CONST: Types = {
     TRUTHAHNER: {
         ID: "truthahner",
         LABEL_1: "Truthahn",
-        LABEL: "Truthähner",
+        LABEL: "Truthähne",
         IS_ANIMAL: true,
         DE: {
             PER_YEAR: 39869812, // (467500000 / 13.25) * 1.13,
