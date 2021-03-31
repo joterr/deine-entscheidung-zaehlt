@@ -139,7 +139,7 @@
       </p>
       <h3>Hinweis zur verantwortlichen Stelle</h3>
       <p>Die verantwortliche Stelle f&uuml;r die Datenverarbeitung auf dieser Website ist:</p>
-      <p><span class="n"></span></p>
+      <p><span class="fakeAddress"><span class="n"></span></span></p>
       <p>
         E-Mail:
         <span class="fakeEmailPrivacy">@</span>
