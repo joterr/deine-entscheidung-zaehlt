@@ -6,6 +6,9 @@
         <router-link to="/fakten" class="high">Weitere Fakten</router-link>|
         <router-link to="/impressum">Impressum</router-link>
       </nav>
+      <div class="rosakreuz">
+          <a href="https://www.rosakreuz.de/" target="_blanc"><img src="./assets/rosakreuz-x-pink.svg" alt="Rosakreuz Logo" height="22px" width="22px"></a>
+      </div>
       <div class="donate-a-coffee">
         <a
           href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QG2AL8PDN3N2S&source=url"
@@ -31,6 +34,7 @@ footer {
   align-content: center;
   justify-content: space-between;
   flex-direction: row-reverse;
+  align-items: center;
 
   @include respond-to("small") {
     position: relative;
